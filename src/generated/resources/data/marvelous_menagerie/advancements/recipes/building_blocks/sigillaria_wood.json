@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sigillaria_stem": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:sigillaria_stem"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "marvelous_menagerie:sigillaria_wood"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_sigillaria_stem",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "marvelous_menagerie:sigillaria_wood"
+    ]
+  },
+  "sends_telemetry_event": false
+}

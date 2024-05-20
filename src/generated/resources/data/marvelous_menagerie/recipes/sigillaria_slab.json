@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "M": {
+      "item": "marvelous_menagerie:sigillaria_planks"
+    }
+  },
+  "pattern": [
+    "MMM"
+  ],
+  "result": {
+    "count": 6,
+    "item": "marvelous_menagerie:sigillaria_slab"
+  },
+  "show_notification": true
+}

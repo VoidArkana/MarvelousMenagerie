@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "marvelous_menagerie:block/stripped_sigillaria_stem",
+    "side": "marvelous_menagerie:block/stripped_sigillaria_stem"
+  }
+}

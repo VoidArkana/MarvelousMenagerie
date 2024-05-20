@@ -1,0 +1,19 @@
+// 1.20.1	2024-05-18T21:48:43.9295978	Tags for minecraft:item mod id marvelous_menagerie
+1105b8780627abc34c43d2c973d7dda863e1b646 data/marvelous_menagerie/tags/items/sigillaria_log_item.json
+036244934576d11ecab196bf5b16fadf12702a9c data/minecraft/tags/items/fence_gates.json
+e301f53dad377ee6a6a77499ab6f8a57d0a1ab66 data/minecraft/tags/items/hanging_signs.json
+b165d0539761ac07b12eed85b1100ccc2a80d488 data/minecraft/tags/items/leaves.json
+f47a793893ddcc703f4d15df7f7fda2297819f44 data/minecraft/tags/items/logs_that_burn.json
+1d6fe54d4b050b5fc09d9634fd257296244c23e3 data/minecraft/tags/items/planks.json
+4fe27cac7231c6da9ef132915f6082e2a04df53d data/minecraft/tags/items/signs.json
+25b69c742e508e8368c9a2dd8665b366ccc52394 data/minecraft/tags/items/wooden_buttons.json
+d15486a6b7b979c1bc1793c2f528a5e28cbf3bbd data/minecraft/tags/items/wooden_doors.json
+fe8543859ad33912fe7f4620b5587514e2dd97db data/minecraft/tags/items/wooden_fences.json
+0592affb988cb9375d0e9f05d1d0bf888036e135 data/minecraft/tags/items/wooden_pressure_plates.json
+6ea2779d2228fce6a566617dffabd036ab64f04f data/minecraft/tags/items/wooden_slabs.json
+845c5b54af41fb29105476236780ff52342b8eff data/minecraft/tags/items/wooden_stairs.json
+c83d0adb9464e458942a29c6cbfaca431310cc25 data/minecraft/tags/items/wooden_trapdoors.json
+be3f116b516f7e372865ebe4480cb3134da3ded6 data/unusualprehistory/tags/items/analyzer_items_output_plant_fossil.json
+53bae7fe0a0f7966cb70b8430cea6a35cfdc4672 data/unusualprehistory/tags/items/analyzer_items_output_tar_fossil.json
+b6970e577253393ed991aba40ae076f1a960fe5d data/unusualprehistory/tags/items/dna_flasks.json
+be3f116b516f7e372865ebe4480cb3134da3ded6 data/unusualprehistory/tags/items/petrified_wood.json

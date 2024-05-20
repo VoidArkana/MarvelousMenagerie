@@ -1,0 +1,43 @@
+{
+  "item.marvelous_menagerie.dodo_dna": "Dodo DNA Flask",
+  "item.marvelous_menagerie.elephant_bird_dna": "Elephant Bird DNA Flask",
+  "item.marvelous_menagerie.steller_sea_cow_dna": "Steller's Sea Cow DNA Flask",
+  "item.marvelous_menagerie.thylacine_dna": "Thylacine DNA Flask",
+  "item.marvelous_menagerie.egg_shell_fragment": "Elephant Bird Eggshell Fragment",
+
+  "item.marvelous_menagerie.sigillaria_dna": "Sigillaria DNA Flask",
+  "block.marvelous_menagerie.sigillaria_planks": "Sigillaria Planks",
+  "block.marvelous_menagerie.sigillaria_stairs": "Sigillaria Stairs",
+  "block.marvelous_menagerie.sigillaria_slab": "Sigillaria Slab",
+  "block.marvelous_menagerie.sigillaria_button": "Sigillaria Button",
+  "block.marvelous_menagerie.sigillaria_pressure_plate": "Sigillaria Pressure Plate",
+  "block.marvelous_menagerie.sigillaria_fence": "Sigillaria Fence",
+  "block.marvelous_menagerie.sigillaria_fence_gate": "Sigillaria Fence Gate",
+
+  "block.marvelous_menagerie.sigillaria_door": "Sigillaria Door",
+  "block.marvelous_menagerie.sigillaria_trapdoor": "Sigillaria Trapdoor",
+
+  "block.marvelous_menagerie.sigillaria_mosaic": "Sigillaria Mosaic",
+  "block.marvelous_menagerie.sigillaria_mosaic_stairs": "Sigillaria Mosaic Stairs",
+  "block.marvelous_menagerie.sigillaria_mosaic_slab": "Sigillaria Mosaic Slab",
+
+  "block.marvelous_menagerie.sigillaria_stem": "Sigillaria Stem",
+  "block.marvelous_menagerie.stripped_sigillaria_stem": "Stripped Sigillaria Stem",
+  "block.marvelous_menagerie.sigillaria_wood": "Sigillaria Bark",
+  "block.marvelous_menagerie.stripped_sigillaria_wood": "Stripped Sigillaria Bark",
+
+  "block.marvelous_menagerie.sigillaria_sign": "Sigillaria Sign",
+  "block.marvelous_menagerie.sigillaria_wall_sign": "Sigillaria Sign",
+  "block.marvelous_menagerie.sigillaria_wall_hanging_sign": "Sigillaria Hanging Sign",
+  "block.marvelous_menagerie.sigillaria_hanging_sign": "Sigillaria Hanging Sign",
+
+
+  "block.marvelous_menagerie.sigillaria_leaves": "Sigillaria Leaves",
+
+  "block.marvelous_menagerie.sigillaria_sapling": "Sigillaria Sapling",
+  "block.marvelous_menagerie.potted_sigillaria_sapling": "Potted Sigillaria Sapling",
+
+  "item.marvelous_menagerie.dodo_spawn_egg": "Dodo Spawn Egg",
+
+  "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
+}

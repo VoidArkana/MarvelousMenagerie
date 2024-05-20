@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "marvelous_menagerie:sigillaria_planks"
+    }
+  ],
+  "result": {
+    "item": "marvelous_menagerie:sigillaria_button"
+  }
+}

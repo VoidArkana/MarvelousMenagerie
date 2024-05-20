@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "marvelous_menagerie:sigillaria_log_item"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "marvelous_menagerie:sigillaria_planks"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "minecraft:chain"
+    },
+    "S": {
+      "tag": "marvelous_menagerie:sigillaria_log_item"
+    }
+  },
+  "pattern": [
+    "# #",
+    "SSS",
+    "SSS"
+  ],
+  "result": {
+    "count": 6,
+    "item": "marvelous_menagerie:sigillaria_hanging_sign"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "M": {
+      "item": "marvelous_menagerie:sigillaria_mosaic"
+    }
+  },
+  "pattern": [
+    "M  ",
+    "MM ",
+    "MMM"
+  ],
+  "result": {
+    "count": 4,
+    "item": "marvelous_menagerie:sigillaria_mosaic_stairs"
+  },
+  "show_notification": true
+}

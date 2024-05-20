@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": {
+      "item": "marvelous_menagerie:sigillaria_slab"
+    }
+  },
+  "pattern": [
+    "S",
+    "S"
+  ],
+  "result": {
+    "count": 4,
+    "item": "marvelous_menagerie:sigillaria_mosaic"
+  },
+  "show_notification": true
+}

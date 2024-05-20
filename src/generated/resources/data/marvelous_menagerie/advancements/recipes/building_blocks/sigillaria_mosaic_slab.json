@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sigillaria_mosaic": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:sigillaria_mosaic"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "marvelous_menagerie:sigillaria_mosaic_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_sigillaria_mosaic",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "marvelous_menagerie:sigillaria_mosaic_slab"
+    ]
+  },
+  "sends_telemetry_event": false
+}

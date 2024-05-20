@@ -1,0 +1,14 @@
+{
+  "input": [
+    "unusualprehistory:petrified_wood_log",
+    "unusualprehistory:petrified_wood",
+    "unusualprehistory:stripped_petrified_wood",
+    "unusualprehistory:stripped_petrified_wood_log"
+  ],
+  "entries": [
+    {
+      "weight": 15,
+      "item": "marvelous_menagerie:sigillaria_dna"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "tag": "forge:rods/wooden"
+    },
+    "S": {
+      "item": "marvelous_menagerie:sigillaria_planks"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SSS",
+    " # "
+  ],
+  "result": {
+    "count": 3,
+    "item": "marvelous_menagerie:sigillaria_sign"
+  },
+  "show_notification": true
+}

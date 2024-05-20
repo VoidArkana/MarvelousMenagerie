@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "marvelous_menagerie:block/sigillaria_planks"
+  }
+}
