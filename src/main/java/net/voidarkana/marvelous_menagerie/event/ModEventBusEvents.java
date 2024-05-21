@@ -13,5 +13,8 @@ public class ModEventBusEvents {
     @SubscribeEvent
     public static void entityAttributeEvent(EntityAttributeCreationEvent event){
         event.put(ModEntities.DODO.get(), DodoEntity.createAttributes().build());
+        event.put(ModEntities.SIGILLARIA_SAPLING_ENTITY.get(), DodoEntity.createAttributes().build());
     }
+
+
 }

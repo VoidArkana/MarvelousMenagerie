@@ -1,23 +1,23 @@
 {
   "text": "sigillaria.txt",
-  "title": "  Sigillaria",
+  "title": "       Sigillaria",
   "page_to_go": "unusualprehistory:plants",
   "plant_button":[
     {
-      "plant": "marvelous_menagerie.sigillaria_sapling",
+      "plant": "marvelous_menagerie:sigillaria_sapling_entity",
       "x": 290,
       "y": 80,
       "page" : 0,
       "scale": 1.2,
       "plant_scale": 1.1,
-      "offset_x": -4,
-      "offset_y": -6,
+      "offset_x": 1,
+      "offset_y": -3,
       "hover_text": "Sigillaria"
     }
   ],
   "entity_renders": [
     {
-      "entity": "marvelous_menagerie.sigillaria_sapling",
+      "entity": "marvelous_menagerie:sigillaria_sapling_entity",
       "x": 90,
       "y": 100,
       "page" : 0,

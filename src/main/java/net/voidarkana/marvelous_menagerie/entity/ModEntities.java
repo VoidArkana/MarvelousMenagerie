@@ -9,6 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.entity.custom.DodoEntity;
+import net.voidarkana.marvelous_menagerie.entity.custom.PlantEntity;
 
 public class ModEntities {
 
@@ -20,6 +21,14 @@ public class ModEntities {
                     () -> EntityType.Builder.of(DodoEntity::new, MobCategory.CREATURE)
                             .sized(0.7f, 0.9f)
                             .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "dodo").toString()));
+
+    public static final RegistryObject<EntityType<PlantEntity>> SIGILLARIA_SAPLING_ENTITY =
+            ENTITY_TYPES.register("sigillaria_sapling_entity",
+                    () -> EntityType.Builder.of(PlantEntity::new, MobCategory.MISC)
+                            .noSummon()
+                            .fireImmune()
+                            .sized(1,1)
+                            .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "sigillaria_sapling").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

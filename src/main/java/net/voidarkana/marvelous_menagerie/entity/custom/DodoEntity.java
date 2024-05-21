@@ -266,6 +266,7 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         }
     }
 
+    @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController[]{new AnimationController(this, "Normal", 5, this::Controller)});
     }
