@@ -7,6 +7,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.block.ModBlocks;
@@ -23,6 +24,10 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+
+        this.tag(Tags.Items.EGGS).add(
+                ModBlocks.DODO_EGGS.get().asItem()
+        );
 
         this.copy(ModTags.Blocks.SIGILLARIA_LOG_BLOCK, ModTags.Items.SIGILLARIA_LOG_ITEM);
 

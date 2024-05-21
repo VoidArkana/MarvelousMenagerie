@@ -22,7 +22,6 @@ public class DodoRenderer extends GeoEntityRenderer<DodoEntity> {
 
     public DodoRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new DodoModel());
-        this.shadowRadius = 0.5f;
     }
 
 

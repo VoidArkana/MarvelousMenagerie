@@ -3,21 +3,31 @@ package net.voidarkana.marvelous_menagerie.datagen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.block.ModBlocks;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
 public class ModBlockStateProvider extends BlockStateProvider {
+
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, MarvelousMenagerie.MOD_ID, exFileHelper);
     }
 
     @Override
     protected void registerStatesAndModels() {
+
+        this.createEggDefaultMedium(ModBlocks.DODO_EGGS.get());
+
         blockWithItem(ModBlocks.SIGILLARIA_PLANKS);
         stairsBlock(((StairBlock) ModBlocks.SIGILLARIA_STAIRS.get()), blockTexture(ModBlocks.SIGILLARIA_PLANKS.get()));
         slabBlock(((SlabBlock) ModBlocks.SIGILLARIA_SLAB.get()), blockTexture(ModBlocks.SIGILLARIA_PLANKS.get()), blockTexture(ModBlocks.SIGILLARIA_PLANKS.get()));
@@ -49,13 +59,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         leavesBlock(ModBlocks.SIGILLARIA_LEAVES);
 
-
         simpleBlockWithItem(ModBlocks.SIGILLARIA_SAPLING.get(), models().cross(blockTexture(ModBlocks.SIGILLARIA_SAPLING.get()).getPath(),
                 blockTexture(ModBlocks.SIGILLARIA_SAPLING.get())).renderType("cutout"));
         simpleBlockWithItem(ModBlocks.POTTED_SIGILLARIA_SAPLING.get(), models().singleTexture("potted_sigillaria_sapling", new ResourceLocation("flower_pot_cross"), "plant",
                 blockTexture(ModBlocks.SIGILLARIA_SAPLING.get())).renderType("cutout"));
     }
-
 
     public void hangingSignBlock(Block signBlock, Block wallSignBlock, ResourceLocation texture) {
         ModelFile sign = models().sign(name(signBlock), texture);
@@ -91,4 +99,189 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .get()));
     }
 
+
+    private String getName(Block block) {
+        return this.key(block).toString().replace(MarvelousMenagerie.MOD_ID+":", "");
+    }
+    public void createSingleEgg(Block block) {
+        this.createSingleEgg(block, "");
+        this.createSlightltyCrackedSingleEgg(block, "");
+        this.createVeryCrackedSingleEgg(block, "");
+        this.eggBlockSingleVariantY(block);
+        this.singleTex(block);
+    }
+
+    public ModelFile createSingleEgg(Block block, String modifier) {
+        String baseName = this.getName(block);
+        return this.models().singleTexture("block/eggs/" + modifier + baseName.replace(MarvelousMenagerie.MOD_ID+":", ""), new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/template_eggs/template_" + modifier + baseName), this.blockTextureEggs(block));
+    }
+
+    public ModelFile createSlightltyCrackedSingleEgg(Block block, String modifier) {
+        String baseName = this.getName(block);
+        BlockModelProvider var10000 = this.models();
+        String var10001 = "block/eggs/" + modifier + "slightly_cracked_" + baseName.replace(MarvelousMenagerie.MOD_ID+":", "");
+        ResourceLocation var10002 = new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/template_eggs/template_" + baseName);
+        String var10006 = this.getName(block);
+        return var10000.singleTexture(var10001, var10002, new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/eggs/" + var10006 + "_slightly_cracked"));
+    }
+
+    public ModelFile createVeryCrackedSingleEgg(Block block, String modifier) {
+        String baseName = this.getName(block);
+        BlockModelProvider var10000 = this.models();
+        String var10001 = "block/eggs/" + modifier + "very_cracked_" + baseName.replace(MarvelousMenagerie.MOD_ID+":", "");
+        ResourceLocation var10002 = new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/template_eggs/template_" + baseName);
+        String var10006 = this.getName(block);
+        return var10000.singleTexture(var10001, var10002, new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/eggs/" + var10006 + "_very_cracked"));
+    }
+
+    private void eggBlockSingleVariantY(Block block) {
+        this.getVariantBuilder(block).forAllStatesExcept((state) -> {
+            int eggs = (Integer)state.getValue(BlockStateProperties.EGGS);
+            int hatch = (Integer)state.getValue(BlockStateProperties.HATCH);
+            return this.createVariants(this.existingModel(this.createEggModelSingle(eggs, hatch, block)));
+        }, new Property[0]);
+    }
+
+    private ConfiguredModel[] createVariants(ModelFile model) {
+        List<ConfiguredModel> activeModels = new ArrayList();
+        Iterator var3 = Arrays.asList(model).iterator();
+
+        while(var3.hasNext()) {
+            ModelFile modelFile = (ModelFile)var3.next();
+            activeModels.add(new ConfiguredModel(modelFile, 0, 0, false));
+            activeModels.add(new ConfiguredModel(modelFile, 0, 90, false));
+            activeModels.add(new ConfiguredModel(modelFile, 0, 180, false));
+            activeModels.add(new ConfiguredModel(modelFile, 0, 270, false));
+        }
+
+        return (ConfiguredModel[])Arrays.copyOfRange((ConfiguredModel[])activeModels.toArray(new ConfiguredModel[0]), 0, 4);
+    }
+
+    private String createEggModelSingle(int pHatchAmount, String pVariantName, String baseName) {
+        String s = "eggs/" + pVariantName + baseName.replace(MarvelousMenagerie.MOD_ID+":", "");
+        String var10000;
+        switch (pHatchAmount) {
+            case 1 -> var10000 = s;
+            case 2 -> var10000 = s;
+            case 3 -> var10000 = s;
+            case 4 -> var10000 = s;
+            default -> throw new UnsupportedOperationException();
+        }
+
+        return var10000;
+    }
+
+    private String createEggModelSingle(Integer pEgg, Integer pVariantId, Block block) {
+        String var10000;
+        switch (pVariantId) {
+            case 0 -> var10000 = this.createEggModelSingle(pEgg, "", this.key(block).toString());
+            case 1 -> var10000 = this.createEggModelSingle(pEgg, "slightly_cracked_", this.key(block).toString());
+            case 2 -> var10000 = this.createEggModelSingle(pEgg, "very_cracked_", this.key(block).toString());
+            default -> throw new UnsupportedOperationException();
+        }
+
+        return var10000;
+    }
+
+    public ModelFile existingModel(String path) {
+        return new ModelFile.ExistingModelFile(this.resourceBlock(path), this.models().existingFileHelper);
+    }
+
+    public ResourceLocation resourceBlock(String path) {
+        return new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/" + path);
+    }
+    public ResourceLocation blockTextureEggs(Block block) {
+        ResourceLocation name = this.key(block);
+        return new ResourceLocation(name.getNamespace(), "block/eggs/" + name.getPath());
+    }
+
+    private BlockModelBuilder singleTex(Block block) {
+        String var10001 = this.getName(block);
+        ResourceLocation[] var10002 = new ResourceLocation[1];
+        String var10008 = this.getName(block);
+        var10002[0] = new ResourceLocation(MarvelousMenagerie.MOD_ID, "item/" + var10008.replace("eggs", "egg"));
+        return this.generated(var10001, var10002);
+    }
+
+    private BlockModelBuilder generated(String name, ResourceLocation... layers) {
+        BlockModelBuilder builder = this.models().withExistingParent("item/" + name, "item/generated");
+
+        for(int i = 0; i < layers.length; ++i) {
+            builder = builder.texture("layer" + i, layers[i]);
+        }
+
+        return builder;
+    }
+
+    public void createEggDefaultMedium(Block block) {
+        this.createEggDefaultMedium(block, "");
+        this.createEggDefaultMedium(block, "two_");
+        this.createEggDefaultMedium(block, "three_");
+        this.createEggDefaultMedium(block, "four_");
+        this.eggBlockVariantY(block);
+        this.singleTex(block);
+    }
+
+    public void createEggDefaultMedium(Block block, String modifier) {
+        this.createSingleEggDefault(block, modifier, "medium");
+        this.createSlightltyCrackedSingleEggDefault(block, modifier, "medium");
+        this.createVeryCrackedSingleEggDefault(block, modifier, "medium");
+    }
+
+
+    public ModelFile createSingleEggDefault(Block block, String modifier, String modifier2) {
+        String baseName = this.getName(block);
+        return this.models().singleTexture("block/eggs/" + modifier + baseName.replace(MarvelousMenagerie.MOD_ID+":", ""), new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/template_eggs/template_" + modifier + modifier2 + "_eggs"), this.blockTextureEggs(block));
+    }
+
+    public ModelFile createSlightltyCrackedSingleEggDefault(Block block, String modifier, String modifier2) {
+        String baseName = this.getName(block);
+        BlockModelProvider var10000 = this.models();
+        String var10001 = "block/eggs/" + modifier + "slightly_cracked_" + baseName.replace(MarvelousMenagerie.MOD_ID+":", "");
+        ResourceLocation var10002 = new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/template_eggs/template_" + modifier + modifier2 + "_eggs");
+        String var10006 = this.getName(block);
+        return var10000.singleTexture(var10001, var10002, new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/eggs/" + var10006 + "_slightly_cracked"));
+    }
+
+    public ModelFile createVeryCrackedSingleEggDefault(Block block, String modifier, String modifier2) {
+        String baseName = this.getName(block);
+        BlockModelProvider var10000 = this.models();
+        String var10001 = "block/eggs/" + modifier + "very_cracked_" + baseName.replace(MarvelousMenagerie.MOD_ID+":", "");
+        ResourceLocation var10002 = new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/template_eggs/template_" + modifier + modifier2 + "_eggs");
+        String var10006 = this.getName(block);
+        return var10000.singleTexture(var10001, var10002, new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/eggs/" + var10006 + "_very_cracked"));
+    }
+
+    private void eggBlockVariantY(Block block) {
+        this.getVariantBuilder(block).forAllStatesExcept((state) -> {
+            int eggs = (Integer)state.getValue(BlockStateProperties.EGGS);
+            int hatch = (Integer)state.getValue(BlockStateProperties.HATCH);
+            return this.createVariants(this.existingModel(this.createEggModel(eggs, hatch, block)));
+        }, new Property[0]);
+    }
+
+    private String createEggModel(Integer pEgg, Integer pVariantId, Block block) {
+        String var10000;
+        switch (pVariantId) {
+            case 0 -> var10000 = this.createEggModel(pEgg, "", this.key(block).toString());
+            case 1 -> var10000 = this.createEggModel(pEgg, "slightly_cracked_", this.key(block).toString());
+            case 2 -> var10000 = this.createEggModel(pEgg, "very_cracked_", this.key(block).toString());
+            default -> throw new UnsupportedOperationException();
+        }
+
+        return var10000;
+    }
+
+    private String createEggModel(int pHatchAmount, String pVariantName, String baseName) {
+        String var10000;
+        switch (pHatchAmount) {
+            case 1 -> var10000 = "eggs/" + pVariantName + baseName.replace(MarvelousMenagerie.MOD_ID+":", "");
+            case 2 -> var10000 = "eggs/two_" + pVariantName + baseName.replace(MarvelousMenagerie.MOD_ID+":", "");
+            case 3 -> var10000 = "eggs/three_" + pVariantName + baseName.replace(MarvelousMenagerie.MOD_ID+":", "");
+            case 4 -> var10000 = "eggs/four_" + pVariantName + baseName.replace(MarvelousMenagerie.MOD_ID+":", "");
+            default -> throw new UnsupportedOperationException();
+        }
+
+        return var10000;
+    }
 }

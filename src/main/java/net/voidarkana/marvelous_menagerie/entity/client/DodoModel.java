@@ -9,17 +9,23 @@ import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.model.data.EntityModelData;
 
+import javax.annotation.Nullable;
+
 public class DodoModel extends GeoModel<DodoEntity> {
 
     @Override
     public ResourceLocation getModelResource(DodoEntity dodoEntity) {
-        return new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/dodo.geo.json");
+        if (dodoEntity.isBaby()){
+            return new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/baby_dodo.geo.json");
+        }
+        else {
+            return new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/dodo.geo.json");
+        }
     }
 
     @Override
     public ResourceLocation getTextureResource(DodoEntity object) {
         return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo.png");
-        //return DodoRenderer.LOCATION_BY_VARIANT.get(object.getVariant());
     }
 
     @Override
@@ -28,31 +34,27 @@ public class DodoModel extends GeoModel<DodoEntity> {
     }
 
     @Override
-    public void setCustomAnimations(DodoEntity entity, long instanceId, AnimationState<DodoEntity> animationEvent) {
-        super.setCustomAnimations(entity, instanceId, animationEvent);
+    public void setCustomAnimations(DodoEntity dodo, long instanceId, @Nullable AnimationState<DodoEntity> animationEvent) {
+        super.setCustomAnimations(dodo, instanceId, animationEvent);
 
-        CoreGeoBone head = this.getAnimationProcessor().getBone("head_rotation");
+        if (animationEvent == null) return;
+
+        /*CoreGeoBone headForBaby = this.getAnimationProcessor().getBone("head");
         CoreGeoBone neck_bone = this.getAnimationProcessor().getBone("neck");
-
         //changes the proportions of babies
-        if(entity.isBaby()) {
-            head.setScaleX(1.3F);
-            head.setScaleY(1.3F);
-            head.setScaleZ(1.3F);
+        if(dodo.isBaby()) {
+            headForBaby.setScaleX(1.3F);
+            headForBaby.setScaleY(1.3F);
+            headForBaby.setScaleZ(1.3F);
             neck_bone.setPosY(1);
-        }
-        else {
-            head.setScaleX(1F);
-            head.setScaleY(1F);
-            head.setScaleZ(1F);
-        }
+        }*/
 
         //makes the head turn around dynamically
+        CoreGeoBone head = this.getAnimationProcessor().getBone("head_rotation");
         EntityModelData entityData = animationEvent.getData(DataTickets.ENTITY_MODEL_DATA);
-
         head.setRotX(-(entityData.headPitch() * ((float) Math.PI / 180F)));
         head.setRotY(entityData.netHeadYaw() * ((float) Math.PI / 180F));
 
-
     }
+
 }

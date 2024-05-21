@@ -1,5 +1,6 @@
 package net.voidarkana.marvelous_menagerie.datagen;
 
+import com.peeko32213.unusualprehistory.core.registry.UPTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;

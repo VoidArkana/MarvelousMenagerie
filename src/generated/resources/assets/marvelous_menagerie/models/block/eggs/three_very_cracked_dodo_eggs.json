@@ -1,0 +1,6 @@
+{
+  "parent": "marvelous_menagerie:block/template_eggs/template_three_medium_eggs",
+  "textures": {
+    "texture": "marvelous_menagerie:block/eggs/dodo_eggs_very_cracked"
+  }
+}

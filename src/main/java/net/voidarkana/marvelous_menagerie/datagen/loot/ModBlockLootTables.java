@@ -55,6 +55,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.add(ModBlocks.SIGILLARIA_LEAVES.get(),
                 block -> createLeavesDrops(ModBlocks.SIGILLARIA_LEAVES.get(), ModBlocks.SIGILLARIA_SAPLING.get(),0.15f));
+
+        this.add(ModBlocks.DODO_EGGS.get(),
+                createSilkTouchOnlyTable(ModBlocks.DODO_EGGS.get()));
     }
 
     @Override

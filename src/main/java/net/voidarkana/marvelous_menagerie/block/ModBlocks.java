@@ -1,5 +1,6 @@
 package net.voidarkana.marvelous_menagerie.block;
 
+import com.peeko32213.unusualprehistory.common.block.BlockDinosaurLandEggs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -18,6 +19,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.block.custom.*;
+import net.voidarkana.marvelous_menagerie.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.item.ModItems;
 import net.voidarkana.marvelous_menagerie.util.ModWoodTypes;
 import net.voidarkana.marvelous_menagerie.worldgen.tree.SigillariaTreeGrower;
@@ -27,6 +29,11 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, MarvelousMenagerie.MOD_ID);
+
+    //eggs
+    public static final RegistryObject<Block> DODO_EGGS = registerBlock("dodo_eggs",
+            ()-> new BlockDinosaurLandEggs(BlockBehaviour.Properties.copy(Blocks.TURTLE_EGG).strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion(),
+                    ModEntities.DODO, 2, Block.box(4.0, 0.0, 8.0, 11.0, 9.0, 15.0), Block.box(2.0, 0.0, 1.0, 14.0, 10.0, 15.0)));
 
     //if adding another tree, make custom block classes for each thing to make flammable
     //Sigillaria plank blocks

@@ -24,6 +24,8 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.THYLACINE_DNA.get());
                         output.accept(ModItems.SIGILLARIA_DNA.get());
 
+
+                        output.accept(ModBlocks.DODO_EGGS.get());
                         output.accept(ModItems.EGG_SHELL_FRAGMENT.get());
 
                         output.accept(ModBlocks.SIGILLARIA_PLANKS.get());
