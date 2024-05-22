@@ -26,6 +26,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.THYLACINE_DNA);
         simpleItem(ModItems.SIGILLARIA_DNA);
         simpleItem(ModItems.EGG_SHELL_FRAGMENT);
+        simpleItem(ModItems.THYLA_EMBRYO);
 
         simpleBlockItem(ModBlocks.SIGILLARIA_DOOR);
         trapdoorItem(ModBlocks.SIGILLARIA_TRAPDOOR);
@@ -46,6 +47,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         saplingItem(ModBlocks.SIGILLARIA_SAPLING);
 
         withExistingParent(ModItems.DODO_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.THYLA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
 

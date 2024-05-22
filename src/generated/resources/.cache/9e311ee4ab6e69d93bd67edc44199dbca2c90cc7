@@ -1,4 +1,4 @@
-// 1.20.1	2024-05-19T19:52:38.0635746	Item Models: marvelous_menagerie
+// 1.20.1	2024-05-21T21:18:21.1586834	Item Models: marvelous_menagerie
 0249e2252eb6fbb07879b887160235ca8f1d1988 assets/marvelous_menagerie/models/item/dodo_dna.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/marvelous_menagerie/models/item/dodo_spawn_egg.json
 28e5a7ff6bca4feaa98eede8aed07855b3d84a12 assets/marvelous_menagerie/models/item/egg_shell_fragment.json
@@ -19,3 +19,5 @@ fdafb3b2effb1413c25a3764c063c0ac35b682a7 assets/marvelous_menagerie/models/item/
 40b427e63f8a66d09391a124879eaa56d0a7068d assets/marvelous_menagerie/models/item/sigillaria_trapdoor.json
 5ae87ea6b023d8e753ce0085b151bd5f3c69c793 assets/marvelous_menagerie/models/item/steller_sea_cow_dna.json
 b836692be16f5d217ffe65363fbefd0651f5b378 assets/marvelous_menagerie/models/item/thylacine_dna.json
+e67a0127c692cc95a516b3828339138d89ad84d6 assets/marvelous_menagerie/models/item/thylacine_embryo.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/marvelous_menagerie/models/item/thylacine_spawn_egg.json

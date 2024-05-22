@@ -1,7 +1,9 @@
 package net.voidarkana.marvelous_menagerie.item;
 
+import com.peeko32213.unusualprehistory.common.item.AnimalAttacherItem;
 import net.minecraft.world.item.HangingSignItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SignItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -11,6 +13,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.block.ModBlocks;
 import net.voidarkana.marvelous_menagerie.entity.ModEntities;
+import net.voidarkana.marvelous_menagerie.util.ModTags;
 
 public class ModItems {
 
@@ -30,6 +33,11 @@ public class ModItems {
 
     public static final RegistryObject<Item> THYLACINE_DNA = ITEMS.register("thylacine_dna",
             ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> THYLA_EMBRYO = ITEMS.register("thylacine_embryo",
+            ()-> new AnimalAttacherItem(new Item.Properties().stacksTo(16), ModTags.EntityTypes.THYLA_EMBRYO_ATTACH_TO,
+                    ModEntities.THYLACINE, 1000));
+    public static final RegistryObject<Item> THYLA_SPAWN_EGG = ITEMS.register("thylacine_spawn_egg",
+            ()-> new ForgeSpawnEggItem(ModEntities.THYLACINE, 0xe6a25f, 0x443429, new Item.Properties()));
 
     public static final RegistryObject<Item> EGG_SHELL_FRAGMENT = ITEMS.register("egg_shell_fragment",
             ()-> new Item(new Item.Properties()));

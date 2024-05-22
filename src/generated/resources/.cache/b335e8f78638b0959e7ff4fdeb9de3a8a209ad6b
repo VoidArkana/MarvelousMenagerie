@@ -1,4 +1,5 @@
-// 1.20.1	2024-05-18T21:48:43.9295978	Tags for minecraft:item mod id marvelous_menagerie
+// 1.20.1	2024-05-21T14:17:35.8638909	Tags for minecraft:item mod id marvelous_menagerie
+2def8137a4425bf54c59fd06277f3f3c5628bb05 data/forge/tags/items/eggs.json
 1105b8780627abc34c43d2c973d7dda863e1b646 data/marvelous_menagerie/tags/items/sigillaria_log_item.json
 036244934576d11ecab196bf5b16fadf12702a9c data/minecraft/tags/items/fence_gates.json
 e301f53dad377ee6a6a77499ab6f8a57d0a1ab66 data/minecraft/tags/items/hanging_signs.json

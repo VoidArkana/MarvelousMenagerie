@@ -26,6 +26,7 @@ public class ModCreativeModTabs {
 
 
                         output.accept(ModBlocks.DODO_EGGS.get());
+                        output.accept(ModItems.THYLA_EMBRYO.get());
                         output.accept(ModItems.EGG_SHELL_FRAGMENT.get());
 
                         output.accept(ModBlocks.SIGILLARIA_PLANKS.get());
@@ -56,6 +57,7 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.SIGILLARIA_SAPLING.get());
 
                         output.accept(ModItems.DODO_SPAWN_EGG.get());
+                        output.accept(ModItems.THYLA_SPAWN_EGG.get());
                     })
                     .build());
 

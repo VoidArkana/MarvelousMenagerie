@@ -21,6 +21,7 @@ import net.voidarkana.marvelous_menagerie.block.ModBlocks;
 import net.voidarkana.marvelous_menagerie.block.entity.ModBlockEntities;
 import net.voidarkana.marvelous_menagerie.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.entity.client.DodoRenderer;
+import net.voidarkana.marvelous_menagerie.entity.client.ThylacineRenderer;
 import net.voidarkana.marvelous_menagerie.entity.client.plant.PlantRenderer;
 import net.voidarkana.marvelous_menagerie.item.ModCreativeModTabs;
 import net.voidarkana.marvelous_menagerie.item.ModItems;
@@ -83,6 +84,7 @@ public class MarvelousMenagerie {
         public static void onClientSetup(FMLClientSetupEvent event) {
             Sheets.addWoodType(ModWoodTypes.SIGILLARIA);
             EntityRenderers.register(ModEntities.DODO.get(), DodoRenderer::new);
+            EntityRenderers.register(ModEntities.THYLACINE.get(), ThylacineRenderer::new);
             EntityRenderers.register(ModEntities.SIGILLARIA_SAPLING_ENTITY.get(), PlantRenderer::new);
         }
     }

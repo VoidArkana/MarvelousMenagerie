@@ -1,0 +1,9 @@
+{
+  "type": "unusualprehistory:incubating",
+  "ingredients": [
+    {
+      "item": "marvelous_menagerie:thylacine_embryo"
+    }
+  ],
+  "output": "marvelous_menagerie:thylacine"
+}

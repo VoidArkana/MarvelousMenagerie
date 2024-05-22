@@ -16,6 +16,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
@@ -40,7 +41,8 @@ import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 
-import java.util.Iterator;
+import java.util.EnumSet;
+
 
 public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
 
@@ -53,11 +55,17 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
 
     private static final int PECK_ANIMATION_TICKS = 36;
     public boolean IsFalling;
-    private boolean isPecking;
     protected static final RawAnimation DODO_WALK;
     protected static final RawAnimation DODO_FLAP;
     protected static final RawAnimation DODO_IDLE;
     protected static final RawAnimation DODO_PECK;
+
+    //attributes
+    public static AttributeSupplier.Builder createAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 10.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.25);
+    }
 
     @Override
     protected void registerGoals() {
@@ -67,8 +75,8 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         this.goalSelector.addGoal(3, new FollowParentGoal(this, 1.1D));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(4, new DodoEntity.DestroyMelonAndPumpkinGoal(this));
-        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new DodoLookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(6, new DodoEntity.DodoRandomLookAroundGoal(this));
         super.registerGoals();
     }
 
@@ -140,22 +148,10 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
     }
 
 
-    public void setPeckingTime(int shaking) {
-        this.entityData.set(PECKING_TIME, shaking);
-    }
-
     //eye height
     @Override
     protected float getStandingEyeHeight(Pose pPose, EntityDimensions pSize) {
         return this.isBaby() ? pSize.height * 0.85F : pSize.height * 0.92F;
-    }
-
-    //attributes
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 10.0)
-                .add(Attributes.MOVEMENT_SPEED, 0.25);
     }
 
     public void aiStep() {
@@ -174,12 +170,6 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
     protected void playStepSound(BlockPos p_28301_, BlockState p_28302_) {
         this.playSound(SoundEvents.CHICKEN_STEP, 0.15F, 1.0F);
     }
-
-    /*
-    public boolean isInvulnerableTo(DamageSource source) {
-        return source.is(DamageTypes.FALL);
-    }
-    */
 
     @Override
     public boolean causeFallDamage(float pFallDistance, float pMultiplier, DamageSource pSource) {
@@ -259,7 +249,7 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
                 if (this.isBaby()){
                     event.getController().setAnimationSpeed(1.5);
                 }
-            } else if (this.onGround() && !isPecking){
+            } else if (this.onGround() && !this.getIsPecking()){
                 event.setAndContinue(DODO_IDLE);
             }
                 return PlayState.CONTINUE;
@@ -276,6 +266,13 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
+    }
+
+    static {
+        DODO_WALK = RawAnimation.begin().thenLoop("animation.dodo.walk");
+        DODO_IDLE = RawAnimation.begin().thenLoop("animation.dodo.idle");
+        DODO_FLAP = RawAnimation.begin().thenLoop("animation.dodo.flap");
+        DODO_PECK = RawAnimation.begin().thenPlay("animation.dodo.peck");
     }
 
     static class DestroyMelonAndPumpkinGoal extends MoveToBlockGoal {
@@ -346,10 +343,131 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
 
     }
 
-    static {
-        DODO_WALK = RawAnimation.begin().thenLoop("animation.dodo.walk");
-        DODO_IDLE = RawAnimation.begin().thenLoop("animation.dodo.idle");
-        DODO_FLAP = RawAnimation.begin().thenLoop("animation.dodo.flap");
-        DODO_PECK = RawAnimation.begin().thenPlay("animation.dodo.peck");
+    public class DodoRandomLookAroundGoal extends Goal {
+        private final Mob mob;
+        private double relX;
+        private double relZ;
+        private int lookTime;
+
+        public DodoRandomLookAroundGoal(Mob mob) {
+            this.mob = mob;
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
+        }
+
+        public boolean canUse() {
+            return !DodoEntity.this.getIsPecking() && this.mob.getRandom().nextFloat() < 0.02F;
+        }
+
+        public boolean canContinueToUse() {
+            return !DodoEntity.this.getIsPecking() && this.lookTime >= 0;
+        }
+
+        public void start() {
+            double d0 = (Math.PI * 2D) * this.mob.getRandom().nextDouble();
+            this.relX = Math.cos(d0);
+            this.relZ = Math.sin(d0);
+            this.lookTime = 20 + this.mob.getRandom().nextInt(20);
+        }
+
+        public boolean requiresUpdateEveryTick() {
+            return true;
+        }
+
+        public void tick() {
+            --this.lookTime;
+            this.mob.getLookControl().setLookAt(this.mob.getX() + this.relX, this.mob.getEyeY(), this.mob.getZ() + this.relZ);
+        }
+    }
+
+
+    public class DodoLookAtPlayerGoal extends Goal {
+        public static final float DEFAULT_PROBABILITY = 0.02F;
+        protected final Mob mob;
+        @javax.annotation.Nullable
+        protected Entity lookAt;
+        protected final float lookDistance;
+        private int lookTime;
+        protected final float probability;
+        private final boolean onlyHorizontal;
+        protected final Class<? extends LivingEntity> lookAtType;
+        protected final TargetingConditions lookAtContext;
+
+        public DodoLookAtPlayerGoal(Mob pMob, Class<? extends LivingEntity> pLookAtType, float pLookDistance) {
+            this(pMob, pLookAtType, pLookDistance, 0.02F);
+        }
+
+        public DodoLookAtPlayerGoal(Mob pMob, Class<? extends LivingEntity> pLookAtType, float pLookDistance, float pProbability) {
+            this(pMob, pLookAtType, pLookDistance, pProbability, false);
+        }
+
+        public DodoLookAtPlayerGoal(Mob pMob, Class<? extends LivingEntity> pLookAtType, float pLookDistance, float pProbability, boolean pOnlyHorizontal) {
+            this.mob = pMob;
+            this.lookAtType = pLookAtType;
+            this.lookDistance = pLookDistance;
+            this.probability = pProbability;
+            this.onlyHorizontal = pOnlyHorizontal;
+            this.setFlags(EnumSet.of(Goal.Flag.LOOK));
+            if (pLookAtType == Player.class) {
+                this.lookAtContext = TargetingConditions.forNonCombat().range((double)pLookDistance).selector((p_25531_) -> {
+                    return EntitySelector.notRiding(pMob).test(p_25531_);
+                });
+            } else {
+                this.lookAtContext = TargetingConditions.forNonCombat().range((double)pLookDistance);
+            }
+
+        }
+
+        public boolean canUse() {
+
+            if (DodoEntity.this.getIsPecking()){
+                return false;
+            }
+            if (this.mob.getRandom().nextFloat() >= this.probability) {
+                return false;
+            } else {
+                if (this.mob.getTarget() != null) {
+                    this.lookAt = this.mob.getTarget();
+                }
+
+                if (this.lookAtType == Player.class) {
+                    this.lookAt = this.mob.level().getNearestPlayer(this.lookAtContext, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
+                } else {
+                    this.lookAt = this.mob.level().getNearestEntity(this.mob.level().getEntitiesOfClass(this.lookAtType, this.mob.getBoundingBox().inflate((double)this.lookDistance, 3.0D, (double)this.lookDistance), (p_148124_) -> {
+                        return true;
+                    }), this.lookAtContext, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
+                }
+
+                return this.lookAt != null;
+            }
+        }
+
+        public boolean canContinueToUse() {
+            if (DodoEntity.this.getIsPecking()){
+                return false;
+            }
+            if (!this.lookAt.isAlive()) {
+                return false;
+            } else if (this.mob.distanceToSqr(this.lookAt) > (double)(this.lookDistance * this.lookDistance)) {
+                return false;
+            } else {
+                return this.lookTime > 0;
+            }
+        }
+
+        public void start() {
+            this.lookTime = this.adjustedTickDelay(40 + this.mob.getRandom().nextInt(40));
+        }
+
+        public void stop() {
+            this.lookAt = null;
+        }
+
+        public void tick() {
+            if (this.lookAt.isAlive()) {
+                double d0 = this.onlyHorizontal ? this.mob.getEyeY() : this.lookAt.getEyeY();
+                this.mob.getLookControl().setLookAt(this.lookAt.getX(), d0, this.lookAt.getZ());
+                --this.lookTime;
+            }
+        }
     }
 }

@@ -4,9 +4,15 @@
   "item.marvelous_menagerie.steller_sea_cow_dna": "Steller's Sea Cow DNA Flask",
   "item.marvelous_menagerie.thylacine_dna": "Thylacine DNA Flask",
 
+  "entity.marvelous_menagerie.dodo": "Dodo",
+  "entity.marvelous_menagerie.thylacine": "Thylacine",
 
   "block.marvelous_menagerie.dodo_eggs": "Dodo Egg",
+  "item.marvelous_menagerie.thylacine_embryo": "Thylacine Embryo",
   "item.marvelous_menagerie.egg_shell_fragment": "Elephant Bird Eggshell Fragment",
+
+  "item.marvelous_menagerie.dodo_spawn_egg": "Dodo Spawn Egg",
+  "item.marvelous_menagerie.thylacine_spawn_egg": "Thylacine Spawn Egg",
 
   "item.marvelous_menagerie.sigillaria_dna": "Sigillaria DNA Flask",
   "block.marvelous_menagerie.sigillaria_planks": "Sigillaria Planks",
@@ -39,8 +45,6 @@
 
   "block.marvelous_menagerie.sigillaria_sapling": "Sigillaria Sapling",
   "block.marvelous_menagerie.potted_sigillaria_sapling": "Potted Sigillaria Sapling",
-
-  "item.marvelous_menagerie.dodo_spawn_egg": "Dodo Spawn Egg",
 
   "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
 }
