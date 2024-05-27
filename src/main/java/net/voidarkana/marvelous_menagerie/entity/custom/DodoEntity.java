@@ -46,11 +46,12 @@ import java.util.EnumSet;
 
 public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
 
-
-    private static final Ingredient FOOD_ITEMS = Ingredient.of(Items.MELON_SLICE, Items.GLISTERING_MELON_SLICE, Items.MELON, Items.PUMPKIN);
+    private int eggLayTime;
+    //private static final Ingredient FOOD_ITEMS = Ingredient.of(Items.MELON_SLICE, Items.GLISTERING_MELON_SLICE, Items.MELON, Items.PUMPKIN);
 
     public DodoEntity(EntityType<? extends Animal> entityType, Level level) {
         super(entityType, level);
+        eggLayTime = random.nextInt(6000) + (6000);
     }
 
     private static final int PECK_ANIMATION_TICKS = 36;
@@ -71,7 +72,7 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.4D));
-        this.goalSelector.addGoal(2, new TemptGoal(this, 1.0D, FOOD_ITEMS, false));
+        //this.goalSelector.addGoal(2, new TemptGoal(this, 1.0D, FOOD_ITEMS, false));
         this.goalSelector.addGoal(3, new FollowParentGoal(this, 1.1D));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(4, new DodoEntity.DestroyMelonAndPumpkinGoal(this));
@@ -165,6 +166,13 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         else {
             IsFalling = false;
         }
+
+        if (isAlive() && !isBaby() && --eggLayTime <= 0) {
+            this.playSound(SoundEvents.CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+            this.spawnAtLocation(Items.FEATHER);
+            this.eggLayTime = random.nextInt(6000) + (6000);
+        }
+
     }
 
     protected void playStepSound(BlockPos p_28301_, BlockState p_28302_) {
@@ -242,7 +250,7 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         else {
             if(this.getIsPecking()) {
                 event.setAndContinue(DODO_PECK);
-            } else if(IsFalling && !this.getIsPecking()) {
+            } else if(IsFalling && !this.getIsPecking() && !this.isInWater()) {
                 event.setAndContinue(DODO_FLAP);
             } else if(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && this.onGround()) {
                 event.setAndContinue(DODO_WALK);

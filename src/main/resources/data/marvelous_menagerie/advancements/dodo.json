@@ -1,0 +1,69 @@
+{
+  "parent": "minecraft:main/egg",
+  "criteria": {
+    "damage_dodo": {
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "marvelous_menagerie:dodo"
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    },
+    "interact_dodo": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:dodo"
+            }
+          }
+        ],
+        "item": {}
+      },
+      "trigger": "minecraft:player_interacted_with_entity"
+    },
+    "killed_dodo": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:dodo"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.interact_dodo.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:dodo_dna"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.interact_dodo"
+    }
+  },
+  "requirements": [
+    [
+      "damage_dodo",
+      "interact_dodo",
+      "killed_dodo"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

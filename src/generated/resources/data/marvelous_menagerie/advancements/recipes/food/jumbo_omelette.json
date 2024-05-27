@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cracked_elephant_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:cracked_elephant_egg"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "marvelous_menagerie:jumbo_omelette"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_cracked_elephant_egg",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "marvelous_menagerie:jumbo_omelette"
+    ]
+  },
+  "sends_telemetry_event": false
+}

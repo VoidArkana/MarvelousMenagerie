@@ -6,13 +6,29 @@
 
   "entity.marvelous_menagerie.dodo": "Dodo",
   "entity.marvelous_menagerie.thylacine": "Thylacine",
+  "entity.marvelous_menagerie.elephant_bird": "Elephant Bird",
+  "entity.marvelous_menagerie.steller_sea_cow": "Steller's Sea Cow",
+  "entity.marvelous_menagerie.baby_steller_sea_cow": "Steller's Sea Cow",
 
   "block.marvelous_menagerie.dodo_eggs": "Dodo Egg",
+  "block.marvelous_menagerie.elephant_bird_egg": "Elephant Bird Egg",
   "item.marvelous_menagerie.thylacine_embryo": "Thylacine Embryo",
+  "item.marvelous_menagerie.steller_sea_cow_embryo": "Steller's Sea Cow Embryo",
+
+  "item.marvelous_menagerie.cracked_elephant_egg": "Cracked Elephant Bird Egg",
+  "item.marvelous_menagerie.boiled_elephant_egg": "Hard Boiled Elephant Bird Egg",
+  "item.marvelous_menagerie.jumbo_omelette": "Jumbo Omelette",
+  "item.marvelous_menagerie.egg_shellmet": "Egg Shellmet",
   "item.marvelous_menagerie.egg_shell_fragment": "Elephant Bird Eggshell Fragment",
+
+  "item.marvelous_menagerie.steller_sea_cow_milk_bucket": "Steller's Sea Cow Milk Bucket",
+  "item.marvelous_menagerie.steller_ice_cream": "Steller Ice Cream",
+  "item.marvelous_menagerie.steller_bucket": "Bucket of Baby Steller's Sea Cow",
 
   "item.marvelous_menagerie.dodo_spawn_egg": "Dodo Spawn Egg",
   "item.marvelous_menagerie.thylacine_spawn_egg": "Thylacine Spawn Egg",
+  "item.marvelous_menagerie.elephant_bird_spawn_egg": "Elephant Bird Spawn Egg",
+  "item.marvelous_menagerie.steller_sea_cow_spawn_egg": "Steller's Sea Cow Spawn Egg",
 
   "item.marvelous_menagerie.sigillaria_dna": "Sigillaria DNA Flask",
   "block.marvelous_menagerie.sigillaria_planks": "Sigillaria Planks",
@@ -45,6 +61,9 @@
 
   "block.marvelous_menagerie.sigillaria_sapling": "Sigillaria Sapling",
   "block.marvelous_menagerie.potted_sigillaria_sapling": "Potted Sigillaria Sapling",
+
+
+  "effect.marvelous_menagerie.sea_cow_serenity": "Sea Cow's Serenity",
 
   "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
 }

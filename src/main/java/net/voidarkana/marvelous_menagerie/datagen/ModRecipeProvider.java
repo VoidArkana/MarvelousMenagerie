@@ -6,6 +6,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MinecartItem;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.voidarkana.marvelous_menagerie.block.ModBlocks;
@@ -64,6 +65,33 @@ public class ModRecipeProvider extends UPRecipeProvider implements IConditionBui
                 .define('#', Items.CHAIN)
                 .define('S', ModTags.Items.SIGILLARIA_LOG_ITEM)
                 .unlockedBy(getHasName(ModBlocks.SIGILLARIA_STEM.get()), has(ModBlocks.SIGILLARIA_STEM.get()))
+                .save(consumer);
+
+        //Egg Shellmet
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.EGG_SHELLMET.get(), 1)
+                .pattern("SSS")
+                .pattern("S S")
+                .define('S', ModItems.EGG_SHELL_FRAGMENT.get())
+                .unlockedBy(getHasName(ModItems.EGG_SHELL_FRAGMENT.get()), has(ModItems.EGG_SHELL_FRAGMENT.get()))
+                .save(consumer);
+
+        //Jumbo Omelette
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.JUMBO_OMELETTE.get(), 1)
+                .requires(ModItems.BOILED_ELEPHANT_EGG.get())
+                .requires(Items.CARROT)
+                .requires(Ingredient.of(Items.POTATO, Items.BAKED_POTATO))
+                .unlockedBy(getHasName(ModItems.CRACKED_ELEPHANT_EGG.get()), has(ModItems.CRACKED_ELEPHANT_EGG.get()))
+                .save(consumer);
+
+        //Steller Ice Cream
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.STELLER_ICE_CREAM.get(), 3)
+                .pattern(" S ")
+                .pattern("SMS")
+                .pattern("BBB")
+                .define('S', Items.SNOWBALL)
+                .define('M', ModItems.STELLER_MILK.get())
+                .define('B', Items.BOWL)
+                .unlockedBy(getHasName(ModItems.STELLER_MILK.get()), has(ModItems.STELLER_MILK.get()))
                 .save(consumer);
     }
 }

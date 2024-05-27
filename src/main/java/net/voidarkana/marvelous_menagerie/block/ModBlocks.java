@@ -34,6 +34,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> DODO_EGGS = registerBlock("dodo_eggs",
             ()-> new BlockDinosaurLandEggs(BlockBehaviour.Properties.copy(Blocks.TURTLE_EGG).strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion(),
                     ModEntities.DODO, 2, Block.box(4.0, 0.0, 8.0, 11.0, 9.0, 15.0), Block.box(2.0, 0.0, 1.0, 14.0, 10.0, 15.0)));
+    public static final RegistryObject<Block> ELE_EGG = registerBlock("elephant_bird_egg",
+            ()-> new BlockDinosaurLandEggs(BlockBehaviour.Properties.copy(Blocks.TURTLE_EGG).strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion(),
+                    ModEntities.ELEPHANT_BIRD, 1, Block.box(3.0, 0.0, 3.0, 13.0, 12.0, 13.0)));
 
     //if adding another tree, make custom block classes for each thing to make flammable
     //Sigillaria plank blocks

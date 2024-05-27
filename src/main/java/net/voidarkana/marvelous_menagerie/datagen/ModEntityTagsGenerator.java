@@ -35,17 +35,22 @@ public class ModEntityTagsGenerator extends EntityTypeTagsProvider {
                 .add(UPEntities.MEGALANIA.get()).add(UPEntities.SLUDGE.get()).add(UPEntities.BARINASUCHUS.get());
 
         this.tag(ModTags.EntityTypes.THYLA_EMBRYO_ATTACH_TO).add(ModEntities.THYLACINE.get());
+        this.tag(ModTags.EntityTypes.STELLER_EMBRYO_ATTACH_TO).add(ModEntities.STELLER_SEA_COW.get());
 
-        this.tag(UPTags.LAND_MOBS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get());
+        this.tag(UPTags.LAND_MOBS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.ELEPHANT_BIRD.get());
         this.tag(UPTags.BEELZE_TARGETS).add(ModEntities.DODO.get());
-        this.tag(UPTags.DUNK_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get());
-        this.tag(UPTags.ENCRUSTED_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get());
-        this.tag(UPTags.SMILODON_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get());
-        this.tag(UPTags.MAJUNGA_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get());
-        this.tag(UPTags.RAPTOR_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get());
-        this.tag(UPTags.REX_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get());
-        this.tag(UPTags.MEGALANIA_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get());
-        this.tag(UPTags.HERBIVORES).add(ModEntities.DODO.get());
+        this.tag(UPTags.DUNK_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.BABY_STELLER_SEA_COW.get()).add(ModEntities.STELLER_SEA_COW.get()).add(ModEntities.ELEPHANT_BIRD.get());
+        this.tag(UPTags.ENCRUSTED_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.BABY_STELLER_SEA_COW.get()).add(ModEntities.STELLER_SEA_COW.get()).add(ModEntities.ELEPHANT_BIRD.get());
+        this.tag(UPTags.SMILODON_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.BABY_STELLER_SEA_COW.get()).add(ModEntities.STELLER_SEA_COW.get()).add(ModEntities.ELEPHANT_BIRD.get());
+        this.tag(UPTags.MAJUNGA_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.BABY_STELLER_SEA_COW.get()).add(ModEntities.STELLER_SEA_COW.get()).add(ModEntities.ELEPHANT_BIRD.get());
+        this.tag(UPTags.RAPTOR_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.BABY_STELLER_SEA_COW.get()).add(ModEntities.STELLER_SEA_COW.get()).add(ModEntities.ELEPHANT_BIRD.get());
+        this.tag(UPTags.REX_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.BABY_STELLER_SEA_COW.get()).add(ModEntities.STELLER_SEA_COW.get()).add(ModEntities.ELEPHANT_BIRD.get());
+        this.tag(UPTags.MEGALANIA_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.BABY_STELLER_SEA_COW.get()).add(ModEntities.STELLER_SEA_COW.get()).add(ModEntities.ELEPHANT_BIRD.get());
+        this.tag(UPTags.HERBIVORES)
+                .add(ModEntities.DODO.get())
+                .add(ModEntities.BABY_STELLER_SEA_COW.get())
+                .add(ModEntities.STELLER_SEA_COW.get())
+                .add(ModEntities.ELEPHANT_BIRD.get());
         this.tag(UPTags.CARNIVORES).add(ModEntities.THYLACINE.get());
     }
 }

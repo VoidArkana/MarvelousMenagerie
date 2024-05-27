@@ -6,9 +6,9 @@
     {
       "entity": "marvelous_menagerie:dodo",
       "x": 105,
-      "y": 90,
+      "y": 95,
       "page" : 0,
-      "scale": 0.7,
+      "scale": 1.5,
       "rot_x": 30,
       "rot_y": 225,
       "rot_z": 0,
@@ -23,8 +23,8 @@
       "page" : 0,
       "scale": 1.2,
       "entity_scale": 1,
-      "offset_x": 3,
-      "offset_y": -6,
+      "offset_x": 1,
+      "offset_y": -3,
       "hover_text": "Dodo"
     }
   ]

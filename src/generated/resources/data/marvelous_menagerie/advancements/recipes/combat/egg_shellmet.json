@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_egg_shell_fragment": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:egg_shell_fragment"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "marvelous_menagerie:egg_shellmet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_egg_shell_fragment",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "marvelous_menagerie:egg_shellmet"
+    ]
+  },
+  "sends_telemetry_event": false
+}

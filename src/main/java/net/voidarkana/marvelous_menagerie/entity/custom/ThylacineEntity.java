@@ -21,6 +21,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -50,12 +51,16 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> HOWLING_TIME = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> HOWLING = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> YAWNING_TIME = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> YAWNING = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.BOOLEAN);
     public int prevHowlTime;
+    public int prevYawnTime;
     public int howlTickDuration = 120;
 
     protected static final RawAnimation THYLA_WALK = RawAnimation.begin().thenLoop("animation.thylacine.walk");
     protected static final RawAnimation THYLA_IDLE = RawAnimation.begin().thenLoop("animation.thylacine.idle");
     protected static final RawAnimation THYLA_HOWL = RawAnimation.begin().thenPlay("animation.thylacine.howl");
+    protected static final RawAnimation THYLA_YAWN = RawAnimation.begin().thenPlay("animation.thylacine.yawn");
 
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
@@ -80,55 +85,88 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
         this.entityData.define(HOWLING_TIME, 0);
         this.entityData.define(HOWLING, false);
         this.entityData.define(VARIANT, 0);
+        this.entityData.define(YAWNING_TIME, 0);
+        this.entityData.define(YAWNING, false);
     }
 
-    @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putInt("howlingTime", this.getHowlingTime());
         compound.putBoolean("isHowling", this.getIsHowling());
         compound.putInt("variant", this.getVariant());
+        compound.putInt("yawningTime", this.getYawningTime());
+        compound.putBoolean("isYawning", this.getIsYawning());
     }
 
-    @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         this.setHowlingTime(compound.getInt("howlingTime"));
         this.setIsHowling(compound.getBoolean("isHowling"));
         this.setVariant(compound.getInt("variant"));
-
+        this.setYawningTime(compound.getInt("yawningTime"));
+        this.setIsYawning(compound.getBoolean("isYawning"));
     }
 
-    public int getVariant() {
-        return this.entityData.get(VARIANT);
-    }
-
-    public void setVariant(int variant) {
-        this.entityData.set(VARIANT, variant);
-    }
-
+    //howling
     public int getHowlingTime(){
-        return this.entityData.get(HOWLING_TIME);
-    }
+        return this.entityData.get(HOWLING_TIME);}
 
     public void setHowlingTime(int howlingTicksTime){
-        this.entityData.set(HOWLING_TIME, howlingTicksTime);
-    }
+        this.entityData.set(HOWLING_TIME, howlingTicksTime);}
 
     public boolean getIsHowling() {
-        return this.entityData.get(HOWLING);
-    }
+        return this.entityData.get(HOWLING);}
 
     public void setIsHowling(boolean howling) {
-        this.entityData.set(HOWLING, howling);
-    }
+        this.entityData.set(HOWLING, howling);}
 
+    //variant stuff
     public void determineVariant(int variantChange){
-        this.setVariant(0);
+        this.setVariant(0);}
+
+    public int getVariant() {
+        return this.entityData.get(VARIANT);}
+
+    public void setVariant(int variant) {
+        this.entityData.set(VARIANT, variant);}
+
+    //yawning
+    public int getYawningTime(){
+        return this.entityData.get(YAWNING_TIME);}
+
+    public void setYawningTime(int yawningTicksTime){
+        this.entityData.set(YAWNING_TIME, yawningTicksTime);}
+
+    public boolean getIsYawning() {
+        return this.entityData.get(YAWNING);}
+
+    public void setIsYawning(boolean yawning) {
+        this.entityData.set(YAWNING, yawning);}
+
+    public Item getWoolType(int variantColor){
+        return switch(variantColor){
+            case 1 ->  Items.RED_WOOL;
+            case 2 ->  Items.ORANGE_WOOL;
+            case 3 ->  Items.YELLOW_WOOL;
+            case 4 ->  Items.LIME_WOOL;
+            case 5 ->  Items.GREEN_WOOL;
+            case 6 ->  Items.CYAN_WOOL;
+            case 7 ->  Items.LIGHT_BLUE_WOOL;
+            case 8 ->  Items.BLUE_WOOL;
+            case 9 ->  Items.PURPLE_WOOL;
+            case 10 ->  Items.MAGENTA_WOOL;
+            case 11 ->  Items.PINK_WOOL;
+            case 12 ->  Items.BROWN_WOOL;
+            case 13 ->  Items.BLACK_WOOL;
+            case 14 ->  Items.GRAY_WOOL;
+            case 15 ->  Items.LIGHT_GRAY_WOOL;
+            case 16 ->  Items.WHITE_WOOL;
+            default -> Items.AIR;
+        };
     }
 
     public void travel(Vec3 pTravelVector) {
-        if (this.getIsHowling()) {
+        if (this.getIsHowling() || this.getIsYawning()) {
             if (this.getNavigation().getPath() != null) {
                 this.getNavigation().stop();
             }
@@ -143,11 +181,13 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
         ItemStack itemstack = player.getItemInHand(hand);
         InteractionResult type = super.mobInteract(player, hand);
         if ((itemstack.is(Items.CHICKEN) || itemstack.is(Items.RABBIT) || itemstack.is(Items.COOKED_CHICKEN) || itemstack.is(Items.COOKED_RABBIT))
-                && !this.getIsHowling() && this.onGround()) {
+                && !this.getIsHowling() && this.onGround() && !this.getIsYawning()) {
             this.usePlayerItem(player, hand, itemstack);
             this.setHowlingTime(howlTickDuration);
             return InteractionResult.SUCCESS;
         } else if (itemstack.is(ItemTags.WOOL)){
+
+            if (this.getVariant()!=0){this.spawnAtLocation(getWoolType(this.getVariant()));}
             if (itemstack.is(Items.RED_WOOL)){ this.setVariant(1); }
             else if (itemstack.is(Items.ORANGE_WOOL)){this.setVariant(2);}
             else if (itemstack.is(Items.YELLOW_WOOL)){this.setVariant(3);}
@@ -164,8 +204,19 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
             else if (itemstack.is(Items.GRAY_WOOL)){this.setVariant(14);}
             else if (itemstack.is(Items.LIGHT_GRAY_WOOL)){this.setVariant(15);}
             else {this.setVariant(16);}
+
+            this.playSound(SoundEvents.LLAMA_SWAG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+
             return InteractionResult.SUCCESS;
-        } else{
+
+        } else if (itemstack.is(Items.SHEARS) && getVariant()!= 0){
+
+            this.spawnAtLocation(this.getWoolType(this.getVariant()));
+            this.playSound(SoundEvents.SHEEP_SHEAR, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+            this.setVariant(0);
+            return InteractionResult.SUCCESS;
+
+        } else {
             return type;
         }
 
@@ -178,46 +229,64 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
                 target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 45));
             }
         }
-
     }
 
     public void tick (){
         super.tick();
 
+        //handles howling
         if (this.getHowlingTime() > 0){
-
             if (this.getIsHowling()){
                 this.getNavigation().stop();
                 this.goalSelector.getRunningGoals().forEach(WrappedGoal::stop);
             } else {
                 this.setIsHowling(true);
             }
-
             if (this.getHowlingTime()==30 && !this.level().isClientSide){
                 alertThreats();}
-
             prevHowlTime = this.getHowlingTime();
             this.setHowlingTime(prevHowlTime - 1);
-
-
         } else if (getIsHowling()){
             this.goalSelector.getRunningGoals().forEach(WrappedGoal::start);
             this.setIsHowling(false);
+        }
+
+        //handles yawning
+        if (this.getRandom().nextInt(5000) == 0 && !this.getIsYawning() && this.onGround() && !this.getIsHowling()){
+            this.setYawningTime(60);
+        }
+        if (this.getYawningTime()>0){
+
+            this.goalSelector.getRunningGoals().forEach(WrappedGoal::stop);
+
+            if (this.getIsYawning()){
+                this.getNavigation().stop();
+            } else {
+                this.setIsYawning(true);
+            }
+            prevYawnTime = this.getYawningTime();
+            this.setYawningTime(prevYawnTime - 1);
+        }
+        else if (getIsYawning()){
+            this.goalSelector.getRunningGoals().forEach(WrappedGoal::start);
+            this.setIsYawning(false);
         }
 
     }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(new AnimationController[]{new AnimationController(this, "Normal", 5, this::Controller)});
+        controllerRegistrar.add(new AnimationController[]{new AnimationController(this, "Normal", 10, this::Controller)});
     }
 
     protected <E extends GeoAnimatable> PlayState Controller(AnimationState<E> event) {
         if (this.isFromBook()){
             return PlayState.STOP;
-        } else if (this.getIsHowling() && this.onGround()){
+        } else if (this.getIsHowling() && this.onGround() && !this.getIsYawning()){
             event.setAndContinue(THYLA_HOWL);
-        } else if(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && this.onGround()) {
+        } else if (this.getIsYawning() && this.onGround() && !this.getIsHowling()){
+            event.setAndContinue(THYLA_YAWN);
+        }else if(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && this.onGround()) {
             event.setAndContinue(THYLA_WALK);
             if (this.isBaby()){
                 event.getController().setAnimationSpeed(1.65);

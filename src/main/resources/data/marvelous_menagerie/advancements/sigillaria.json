@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:main/plants",
+  "criteria": {
+    "foxii_sapling": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:sigillaria_sapling"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.sigillaria.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:sigillaria_sapling"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "unusualprehistory.advancement.sigillaria"
+    }
+  },
+  "requirements": [
+    [
+      "sigillaria_sapling"
+    ]
+  ]
+}

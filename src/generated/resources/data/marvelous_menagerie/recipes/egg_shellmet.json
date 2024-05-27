@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": {
+      "item": "marvelous_menagerie:egg_shell_fragment"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "S S"
+  ],
+  "result": {
+    "item": "marvelous_menagerie:egg_shellmet"
+  },
+  "show_notification": true
+}

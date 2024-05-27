@@ -1,0 +1,6 @@
+{
+  "parent": "marvelous_menagerie:block/template_eggs/template_elephant_bird_egg",
+  "textures": {
+    "texture": "marvelous_menagerie:block/eggs/elephant_bird_egg"
+  }
+}

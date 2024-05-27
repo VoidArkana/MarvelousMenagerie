@@ -1,0 +1,41 @@
+{
+  "text": "steller.txt",
+  "title": "  Steller's Sea Cow",
+  "page_to_go": "unusualprehistory:dinosaurs",
+  "recipes": [
+    {
+      "recipe": "marvelous_menagerie:steller_ice_cream",
+      "shapeless": false,
+      "x": 210,
+      "y": 117,
+      "page": 1,
+      "scale": 1.3
+    }
+  ],
+  "entity_renders": [
+    {
+      "entity": "marvelous_menagerie:steller_sea_cow",
+      "x": 105,
+      "y": 90,
+      "page" : 0,
+      "scale": 0.5,
+      "rot_x": 30,
+      "rot_y": 225,
+      "rot_z": 0,
+      "follow_cursor": false
+    }
+  ],
+  "entity_button":[
+    {
+      "entity": "marvelous_menagerie:steller_sea_cow",
+      "x": 290,
+      "y": 80,
+      "page" : 0,
+      "scale": 1.2,
+      "entity_scale": 0.2,
+      "offset_x": -1,
+      "offset_y": -30,
+      "hover_text": "Steller's Sea Cow"
+    }
+  ]
+}

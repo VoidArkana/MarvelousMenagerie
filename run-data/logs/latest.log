@@ -1,36 +1,36 @@
-[21May2024 21:18:12.162] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\tonyd\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.2.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, marvelous_menagerie, --all, --output, C:\Users\tonyd\Documents\repositories\MarvelousMenagerie\src\generated\resources, --existing, C:\Users\tonyd\Documents\repositories\MarvelousMenagerie\src\main\resources]
-[21May2024 21:18:12.170] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.11 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
-[21May2024 21:18:12.318] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[21May2024 21:18:12.366] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/tonyd/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[21May2024 21:18:12.714] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\tonyd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.2.0\7f9181f85acc66547685a72020713fc8cbde98\javafmllanguage-1.20.1-47.2.0.jar is missing mods.toml file
-[21May2024 21:18:12.716] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\tonyd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.2.0\7872f5205685fdd26fae39b1be79b0e60ca5b7bd\lowcodelanguage-1.20.1-47.2.0.jar is missing mods.toml file
-[21May2024 21:18:12.717] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\tonyd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.2.0\d501d161cabed08b3c139a2c6217b02a39f3c3e9\mclanguage-1.20.1-47.2.0.jar is missing mods.toml file
-[21May2024 21:18:12.720] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\tonyd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.2.0\ffd3c6debac0a388c9e33ac43c9f5eafb91cb466\fmlcore-1.20.1-47.2.0.jar is missing mods.toml file
-[21May2024 21:18:12.987] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
-[21May2024 21:18:14.352] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[21May2024 21:18:14.354] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\tonyd\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, marvelous_menagerie, --all, --output, C:\Users\tonyd\Documents\repositories\MarvelousMenagerie\src\generated\resources, --existing, C:\Users\tonyd\Documents\repositories\MarvelousMenagerie\src\main\resources]
-[21May2024 21:18:14.738] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using C:\Users\tonyd\Documents\repositories\MarvelousMenagerie\build\createSrgToMcp\output.srg
-[21May2024 21:18:15.299] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [marvelous_menagerie]
-[21May2024 21:18:19.256] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.2.0, for MC 1.20.1 with MCP 20230612.114412
-[21May2024 21:18:19.257] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.2.0 Initialized
-[21May2024 21:18:19.315] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
-[21May2024 21:18:20.508] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/tonyd/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.2.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[21May2024 21:18:20.508] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/tonyd/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.2.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[21May2024 21:18:20.767] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[21May2024 21:18:20.829] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 59 ms
-[21May2024 21:18:20.830] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
-[21May2024 21:18:20.919] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 87 ms
-[21May2024 21:18:20.920] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: marvelous_menagerie
-[21May2024 21:18:21.104] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: marvelous_menagerie finished after 183 ms
-[21May2024 21:18:21.104] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: marvelous_menagerie
-[21May2024 21:18:21.109] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: marvelous_menagerie finished after 5 ms
-[21May2024 21:18:21.109] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id marvelous_menagerie
-[21May2024 21:18:21.141] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id marvelous_menagerie finished after 31 ms
-[21May2024 21:18:21.142] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id marvelous_menagerie
-[21May2024 21:18:21.145] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id marvelous_menagerie finished after 2 ms
-[21May2024 21:18:21.145] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:entity_type mod id marvelous_menagerie
-[21May2024 21:18:21.148] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:entity_type mod id marvelous_menagerie finished after 2 ms
-[21May2024 21:18:21.148] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
-[21May2024 21:18:21.157] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 9 ms
-[21May2024 21:18:21.157] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 390 ms
-[21May2024 21:18:21.172] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 220, old count: 220, new count: 221, removed stale: 0, written: 1
+[27May2024 13:57:05.993] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\tonyd\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.2.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, marvelous_menagerie, --all, --output, C:\Users\tonyd\Documents\repositories\MarvelousMenagerie\src\generated\resources, --existing, C:\Users\tonyd\Documents\repositories\MarvelousMenagerie\src\main\resources]
+[27May2024 13:57:06.001] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.11 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[27May2024 13:57:06.181] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[27May2024 13:57:06.235] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/tonyd/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[27May2024 13:57:06.551] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\tonyd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.2.0\7f9181f85acc66547685a72020713fc8cbde98\javafmllanguage-1.20.1-47.2.0.jar is missing mods.toml file
+[27May2024 13:57:06.552] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\tonyd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.2.0\7872f5205685fdd26fae39b1be79b0e60ca5b7bd\lowcodelanguage-1.20.1-47.2.0.jar is missing mods.toml file
+[27May2024 13:57:06.554] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\tonyd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.2.0\d501d161cabed08b3c139a2c6217b02a39f3c3e9\mclanguage-1.20.1-47.2.0.jar is missing mods.toml file
+[27May2024 13:57:06.556] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\tonyd\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.2.0\ffd3c6debac0a388c9e33ac43c9f5eafb91cb466\fmlcore-1.20.1-47.2.0.jar is missing mods.toml file
+[27May2024 13:57:06.796] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
+[27May2024 13:57:08.228] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[27May2024 13:57:08.229] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\tonyd\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, marvelous_menagerie, --all, --output, C:\Users\tonyd\Documents\repositories\MarvelousMenagerie\src\generated\resources, --existing, C:\Users\tonyd\Documents\repositories\MarvelousMenagerie\src\main\resources]
+[27May2024 13:57:08.569] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using C:\Users\tonyd\Documents\repositories\MarvelousMenagerie\build\createSrgToMcp\output.srg
+[27May2024 13:57:09.174] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [marvelous_menagerie]
+[27May2024 13:57:15.571] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.2.0, for MC 1.20.1 with MCP 20230612.114412
+[27May2024 13:57:15.571] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.2.0 Initialized
+[27May2024 13:57:15.630] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
+[27May2024 13:57:18.760] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/tonyd/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.2.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[27May2024 13:57:18.762] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/tonyd/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.2.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[27May2024 13:57:19.692] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[27May2024 13:57:19.968] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 275 ms
+[27May2024 13:57:19.968] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[27May2024 13:57:20.347] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 377 ms
+[27May2024 13:57:20.348] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: marvelous_menagerie
+[27May2024 13:57:21.223] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: marvelous_menagerie finished after 873 ms
+[27May2024 13:57:21.223] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: marvelous_menagerie
+[27May2024 13:57:21.326] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: marvelous_menagerie finished after 102 ms
+[27May2024 13:57:21.326] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id marvelous_menagerie
+[27May2024 13:57:21.453] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id marvelous_menagerie finished after 126 ms
+[27May2024 13:57:21.453] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id marvelous_menagerie
+[27May2024 13:57:21.457] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id marvelous_menagerie finished after 3 ms
+[27May2024 13:57:21.457] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:entity_type mod id marvelous_menagerie
+[27May2024 13:57:21.469] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:entity_type mod id marvelous_menagerie finished after 12 ms
+[27May2024 13:57:21.469] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[27May2024 13:57:21.476] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 6 ms
+[27May2024 13:57:21.476] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 1784 ms
+[27May2024 13:57:21.488] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 254, old count: 255, new count: 255, removed stale: 0, written: 9

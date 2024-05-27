@@ -15,6 +15,7 @@ public class ModTags {
     public static class EntityTypes {
         public static final TagKey<EntityType<?>> THYLA_ALERT_TARGET = tag("thyla_alert_target");
         public static final TagKey<EntityType<?>> THYLA_EMBRYO_ATTACH_TO = tag("thyla_embryo_attach_to");
+        public static final TagKey<EntityType<?>> STELLER_EMBRYO_ATTACH_TO = tag("thyla_embryo_attach_to");
 
         private static TagKey<EntityType<?>> tag(String name){
             return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(MarvelousMenagerie.MOD_ID, name));

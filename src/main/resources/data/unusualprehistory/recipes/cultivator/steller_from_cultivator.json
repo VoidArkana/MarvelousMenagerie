@@ -1,0 +1,11 @@
+{
+  "type": "unusualprehistory:cultivator",
+  "ingredients": [
+    {
+      "item": "marvelous_menagerie:steller_sea_cow_dna"
+    }
+  ],
+  "output": {
+    "item": "marvelous_menagerie:steller_sea_cow_embryo"
+  }
+}

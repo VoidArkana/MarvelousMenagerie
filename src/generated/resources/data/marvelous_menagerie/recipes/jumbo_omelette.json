@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "marvelous_menagerie:boiled_elephant_egg"
+    },
+    {
+      "item": "minecraft:carrot"
+    },
+    [
+      {
+        "item": "minecraft:potato"
+      },
+      {
+        "item": "minecraft:baked_potato"
+      }
+    ]
+  ],
+  "result": {
+    "item": "marvelous_menagerie:jumbo_omelette"
+  }
+}

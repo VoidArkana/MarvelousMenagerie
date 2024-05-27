@@ -24,10 +24,20 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.THYLACINE_DNA.get());
                         output.accept(ModItems.SIGILLARIA_DNA.get());
 
-
                         output.accept(ModBlocks.DODO_EGGS.get());
+                        output.accept(ModBlocks.ELE_EGG.get());
                         output.accept(ModItems.THYLA_EMBRYO.get());
+                        output.accept(ModItems.STELLER_EMBRYO.get());
+
+                        output.accept(ModItems.CRACKED_ELEPHANT_EGG.get());
+                        output.accept(ModItems.BOILED_ELEPHANT_EGG.get());
+                        output.accept(ModItems.JUMBO_OMELETTE.get());
                         output.accept(ModItems.EGG_SHELL_FRAGMENT.get());
+                        output.accept(ModItems.EGG_SHELLMET.get());
+
+                        output.accept(ModItems.STELLER_BUCKET.get());
+                        output.accept(ModItems.STELLER_MILK.get());
+                        output.accept(ModItems.STELLER_ICE_CREAM.get());
 
                         output.accept(ModBlocks.SIGILLARIA_PLANKS.get());
 
@@ -48,16 +58,15 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.SIGILLARIA_MOSAIC.get());
                         output.accept(ModBlocks.SIGILLARIA_MOSAIC_STAIRS.get());
                         output.accept(ModBlocks.SIGILLARIA_MOSAIC_SLAB.get());
-
                         output.accept(ModItems.SIGILLARIA_SIGN.get());
                         output.accept(ModItems.SIGILLARIA_HANGING_SIGN.get());
-
                         output.accept(ModBlocks.SIGILLARIA_LEAVES.get());
-
                         output.accept(ModBlocks.SIGILLARIA_SAPLING.get());
 
                         output.accept(ModItems.DODO_SPAWN_EGG.get());
                         output.accept(ModItems.THYLA_SPAWN_EGG.get());
+                        output.accept(ModItems.ELE_SPAWN_EGG.get());
+                        output.accept(ModItems.STELLER_SPAWN_EGG.get());
                     })
                     .build());
 

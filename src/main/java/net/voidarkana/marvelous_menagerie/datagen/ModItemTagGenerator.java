@@ -25,15 +25,20 @@ public class ModItemTagGenerator extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
-        this.tag(Tags.Items.EGGS).add(
-                ModBlocks.DODO_EGGS.get().asItem()
-        );
+        this.tag(Tags.Items.EGGS)
+                .add(ModBlocks.DODO_EGGS.get().asItem())
+                .add(ModItems.CRACKED_ELEPHANT_EGG.get());
+
+        this.tag(Tags.Items.ARMORS_HELMETS).add(
+                ModItems.EGG_SHELLMET.get());
+
+        this.tag(ItemTags.TRIMMABLE_ARMOR).add(
+                ModItems.EGG_SHELLMET.get());
 
         this.copy(ModTags.Blocks.SIGILLARIA_LOG_BLOCK, ModTags.Items.SIGILLARIA_LOG_ITEM);
 
         this.tag(ItemTags.LOGS_THAT_BURN).addTag(
-                ModTags.Items.SIGILLARIA_LOG_ITEM
-        );
+                ModTags.Items.SIGILLARIA_LOG_ITEM);
 
         this.tag(ItemTags.PLANKS).add(
                 ModBlocks.SIGILLARIA_PLANKS.get().asItem(),

@@ -2,6 +2,14 @@
 <NEWLINE>
 <NEWLINE>
 <NEWLINE>
-my baby
+The Thylacine, also known as the Tasmanian Tiger, only went extinct very recently due to it being persecuted by hunters
+as they were thought to harm livestock and humans, but the reality was that these creatures were quite shy and even
+capable of forming bonds with humans.
 <NEWLINE>
-awoooo
+As such, as a proof of their tameness while you can't fully tame them you can decorate their necks with colorful
+handkerchiefs by using a colored wool block on them, or you can remove them by using shears on them and get your wool
+block back.
+<NEWLINE>
+Another proof of their usefulness comes when you feed them their favorite foods, chicken or rabbit, as they will emit a
+sound and alert you of nearby potential threats such as hostile and neutral mobs, making them useful allies when wanting
+to know the location of hidden enemies.

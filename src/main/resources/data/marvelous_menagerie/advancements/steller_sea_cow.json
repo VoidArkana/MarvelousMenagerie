@@ -1,0 +1,69 @@
+{
+  "parent": "minecraft:main/egg",
+  "criteria": {
+    "damage_steller_sea_cow": {
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "marvelous_menagerie:steller_sea_cow"
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    },
+    "interact_steller_sea_cow": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:steller_sea_cow"
+            }
+          }
+        ],
+        "item": {}
+      },
+      "trigger": "minecraft:player_interacted_with_entity"
+    },
+    "killed_steller_sea_cow": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:steller_sea_cow"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.interact_steller_sea_cow.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:steller_sea_cow_dna"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.interact_steller_sea_cow"
+    }
+  },
+  "requirements": [
+    [
+      "damage_steller_sea_cow",
+      "interact_steller_sea_cow",
+      "killed_steller_sea_cow"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

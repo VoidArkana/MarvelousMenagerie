@@ -1,0 +1,9 @@
+{
+  "type": "unusualprehistory:incubating",
+  "ingredients": [
+    {
+      "item": "marvelous_menagerie:steller_sea_cow_embryo"
+    }
+  ],
+  "output": "marvelous_menagerie:baby_steller_sea_cow"
+}

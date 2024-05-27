@@ -1,5 +1,6 @@
-// 1.20.1	2024-05-21T14:17:35.8638909	Tags for minecraft:item mod id marvelous_menagerie
-2def8137a4425bf54c59fd06277f3f3c5628bb05 data/forge/tags/items/eggs.json
+// 1.20.1	2024-05-22T17:52:42.615165	Tags for minecraft:item mod id marvelous_menagerie
+8bc0171391d2f2bcc5f2387479da7d885f878211 data/forge/tags/items/armors/helmets.json
+3a95abcb4997834d758d37e99900fbd9d3d9eb75 data/forge/tags/items/eggs.json
 1105b8780627abc34c43d2c973d7dda863e1b646 data/marvelous_menagerie/tags/items/sigillaria_log_item.json
 036244934576d11ecab196bf5b16fadf12702a9c data/minecraft/tags/items/fence_gates.json
 e301f53dad377ee6a6a77499ab6f8a57d0a1ab66 data/minecraft/tags/items/hanging_signs.json
@@ -7,6 +8,7 @@ b165d0539761ac07b12eed85b1100ccc2a80d488 data/minecraft/tags/items/leaves.json
 f47a793893ddcc703f4d15df7f7fda2297819f44 data/minecraft/tags/items/logs_that_burn.json
 1d6fe54d4b050b5fc09d9634fd257296244c23e3 data/minecraft/tags/items/planks.json
 4fe27cac7231c6da9ef132915f6082e2a04df53d data/minecraft/tags/items/signs.json
+8bc0171391d2f2bcc5f2387479da7d885f878211 data/minecraft/tags/items/trimmable_armor.json
 25b69c742e508e8368c9a2dd8665b366ccc52394 data/minecraft/tags/items/wooden_buttons.json
 d15486a6b7b979c1bc1793c2f528a5e28cbf3bbd data/minecraft/tags/items/wooden_doors.json
 fe8543859ad33912fe7f4620b5587514e2dd97db data/minecraft/tags/items/wooden_fences.json

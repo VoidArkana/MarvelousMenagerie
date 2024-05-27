@@ -27,6 +27,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
 
         this.createEggDefaultMedium(ModBlocks.DODO_EGGS.get());
+        this.createSingleEgg(ModBlocks.ELE_EGG.get());
 
         blockWithItem(ModBlocks.SIGILLARIA_PLANKS);
         stairsBlock(((StairBlock) ModBlocks.SIGILLARIA_STAIRS.get()), blockTexture(ModBlocks.SIGILLARIA_PLANKS.get()));
