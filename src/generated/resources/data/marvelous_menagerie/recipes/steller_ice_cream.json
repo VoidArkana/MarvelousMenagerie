@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bowl"
+    },
+    "M": {
+      "item": "marvelous_menagerie:steller_sea_cow_milk_bucket"
+    },
+    "S": {
+      "item": "minecraft:snowball"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SMS",
+    "BBB"
+  ],
+  "result": {
+    "count": 3,
+    "item": "marvelous_menagerie:steller_ice_cream"
+  },
+  "show_notification": true
+}
