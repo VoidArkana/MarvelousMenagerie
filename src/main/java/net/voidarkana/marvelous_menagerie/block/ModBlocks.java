@@ -1,6 +1,7 @@
 package net.voidarkana.marvelous_menagerie.block;
 
 import com.peeko32213.unusualprehistory.common.block.BlockDinosaurLandEggs;
+import com.peeko32213.unusualprehistory.common.block.BlockHorsetail;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -178,7 +179,8 @@ public class ModBlocks {
             ()-> new FlowerPotBlock(()-> ((FlowerPotBlock) Blocks.FLOWER_POT), ModBlocks.SIGILLARIA_SAPLING,
                     BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM).noOcclusion()));
 
-
+    public static final RegistryObject<Block> COOKSONIA = registerBlock("cooksonia",
+            ()-> new CooksoniaBlock(BlockBehaviour.Properties.copy(Blocks.SUGAR_CANE).noOcclusion().noCollission()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

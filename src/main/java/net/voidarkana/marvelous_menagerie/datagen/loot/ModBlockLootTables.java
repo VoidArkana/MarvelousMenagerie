@@ -60,6 +60,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 createSilkTouchOnlyTable(ModBlocks.DODO_EGGS.get()));
         this.add(ModBlocks.ELE_EGG.get(),
                 createSilkTouchOnlyTable(ModBlocks.ELE_EGG.get()));
+
+        this.dropSelf(ModBlocks.COOKSONIA.get());
     }
 
     @Override

@@ -1,4 +1,4 @@
-// 1.20.1	2024-05-18T21:48:43.9295978	Tags for minecraft:block mod id marvelous_menagerie
+// 1.20.1	2024-06-04T00:13:03.8609894	Tags for minecraft:block mod id marvelous_menagerie
 1105b8780627abc34c43d2c973d7dda863e1b646 data/marvelous_menagerie/tags/blocks/sigillaria_log_block.json
 e301f53dad377ee6a6a77499ab6f8a57d0a1ab66 data/minecraft/tags/blocks/ceiling_hanging_signs.json
 036244934576d11ecab196bf5b16fadf12702a9c data/minecraft/tags/blocks/fence_gates.json
@@ -8,6 +8,7 @@ b165d0539761ac07b12eed85b1100ccc2a80d488 data/minecraft/tags/blocks/leaves.json
 b165d0539761ac07b12eed85b1100ccc2a80d488 data/minecraft/tags/blocks/mineable/hoe.json
 1d6fe54d4b050b5fc09d9634fd257296244c23e3 data/minecraft/tags/blocks/planks.json
 4fe27cac7231c6da9ef132915f6082e2a04df53d data/minecraft/tags/blocks/signs.json
+262c65c2ad0cda6647389c1eda7010c1c6b3ef43 data/minecraft/tags/blocks/small_flowers.json
 f970ffedad52e2027351e6d21775ca7b6d6019af data/minecraft/tags/blocks/wall_hanging_signs.json
 019cc53dcae51be1d1f53d3db6eb0dc9c1fda50d data/minecraft/tags/blocks/wall_signs.json
 25b69c742e508e8368c9a2dd8665b366ccc52394 data/minecraft/tags/blocks/wooden_buttons.json

@@ -22,9 +22,11 @@ import net.voidarkana.marvelous_menagerie.block.entity.ModBlockEntities;
 import net.voidarkana.marvelous_menagerie.effect.ModEffects;
 import net.voidarkana.marvelous_menagerie.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.entity.client.*;
+import net.voidarkana.marvelous_menagerie.entity.client.plant.CooksoniaRenderer;
 import net.voidarkana.marvelous_menagerie.entity.client.plant.PlantRenderer;
 import net.voidarkana.marvelous_menagerie.item.ModCreativeModTabs;
 import net.voidarkana.marvelous_menagerie.item.ModItems;
+import net.voidarkana.marvelous_menagerie.sound.ModSounds;
 import net.voidarkana.marvelous_menagerie.util.ModWoodTypes;
 import net.voidarkana.marvelous_menagerie.worldgen.tree.ModFoliagePlacers;
 import net.voidarkana.marvelous_menagerie.worldgen.tree.ModTrunkPlacerTypes;
@@ -48,6 +50,7 @@ public class MarvelousMenagerie {
         ModBlockEntities.register(modEventBus);
         ModEntities.register(modEventBus);
 
+        ModSounds.register(modEventBus);
         ModEffects.register(modEventBus);
 
         ModTrunkPlacerTypes.register(modEventBus);
@@ -66,6 +69,8 @@ public class MarvelousMenagerie {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.SIGILLARIA_SAPLING.getId(), ModBlocks.POTTED_SIGILLARIA_SAPLING);
             ComposterBlock.COMPOSTABLES.put(ModBlocks.SIGILLARIA_SAPLING.get().asItem(), 0.4F);
             ComposterBlock.COMPOSTABLES.put(ModBlocks.SIGILLARIA_LEAVES.get().asItem(), 0.4F);
+
+            ComposterBlock.COMPOSTABLES.put(ModBlocks.COOKSONIA.get().asItem(), 0.4F);
         });
     }
 
@@ -91,6 +96,7 @@ public class MarvelousMenagerie {
             EntityRenderers.register(ModEntities.STELLER_SEA_COW.get(), StellerRenderer::new);
             EntityRenderers.register(ModEntities.BABY_STELLER_SEA_COW.get(), BabyStellerRenderer::new);
             EntityRenderers.register(ModEntities.SIGILLARIA_SAPLING_ENTITY.get(), PlantRenderer::new);
+            EntityRenderers.register(ModEntities.COOKSONIA_ENTITY.get(), CooksoniaRenderer::new);
         }
     }
 }

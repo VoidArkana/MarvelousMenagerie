@@ -58,12 +58,38 @@
 
 
   "block.marvelous_menagerie.sigillaria_leaves": "Sigillaria Leaves",
-
   "block.marvelous_menagerie.sigillaria_sapling": "Sigillaria Sapling",
   "block.marvelous_menagerie.potted_sigillaria_sapling": "Potted Sigillaria Sapling",
 
-
   "effect.marvelous_menagerie.sea_cow_serenity": "Sea Cow's Serenity",
+
+  "marvelous_menagerie.sound.subtitle.dodo_idle": "Dodo cooes",
+  "marvelous_menagerie.sound.subtitle.dodo_hurt": "Dodo hurts",
+  "marvelous_menagerie.sound.subtitle.dodo_death": "Dodo dies",
+
+  "marvelous_menagerie.sound.subtitle.elephant_bird_idle": "Elephant bird bellows",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_hurt": "Elephant bird hurts",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_death": "Elephant bird dies",
+
+  "marvelous_menagerie.sound.subtitle.elephant_bird_baby_idle": "Baby elephant bird chirps",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_baby_hurt": "Baby elephant bird hurts",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_baby_death": "Baby elephant bird dies",
+
+  "marvelous_menagerie.sound.subtitle.steller_idle": "Steller's sea cow idles",
+  "marvelous_menagerie.sound.subtitle.steller_hurt": "Steller's sea cow hurts",
+  "marvelous_menagerie.sound.subtitle.steller_land_hurt": "Steller's sea cow hurts",
+  "marvelous_menagerie.sound.subtitle.steller_death": "Steller's sea cow dies",
+
+  "marvelous_menagerie.sound.subtitle.dolphin_blowhole": "Aquatic creature blows air",
+
+  "marvelous_menagerie.sound.subtitle.thylacine_idle": "Thylacine barks",
+  "marvelous_menagerie.sound.subtitle.thylacine_hurt": "Thylacine hurts",
+  "marvelous_menagerie.sound.subtitle.thylacine_death": "Thylacine dies",
+  "marvelous_menagerie.sound.subtitle.thylacine_howl": "Thylacine alerts",
+  "marvelous_menagerie.sound.subtitle.thylacine_yawn": "Thylacine yawns",
+
+  "item.marvelous_menagerie.cooksonia_dna": "Cooksonia DNA Flask",
+  "block.marvelous_menagerie.cooksonia": "Cooksonia",
 
   "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
 }

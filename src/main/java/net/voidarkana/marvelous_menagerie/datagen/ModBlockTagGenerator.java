@@ -115,5 +115,10 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.WALL_HANGING_SIGNS).add(
                 ModBlocks.SIGILLARIA_WALL_HANGING_SIGN.get()
         );
+
+        this.tag(BlockTags.SMALL_FLOWERS).add(
+                ModBlocks.COOKSONIA.get()
+        );
+
     }
 }

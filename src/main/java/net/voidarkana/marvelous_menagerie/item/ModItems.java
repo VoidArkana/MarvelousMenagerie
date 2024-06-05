@@ -16,6 +16,7 @@ import net.voidarkana.marvelous_menagerie.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.item.custom.EggInShellFoodItem;
 import net.voidarkana.marvelous_menagerie.item.custom.SeaCowMilkBucketItem;
 import net.voidarkana.marvelous_menagerie.item.custom.SinglePieceEffectArmorItem;
+import net.voidarkana.marvelous_menagerie.item.custom.StackableBowlFoodItem;
 import net.voidarkana.marvelous_menagerie.util.ModTags;
 
 public class ModItems {
@@ -65,7 +66,7 @@ public class ModItems {
     public static final RegistryObject<Item> STELLER_MILK = ITEMS.register("steller_sea_cow_milk_bucket",
             ()-> new SeaCowMilkBucketItem((new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1)));
     public static final RegistryObject<Item> STELLER_ICE_CREAM = ITEMS.register("steller_ice_cream",
-            ()-> new BowlFoodItem(new Item.Properties().food(ModFoods.STELLER_ICE_CREAM).stacksTo(16)));
+            ()-> new StackableBowlFoodItem(new Item.Properties().food(ModFoods.STELLER_ICE_CREAM).stacksTo(16)));
     public static final RegistryObject<Item> STELLER_BUCKET = ITEMS.register("steller_bucket", () -> {
         return new ItemModFishBucket(ModEntities.BABY_STELLER_SEA_COW, () -> {
             return Fluids.WATER;
@@ -80,6 +81,11 @@ public class ModItems {
             ()-> new SignItem(new Item.Properties().stacksTo(16), ModBlocks.SIGILLARIA_SIGN.get(), ModBlocks.SIGILLARIA_WALL_SIGN.get()));
     public static final RegistryObject<Item> SIGILLARIA_HANGING_SIGN = ITEMS.register("sigillaria_hanging_sign",
             ()-> new HangingSignItem(ModBlocks.SIGILLARIA_HANGING_SIGN.get(), ModBlocks.SIGILLARIA_WALL_HANGING_SIGN.get(),new Item.Properties().stacksTo(16)));
+
+    //cooksonia
+
+    public static final RegistryObject<Item> COOKSONIA_DNA = ITEMS.register("cooksonia_dna",
+            ()-> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

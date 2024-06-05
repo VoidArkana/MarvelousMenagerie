@@ -14,6 +14,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -39,6 +40,7 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.Vec3;
 import net.voidarkana.marvelous_menagerie.effect.ModEffects;
 import net.voidarkana.marvelous_menagerie.item.ModItems;
+import net.voidarkana.marvelous_menagerie.sound.ModSounds;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -111,10 +113,10 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
         //this.setRotation(pCompound.getInt("rotation"));
     }
 
-    public boolean isStellar() {
+    /*public boolean isStellar() {
         String s = ChatFormatting.stripFormatting(this.getName().getString());
         return s != null && s.toLowerCase().contains("stellar");
-    }
+    }*/
 
     /*rotation
     public void setRotation(float rotation) {
@@ -448,7 +450,7 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
     }
 
     public boolean canBeCollidedWith() {
-        return !this.isEyeInFluid(FluidTags.WATER);
+        return !this.isEyeInFluid(FluidTags.WATER) && !this.onGround();
     }
 
     public void setPersistenceRequired() {
@@ -461,6 +463,26 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
 
     public void aiStep() {
         super.aiStep();
+    }
+
+    protected SoundEvent getAmbientSound() {
+        if (this.isEyeInFluid(FluidTags.WATER)){
+            return ModSounds.STELLER_IDLE.get();
+        }else {
+            return ModSounds.DOLPHIN_BLOWHOLE.get();
+        }
+    }
+
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+        if (this.isEyeInFluid(FluidTags.WATER)){
+            return ModSounds.STELLER_HURT.get();
+        }else {
+            return ModSounds.STELLER_LAND_HURT.get();
+        }
+    }
+
+    protected SoundEvent getDeathSound() {
+            return ModSounds.STELLER_DEATH.get();
     }
 
 }

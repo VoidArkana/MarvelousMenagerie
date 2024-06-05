@@ -30,6 +30,7 @@ import net.minecraft.world.level.block.MelonBlock;
 import net.minecraft.world.level.block.PumpkinBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.voidarkana.marvelous_menagerie.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -56,10 +57,19 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
 
     private static final int PECK_ANIMATION_TICKS = 36;
     public boolean IsFalling;
-    protected static final RawAnimation DODO_WALK;
-    protected static final RawAnimation DODO_FLAP;
-    protected static final RawAnimation DODO_IDLE;
-    protected static final RawAnimation DODO_PECK;
+    protected static final RawAnimation DODO_WALK = RawAnimation.begin().thenLoop("animation.dodo.walk");
+    protected static final RawAnimation DODO_FLAP = RawAnimation.begin().thenLoop("animation.dodo.flap");
+    protected static final RawAnimation DODO_IDLE = RawAnimation.begin().thenLoop("animation.dodo.idle");
+    protected static final RawAnimation DODO_PECK = RawAnimation.begin().thenPlay("animation.dodo.peck");
+    protected static final RawAnimation DODO_SWIM = RawAnimation.begin().thenLoop("animation.dodo.swim");
+
+    protected static final RawAnimation BABY_DODO_WALK = RawAnimation.begin().thenLoop("animation.dodo.baby_walk");
+    protected static final RawAnimation BABY_DODO_FLAP = RawAnimation.begin().thenLoop("animation.dodo.baby_flap");
+    protected static final RawAnimation BABY_DODO_IDLE = RawAnimation.begin().thenLoop("animation.dodo.baby_idle");
+    protected static final RawAnimation BABY_DODO_PECK = RawAnimation.begin().thenPlay("animation.dodo.baby_peck");
+    protected static final RawAnimation BABY_DODO_SWIM = RawAnimation.begin().thenLoop("animation.dodo.baby_swim");
+
+
 
     //attributes
     public static AttributeSupplier.Builder createAttributes() {
@@ -161,7 +171,11 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         Vec3 vec3 = this.getDeltaMovement();
         if (!this.onGround() && vec3.y < (-0.1D)) {
             this.setDeltaMovement(vec3.multiply(1.0D, 0.6D, 1.0D));
-            IsFalling = true;
+            if (this.isInWater()){
+                IsFalling = false;
+            }else {
+                IsFalling = true;
+            }
         }
         else {
             IsFalling = false;
@@ -173,6 +187,18 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
             this.eggLayTime = random.nextInt(6000) + (6000);
         }
 
+    }
+
+    protected SoundEvent getAmbientSound() {
+        return ModSounds.DODO_IDLE.get();
+    }
+
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+        return ModSounds.DODO_HURT.get();
+    }
+
+    protected SoundEvent getDeathSound() {
+        return ModSounds.DODO_DEATH.get();
     }
 
     protected void playStepSound(BlockPos p_28301_, BlockState p_28302_) {
@@ -249,18 +275,43 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         }
         else {
             if(this.getIsPecking()) {
-                event.setAndContinue(DODO_PECK);
-            } else if(IsFalling && !this.getIsPecking() && !this.isInWater()) {
-                event.setAndContinue(DODO_FLAP);
-            } else if(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && this.onGround()) {
-                event.setAndContinue(DODO_WALK);
-                if (this.isBaby()){
-                    event.getController().setAnimationSpeed(1.5);
-                }
-            } else if (this.onGround() && !this.getIsPecking()){
-                event.setAndContinue(DODO_IDLE);
+
+                if (this.isBaby()) {event.setAndContinue(BABY_DODO_PECK);}
+                else{event.setAndContinue(DODO_PECK);}
+
             }
-                return PlayState.CONTINUE;
+            else if(this.isInWater() && !this.onGround()){
+
+                if (this.isBaby()) {
+                    event.setAndContinue(BABY_DODO_SWIM);
+                    event.getController().setAnimationSpeed(1.5);
+                }else{event.setAndContinue(DODO_SWIM);}
+
+            }else if(IsFalling && !this.getIsPecking() && !this.isInWater()) {
+
+                if (this.isBaby()) {
+                    event.setAndContinue(BABY_DODO_FLAP);
+                    event.getController().setAnimationSpeed(1.5);
+                }else{event.setAndContinue(DODO_FLAP);}
+
+            } else if(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && this.onGround()) {
+
+                if (this.isBaby()) {
+                    event.setAndContinue(BABY_DODO_WALK);
+                    event.getController().setAnimationSpeed(1.7);
+                }
+                else{
+                    event.setAndContinue(DODO_WALK);
+                    event.getController().setAnimationSpeed(1.2);
+                }
+
+            } else if (this.onGround() && !this.getIsPecking()){
+
+                if (this.isBaby()) {event.setAndContinue(BABY_DODO_IDLE);}
+                else{event.setAndContinue(DODO_IDLE);}
+
+            }
+            return PlayState.CONTINUE;
         }
     }
 
@@ -276,12 +327,6 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         return cache;
     }
 
-    static {
-        DODO_WALK = RawAnimation.begin().thenLoop("animation.dodo.walk");
-        DODO_IDLE = RawAnimation.begin().thenLoop("animation.dodo.idle");
-        DODO_FLAP = RawAnimation.begin().thenLoop("animation.dodo.flap");
-        DODO_PECK = RawAnimation.begin().thenPlay("animation.dodo.peck");
-    }
 
     static class DestroyMelonAndPumpkinGoal extends MoveToBlockGoal {
         private final DodoEntity dodo;

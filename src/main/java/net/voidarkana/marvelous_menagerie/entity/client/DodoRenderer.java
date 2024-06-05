@@ -12,8 +12,10 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 public class DodoRenderer extends GeoEntityRenderer<DodoEntity> {
 
 
-    private static final ResourceLocation TEXTURE_BLUE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo.png");
-    private static final ResourceLocation TEXTURE_BROWN = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo_variant.png");
+    private static final ResourceLocation TEXTURE_BLUE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo/dodo.png");
+    private static final ResourceLocation TEXTURE_BROWN = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo/dodo_variant.png");
+    private static final ResourceLocation TEXTURE_BABY_BLUE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo/baby_dodo.png");
+    private static final ResourceLocation TEXTURE_BABY_BROWN = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo/baby_dodo_variant.png");
 
     public DodoRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new DodoModel());
@@ -23,20 +25,16 @@ public class DodoRenderer extends GeoEntityRenderer<DodoEntity> {
     @Override
     public ResourceLocation getTextureLocation(DodoEntity entity) {
         return switch (entity.getVariant()) {
-            case 1 -> TEXTURE_BLUE;
-            default -> TEXTURE_BROWN;
+            case 1 -> entity.isBaby() ? TEXTURE_BABY_BLUE : TEXTURE_BLUE;
+            default -> entity.isBaby() ? TEXTURE_BABY_BROWN : TEXTURE_BROWN;
         };
     }
 
     @Override
     public void render(DodoEntity entity, float entityYaw, float partialTicks, PoseStack poseStack,
                                     MultiBufferSource bufferSource, int packedLightIn) {
-        if(entity.isBaby()) {
-            poseStack.scale(0.6F, 0.6F, 0.6F);
-        }
-        else {
-            poseStack.scale(1F, 1F, 1F);
-        }
+
+        poseStack.scale(1F, 1F, 1F);
         super.render(entity, entityYaw, partialTicks, poseStack, bufferSource, packedLightIn);
     }
 

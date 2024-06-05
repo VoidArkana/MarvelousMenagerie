@@ -10,22 +10,27 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class ElephantBirdRenderer extends GeoEntityRenderer<ElephantBirdEntity> {
 
+    private static final ResourceLocation REGULAR_TEXTURE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/elephant_bird.png");
+    private static final ResourceLocation BABY_TEXTURE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/baby_elephant_bird.png");
+
+
     public ElephantBirdRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new ElephantBirdModel());
     }
 
     @Override
     public ResourceLocation getTextureLocation(ElephantBirdEntity entity) {
-        return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/elephant_bird.png");
+        return entity.isBaby() ? BABY_TEXTURE : REGULAR_TEXTURE;
     }
 
     @Override
     public void render(ElephantBirdEntity entity, float entityYaw, float partialTicks, PoseStack poseStack,
                        MultiBufferSource bufferSource, int packedLightIn) {
-        if(entity.isBaby()) {
-            poseStack.scale(0.25F, 0.25F, 0.25F);
-        }
-        else {
+
+        if (entity.isBaby()){
+
+            poseStack.scale(0.8F, 0.8F, 0.8F);
+        }else {
             poseStack.scale(1.1F, 1.1F, 1.1F);
         }
         super.render(entity, entityYaw, partialTicks, poseStack, bufferSource, packedLightIn);

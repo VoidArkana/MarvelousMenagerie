@@ -23,6 +23,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.STELLER_SEA_COW_DNA.get());
                         output.accept(ModItems.THYLACINE_DNA.get());
                         output.accept(ModItems.SIGILLARIA_DNA.get());
+                        output.accept(ModItems.COOKSONIA_DNA.get());
 
                         output.accept(ModBlocks.DODO_EGGS.get());
                         output.accept(ModBlocks.ELE_EGG.get());
@@ -62,6 +63,8 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.SIGILLARIA_HANGING_SIGN.get());
                         output.accept(ModBlocks.SIGILLARIA_LEAVES.get());
                         output.accept(ModBlocks.SIGILLARIA_SAPLING.get());
+
+                        output.accept(ModBlocks.COOKSONIA.get());
 
                         output.accept(ModItems.DODO_SPAWN_EGG.get());
                         output.accept(ModItems.THYLA_SPAWN_EGG.get());

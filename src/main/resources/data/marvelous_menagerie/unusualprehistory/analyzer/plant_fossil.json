@@ -6,6 +6,10 @@
     {
       "weight": 15,
       "item": "marvelous_menagerie:sigillaria_dna"
+    },
+    {
+      "weight": 15,
+      "item": "marvelous_menagerie:cooksonia_dna"
     }
   ]
 }

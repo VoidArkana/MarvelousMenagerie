@@ -64,6 +64,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 blockTexture(ModBlocks.SIGILLARIA_SAPLING.get())).renderType("cutout"));
         simpleBlockWithItem(ModBlocks.POTTED_SIGILLARIA_SAPLING.get(), models().singleTexture("potted_sigillaria_sapling", new ResourceLocation("flower_pot_cross"), "plant",
                 blockTexture(ModBlocks.SIGILLARIA_SAPLING.get())).renderType("cutout"));
+
+        simpleBlockWithItem(ModBlocks.COOKSONIA.get(), models().cross(blockTexture(ModBlocks.COOKSONIA.get()).getPath(),
+                blockTexture(ModBlocks.COOKSONIA.get())).renderType("cutout"));
     }
 
     public void hangingSignBlock(Block signBlock, Block wallSignBlock, ResourceLocation texture) {

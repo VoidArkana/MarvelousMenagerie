@@ -1,5 +1,7 @@
-// 1.20.1	2024-05-26T17:20:07.9079367	Item Models: marvelous_menagerie
+// 1.20.1	2024-06-03T23:58:41.9574425	Item Models: marvelous_menagerie
 8227ebd4e20d2f685ab8ecfd5fc2cfd71963ad1b assets/marvelous_menagerie/models/item/boiled_elephant_egg.json
+0dc065022f1f8aff97fea2c1090f767459cbd86a assets/marvelous_menagerie/models/item/cooksonia.json
+b97623644912ba760d7b703cac6e4dbbaf149919 assets/marvelous_menagerie/models/item/cooksonia_dna.json
 c87d4f308a7dd7459f874db43442972781db599f assets/marvelous_menagerie/models/item/cracked_elephant_egg.json
 0249e2252eb6fbb07879b887160235ca8f1d1988 assets/marvelous_menagerie/models/item/dodo_dna.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/marvelous_menagerie/models/item/dodo_spawn_egg.json

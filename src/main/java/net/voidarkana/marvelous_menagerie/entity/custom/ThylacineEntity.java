@@ -1,6 +1,7 @@
 package net.voidarkana.marvelous_menagerie.entity.custom;
 
 import com.peeko32213.unusualprehistory.common.entity.msc.util.dino.EntityBaseDinosaurAnimal;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -27,6 +28,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.voidarkana.marvelous_menagerie.sound.ModSounds;
 import net.voidarkana.marvelous_menagerie.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -48,17 +50,21 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
         super(entityType, level);
     }
 
-    private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.INT);
+    //private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> HOWLING_TIME = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> HOWLING = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> YAWNING_TIME = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> YAWNING = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> HAS_HANDKERCHIEF = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> HANDKERCHIEF_COLOR = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.INT);
+
     public int prevHowlTime;
     public int prevYawnTime;
     public int howlTickDuration = 120;
 
     protected static final RawAnimation THYLA_WALK = RawAnimation.begin().thenLoop("animation.thylacine.walk");
     protected static final RawAnimation THYLA_IDLE = RawAnimation.begin().thenLoop("animation.thylacine.idle");
+    protected static final RawAnimation THYLA_SWIM = RawAnimation.begin().thenLoop("animation.thylacine.swim");
     protected static final RawAnimation THYLA_HOWL = RawAnimation.begin().thenPlay("animation.thylacine.howl");
     protected static final RawAnimation THYLA_YAWN = RawAnimation.begin().thenPlay("animation.thylacine.yawn");
 
@@ -82,66 +88,58 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
+        //this.entityData.define(VARIANT, 0);
         this.entityData.define(HOWLING_TIME, 0);
         this.entityData.define(HOWLING, false);
-        this.entityData.define(VARIANT, 0);
         this.entityData.define(YAWNING_TIME, 0);
         this.entityData.define(YAWNING, false);
+        this.entityData.define(HAS_HANDKERCHIEF, false);
+        this.entityData.define(HANDKERCHIEF_COLOR, 0);
     }
 
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
+        //compound.putInt("variant", this.getVariant());
         compound.putInt("howlingTime", this.getHowlingTime());
         compound.putBoolean("isHowling", this.getIsHowling());
-        compound.putInt("variant", this.getVariant());
         compound.putInt("yawningTime", this.getYawningTime());
         compound.putBoolean("isYawning", this.getIsYawning());
+        compound.putBoolean("hasHandkerchief", this.getHasHandkerchief());
+        compound.putInt("handkerchiefColor", this.getHandkerchiefColor());
     }
 
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
+        //this.setVariant(compound.getInt("variant"));
         this.setHowlingTime(compound.getInt("howlingTime"));
         this.setIsHowling(compound.getBoolean("isHowling"));
-        this.setVariant(compound.getInt("variant"));
         this.setYawningTime(compound.getInt("yawningTime"));
         this.setIsYawning(compound.getBoolean("isYawning"));
+        this.setIsYawning(compound.getBoolean("hasHandkerchief"));
+        this.setHandkerchiefColor(compound.getInt("handkerchiefColor"));
     }
 
-    //howling
-    public int getHowlingTime(){
-        return this.entityData.get(HOWLING_TIME);}
 
-    public void setHowlingTime(int howlingTicksTime){
-        this.entityData.set(HOWLING_TIME, howlingTicksTime);}
+    //handkerchief
+    public int getHandkerchiefColor(){
+        return this.entityData.get(HANDKERCHIEF_COLOR);
+    }
 
-    public boolean getIsHowling() {
-        return this.entityData.get(HOWLING);}
+    public void setHandkerchiefColor(int color){
+        this.entityData.set(HANDKERCHIEF_COLOR, color);
+    }
 
-    public void setIsHowling(boolean howling) {
-        this.entityData.set(HOWLING, howling);}
+    public boolean getHasHandkerchief(){
+        return this.entityData.get(HAS_HANDKERCHIEF);
+    }
 
-    //variant stuff
-    public void determineVariant(int variantChange){
-        this.setVariant(0);}
+    public boolean hasHandkerchief(){
+        return getHasHandkerchief();
+    }
 
-    public int getVariant() {
-        return this.entityData.get(VARIANT);}
-
-    public void setVariant(int variant) {
-        this.entityData.set(VARIANT, variant);}
-
-    //yawning
-    public int getYawningTime(){
-        return this.entityData.get(YAWNING_TIME);}
-
-    public void setYawningTime(int yawningTicksTime){
-        this.entityData.set(YAWNING_TIME, yawningTicksTime);}
-
-    public boolean getIsYawning() {
-        return this.entityData.get(YAWNING);}
-
-    public void setIsYawning(boolean yawning) {
-        this.entityData.set(YAWNING, yawning);}
+    public void setHasHandkerchief(boolean hasHandkerchief){
+        this.entityData.set(HAS_HANDKERCHIEF, hasHandkerchief);
+    }
 
     public Item getWoolType(int variantColor){
         return switch(variantColor){
@@ -164,6 +162,43 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
             default -> Items.AIR;
         };
     }
+    //howling
+    public int getHowlingTime(){
+        return this.entityData.get(HOWLING_TIME);}
+
+    public void setHowlingTime(int howlingTicksTime){
+        this.entityData.set(HOWLING_TIME, howlingTicksTime);}
+
+    public boolean getIsHowling() {
+        return this.entityData.get(HOWLING);}
+
+    public void setIsHowling(boolean howling) {
+        this.entityData.set(HOWLING, howling);}
+
+    /*
+    //variant stuff
+    public void determineVariant(int variantChange){
+        this.setVariant(0);}
+
+    public int getVariant() {
+        return this.entityData.get(VARIANT);}
+
+    public void setVariant(int variant) {
+        this.entityData.set(VARIANT, variant);}
+    */
+
+    //yawning
+    public int getYawningTime(){
+        return this.entityData.get(YAWNING_TIME);}
+
+    public void setYawningTime(int yawningTicksTime){
+        this.entityData.set(YAWNING_TIME, yawningTicksTime);}
+
+    public boolean getIsYawning() {
+        return this.entityData.get(YAWNING);}
+
+    public void setIsYawning(boolean yawning) {
+        this.entityData.set(YAWNING, yawning);}
 
     public void travel(Vec3 pTravelVector) {
         if (this.getIsHowling() || this.getIsYawning()) {
@@ -177,6 +212,13 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
         }
     }
 
+    //custom name
+    public boolean isMetro() {
+        String s = ChatFormatting.stripFormatting(this.getName().getString());
+        return s != null && s.toLowerCase().contains("metropolitan");
+    }
+
+    //interactions
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         InteractionResult type = super.mobInteract(player, hand);
@@ -185,33 +227,43 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
             this.usePlayerItem(player, hand, itemstack);
             this.setHowlingTime(howlTickDuration);
             return InteractionResult.SUCCESS;
+
         } else if (itemstack.is(ItemTags.WOOL)){
 
-            if (this.getVariant()!=0){this.spawnAtLocation(getWoolType(this.getVariant()));}
-            if (itemstack.is(Items.RED_WOOL)){ this.setVariant(1); }
-            else if (itemstack.is(Items.ORANGE_WOOL)){this.setVariant(2);}
-            else if (itemstack.is(Items.YELLOW_WOOL)){this.setVariant(3);}
-            else if (itemstack.is(Items.LIME_WOOL)){this.setVariant(4);}
-            else if (itemstack.is(Items.GREEN_WOOL)){this.setVariant(5);}
-            else if (itemstack.is(Items.CYAN_WOOL)){this.setVariant(6);}
-            else if (itemstack.is(Items.LIGHT_BLUE_WOOL)){this.setVariant(7);}
-            else if (itemstack.is(Items.BLUE_WOOL)){this.setVariant(8);}
-            else if (itemstack.is(Items.PURPLE_WOOL)){this.setVariant(9);}
-            else if (itemstack.is(Items.MAGENTA_WOOL)){this.setVariant(10);}
-            else if (itemstack.is(Items.PINK_WOOL)){this.setVariant(11);}
-            else if (itemstack.is(Items.BROWN_WOOL)){this.setVariant(12);}
-            else if (itemstack.is(Items.BLACK_WOOL)){this.setVariant(13);}
-            else if (itemstack.is(Items.GRAY_WOOL)){this.setVariant(14);}
-            else if (itemstack.is(Items.LIGHT_GRAY_WOOL)){this.setVariant(15);}
-            else {this.setVariant(16);}
+            if (this.hasHandkerchief()){
+                this.spawnAtLocation(getWoolType(this.getHandkerchiefColor()));
+            }
+            else {
+                this.setHasHandkerchief(true);
+            }
+
+            if (itemstack.is(Items.RED_WOOL)){ this.setHandkerchiefColor(1); }
+            else if (itemstack.is(Items.ORANGE_WOOL)){this.setHandkerchiefColor(2);}
+            else if (itemstack.is(Items.YELLOW_WOOL)){this.setHandkerchiefColor(3);}
+            else if (itemstack.is(Items.LIME_WOOL)){this.setHandkerchiefColor(4);}
+            else if (itemstack.is(Items.GREEN_WOOL)){this.setHandkerchiefColor(5);}
+            else if (itemstack.is(Items.CYAN_WOOL)){this.setHandkerchiefColor(6);}
+            else if (itemstack.is(Items.LIGHT_BLUE_WOOL)){this.setHandkerchiefColor(7);}
+            else if (itemstack.is(Items.BLUE_WOOL)){this.setHandkerchiefColor(8);}
+            else if (itemstack.is(Items.PURPLE_WOOL)){this.setHandkerchiefColor(9);}
+            else if (itemstack.is(Items.MAGENTA_WOOL)){this.setHandkerchiefColor(10);}
+            else if (itemstack.is(Items.PINK_WOOL)){this.setHandkerchiefColor(11);}
+            else if (itemstack.is(Items.BROWN_WOOL)){this.setHandkerchiefColor(12);}
+            else if (itemstack.is(Items.BLACK_WOOL)){this.setHandkerchiefColor(13);}
+            else if (itemstack.is(Items.GRAY_WOOL)){this.setHandkerchiefColor(14);}
+            else if (itemstack.is(Items.LIGHT_GRAY_WOOL)){this.setHandkerchiefColor(15);}
+            else {this.setHandkerchiefColor(16);}
 
             this.playSound(SoundEvents.LLAMA_SWAG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
 
             return InteractionResult.SUCCESS;
 
-        } else if (itemstack.is(Items.SHEARS) && getVariant()!= 0){
+        } else if (itemstack.is(Items.SHEARS) && this.hasHandkerchief()){
 
-            this.spawnAtLocation(this.getWoolType(this.getVariant()));
+            this.setHasHandkerchief(false);
+
+            this.spawnAtLocation(this.getWoolType(this.getHandkerchiefColor()));
+
             this.playSound(SoundEvents.SHEEP_SHEAR, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
             this.setVariant(0);
             return InteractionResult.SUCCESS;
@@ -242,8 +294,15 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
             } else {
                 this.setIsHowling(true);
             }
+            if (this.getHowlingTime()==100 && !this.level().isClientSide){
+                this.playSound(ModSounds.THYLACINE_ALERT.get());
+            }
+            if (this.getHowlingTime()==50 && !this.level().isClientSide){
+                this.playSound(SoundEvents.BELL_RESONATE);
+            }
             if (this.getHowlingTime()==30 && !this.level().isClientSide){
-                alertThreats();}
+                alertThreats();
+            }
             prevHowlTime = this.getHowlingTime();
             this.setHowlingTime(prevHowlTime - 1);
         } else if (getIsHowling()){
@@ -262,6 +321,7 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
             if (this.getIsYawning()){
                 this.getNavigation().stop();
             } else {
+                this.playSound(ModSounds.THYLACINE_YAWN.get());
                 this.setIsYawning(true);
             }
             prevYawnTime = this.getYawningTime();
@@ -282,6 +342,8 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
     protected <E extends GeoAnimatable> PlayState Controller(AnimationState<E> event) {
         if (this.isFromBook()){
             return PlayState.STOP;
+        } else if (this.isInWater() && !this.onGround()) {
+            event.setAndContinue(THYLA_SWIM);
         } else if (this.getIsHowling() && this.onGround() && !this.getIsYawning()){
             event.setAndContinue(THYLA_HOWL);
         } else if (this.getIsYawning() && this.onGround() && !this.getIsHowling()){
@@ -365,6 +427,18 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
     @Override
     public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
         return null;
+    }
+
+    protected SoundEvent getAmbientSound() {
+        return ModSounds.THYLACINE_IDLE.get();
+    }
+
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+        return ModSounds.THYLACINE_HURT.get();
+    }
+
+    protected SoundEvent getDeathSound() {
+        return ModSounds.THYLACINE_DEATH.get();
     }
 
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);

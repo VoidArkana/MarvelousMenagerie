@@ -11,19 +11,21 @@ import software.bernie.geckolib.model.data.EntityModelData;
 
 public class ElephantBirdModel extends GeoModel<ElephantBirdEntity> {
 
+    private static final ResourceLocation REGULAR_TEXTURE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/elephant_bird.png");
+    private static final ResourceLocation BABY_TEXTURE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/baby_elephant_bird.png");
+
+    private static final ResourceLocation REGULAR_MODEL = new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/elephant_bird.geo.json");
+    private static final ResourceLocation BABY_MODEL = new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/baby_elephant_bird.geo.json");
+
+
     @Override
     public ResourceLocation getModelResource(ElephantBirdEntity elephantBirdEntity) {
-        if (elephantBirdEntity.isBaby()){
-            return new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/baby_elephant_bird.geo.json");
-        }
-        else {
-            return new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/elephant_bird.geo.json");
-        }
+        return elephantBirdEntity.isBaby() ? BABY_MODEL : REGULAR_MODEL;
     }
 
     @Override
     public ResourceLocation getTextureResource(ElephantBirdEntity elephantBirdEntity) {
-        return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/elephant_bird.png");
+        return elephantBirdEntity.isBaby() ? BABY_TEXTURE : REGULAR_TEXTURE;
     }
 
     @Override
@@ -36,10 +38,18 @@ public class ElephantBirdModel extends GeoModel<ElephantBirdEntity> {
         super.setCustomAnimations(animatable, instanceId, animationState);
 
         CoreGeoBone head = this.getAnimationProcessor().getBone("neck_x");
+        CoreGeoBone main = this.getAnimationProcessor().getBone("main");
 
+        if (animatable.isBaby()){
+            main.setScaleX(1.5F);
+            main.setScaleY(1.5F);
+            main.setScaleZ(1.5F);
+        }
+        
         EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
         head.setRotX(((entityData.headPitch() * ((float) Math.PI / 180F))*0.75F));
         head.setRotY(((entityData.netHeadYaw() * ((float) Math.PI / 180F))*0.75F));
+
     }
 
 }

@@ -87,7 +87,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(UPTags.ANALYZER_ITEMS_OUTPUT_PLANT).add(
-                ModItems.SIGILLARIA_DNA.get()
+                ModItems.SIGILLARIA_DNA.get(),
+                ModItems.COOKSONIA_DNA.get()
         );
 
         this.tag(UPTags.PETRIFIED_WOOD).add(
@@ -106,7 +107,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 ModItems.ELEPHANT_BIRD_DNA.get(),
                 ModItems.STELLER_SEA_COW_DNA.get(),
                 ModItems.THYLACINE_DNA.get(),
-                ModItems.SIGILLARIA_DNA.get()
+                ModItems.SIGILLARIA_DNA.get(),
+                ModItems.COOKSONIA_DNA.get()
         );
     }
 }

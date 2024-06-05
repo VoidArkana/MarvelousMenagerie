@@ -1,6 +1,7 @@
 package net.voidarkana.marvelous_menagerie.entity.custom;
 
 import com.peeko32213.unusualprehistory.common.entity.msc.util.dino.EntityBaseDinosaurAnimal;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -11,7 +12,9 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -24,6 +27,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.voidarkana.marvelous_menagerie.item.ModItems;
+import net.voidarkana.marvelous_menagerie.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -32,6 +36,8 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
+
+import java.util.Iterator;
 
 public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
 
@@ -42,9 +48,13 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
     private static final EntityDataAccessor<Integer> TIME_TO_EAT = SynchedEntityData.defineId(ElephantBirdEntity.class, EntityDataSerializers.INT);
     int prevEatenTime;
 
+    protected static final RawAnimation BABY_WALK = RawAnimation.begin().thenLoop("animation.elephant_bird.baby_walk");
     protected static final RawAnimation ELE_WALK = RawAnimation.begin().thenLoop("animation.elephant_bird.walk");
     protected static final RawAnimation ELE_IDLE = RawAnimation.begin().thenLoop("animation.elephant_bird.idle");
+    protected static final RawAnimation BABY_SWIM = RawAnimation.begin().thenLoop("animation.elephant_bird.baby_swim");
+    protected static final RawAnimation ELE_SWIM = RawAnimation.begin().thenLoop("animation.elephant_bird.swim");
 
+    
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 30.0)
@@ -120,24 +130,93 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(new AnimationController[]{new AnimationController(this, "Normal", 20, this::Controller)});
+        controllerRegistrar.add(new AnimationController[]{new AnimationController(this, "Normal", 10, this::Controller)});
     }
 
     protected <E extends GeoAnimatable> PlayState Controller(AnimationState<E> event) {
         if (this.isFromBook()){
             return PlayState.STOP;
-        }else if(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && this.onGround()) {
-            event.setAndContinue(ELE_WALK);
+        }else if (this.isInWater() && !this.onGround()){
             if (this.isBaby()){
-                event.getController().setAnimationSpeed(1.25f);
+                event.setAndContinue(BABY_SWIM);
+            }else{
+                event.setAndContinue(ELE_SWIM);
+            }
+        } else if(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && this.onGround()) {
+            if (this.isBaby()){
+                event.setAndContinue(BABY_WALK);
+                //event.getController().setAnimationSpeed(1.25f);
             }
             else {
-                event.getController().setAnimationSpeed(1f);
+                event.setAndContinue(ELE_WALK);
+                //event.getController().setAnimationSpeed(1f);
             }
         } else if (this.onGround()){
             event.setAndContinue(ELE_IDLE);
         }
         return PlayState.CONTINUE;
+    }
+
+    protected void playStepSound(BlockPos p_28301_, BlockState p_28302_) {
+        if(this.isBaby()){
+            this.playSound(SoundEvents.CHICKEN_STEP, 0.15F, 1.0F);
+        }
+        else{
+            this.playSound(SoundEvents.CAMEL_STEP, 0.25F, 1.0F);
+        }
+    }
+
+    @Override
+    public boolean causeFallDamage(float pFallDistance, float pMultiplier, DamageSource pSource) {
+        if (pFallDistance > 1.0F) {
+            if (this.isBaby()){
+                this.playSound(SoundEvents.HORSE_LAND, 0F, 1.0F);
+            }
+            else {
+                this.playSound(SoundEvents.HORSE_LAND, 0.15F, 1.0F);
+            }
+        }
+
+        int i = this.calculateFallDamage(pFallDistance, pMultiplier);
+        if (i <= 0) {
+            return false;
+        } else {
+            this.hurt(pSource, (float)i);
+            if (this.isVehicle()) {
+                Iterator var5 = this.getIndirectPassengers().iterator();
+
+                while(var5.hasNext()) {
+                    Entity entity = (Entity)var5.next();
+                    entity.hurt(pSource, (float)i);
+                }
+            }
+
+            return true;
+        }
+    }
+
+    protected SoundEvent getAmbientSound() {
+        if (this.isBaby()){
+            return ModSounds.BABY_ELE_IDLE.get();
+        }else {
+            return ModSounds.ELE_IDLE.get();
+        }
+    }
+
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+        if (this.isBaby()){
+            return ModSounds.BABY_ELE_HURT.get();
+        }else {
+            return ModSounds.ELE_HURT.get();
+        }
+    }
+
+    protected SoundEvent getDeathSound() {
+        if (this.isBaby()){
+            return ModSounds.BABY_ELE_DEATH.get();
+        }else {
+            return ModSounds.ELE_DEATH.get();
+        }
     }
 
     @Override

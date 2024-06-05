@@ -1,0 +1,247 @@
+{
+  "dodo_idle": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:dodo_idle_0"
+      },
+      {
+        "name": "marvelous_menagerie:dodo_idle_1"
+      },
+      {
+        "name": "marvelous_menagerie:dodo_idle_2"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.dodo_idle"
+  },
+  "dodo_hurt": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:dodo_hurt_0"
+      },
+      {
+        "name": "marvelous_menagerie:dodo_hurt_1"
+      },
+      {
+        "name": "marvelous_menagerie:dodo_hurt_2"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.dodo_hurt"
+  },
+  "dodo_death": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:dodo_death"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.dodo_death"
+  },
+
+  "elephant_bird_idle": {
+  "category": "neutral",
+  "sounds": [
+    {
+      "name": "marvelous_menagerie:elephant_bird_idle_0"
+    },
+    {
+      "name": "marvelous_menagerie:elephant_bird_idle_1"
+    },
+    {
+      "name": "marvelous_menagerie:elephant_bird_idle_2"
+    }
+  ],
+  "subtitle": "marvelous_menagerie.sound.subtitle.elephant_bird_idle"
+},
+  "elephant_bird_hurt": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:elephant_bird_hurt_0"
+      },
+      {
+        "name": "marvelous_menagerie:elephant_bird_hurt_1"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.elephant_bird_hurt"
+  },
+  "elephant_bird_death": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:elephant_bird_death"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.elephant_bird_death"
+  },
+
+  "baby_elephant_bird_idle": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:elephant_bird_baby_idle_0"
+      },
+      {
+        "name": "marvelous_menagerie:elephant_bird_baby_idle_1"
+      },
+      {
+        "name": "marvelous_menagerie:elephant_bird_baby_idle_2"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.elephant_bird_baby_idle"
+  },
+  "baby_elephant_bird_hurt": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:elephant_bird_baby_hurt_0"
+      },
+      {
+        "name": "marvelous_menagerie:elephant_bird_baby_hurt_1"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.elephant_bird_baby_hurt"
+  },
+  "baby_elephant_bird_death": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:elephant_bird_baby_death"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.elephant_bird_baby_death"
+  },
+
+
+  "steller_idle": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:steller_idle_0"
+      },
+      {
+        "name": "marvelous_menagerie:steller_idle_1"
+      },
+      {
+        "name": "marvelous_menagerie:steller_idle_2"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.steller_idle"
+  },
+  "steller_hurt": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:steller_hurt_0"
+      },
+      {
+        "name": "marvelous_menagerie:steller_hurt_1"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.steller_hurt"
+  },
+  "steller_death": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:steller_death"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.steller_death"
+  },
+  "steller_land_hurt": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:steller_land_hurt_0"
+      },
+      {
+        "name": "marvelous_menagerie:steller_land_hurt_1"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.steller_land_hurt"
+  },
+
+
+  "dolphin_blowhole": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:dolphin_blowhole_0"
+      },
+      {
+        "name": "marvelous_menagerie:dolphin_blowhole_1"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.dolphin_blowhole"
+  },
+
+
+  "thylacine_idle": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:thylacine_idle_1"
+      },
+      {
+        "name": "marvelous_menagerie:thylacine_idle_2"
+      },
+      {
+        "name": "marvelous_menagerie:thylacine_idle_3"
+      },
+      {
+        "name": "marvelous_menagerie:thylacine_idle_4"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.thylacine_idle"
+  },
+  "thylacine_hurt": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:thylacine_hurt_0"
+      },
+      {
+        "name": "marvelous_menagerie:thylacine_hurt_1"
+      },
+      {
+        "name": "marvelous_menagerie:thylacine_hurt_2"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.thylacine_hurt"
+  },
+  "thylacine_death": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:thylacine_death"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.thylacine_death"
+  },
+  "thylacine_yawn": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:thylacine_yawn_0"
+      },
+      {
+        "name": "marvelous_menagerie:thylacine_yawn_1"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.thylacine_yawn"
+  },
+  "thylacine_alert": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:thylacine_alert_0"
+      },
+      {
+        "name": "marvelous_menagerie:thylacine_alert_1"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.thylacine_howl"
+  }
+}

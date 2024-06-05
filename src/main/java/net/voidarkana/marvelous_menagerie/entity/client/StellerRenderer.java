@@ -11,6 +11,7 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 public class StellerRenderer extends GeoEntityRenderer<StellerEntity> {
 
     private static final ResourceLocation STELLER_NORMAL = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/steller_sea_cow.png");
+    //private static final ResourceLocation STELLAR_COW = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/stellar_sea_cow.png");
 
     public StellerRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new StellerModel());
@@ -18,7 +19,8 @@ public class StellerRenderer extends GeoEntityRenderer<StellerEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(StellerEntity entity) {
-        return STELLER_NORMAL; //return entity.isSteller ? STELLAR_COW : STELLER_NORMAL ;
+        //return entity.isStellar() ? STELLAR_COW : STELLER_NORMAL ;
+        return STELLER_NORMAL;
     }
 
     @Override

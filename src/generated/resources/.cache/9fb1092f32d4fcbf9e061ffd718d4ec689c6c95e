@@ -1,4 +1,4 @@
-// 1.20.1	2024-05-26T00:02:26.1665376	Recipes
+// 1.20.1	2024-06-04T00:13:03.8609894	Recipes
 7f3a48751d56491d8e365f5a538b48d60f19357c data/marvelous_menagerie/advancements/recipes/building_blocks/sigillaria_button.json
 dedb68eaf70bdcd3b972e5a5b0caf716a3b9ecf2 data/marvelous_menagerie/advancements/recipes/building_blocks/sigillaria_door.json
 4e2b69e37ac48f9345d62a9b1fcc9078ad2af3cb data/marvelous_menagerie/advancements/recipes/building_blocks/sigillaria_fence.json
@@ -37,3 +37,5 @@ bb0f2d328fc9516f15b2b761ec16545da7d7dfc2 data/marvelous_menagerie/recipes/sigill
 b259669fa9b589bd972daa3f06030fae5fb0dfdc data/marvelous_menagerie/recipes/sigillaria_wood.json
 cd46c8c8cd38700b3da0105b7f6c421efcb55b48 data/marvelous_menagerie/recipes/steller_ice_cream.json
 b8f7d36d1c128c91e542c193868edbac584a5690 data/marvelous_menagerie/recipes/stripped_sigillaria_wood.json
+90509944f63e558d1155bbfd23db262dac199386 data/minecraft/advancements/recipes/misc/lime_dye.json
+0ef26ed4b2f4d6c8d0acd9a6a7dd17e83bba2db7 data/minecraft/recipes/lime_dye.json

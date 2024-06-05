@@ -25,7 +25,12 @@ public class DodoModel extends GeoModel<DodoEntity> {
 
     @Override
     public ResourceLocation getTextureResource(DodoEntity object) {
-        return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo.png");
+        if (object.isBaby()){
+            return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo/baby_dodo.png");
+        }
+        else {
+            return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo/dodo.png");
+        }
     }
 
     @Override
@@ -40,7 +45,7 @@ public class DodoModel extends GeoModel<DodoEntity> {
 
         if (animationEvent == null) return;
 
-        CoreGeoBone head = this.getAnimationProcessor().getBone("head_rotation");
+        CoreGeoBone head = this.getAnimationProcessor().getBone("head_rot");
 
         EntityModelData entityData = animationEvent.getData(DataTickets.ENTITY_MODEL_DATA);
             head.setRotX(-(entityData.headPitch() * ((float) Math.PI / 180F)));

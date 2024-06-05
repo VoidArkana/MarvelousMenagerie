@@ -1,11 +1,11 @@
 {
   "input": [
-    "marvelous_menagerie:steller_milk_bucket"
+    "marvelous_menagerie:steller_sea_cow_milk_bucket"
   ],
   "entries": [
     {
       "weight": 100,
-      "item": "marvelous_menagerie:steller_sea_cow_milk_bucket"
+      "item": "marvelous_menagerie:steller_sea_cow_dna"
     }
   ]
 }

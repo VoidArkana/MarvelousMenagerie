@@ -15,6 +15,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -40,6 +41,7 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.Vec3;
 import net.voidarkana.marvelous_menagerie.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.item.ModItems;
+import net.voidarkana.marvelous_menagerie.sound.ModSounds;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -470,5 +472,25 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
 
     public boolean shouldDropExperience() {
         return false;
+    }
+
+    protected SoundEvent getAmbientSound() {
+        if (this.isEyeInFluid(FluidTags.WATER)){
+            return ModSounds.STELLER_IDLE.get();
+        }else {
+            return ModSounds.DOLPHIN_BLOWHOLE.get();
+        }
+    }
+
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+        if (this.isEyeInFluid(FluidTags.WATER)){
+            return ModSounds.STELLER_HURT.get();
+        }else {
+            return ModSounds.STELLER_LAND_HURT.get();
+        }
+    }
+
+    protected SoundEvent getDeathSound() {
+        return ModSounds.STELLER_DEATH.get();
     }
 }

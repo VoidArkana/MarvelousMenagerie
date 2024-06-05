@@ -17,7 +17,8 @@ public class ModEventBusEvents {
         event.put(ModEntities.ELEPHANT_BIRD.get(), ElephantBirdEntity.createAttributes().build());
         event.put(ModEntities.STELLER_SEA_COW.get(), StellerEntity.createAttributes().build());
         event.put(ModEntities.BABY_STELLER_SEA_COW.get(), BabyStellerEntity.createAttributes().build());
-        event.put(ModEntities.SIGILLARIA_SAPLING_ENTITY.get(), DodoEntity.createAttributes().build());
+        event.put(ModEntities.SIGILLARIA_SAPLING_ENTITY.get(), PlantEntity.createAttributes().build());
+        event.put(ModEntities.COOKSONIA_ENTITY.get(), PlantEntity.createAttributes().build());
     }
 
 

@@ -23,7 +23,7 @@ public class PlantEntity extends LivingEntity implements GeoEntity {
         super(pEntityType, pLevel);
     }
 
-    public static AttributeSupplier.Builder bakeAttributes() {
+    public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
                 //HEALTH
                 .add(Attributes.MAX_HEALTH, 1.0D)

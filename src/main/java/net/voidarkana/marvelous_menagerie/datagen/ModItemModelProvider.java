@@ -50,6 +50,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.STELLER_SEA_COW_DNA);
         simpleItem(ModItems.THYLACINE_DNA);
         simpleItem(ModItems.SIGILLARIA_DNA);
+        simpleItem(ModItems.COOKSONIA_DNA);
 
         simpleItem(ModItems.THYLA_EMBRYO);
         simpleItem(ModItems.STELLER_EMBRYO);
@@ -81,6 +82,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.SIGILLARIA_HANGING_SIGN);
 
         saplingItem(ModBlocks.SIGILLARIA_SAPLING);
+        saplingItem(ModBlocks.COOKSONIA);
 
         withExistingParent(ModItems.DODO_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.THYLA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));

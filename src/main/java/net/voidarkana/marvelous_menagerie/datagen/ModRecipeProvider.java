@@ -93,5 +93,11 @@ public class ModRecipeProvider extends UPRecipeProvider implements IConditionBui
                 .define('B', Items.BOWL)
                 .unlockedBy(getHasName(ModItems.STELLER_MILK.get()), has(ModItems.STELLER_MILK.get()))
                 .save(consumer);
+
+        //Lime Pigment From Cooksonia
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.LIME_DYE, 1)
+                .requires(ModBlocks.COOKSONIA.get())
+                .unlockedBy(getHasName(ModBlocks.COOKSONIA.get()), has(ModBlocks.COOKSONIA.get()))
+                .save(consumer);
     }
 }

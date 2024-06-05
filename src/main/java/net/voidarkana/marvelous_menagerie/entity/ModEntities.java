@@ -31,7 +31,7 @@ public class ModEntities {
     public static final RegistryObject<EntityType<ElephantBirdEntity>> ELEPHANT_BIRD =
             ENTITY_TYPES.register("elephant_bird",
                     () -> EntityType.Builder.of(ElephantBirdEntity::new, MobCategory.CREATURE)
-                            .sized(1.2f, 2.75f)
+                            .sized(1.2f, 3.2f)
                             .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "elephant_bird").toString()));
 
     public static final RegistryObject<EntityType<StellerEntity>> STELLER_SEA_COW =
@@ -54,6 +54,14 @@ public class ModEntities {
                             .fireImmune()
                             .sized(1,1F)
                             .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "sigillaria_sapling").toString()));
+
+    public static final RegistryObject<EntityType<PlantEntity>> COOKSONIA_ENTITY =
+            ENTITY_TYPES.register("cooksonia_entity",
+                    () -> EntityType.Builder.of(PlantEntity::new, MobCategory.MISC)
+                            .noSummon()
+                            .fireImmune()
+                            .sized(1,1F)
+                            .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "cooksonia").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
