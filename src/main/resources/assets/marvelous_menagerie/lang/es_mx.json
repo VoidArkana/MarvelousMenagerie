@@ -1,0 +1,95 @@
+{
+  "item.marvelous_menagerie.dodo_dna": "Frasco de ADN de Dodo",
+  "item.marvelous_menagerie.elephant_bird_dna": "Frasco de ADN de Ave Elefante",
+  "item.marvelous_menagerie.steller_sea_cow_dna": "Frasco de ADN de Vaca Marina de Steller",
+  "item.marvelous_menagerie.thylacine_dna": "Frasco de ADN de Tilacino",
+
+  "entity.marvelous_menagerie.dodo": "Dodo",
+  "entity.marvelous_menagerie.thylacine": "Tilacino",
+  "entity.marvelous_menagerie.elephant_bird": "Ave Elefante",
+  "entity.marvelous_menagerie.steller_sea_cow": "Vaca Marina de Steller",
+  "entity.marvelous_menagerie.baby_steller_sea_cow": "Vaca Marina de Steller",
+
+  "block.marvelous_menagerie.dodo_eggs": "Dodo Egg",
+  "block.marvelous_menagerie.elephant_bird_egg": "Elephant Bird Egg",
+  "item.marvelous_menagerie.thylacine_embryo": "Thylacine Embryo",
+  "item.marvelous_menagerie.steller_sea_cow_embryo": "Embrión de Vaca Marina de Steller",
+
+  "item.marvelous_menagerie.cracked_elephant_egg": "Huevo de Ave Elefante Roto",
+  "item.marvelous_menagerie.boiled_elephant_egg": "Huevo de Ave Elefante Duro",
+  "item.marvelous_menagerie.jumbo_omelette": "Omelet Jumbo",
+  "item.marvelous_menagerie.egg_shellmet": "Cascorón",
+  "item.marvelous_menagerie.egg_shell_fragment": "Fragmento de Cascarón de Huevo de Ave Elefante",
+
+  "item.marvelous_menagerie.steller_sea_cow_milk_bucket": "Cubeta de leche de Vaca Marina de Steller",
+  "item.marvelous_menagerie.steller_ice_cream": "Helado de Steller",
+  "item.marvelous_menagerie.steller_bucket": "Cubeta con Vaca Marina de Steller Bebé",
+
+  "item.marvelous_menagerie.dodo_spawn_egg": "Generar Dodo",
+  "item.marvelous_menagerie.thylacine_spawn_egg": "Generar Tilacino",
+  "item.marvelous_menagerie.elephant_bird_spawn_egg": "Generar Ave Elefante",
+  "item.marvelous_menagerie.steller_sea_cow_spawn_egg": "Generar Vaca Marina de Steller",
+
+  "item.marvelous_menagerie.sigillaria_dna": "Frasco de ADN de Sigillaria",
+  "block.marvelous_menagerie.sigillaria_planks": "Tablones de Sigillaria",
+  "block.marvelous_menagerie.sigillaria_stairs": "Escaleras Sigillaria",
+  "block.marvelous_menagerie.sigillaria_slab": "Losa de Sigillaria",
+  "block.marvelous_menagerie.sigillaria_button": "Botón de Sigillaria",
+  "block.marvelous_menagerie.sigillaria_pressure_plate": "Placa de Presión de Sigillaria",
+  "block.marvelous_menagerie.sigillaria_fence": "Valla de Sigillaria",
+  "block.marvelous_menagerie.sigillaria_fence_gate": "Puerta de Valla de Sigillaria",
+
+  "block.marvelous_menagerie.sigillaria_door": "Puerta de Sigillaria",
+  "block.marvelous_menagerie.sigillaria_trapdoor": "Trampilla de Sigillaria",
+
+  "block.marvelous_menagerie.sigillaria_mosaic": "Mosaico de Sigillaria",
+  "block.marvelous_menagerie.sigillaria_mosaic_stairs": "Escaleras de Mosaico de Sigillaria",
+  "block.marvelous_menagerie.sigillaria_mosaic_slab": "Losa de Mosaico de Sigillaria",
+
+  "block.marvelous_menagerie.sigillaria_stem": "Tallo de Sigillaria",
+  "block.marvelous_menagerie.stripped_sigillaria_stem": "Tallo de Sigillaria sin Corteza",
+  "block.marvelous_menagerie.sigillaria_wood": "Leño de Sigillaria",
+  "block.marvelous_menagerie.stripped_sigillaria_wood": "Leño de Sigillaria sin Corteza",
+
+  "block.marvelous_menagerie.sigillaria_sign": "Letrero de Sigillaria",
+  "block.marvelous_menagerie.sigillaria_wall_sign": "Letrero de Sigillaria",
+  "block.marvelous_menagerie.sigillaria_wall_hanging_sign": "Letrero Colgante de Sigillaria",
+  "block.marvelous_menagerie.sigillaria_hanging_sign": "Letrero Colgante de Sigillaria",
+
+
+  "block.marvelous_menagerie.sigillaria_leaves": "Hojas de Sigillaria",
+  "block.marvelous_menagerie.sigillaria_sapling": "Retoño de Sigillaria",
+  "block.marvelous_menagerie.potted_sigillaria_sapling": "Retoño de Sigillaria en Maceta",
+
+  "effect.marvelous_menagerie.sea_cow_serenity": "Serenidad de la Vaca Marina",
+
+  "marvelous_menagerie.sound.subtitle.dodo_idle": "Dodo zurea",
+  "marvelous_menagerie.sound.subtitle.dodo_hurt": "Dodo adolorido",
+  "marvelous_menagerie.sound.subtitle.dodo_death": "Dodo muere",
+
+  "marvelous_menagerie.sound.subtitle.elephant_bird_idle": "Ave elefante brama",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_hurt": "Ave elefante adolorida",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_death": "Ave elefante muere",
+
+  "marvelous_menagerie.sound.subtitle.elephant_bird_baby_idle": "Ave elefante bebé pía",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_baby_hurt": "Ave elefante bebé adolorida",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_baby_death": "Ave elefante bebé muere",
+
+  "marvelous_menagerie.sound.subtitle.steller_idle": "Vaca Marina de Steller respira",
+  "marvelous_menagerie.sound.subtitle.steller_hurt": "Vaca Marina de Steller adolorida",
+  "marvelous_menagerie.sound.subtitle.steller_land_hurt": "Vaca Marina de Steller adolorida",
+  "marvelous_menagerie.sound.subtitle.steller_death": "Vaca Marina de Steller muere",
+
+  "marvelous_menagerie.sound.subtitle.dolphin_blowhole": "Criatura marina exhala",
+
+  "marvelous_menagerie.sound.subtitle.thylacine_idle": "Tilacino ladra",
+  "marvelous_menagerie.sound.subtitle.thylacine_hurt": "Tilacino adolorido",
+  "marvelous_menagerie.sound.subtitle.thylacine_death": "Tilacino muere",
+  "marvelous_menagerie.sound.subtitle.thylacine_howl": "Tilacino alerta",
+  "marvelous_menagerie.sound.subtitle.thylacine_yawn": "Tilacino bosteza",
+
+  "item.marvelous_menagerie.cooksonia_dna": "Frasco de ADN de Cooksonia",
+  "block.marvelous_menagerie.cooksonia": "Cooksonia",
+
+  "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
+}

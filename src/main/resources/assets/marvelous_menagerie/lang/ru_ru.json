@@ -1,33 +1,33 @@
 {
-  "item.marvelous_menagerie.dodo_dna": "Колба с ДНК Дронта",
-  "item.marvelous_menagerie.elephant_bird_dna": "Колба с ДНК Слоновой птицы",
+  "item.marvelous_menagerie.dodo_dna": "Колба с ДНК Додо",
+  "item.marvelous_menagerie.elephant_bird_dna": "Колба с ДНК Эпиорниса",
   "item.marvelous_menagerie.steller_sea_cow_dna": "Колба с ДНК Стеллеровой коровы",
   "item.marvelous_menagerie.thylacine_dna": "Колба с ДНК Тилацина",
 
-  "entity.marvelous_menagerie.dodo": "Дронт",
+  "entity.marvelous_menagerie.dodo": "Додо",
   "entity.marvelous_menagerie.thylacine": "Тилацин",
-  "entity.marvelous_menagerie.elephant_bird": "Слоновая птица",
+  "entity.marvelous_menagerie.elephant_bird": "Эпиорнис",
   "entity.marvelous_menagerie.steller_sea_cow": "Стеллерова корова",
   "entity.marvelous_menagerie.baby_steller_sea_cow": "Стеллерова корова",
 
-  "block.marvelous_menagerie.dodo_eggs": "Яйцо Дронта",
-  "block.marvelous_menagerie.elephant_bird_egg": "Яйцо Слоновой птицы",
+  "block.marvelous_menagerie.dodo_eggs": "Яйцо Додо",
+  "block.marvelous_menagerie.elephant_bird_egg": "Яйцо Эпиорниса",
   "item.marvelous_menagerie.thylacine_embryo": "Эмбрион Тилацина",
   "item.marvelous_menagerie.steller_sea_cow_embryo": "Эмбрион Стеллеровой коровы",
 
-  "item.marvelous_menagerie.cracked_elephant_egg": "Треснувшее яйцо Слоновой птицы",
-  "item.marvelous_menagerie.boiled_elephant_egg": "Сваренное вкрутую яйцо Слоновой птицы",
+  "item.marvelous_menagerie.cracked_elephant_egg": "Треснувшее яйцо Эпиорниса",
+  "item.marvelous_menagerie.boiled_elephant_egg": "Сваренное вкрутую яйцо Эпиорниса",
   "item.marvelous_menagerie.jumbo_omelette": "Гигантский омлет",
-  "item.marvelous_menagerie.egg_shellmet": "Яичная скорлупа",
-  "item.marvelous_menagerie.egg_shell_fragment": "Фрагмент яичной скорлупы Слоновой птицы",
+  "item.marvelous_menagerie.egg_shellmet": "Шлем из скорлупы",
+  "item.marvelous_menagerie.egg_shell_fragment": "Фрагмент яичной скорлупы Эпиорниса",
 
   "item.marvelous_menagerie.steller_sea_cow_milk_bucket": "Ведро молока Стеллеровой коровы",
-  "item.marvelous_menagerie.steller_ice_cream": "Мороженое",
-  "item.marvelous_menagerie.steller_bucket": "Ведро с детенышем Стеллерова коровы",
+  "item.marvelous_menagerie.steller_ice_cream": "Стеллерово мороженое",
+  "item.marvelous_menagerie.steller_bucket": "Ведро с детенышем Стеллеровой коровы",
 
-  "item.marvelous_menagerie.dodo_spawn_egg": "Яйцо призыва Дронта",
+  "item.marvelous_menagerie.dodo_spawn_egg": "Яйцо призыва Додо",
   "item.marvelous_menagerie.thylacine_spawn_egg": "Яйцо призыва Тилацина",
-  "item.marvelous_menagerie.elephant_bird_spawn_egg": "Яйцо призыва Слоновой птицы",
+  "item.marvelous_menagerie.elephant_bird_spawn_egg": "Яйцо призыва Эпиорниса",
   "item.marvelous_menagerie.steller_sea_cow_spawn_egg": "Яйцо призыва Стеллеровой коровы",
 
   "item.marvelous_menagerie.sigillaria_dna": "Колба с ДНК Сигиллярии",
@@ -61,19 +61,19 @@
   "block.marvelous_menagerie.sigillaria_sapling": "Саженец Сигиллярии",
   "block.marvelous_menagerie.potted_sigillaria_sapling": "Саженец Сигиллярии в горшке",
 
-  "effect.marvelous_menagerie.sea_cow_serenity": "Морская корова поет",
+  "effect.marvelous_menagerie.sea_cow_serenity": "Стеллерова корова поет",
 
-  "marvelous_menagerie.sound.subtitle.dodo_idle": "Дронт воркует",
-  "marvelous_menagerie.sound.subtitle.dodo_hurt": "Дронт кричит",
-  "marvelous_menagerie.sound.subtitle.dodo_death": "Дронт погиб",
+  "marvelous_menagerie.sound.subtitle.dodo_idle": "Додо воркует",
+  "marvelous_menagerie.sound.subtitle.dodo_hurt": "Додо кричит",
+  "marvelous_menagerie.sound.subtitle.dodo_death": "Додо погиб",
 
-  "marvelous_menagerie.sound.subtitle.elephant_bird_idle": "Слоновая птица воркует",
-  "marvelous_menagerie.sound.subtitle.elephant_bird_hurt": "Слоновая птица кричит",
-  "marvelous_menagerie.sound.subtitle.elephant_bird_death": "Слоновая птица погибла",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_idle": "Эпиорнис воркует",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_hurt": "Эпиорнис кричит",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_death": "Эпиорнис погиб",
 
-  "marvelous_menagerie.sound.subtitle.elephant_bird_baby_idle": "Детеныш слоновой птицы чирикает",
-  "marvelous_menagerie.sound.subtitle.elephant_bird_baby_hurt": "Детеныш слоновой птицы кричит",
-  "marvelous_menagerie.sound.subtitle.elephant_bird_baby_death": "Детеныш слоновой птицы погиб",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_baby_idle": "Детеныш Эпиорниса чирикает",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_baby_hurt": "Детеныш Эпиорниса кричит",
+  "marvelous_menagerie.sound.subtitle.elephant_bird_baby_death": "Детеныш Эпиорниса погиб",
 
   "marvelous_menagerie.sound.subtitle.steller_idle": "Стеллерова корова плавает",
   "marvelous_menagerie.sound.subtitle.steller_hurt": "Стеллерова корова ранена",
@@ -86,7 +86,7 @@
   "marvelous_menagerie.sound.subtitle.thylacine_hurt": "Тилацин ранен",
   "marvelous_menagerie.sound.subtitle.thylacine_death": "Тилацин погиб",
   "marvelous_menagerie.sound.subtitle.thylacine_howl": "Тилацин предупреждает",
-  "marvelous_menagerie.sound.subtitle.thylacine_yawn": "Тилацин зевает"
+  "marvelous_menagerie.sound.subtitle.thylacine_yawn": "Тилацин зевает",
 
   "item.marvelous_menagerie.cooksonia_dna": "Колба с ДНК Куксонии",
   "block.marvelous_menagerie.cooksonia": "Куксония",
