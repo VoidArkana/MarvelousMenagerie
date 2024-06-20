@@ -31,11 +31,14 @@ public class BabyStellerModel extends GeoModel<BabyStellerEntity> {
 
         CoreGeoBone head = this.getAnimationProcessor().getBone("head");
 
+        CoreGeoBone body = this.getAnimationProcessor().getBone("body");
+
         EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
 
-        head.setRotX(((entityData.headPitch() * ((float) Math.PI / 180F))*0.5F));
+        head.setRotX(((entityData.headPitch() * ((float) Math.PI / 180F))*0.25F));
         head.setRotY(((entityData.netHeadYaw() * ((float) Math.PI / 180F))*0.25F));
 
+        body.setRotX(((entityData.headPitch() * ((float) Math.PI / 180F))*0.6F));
     }
 
 }

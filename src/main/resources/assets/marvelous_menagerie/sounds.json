@@ -40,19 +40,31 @@
   },
 
   "elephant_bird_idle": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:elephant_bird_idle_0"
+      },
+      {
+        "name": "marvelous_menagerie:elephant_bird_idle_1"
+      },
+      {
+        "name": "marvelous_menagerie:elephant_bird_idle_2"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.elephant_bird_idle"
+  },
+  "elephant_bird_grumble": {
   "category": "neutral",
   "sounds": [
     {
-      "name": "marvelous_menagerie:elephant_bird_idle_0"
+      "name": "marvelous_menagerie:elephant_bird_grumble_0"
     },
     {
-      "name": "marvelous_menagerie:elephant_bird_idle_1"
-    },
-    {
-      "name": "marvelous_menagerie:elephant_bird_idle_2"
+      "name": "marvelous_menagerie:elephant_bird_grumble_1"
     }
   ],
-  "subtitle": "marvelous_menagerie.sound.subtitle.elephant_bird_idle"
+  "subtitle": "marvelous_menagerie.sound.subtitle.elephant_bird_grumble"
 },
   "elephant_bird_hurt": {
     "category": "neutral",

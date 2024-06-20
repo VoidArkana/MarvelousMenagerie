@@ -31,6 +31,25 @@ public class ThylacineHandkerchiefLayer extends GeoRenderLayer<ThylacineEntity> 
     private static final ResourceLocation LIGHT_GRAY = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/light_gray.png");
     private static final ResourceLocation WHITE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/white.png");
 
+
+    private static final ResourceLocation AMBER = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/amber.png");
+    private static final ResourceLocation AQUA = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/aqua.png");
+    private static final ResourceLocation BEIGE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/beige.png");
+    private static final ResourceLocation CORAL = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/coral.png");
+    private static final ResourceLocation FOREST = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/forest.png");
+    private static final ResourceLocation GINGER = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/ginger.png");
+    private static final ResourceLocation INDIGO = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/indigo.png");
+    private static final ResourceLocation MAROON = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/maroon.png");
+    private static final ResourceLocation MINT = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/mint.png");
+    private static final ResourceLocation NAVY = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/navy.png");
+    private static final ResourceLocation OLIVE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/olive.png");
+    private static final ResourceLocation ROSE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/rose.png");
+    private static final ResourceLocation SLATE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/slate.png");
+    private static final ResourceLocation TAN = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/tan.png");
+    private static final ResourceLocation TEAL = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/teal.png");
+    private static final ResourceLocation VERDANT = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/thylacine/handkerchief/dye_depot/verdant.png");
+
+
     private static final ResourceLocation MODEL = new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/thylacine.geo.json");
     private static final ResourceLocation BABY_MODEL = new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/baby_thylacine.geo.json");
 
@@ -62,6 +81,24 @@ public class ThylacineHandkerchiefLayer extends GeoRenderLayer<ThylacineEntity> 
                 case 13 -> cameo = RenderType.entityCutout(BLACK);
                 case 14 -> cameo = RenderType.entityCutout(GRAY);
                 case 15 -> cameo = RenderType.entityCutout(LIGHT_GRAY);
+
+                case 16 -> cameo = RenderType.entityCutout(AMBER);
+                case 17 -> cameo = RenderType.entityCutout(AQUA);
+                case 18 -> cameo = RenderType.entityCutout(BEIGE);
+                case 19 -> cameo = RenderType.entityCutout(CORAL);
+                case 20 -> cameo = RenderType.entityCutout(FOREST);
+                case 21 -> cameo = RenderType.entityCutout(GINGER);
+                case 22 -> cameo = RenderType.entityCutout(INDIGO);
+                case 23 -> cameo = RenderType.entityCutout(MAROON);
+                case 24 -> cameo = RenderType.entityCutout(MINT);
+                case 25 -> cameo = RenderType.entityCutout(NAVY);
+                case 26 -> cameo = RenderType.entityCutout(OLIVE);
+                case 27 -> cameo = RenderType.entityCutout(ROSE);
+                case 28 -> cameo = RenderType.entityCutout(SLATE);
+                case 29 -> cameo = RenderType.entityCutout(TAN);
+                case 30 -> cameo = RenderType.entityCutout(TEAL);
+                case 31 -> cameo = RenderType.entityCutout(VERDANT);
+
                 default -> cameo = RenderType.entityCutout(WHITE);
             };
 

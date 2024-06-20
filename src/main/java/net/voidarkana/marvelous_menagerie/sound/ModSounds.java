@@ -18,6 +18,7 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> DODO_DEATH = registerSoundEvents("dodo_death");
 
     public static final RegistryObject<SoundEvent> ELE_IDLE = registerSoundEvents("elephant_bird_idle");
+    public static final RegistryObject<SoundEvent> ELE_GRUMBLE = registerSoundEvents("elephant_bird_grumble");
     public static final RegistryObject<SoundEvent> ELE_HURT = registerSoundEvents("elephant_bird_hurt");
     public static final RegistryObject<SoundEvent> ELE_DEATH = registerSoundEvents("elephant_bird_death");
 

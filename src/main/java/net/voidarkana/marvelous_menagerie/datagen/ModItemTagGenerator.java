@@ -37,6 +37,41 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
         this.copy(ModTags.Blocks.SIGILLARIA_LOG_BLOCK, ModTags.Items.SIGILLARIA_LOG_ITEM);
 
+        this.copy(ModTags.Blocks.DYE_DEPOT_AMBER_WOOL, ModTags.Items.DYE_DEPOT_AMBER_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_AQUA_WOOL, ModTags.Items.DYE_DEPOT_AQUA_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_BEIGE_WOOL, ModTags.Items.DYE_DEPOT_BEIGE_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_CORAL_WOOL, ModTags.Items.DYE_DEPOT_CORAL_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_FOREST_WOOL, ModTags.Items.DYE_DEPOT_FOREST_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_GINGER_WOOL, ModTags.Items.DYE_DEPOT_GINGER_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_INDIGO_WOOL, ModTags.Items.DYE_DEPOT_INDIGO_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_MAROON_WOOL, ModTags.Items.DYE_DEPOT_MAROON_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_MINT_WOOL, ModTags.Items.DYE_DEPOT_MINT_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_NAVY_WOOL, ModTags.Items.DYE_DEPOT_NAVY_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_OLIVE_WOOL, ModTags.Items.DYE_DEPOT_OLIVE_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_ROSE_WOOL, ModTags.Items.DYE_DEPOT_ROSE_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_SLATE_WOOL, ModTags.Items.DYE_DEPOT_SLATE_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_TAN_WOOL, ModTags.Items.DYE_DEPOT_TAN_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_TEAL_WOOL, ModTags.Items.DYE_DEPOT_TEAL_WOOL_ITEM);
+        this.copy(ModTags.Blocks.DYE_DEPOT_VERDANT_WOOL, ModTags.Items.DYE_DEPOT_VERDANT_WOOL_ITEM);
+
+        this.tag(ModTags.Items.DYE_DEPOT_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_AMBER_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_AQUA_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_BEIGE_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_CORAL_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_FOREST_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_GINGER_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_INDIGO_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_MAROON_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_MINT_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_NAVY_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_OLIVE_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_ROSE_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_SLATE_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_TAN_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_TEAL_WOOL_ITEM)
+                .addTag(ModTags.Items.DYE_DEPOT_VERDANT_WOOL_ITEM);
+
         this.tag(ItemTags.LOGS_THAT_BURN).addTag(
                 ModTags.Items.SIGILLARIA_LOG_ITEM);
 
@@ -91,7 +126,7 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 ModItems.COOKSONIA_DNA.get()
         );
 
-        this.tag(UPTags.PETRIFIED_WOOD).add(
+        this.tag(UPTags.ANALYZER_ITEMS_OUTPUT_TREE).add(
                 ModItems.SIGILLARIA_DNA.get()
         );
 

@@ -8,7 +8,7 @@ version="${mod_version}"
 displayName="${mod_name}"
 
 logoFile="logo.png"
-credits= "Thanks to Ivan_3539 and GoldZombie for the Russian translation, and Mealybug_art for the Portuguese translation!"
+credits= "Thanks to Ivan_3539 and GoldZombie for the Russian translation, as well as Mealybug_art and LordRathari for the Portuguese translation!"
 
 authors="${mod_authors}"
 description='''${mod_description}'''

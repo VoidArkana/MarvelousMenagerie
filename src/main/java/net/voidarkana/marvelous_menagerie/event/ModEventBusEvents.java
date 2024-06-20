@@ -1,9 +1,11 @@
 package net.voidarkana.marvelous_menagerie.event;
 
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
+import net.voidarkana.marvelous_menagerie.effect.ModEffects;
 import net.voidarkana.marvelous_menagerie.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.entity.custom.*;
 
@@ -21,5 +23,16 @@ public class ModEventBusEvents {
         event.put(ModEntities.COOKSONIA_ENTITY.get(), PlantEntity.createAttributes().build());
     }
 
+    @SubscribeEvent
+    public void setTargetEvent(LivingChangeTargetEvent event){
+
+        if (event.getNewTarget() != null){
+            if (event.getNewTarget().hasEffect(ModEffects.CHILLING.get())) {
+                event.setCanceled(true);
+                return;
+            }
+        }
+
+    }
 
 }

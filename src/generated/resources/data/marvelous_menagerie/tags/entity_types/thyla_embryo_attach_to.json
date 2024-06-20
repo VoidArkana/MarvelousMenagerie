@@ -1,6 +1,10 @@
 {
   "values": [
     "marvelous_menagerie:thylacine",
+    {
+      "id": "alexsmobs:tasmanian_devil",
+      "required": false
+    },
     "marvelous_menagerie:steller_sea_cow"
   ]
 }

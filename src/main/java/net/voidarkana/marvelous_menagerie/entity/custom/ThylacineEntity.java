@@ -50,13 +50,13 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
         super(entityType, level);
     }
 
-    //private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> HOWLING_TIME = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> HOWLING = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> YAWNING_TIME = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> YAWNING = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> HAS_HANDKERCHIEF = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> HANDKERCHIEF_COLOR = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<ItemStack> WOOL_ITEM = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.ITEM_STACK);
 
     public int prevHowlTime;
     public int prevYawnTime;
@@ -88,24 +88,26 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        //this.entityData.define(VARIANT, 0);
         this.entityData.define(HOWLING_TIME, 0);
         this.entityData.define(HOWLING, false);
         this.entityData.define(YAWNING_TIME, 0);
         this.entityData.define(YAWNING, false);
         this.entityData.define(HAS_HANDKERCHIEF, false);
         this.entityData.define(HANDKERCHIEF_COLOR, 0);
+        this.getEntityData().define(WOOL_ITEM, ItemStack.EMPTY);
     }
 
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
-        //compound.putInt("variant", this.getVariant());
         compound.putInt("howlingTime", this.getHowlingTime());
         compound.putBoolean("isHowling", this.getIsHowling());
         compound.putInt("yawningTime", this.getYawningTime());
         compound.putBoolean("isYawning", this.getIsYawning());
         compound.putBoolean("hasHandkerchief", this.getHasHandkerchief());
-        compound.putInt("handkerchiefColor", this.getHandkerchiefColor());
+
+        if (!this.getWoolItem().isEmpty()) {
+            compound.put("woolItem", this.getWoolItem().save(new CompoundTag()));
+        }
     }
 
     public void readAdditionalSaveData(CompoundTag compound) {
@@ -117,8 +119,28 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
         this.setIsYawning(compound.getBoolean("isYawning"));
         this.setIsYawning(compound.getBoolean("hasHandkerchief"));
         this.setHandkerchiefColor(compound.getInt("handkerchiefColor"));
+
+        CompoundTag compoundtag = compound.getCompound("woolItem");
+
+        if (compoundtag != null && !compoundtag.isEmpty()) {
+            ItemStack itemstack = ItemStack.of(compoundtag);
+            this.setWoolItem(itemstack);
+        }
+
     }
 
+    //wool item
+    public ItemStack getWoolItem() {
+        return this.getEntityData().get(WOOL_ITEM);
+    }
+
+    public void setWoolItem(ItemStack pStack) {
+        if (!pStack.isEmpty()) {
+            pStack = pStack.copyWithCount(1);
+        }
+
+        this.getEntityData().set(WOOL_ITEM, pStack);
+    }
 
     //handkerchief
     public int getHandkerchiefColor(){
@@ -141,27 +163,6 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
         this.entityData.set(HAS_HANDKERCHIEF, hasHandkerchief);
     }
 
-    public Item getWoolType(int variantColor){
-        return switch(variantColor){
-            case 1 ->  Items.RED_WOOL;
-            case 2 ->  Items.ORANGE_WOOL;
-            case 3 ->  Items.YELLOW_WOOL;
-            case 4 ->  Items.LIME_WOOL;
-            case 5 ->  Items.GREEN_WOOL;
-            case 6 ->  Items.CYAN_WOOL;
-            case 7 ->  Items.LIGHT_BLUE_WOOL;
-            case 8 ->  Items.BLUE_WOOL;
-            case 9 ->  Items.PURPLE_WOOL;
-            case 10 ->  Items.MAGENTA_WOOL;
-            case 11 ->  Items.PINK_WOOL;
-            case 12 ->  Items.BROWN_WOOL;
-            case 13 ->  Items.BLACK_WOOL;
-            case 14 ->  Items.GRAY_WOOL;
-            case 15 ->  Items.LIGHT_GRAY_WOOL;
-            case 16 ->  Items.WHITE_WOOL;
-            default -> Items.AIR;
-        };
-    }
     //howling
     public int getHowlingTime(){
         return this.entityData.get(HOWLING_TIME);}
@@ -175,17 +176,6 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
     public void setIsHowling(boolean howling) {
         this.entityData.set(HOWLING, howling);}
 
-    /*
-    //variant stuff
-    public void determineVariant(int variantChange){
-        this.setVariant(0);}
-
-    public int getVariant() {
-        return this.entityData.get(VARIANT);}
-
-    public void setVariant(int variant) {
-        this.entityData.set(VARIANT, variant);}
-    */
 
     //yawning
     public int getYawningTime(){
@@ -228,10 +218,10 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
             this.setHowlingTime(howlTickDuration);
             return InteractionResult.SUCCESS;
 
-        } else if (itemstack.is(ItemTags.WOOL)){
+        } else if (itemstack.is(ItemTags.WOOL) || itemstack.is(ModTags.Items.DYE_DEPOT_WOOL_ITEM)){
 
             if (this.hasHandkerchief()){
-                this.spawnAtLocation(getWoolType(this.getHandkerchiefColor()));
+                this.spawnAtLocation(this.getWoolItem());
             }
             else {
                 this.setHasHandkerchief(true);
@@ -251,10 +241,32 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
             else if (itemstack.is(Items.BROWN_WOOL)){this.setHandkerchiefColor(12);}
             else if (itemstack.is(Items.BLACK_WOOL)){this.setHandkerchiefColor(13);}
             else if (itemstack.is(Items.GRAY_WOOL)){this.setHandkerchiefColor(14);}
-            else if (itemstack.is(Items.LIGHT_GRAY_WOOL)){this.setHandkerchiefColor(15);}
-            else {this.setHandkerchiefColor(16);}
+            else if (itemstack.is(Items.LIGHT_GRAY_WOOL)){this.setHandkerchiefColor(15);
+            }
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_AMBER_WOOL_ITEM)){ this.setHandkerchiefColor(16); }
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_AQUA_WOOL_ITEM )){this.setHandkerchiefColor(17);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_BEIGE_WOOL_ITEM )){this.setHandkerchiefColor(18);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_CORAL_WOOL_ITEM )){this.setHandkerchiefColor(19);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_FOREST_WOOL_ITEM )){this.setHandkerchiefColor(20);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_GINGER_WOOL_ITEM )){this.setHandkerchiefColor(21);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_INDIGO_WOOL_ITEM )){this.setHandkerchiefColor(22);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_MAROON_WOOL_ITEM )){this.setHandkerchiefColor(23);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_MINT_WOOL_ITEM )){this.setHandkerchiefColor(24);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_NAVY_WOOL_ITEM )){this.setHandkerchiefColor(25);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_OLIVE_WOOL_ITEM )){this.setHandkerchiefColor(26);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_ROSE_WOOL_ITEM )){this.setHandkerchiefColor(27);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_SLATE_WOOL_ITEM )){this.setHandkerchiefColor(28);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_TAN_WOOL_ITEM )){this.setHandkerchiefColor(29);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_TEAL_WOOL_ITEM )){this.setHandkerchiefColor(30);}
+            else if (itemstack.is(ModTags.Items.DYE_DEPOT_VERDANT_WOOL_ITEM )){this.setHandkerchiefColor(31);
+            }
+            else {this.setHandkerchiefColor(32);}
 
             this.playSound(SoundEvents.LLAMA_SWAG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+
+            this.setWoolItem(itemstack);
+
+            this.usePlayerItem(player, hand, itemstack);
 
             return InteractionResult.SUCCESS;
 
@@ -262,7 +274,9 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
 
             this.setHasHandkerchief(false);
 
-            this.spawnAtLocation(this.getWoolType(this.getHandkerchiefColor()));
+            this.spawnAtLocation(this.getWoolItem());
+
+            this.setWoolItem(ItemStack.EMPTY);
 
             this.playSound(SoundEvents.SHEEP_SHEAR, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
             this.setVariant(0);

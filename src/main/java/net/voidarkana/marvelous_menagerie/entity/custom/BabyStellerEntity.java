@@ -23,6 +23,7 @@ import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
 import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
@@ -75,6 +76,9 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
         this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
         this.lookControl = new SmoothSwimmingLookControl(this, 5);
         this.moveControl = new StellerSwimmingController(this, 85, 10, 0.02F, 0.8F, true);
+
+        WaterBoundPathNavigation waterpathnavigation = (WaterBoundPathNavigation)this.getNavigation();
+        waterpathnavigation.setCanFloat(false);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -96,7 +100,7 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
         //this.goalSelector.addGoal(3, new SeaCowEatKelpGoal(this);
         //this.goalSelector.addGoal(4, new SeaCowBreachGoal(this));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F, 0.02F, true));
     }
 
     //data
@@ -267,12 +271,6 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
     public boolean canBreatheUnderwater() {
         return true;
     }
-
-    protected void handleAirSupply(int pAirSupply) {}
-
-    public int getMaxAirSupply() {return 4800;}
-
-    protected int increaseAirSupply(int pCurrentAir) {return this.getMaxAirSupply();}
 
     public void tick() {
 
@@ -467,7 +465,7 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
 
     private boolean givesAir(LevelReader pLevel, BlockPos pPos) {
         BlockState blockstate = pLevel.getBlockState(pPos);
-        return (pLevel.getFluidState(pPos).isEmpty() && blockstate.isPathfindable(pLevel, pPos, PathComputationType.LAND));
+        return (pLevel.getFluidState(pPos.above()).isEmpty() && blockstate.isPathfindable(pLevel, pPos, PathComputationType.LAND));
     }
 
     public boolean shouldDropExperience() {
@@ -493,4 +491,6 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
     protected SoundEvent getDeathSound() {
         return ModSounds.STELLER_DEATH.get();
     }
+
+
 }

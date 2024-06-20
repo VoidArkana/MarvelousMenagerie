@@ -60,7 +60,7 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
     static final TargetingConditions SWIM_WITH_PLAYER_TARGETING = TargetingConditions.forNonCombat().range(10.0D).ignoreLineOfSight();
     private static final EntityDataAccessor<Boolean> FROM_BOOK = SynchedEntityData.defineId(StellerEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(StellerEntity.class, EntityDataSerializers.INT);
-    //private static final EntityDataAccessor<Float> ROTATION = SynchedEntityData.defineId(StellerEntity.class, EntityDataSerializers.FLOAT);
+
     private boolean persistenceRequired;
 
     protected static final RawAnimation STELLER_SWIM = RawAnimation.begin().thenLoop("animation.steller_sea_cow.swim");
@@ -90,7 +90,7 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
         //this.goalSelector.addGoal(3, new SeaCowEatKelpGoal(this);
         this.goalSelector.addGoal(4, new StellerEntity.SeaCowBreachGoal(this)); //rework into tick
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F, 0.02F, true));
     }
 
     //data

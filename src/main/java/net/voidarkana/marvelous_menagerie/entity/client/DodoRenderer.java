@@ -17,6 +17,10 @@ public class DodoRenderer extends GeoEntityRenderer<DodoEntity> {
     private static final ResourceLocation TEXTURE_BABY_BLUE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo/baby_dodo.png");
     private static final ResourceLocation TEXTURE_BABY_BROWN = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo/baby_dodo_variant.png");
 
+    private static final ResourceLocation TEXTURE_NUGGET = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo/dodo_nugget.png");
+    private static final ResourceLocation TEXTURE_BABY_NUGGET = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/dodo/baby_dodo_nugget.png");
+
+
     public DodoRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new DodoModel());
     }
@@ -24,10 +28,16 @@ public class DodoRenderer extends GeoEntityRenderer<DodoEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(DodoEntity entity) {
-        return switch (entity.getVariant()) {
-            case 1 -> entity.isBaby() ? TEXTURE_BABY_BLUE : TEXTURE_BLUE;
-            default -> entity.isBaby() ? TEXTURE_BABY_BROWN : TEXTURE_BROWN;
-        };
+        if (entity.isNugget()){
+            return entity.isBaby() ? TEXTURE_BABY_NUGGET : TEXTURE_NUGGET;
+        }
+        else
+        {
+            return switch (entity.getVariant()) {
+                case 1 -> entity.isBaby() ? TEXTURE_BABY_BLUE : TEXTURE_BLUE;
+                default -> entity.isBaby() ? TEXTURE_BABY_BROWN : TEXTURE_BROWN;
+            };
+        }
     }
 
     @Override

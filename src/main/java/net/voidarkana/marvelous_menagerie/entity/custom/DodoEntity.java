@@ -1,6 +1,7 @@
 package net.voidarkana.marvelous_menagerie.entity.custom;
 
 import com.peeko32213.unusualprehistory.common.entity.msc.util.dino.EntityBaseDinosaurAnimal;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -48,11 +49,13 @@ import java.util.EnumSet;
 public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
 
     private int eggLayTime;
+    private int initialEggTime;
     //private static final Ingredient FOOD_ITEMS = Ingredient.of(Items.MELON_SLICE, Items.GLISTERING_MELON_SLICE, Items.MELON, Items.PUMPKIN);
 
     public DodoEntity(EntityType<? extends Animal> entityType, Level level) {
         super(entityType, level);
-        eggLayTime = random.nextInt(6000) + (6000);
+        eggLayTime = random.nextInt(5000) + (5000);
+        initialEggTime = eggLayTime;
     }
 
     private static final int PECK_ANIMATION_TICKS = 36;
@@ -62,6 +65,7 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
     protected static final RawAnimation DODO_IDLE = RawAnimation.begin().thenLoop("animation.dodo.idle");
     protected static final RawAnimation DODO_PECK = RawAnimation.begin().thenPlay("animation.dodo.peck");
     protected static final RawAnimation DODO_SWIM = RawAnimation.begin().thenLoop("animation.dodo.swim");
+    protected static final RawAnimation DODO_SHAKE = RawAnimation.begin().thenPlay("animation.dodo.shake");
 
     protected static final RawAnimation BABY_DODO_WALK = RawAnimation.begin().thenLoop("animation.dodo.baby_walk");
     protected static final RawAnimation BABY_DODO_FLAP = RawAnimation.begin().thenLoop("animation.dodo.baby_flap");
@@ -86,7 +90,7 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         this.goalSelector.addGoal(3, new FollowParentGoal(this, 1.1D));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(4, new DodoEntity.DestroyMelonAndPumpkinGoal(this));
-        this.goalSelector.addGoal(5, new DodoLookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(5, new DodoEntity.DodoLookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(6, new DodoEntity.DodoRandomLookAroundGoal(this));
         super.registerGoals();
     }
@@ -149,7 +153,13 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         return super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
     }
 
+    //custom name
+    public boolean isNugget() {
+        String s = ChatFormatting.stripFormatting(this.getName().getString());
+        return s != null && s.toLowerCase().contains("nugget");
+    }
 
+    //is pecking
     public boolean getIsPecking() {
         return (Boolean)this.entityData.get(PECKING);
     }
@@ -157,7 +167,6 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
     public void setIsPecking(boolean pecking) {
         this.entityData.set(PECKING, pecking);
     }
-
 
     //eye height
     @Override
@@ -184,7 +193,9 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         if (isAlive() && !isBaby() && --eggLayTime <= 0) {
             this.playSound(SoundEvents.CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
             this.spawnAtLocation(Items.FEATHER);
+
             this.eggLayTime = random.nextInt(6000) + (6000);
+            initialEggTime = eggLayTime;
         }
 
     }
@@ -269,7 +280,7 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         return null;
     }
 
-    protected <E extends GeoAnimatable> PlayState Controller(AnimationState<E> event) {
+    protected <E extends DodoEntity> PlayState Controller(AnimationState<E> event) {
         if (this.isFromBook()){
             return PlayState.STOP;
         }
@@ -305,7 +316,7 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
                     event.getController().setAnimationSpeed(1.2);
                 }
 
-            } else if (this.onGround() && !this.getIsPecking()){
+            } else if (this.onGround() && !this.getIsPecking() && (eggLayTime > 20 || eggLayTime <= 0)){
 
                 if (this.isBaby()) {event.setAndContinue(BABY_DODO_IDLE);}
                 else{event.setAndContinue(DODO_IDLE);}
@@ -315,9 +326,20 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         }
     }
 
+    protected <E extends DodoEntity> PlayState ShakeController(AnimationState<E> event) {
+        if ((eggLayTime <= 20 && eggLayTime > 0) || (initialEggTime/2 <= eggLayTime && initialEggTime/2 > eggLayTime-20)) {
+            event.setAndContinue(DODO_SHAKE);
+            return PlayState.CONTINUE;
+        } else {
+            event.getController().forceAnimationReset();
+            return PlayState.STOP;
+        }
+    }
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController[]{new AnimationController(this, "Normal", 5, this::Controller)});
+        controllers.add(new AnimationController[]{new AnimationController(this, "Shake", 5, this::ShakeController)});
     }
 
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);

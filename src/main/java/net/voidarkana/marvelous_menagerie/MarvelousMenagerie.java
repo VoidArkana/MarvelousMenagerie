@@ -24,6 +24,7 @@ import net.voidarkana.marvelous_menagerie.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.entity.client.*;
 import net.voidarkana.marvelous_menagerie.entity.client.plant.CooksoniaRenderer;
 import net.voidarkana.marvelous_menagerie.entity.client.plant.PlantRenderer;
+import net.voidarkana.marvelous_menagerie.event.ModEventBusEvents;
 import net.voidarkana.marvelous_menagerie.item.ModCreativeModTabs;
 import net.voidarkana.marvelous_menagerie.item.ModItems;
 import net.voidarkana.marvelous_menagerie.sound.ModSounds;
@@ -60,8 +61,8 @@ public class MarvelousMenagerie {
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
-;
 
+        MinecraftForge.EVENT_BUS.register(new ModEventBusEvents());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -75,9 +76,7 @@ public class MarvelousMenagerie {
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
-            event.accept(ModItems.DODO_DNA);
-        }
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
