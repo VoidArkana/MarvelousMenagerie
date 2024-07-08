@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:main/plants",
+  "criteria": {
+    "prototaxites": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:prototaxites"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.prototaxites.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:prototaxites"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.prototaxites"
+    }
+  },
+  "requirements": [
+    [
+      "prototaxites"
+    ]
+  ]
+}

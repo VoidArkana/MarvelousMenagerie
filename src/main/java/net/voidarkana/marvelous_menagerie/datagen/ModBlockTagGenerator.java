@@ -6,6 +6,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
@@ -45,7 +46,9 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 ModBlocks.SIGILLARIA_SIGN.get(),
                 ModBlocks.SIGILLARIA_WALL_SIGN.get(),
                 ModBlocks.SIGILLARIA_HANGING_SIGN.get(),
-                ModBlocks.SIGILLARIA_WALL_HANGING_SIGN.get()
+                ModBlocks.SIGILLARIA_WALL_HANGING_SIGN.get(),
+                ModBlocks.PROTOTAXITES.get(),
+                ModBlocks.PROTOTAXITES_BLOCK.get()
         );
 
         this.tag(BlockTags.PLANKS).add(
@@ -120,7 +123,6 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.SMALL_FLOWERS).add(
                 ModBlocks.COOKSONIA.get()
         );
-
 
         this.tag(ModTags.Blocks.DYE_DEPOT_MAROON_WOOL).addOptional(new ResourceLocation("dye_depot:maroon_wool"));
         this.tag(ModTags.Blocks.DYE_DEPOT_ROSE_WOOL).addOptional(new ResourceLocation("dye_depot:rose_wool"));

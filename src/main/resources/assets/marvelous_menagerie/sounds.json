@@ -255,5 +255,283 @@
       }
     ],
     "subtitle": "marvelous_menagerie.sound.subtitle.thylacine_howl"
+  },
+
+  "josepho_idle": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:josepho_idle_0"
+      },
+      {
+        "name": "marvelous_menagerie:josepho_idle_1"
+      },
+      {
+        "name": "marvelous_menagerie:josepho_idle_2"
+      },
+      {
+        "name": "marvelous_menagerie:josepho_idle_3"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.josepho_idle"
+  },
+  "josepho_hurt": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:josepho_hurt_0"
+      },
+      {
+        "name": "marvelous_menagerie:josepho_hurt_1"
+      },
+      {
+        "name": "marvelous_menagerie:josepho_hurt_2"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.josepho_hurt"
+  },
+  "josepho_death": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:josepho_death"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.josepho_death"
+  },
+
+  "ophthalmo_idle": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:ophthalmo_idle_0"
+      },
+      {
+        "name": "marvelous_menagerie:ophthalmo_idle_1"
+      },
+      {
+        "name": "marvelous_menagerie:ophthalmo_idle_2"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.ophthalmo_idle"
+  },
+  "ophthalmo_hurt": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:ophthalmo_hurt_0"
+      },
+      {
+        "name": "marvelous_menagerie:ophthalmo_hurt_1"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.ophthalmo_hurt"
+  },
+  "ophthalmo_death": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:ophthalmo_death"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.ophthalmo_death"
+  },
+
+  "arthropod_hurt": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:arthropod_hurt_0"
+      },
+      {
+        "name": "marvelous_menagerie:arthropod_hurt_1"
+      },
+      {
+        "name": "marvelous_menagerie:arthropod_hurt_2"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.arthropod_hurt"
+  },
+  "arthropod_death": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:arthropod_death_0"
+      },
+      {
+        "name": "marvelous_menagerie:arthropod_death_1"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.arthropod_death"
+  },
+
+  "large_footsteps": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:step1"
+      },
+      {
+        "name": "marvelous_menagerie:step2"
+      },
+      {
+        "name": "marvelous_menagerie:step3"
+      },
+      {
+        "name": "marvelous_menagerie:step4"
+      },
+      {
+        "name": "marvelous_menagerie:step5"
+      },
+      {
+        "name": "marvelous_menagerie:step6"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.large_footsteps"
+  },
+
+  "creature_swim": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:swim1"
+      },
+      {
+        "name": "marvelous_menagerie:swim2"
+      },
+      {
+        "name": "marvelous_menagerie:swim3"
+      },
+      {
+        "name": "marvelous_menagerie:swim4"
+      },
+      {
+        "name": "marvelous_menagerie:swim5"
+      },
+      {
+        "name": "marvelous_menagerie:swim6"
+      },
+      {
+        "name": "marvelous_menagerie:swim7"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.creature_swim"
+  },
+  "creature_flops": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:flop1"
+      },
+      {
+        "name": "marvelous_menagerie:flop2"
+      },
+      {
+        "name": "marvelous_menagerie:flop3"
+      },
+      {
+        "name": "marvelous_menagerie:flop4"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.creature_flops"
+  },
+
+  "egg_armor": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:egg_armor"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.egg_armor"
+  },
+
+
+  "caris_armor_break": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:caris_armor_break"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.caris_armor_break"
+  },
+  "caris_armor_crack": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:caris_armor_crack_0"
+      },
+      {
+        "name": "marvelous_menagerie:caris_armor_crack_1"
+      },
+      {
+        "name": "marvelous_menagerie:caris_armor_crack_2"
+      },
+      {
+        "name": "marvelous_menagerie:caris_armor_crack_3"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.caris_armor_crack"
+  },
+  "caris_armor_damage": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:caris_armor_damage_0"
+      },
+      {
+        "name": "marvelous_menagerie:caris_armor_damage_1"
+      },
+      {
+        "name": "marvelous_menagerie:caris_armor_damage_2"
+      },
+      {
+        "name": "marvelous_menagerie:caris_armor_damage_3"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.caris_armor_damage"
+  },
+  "caris_armor_equip": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:caris_armor_equip_0"
+      },
+      {
+        "name": "marvelous_menagerie:caris_armor_equip_1"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.caris_armor_equip"
+  },
+  "caris_armor_repair": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:caris_armor_repair_0"
+      },
+      {
+        "name": "marvelous_menagerie:caris_armor_repair_1"
+      },
+      {
+        "name": "marvelous_menagerie:caris_armor_repair_2"
+      },
+      {
+        "name": "marvelous_menagerie:caris_armor_repair_3"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.caris_armor_repair"
+  },
+  "caris_armor_unequip": {
+    "category": "neutral",
+    "sounds": [
+      {
+        "name": "marvelous_menagerie:caris_armor_unequip_0"
+      },
+      {
+        "name": "marvelous_menagerie:caris_armor_unequip_1"
+      }
+    ],
+    "subtitle": "marvelous_menagerie.sound.subtitle.caris_armor_unequip"
   }
 }

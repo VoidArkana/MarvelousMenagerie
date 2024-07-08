@@ -8,6 +8,7 @@ import net.voidarkana.marvelous_menagerie.worldgen.ModConfiguredFeatures;
 import org.jetbrains.annotations.Nullable;
 
 public class SigillariaTreeGrower extends AbstractTreeGrower {
+
     @Nullable
     @Override
     protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource pRandom, boolean pHasFlowers) {

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sacabambaspis": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:sacabambaspis"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "marvelous_menagerie:golden_saca"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_sacabambaspis",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "marvelous_menagerie:golden_saca"
+    ]
+  },
+  "sends_telemetry_event": false
+}

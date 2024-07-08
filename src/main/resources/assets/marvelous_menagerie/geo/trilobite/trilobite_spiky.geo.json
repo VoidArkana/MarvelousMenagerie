@@ -1,0 +1,56 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.trilobite",
+				"texture_width": 48,
+				"texture_height": 48,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "body",
+					"parent": "root",
+					"pivot": [0, 1, 2],
+					"cubes": [
+						{"origin": [0, 1, -4.5], "size": [0, 5, 2], "uv": [15, 8]},
+						{"origin": [2.5, 0, -4.5], "size": [0, 6, 2], "pivot": [2.5, 1, -3.5], "rotation": [0, -45, 0], "uv": [2, 8]},
+						{"origin": [-2.5, 0, -4.5], "size": [0, 6, 2], "pivot": [-2.5, 1, -3.5], "rotation": [0, 45, 0], "uv": [8, 8], "mirror": true},
+						{
+							"origin": [1.5, 2, -1.5],
+							"size": [0, 4, 6],
+							"uv": {
+								"north": {"uv": [32, 7], "uv_size": [0, 4]},
+								"east": {"uv": [38, 7], "uv_size": [-6, 4]},
+								"south": {"uv": [38, 7], "uv_size": [0, 4]},
+								"west": {"uv": [32, 7], "uv_size": [6, 4]},
+								"up": {"uv": [32, 1], "uv_size": [0, 6]},
+								"down": {"uv": [32, 7], "uv_size": [0, -6]}
+							}
+						},
+						{
+							"origin": [-1.5, 2, -1.5],
+							"size": [0, 4, 6],
+							"uv": {
+								"north": {"uv": [26, 1], "uv_size": [0, 4]},
+								"east": {"uv": [32, 1], "uv_size": [-6, 4]},
+								"south": {"uv": [32, 1], "uv_size": [0, 4]},
+								"west": {"uv": [26, 1], "uv_size": [6, 4]},
+								"up": {"uv": [26, -5], "uv_size": [0, 6]},
+								"down": {"uv": [26, 1], "uv_size": [0, -6]}
+							}
+						},
+						{"origin": [-2.5, 0, -3.5], "size": [5, 2, 7], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

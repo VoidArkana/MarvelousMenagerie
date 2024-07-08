@@ -93,5 +93,118 @@
 
   "marvelous_menagerie.sound.subtitle.elephant_bird_grumble": "Elephant bird grumbles",
 
+  "entity.marvelous_menagerie.trilobite": "Trilobite",
+  "item.marvelous_menagerie.trilobite_spawn_egg": "Trilobite Spawn Egg",
+  "item.marvelous_menagerie.trilo_flask": "Trilobite DNA Flask",
+  "item.marvelous_menagerie.trilo_bite": "Trilo Bite",
+  "item.marvelous_menagerie.trilo_bucket": "Bucket of Trilobite",
+  "block.marvelous_menagerie.trilo_eggs": "Trilobite Egg",
+
+  "entity.marvelous_menagerie.sacabambaspis": "Sacabambaspis",
+  "item.marvelous_menagerie.saca_bucket": "Bucket of Sacabambaspis",
+  "block.marvelous_menagerie.saca_eggs": "Sacabambaspis Egg",
+  "item.marvelous_menagerie.saca_flask": "Sacabambaspis DNA Flask",
+  "item.marvelous_menagerie.saca_spawn_egg": "Sacabambaspis Spawn Egg",
+  "item.marvelous_menagerie.sacabambaspis": "Sacabambaspis",
+  "item.marvelous_menagerie.cooked_saca": "Cooked Sacabambaspis",
+  "item.marvelous_menagerie.golden_saca": "Golden Sacabambaspis",
+
+  "block.marvelous_menagerie.prototaxites": "Prototaxites",
+  "block.marvelous_menagerie.prototaxites_block": "Prototaxites Block",
+  "item.marvelous_menagerie.proto_flask": "Prototaxites DNA Flask",
+
+  "block.marvelous_menagerie.dickinsonia": "Dickinsonia",
+  "item.marvelous_menagerie.dickinsonia_flask": "Dickinsonia DNA Flask",
+
+  "entity.marvelous_menagerie.anomalocaris": "Anomalocaris",
+  "item.marvelous_menagerie.anomalocaris_flask": "Anomalocaris DNA Flask",
+  "entity.marvelous_menagerie.baby_anomalocaris": "Anomalocaris",
+  "item.marvelous_menagerie.anomalocaris_bucket": "Bucket of Anomalocaris",
+  "item.marvelous_menagerie.baby_anomalocaris_bucket": "Bucket of Anomalocaris",
+  "item.marvelous_menagerie.anomalocaris_lens": "Anomalocaris Eye Lens",
+  "item.marvelous_menagerie.anomalocaris_scute": "Anomalocaris Sclerite",
+  "item.marvelous_menagerie.anomalocaris_spawn_egg": "Anomalocaris Spawn Egg",
+  "block.marvelous_menagerie.anomalocaris_eggs": "Anomalocaris Egg",
+  "item.marvelous_menagerie.anomalous_goggles": "Anomalous Goggles",
+
+  "entity.marvelous_menagerie.ophthalmo": "Ophthalmosaurus",
+  "entity.marvelous_menagerie.baby_ophthalmo": "Ophthalmosaurus",
+  "item.marvelous_menagerie.ophthalmo_spawn_egg": "Ophthalmosaurus Spawn Egg",
+  "item.marvelous_menagerie.ophthalmo_armor": "Ophthalmosaurus Armor",
+  "item.marvelous_menagerie.ophthalmo_flask": "Ophthalmosaurus DNA Flask",
+  "item.marvelous_menagerie.ophthalmo_embryo": "Ophthalmosaurus Embryo",
+  "item.marvelous_menagerie.baby_ophthalmo_bucket": "Bucket of Baby Ophthalmosaurus",
+
+  "key.marvelous_menagerie.ophthalmoSwimDown" : "Ophthalmosaurus Swim Downwards",
+
+  "entity.marvelous_menagerie.josepho": "Josephoartigasia",
+  "item.marvelous_menagerie.josepho_spawn_egg": "Josephoartigasia Spawn Egg",
+  "item.marvelous_menagerie.josepho_flask": "Josephoartigasia DNA Flask",
+  "item.marvelous_menagerie.josepho_embryo": "Josephoartigasia Embryo",
+
+  "effect.marvelous_menagerie.pacified": "Pacified",
+
+  "enchantment.marvelous_menagerie.cambrian_vision" : "Cambrian Vision",
+  "enchantment.marvelous_menagerie.infernal_vision" : "Infernal Vision",
+
+  "marvelous_menagerie.sound.subtitle.josepho_idle": "Josephoartigasia squeaks",
+  "marvelous_menagerie.sound.subtitle.josepho_hurt": "Josephoartigasia hurts",
+  "marvelous_menagerie.sound.subtitle.josepho_death": "Josephoartigasia dies",
+
+  "marvelous_menagerie.sound.subtitle.ophthalmo_idle": "Ophthalmosaurus squeaks",
+  "marvelous_menagerie.sound.subtitle.ophthalmo_hurt": "Ophthalmosaurus hurts",
+  "marvelous_menagerie.sound.subtitle.ophthalmo_death": "Ophthalmosaurus dies",
+
+  "marvelous_menagerie.sound.subtitle.arthropod_hurt": "Arthropod hurts",
+  "marvelous_menagerie.sound.subtitle.arthropod_death": "Arthropod dies",
+
+  "marvelous_menagerie.sound.subtitle.large_footsteps": "Large footsteps",
+  "marvelous_menagerie.sound.subtitle.creature_swim": "Aquatic Creature Swims",
+  "marvelous_menagerie.sound.subtitle.creature_flops": "Aquatic Creature Flops",
+
+  "marvelous_menagerie.sound.subtitle.caris_armor_break": "Pet armor breaks",
+  "marvelous_menagerie.sound.subtitle.caris_armor_crack": "Pet armor cracks",
+  "marvelous_menagerie.sound.subtitle.caris_armor_damage": "Pet armor absorbs damage",
+  "marvelous_menagerie.sound.subtitle.caris_armor_repair": "Pet armor gets repaired",
+  "marvelous_menagerie.sound.subtitle.caris_armor_equip": "Pet armor gets equipped",
+  "marvelous_menagerie.sound.subtitle.caris_armor_unequip": "Pet armor gets unequipped",
+
+  "marvelous_menagerie.advancement.cooksonia": "Cooking Sonia",
+  "marvelous_menagerie.advancement.cooksonia.desc": "Revive a Cooksonia",
+  "marvelous_menagerie.advancement.prototaxites" : "How's the weather up there?",
+  "marvelous_menagerie.advancement.prototaxites.desc" : "Revive a Prototaxites",
+  "marvelous_menagerie.advancement.dickinsonia": "Barely know 'er",
+  "marvelous_menagerie.advancement.dickinsonia.desc" : "Revive a Dickinsonia",
+  "marvelous_menagerie.advancement.sigillaria" : "Branching paths",
+  "marvelous_menagerie.advancement.sigillaria.desc" : "Revive a Sigillaria tree",
+
+  "marvelous_menagerie.advancement.interact_dodo" : "The way of the Dodo",
+  "marvelous_menagerie.advancement.interact_dodo.desc" : "Revive a Dodo",
+  "marvelous_menagerie.advancement.interact_elephant_bird" : "Bird up!",
+  "marvelous_menagerie.advancement.interact_elephant_bird.desc" : "Revive an Elephant Bird",
+  "marvelous_menagerie.advancement.interact_sacabambaspis" : "Derp fish",
+  "marvelous_menagerie.advancement.interact_sacabambaspis.desc" : "Revive a Sacabambaspis",
+  "marvelous_menagerie.advancement.interact_steller_sea_cow" : "Damn boy he T H I C C",
+  "marvelous_menagerie.advancement.interact_steller_sea_cow.desc" : "Revive a Steller's Sea Cow",
+  "marvelous_menagerie.advancement.interact_thylacine" : "Not a big bad wolf",
+  "marvelous_menagerie.advancement.interact_thylacine.desc" : "Revive a Thylacine",
+  "marvelous_menagerie.advancement.interact_trilobite" : "So many shapes and colors",
+  "marvelous_menagerie.advancement.interact_trilobite.desc" : "Revive a Trilobite",
+  "marvelous_menagerie.advancement.interact_anomalocaris" : "Bring Me To Life",
+  "marvelous_menagerie.advancement.interact_anomalocaris.desc" : "Revive an Anomalocaris",
+  "marvelous_menagerie.advancement.interact_ophthalmo" : "What big eyes you have!",
+  "marvelous_menagerie.advancement.interact_ophthalmo.desc" : "Revive an Ophthalmosaurus",
+  "marvelous_menagerie.advancement.interact_josepho" : "Giant coconut doggy!",
+  "marvelous_menagerie.advancement.interact_josepho.desc" : "Revive a Josephoartigasia",
+
+  "marvelous_menagerie.advancement.egg_shellmet": "Stylish headwear",
+  "marvelous_menagerie.advancement.egg_shellmet.desc": "Craft an Egg Shellmet from Egg Shell Fragments",
+  "marvelous_menagerie.advancement.steller_ice_cream": "Not low on fat",
+  "marvelous_menagerie.advancement.steller_ice_cream.desc": "Make Steller Ice Cream with Steller Sea Cow's milk",
+  "marvelous_menagerie.advancement.anomalous_goggles": "Won't get fooled again",
+  "marvelous_menagerie.advancement.anomalous_goggles.desc": "Craft a pair of Anomalous Goggles with Anomalocaris materials",
+  "marvelous_menagerie.advancement.ophthalmo_armor": "Tribute to Anomalocaris",
+  "marvelous_menagerie.advancement.ophthalmo_armor.desc": "Craft an Ophthalmosaurus Armor with Anomalicaris Sclerites",
+
   "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
 }

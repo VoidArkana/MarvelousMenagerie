@@ -44,6 +44,9 @@ import software.bernie.geckolib.core.object.PlayState;
 import java.util.Iterator;
 import java.util.List;
 
+
+//TODO: Make it drop the wool block on death, check item frame
+
 public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
 
     public ThylacineEntity(EntityType<? extends Animal> entityType, Level level) {
@@ -206,6 +209,13 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
     public boolean isMetro() {
         String s = ChatFormatting.stripFormatting(this.getName().getString());
         return s != null && s.toLowerCase().contains("metropolitan");
+    }
+
+    protected void dropEquipment() {
+        super.dropEquipment();
+        if (this.hasHandkerchief()) {
+            this.spawnAtLocation(this.getWoolItem());
+        }
     }
 
     //interactions

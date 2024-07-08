@@ -6,13 +6,17 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
+import net.voidarkana.marvelous_menagerie.sound.ModSounds;
 
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
 
     EGGSHELL("eggshell", 5, new int[]{2, 7, 5, 4}, 25,
-            SoundEvents.ARMOR_EQUIP_TURTLE, 0f, 0.5f, ()-> Ingredient.of(ModItems.EGG_SHELL_FRAGMENT.get()));
+            ModSounds.EGG_ARMOR.get(), 0f, 0.5f, ()-> Ingredient.of(ModItems.EGG_SHELL_FRAGMENT.get())),
+
+    CARIS_SCUTE("anomalocaris_scute", 25, new int[]{2, 7, 5, 4}, 9,
+            SoundEvents.ARMOR_EQUIP_GENERIC, 1f, 0f, ()-> Ingredient.of(ModItems.CARIS_SCUTE.get()));
 
     private final String name;
     private final int durabilityMultiplier;

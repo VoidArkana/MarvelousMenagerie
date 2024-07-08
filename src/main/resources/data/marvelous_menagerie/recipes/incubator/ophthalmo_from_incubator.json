@@ -1,0 +1,9 @@
+{
+  "type": "unusualprehistory:incubating",
+  "ingredients": [
+    {
+      "item": "marvelous_menagerie:ophthalmo_embryo"
+    }
+  ],
+  "output": "marvelous_menagerie:baby_ophthalmo"
+}

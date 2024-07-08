@@ -1,0 +1,37 @@
+{
+  "parent": "marvelous_menagerie:main/anomalocaris",
+  "criteria": {
+    "anomalous_goggles": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:anomalous_goggles"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.anomalous_goggles.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:anomalous_goggles"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.anomalous_goggles"
+    }
+  },
+  "requirements": [
+    [
+      "anomalous_goggles"
+    ]
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "input": ["unusualprehistory:paleo_fossil"],
+  "entries": [
+    {
+      "weight": 15,
+      "item": "marvelous_menagerie:trilo_flask"
+    },
+    {
+      "weight": 15,
+      "item": "marvelous_menagerie:saca_flask"
+    },
+    {
+      "weight": 15,
+      "item": "marvelous_menagerie:anomalocaris_flask"
+    }
+  ]
+}

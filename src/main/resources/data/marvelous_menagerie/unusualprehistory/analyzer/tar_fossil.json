@@ -3,19 +3,19 @@
   "entries": [
     {
       "weight": 15,
-      "item": "marvelous_menagerie:steller_sea_cow_dna"
-    },
-    {
-      "weight": 15,
       "item": "marvelous_menagerie:elephant_bird_dna"
     },
     {
-      "weight": 20,
+      "weight": 15,
       "item": "marvelous_menagerie:thylacine_dna"
     },
     {
-      "weight": 20,
+      "weight": 15,
       "item": "marvelous_menagerie:dodo_dna"
+    },
+    {
+      "weight": 15,
+      "item": "marvelous_menagerie:josepho_flask"
     }
   ]
 }

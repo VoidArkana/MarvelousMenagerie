@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "proto_thickness=3": {
+      "model": "marvelous_menagerie:block/prototaxites_base"
+    },
+    "proto_thickness=2": {
+      "model": "marvelous_menagerie:block/prototaxites_middle"
+    },
+    "proto_thickness=1": {
+      "model": "marvelous_menagerie:block/prototaxites_frustum"
+    },
+    "proto_thickness=0": {
+      "model": "marvelous_menagerie:block/prototaxites_tip"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": {
+      "item": "marvelous_menagerie:anomalocaris_scute"
+    }
+  },
+  "pattern": [
+    "S  ",
+    "SSS",
+    "S S"
+  ],
+  "result": {
+    "item": "marvelous_menagerie:ophthalmo_armor"
+  },
+  "show_notification": true
+}

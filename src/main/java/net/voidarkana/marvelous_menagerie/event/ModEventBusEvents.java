@@ -8,6 +8,9 @@ import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.effect.ModEffects;
 import net.voidarkana.marvelous_menagerie.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.entity.custom.*;
+import net.voidarkana.marvelous_menagerie.entity.custom.baby.BabyAnomalocarisEntity;
+import net.voidarkana.marvelous_menagerie.entity.custom.baby.BabyOphthalmoEntity;
+import net.voidarkana.marvelous_menagerie.entity.custom.baby.BabyStellerEntity;
 
 @Mod.EventBusSubscriber(modid = MarvelousMenagerie.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusEvents {
@@ -21,13 +24,25 @@ public class ModEventBusEvents {
         event.put(ModEntities.BABY_STELLER_SEA_COW.get(), BabyStellerEntity.createAttributes().build());
         event.put(ModEntities.SIGILLARIA_SAPLING_ENTITY.get(), PlantEntity.createAttributes().build());
         event.put(ModEntities.COOKSONIA_ENTITY.get(), PlantEntity.createAttributes().build());
+
+        event.put(ModEntities.TRILOBITE.get(), TrilobiteEntity.createAttributes().build());
+        event.put(ModEntities.SACABAMBASPIS.get(), SacabambaspisEntity.createAttributes().build());
+        event.put(ModEntities.PROTOTAXITES_ENTITY.get(), PlantEntity.createAttributes().build());
+        event.put(ModEntities.DICKINSONIA_ENTITY.get(), PlantEntity.createAttributes().build());
+        event.put(ModEntities.ANOMALOCARIS.get(), AnomalocarisEntity.createAttributes().build());
+        event.put(ModEntities.BABY_ANOMALOCARIS.get(), BabyAnomalocarisEntity.createAttributes().build());
+
+        event.put(ModEntities.OPHTHALMO.get(), OphthalmoEntity.createAttributes().build());
+        event.put(ModEntities.BABY_OPHTHALMO.get(), BabyOphthalmoEntity.createAttributes().build());
+
+        event.put(ModEntities.JOSEPHO.get(), JosephoEntity.createAttributes().build());
     }
 
     @SubscribeEvent
     public void setTargetEvent(LivingChangeTargetEvent event){
 
         if (event.getNewTarget() != null){
-            if (event.getNewTarget().hasEffect(ModEffects.CHILLING.get())) {
+            if (event.getNewTarget().hasEffect(ModEffects.PACIFIED.get())) {
                 event.setCanceled(true);
                 return;
             }

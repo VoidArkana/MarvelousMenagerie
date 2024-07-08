@@ -67,6 +67,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.COOKSONIA.get(), models().cross(blockTexture(ModBlocks.COOKSONIA.get()).getPath(),
                 blockTexture(ModBlocks.COOKSONIA.get())).renderType("cutout"));
+
+        this.createFlatWaterEgg(ModBlocks.TRILO_EGGS.get());
+
+        this.createFlatWaterEgg(ModBlocks.SACA_EGGS.get());
+
+        this.createFlatWaterEgg(ModBlocks.CARIS_EGGS.get());
     }
 
     public void hangingSignBlock(Block signBlock, Block wallSignBlock, ResourceLocation texture) {
@@ -103,10 +109,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .get()));
     }
 
-
     private String getName(Block block) {
         return this.key(block).toString().replace(MarvelousMenagerie.MOD_ID+":", "");
     }
+
     public void createSingleEgg(Block block) {
         this.createSingleEgg(block, "");
         this.createSlightltyCrackedSingleEgg(block, "");
@@ -285,7 +291,61 @@ public class ModBlockStateProvider extends BlockStateProvider {
             case 4 -> var10000 = "eggs/four_" + pVariantName + baseName.replace(MarvelousMenagerie.MOD_ID+":", "");
             default -> throw new UnsupportedOperationException();
         }
-
         return var10000;
     }
+
+    public void createFlatWaterEgg(Block block) {
+        this.createFlatWaterEgg(block, "");
+        this.flatWaterEgg(block);
+        this.singleTexWaterEgg(block);
+    }
+
+    public ModelFile createFlatWaterEgg(Block block, String modifier) {
+        String baseName = this.getName(block);
+        return this.models().singleTexture("block/eggs/" + modifier + baseName.replace("marvelous_menagerie:", ""), new ResourceLocation("marvelous_menagerie", "block/template_eggs/template_flat_water_egg"), this.blockTextureEggs(block));
+    }
+
+    private void flatWaterEgg(Block block) {
+        this.getVariantBuilder(block).forAllStatesExcept((state) -> {
+            ConfiguredModel.Builder var10000 = ConfiguredModel.builder();
+            String var10002 = this.getName(block);
+            return var10000.modelFile(this.existingModel("eggs/" + var10002)).build();
+        }, new Property[0]);
+    }
+
+    private BlockModelBuilder singleTexWaterEgg(Block block) {
+        String var10001 = this.getName(block);
+        ResourceLocation[] var10002 = new ResourceLocation[1];
+        String var10008 = this.getName(block);
+        var10002[0] = new ResourceLocation("marvelous_menagerie", "item/" + var10008);
+        return this.generated(var10001, var10002);
+    }
+
+    /*
+    private void createPointedDripstone() {
+        this.skipAutoItemBlock(Blocks.POINTED_DRIPSTONE);
+        PropertyDispatch.C2<Direction, DripstoneThickness> c2 = PropertyDispatch.properties(BlockStateProperties.VERTICAL_DIRECTION, BlockStateProperties.DRIPSTONE_THICKNESS);
+
+        for(DripstoneThickness dripstonethickness : DripstoneThickness.values()) {
+            c2.select(Direction.UP, dripstonethickness, this.createPointedDripstoneVariant(Direction.UP, dripstonethickness));
+        }
+
+        for(DripstoneThickness dripstonethickness1 : DripstoneThickness.values()) {
+            c2.select(Direction.DOWN, dripstonethickness1, this.createPointedDripstoneVariant(Direction.DOWN, dripstonethickness1));
+        }
+
+        this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(Blocks.POINTED_DRIPSTONE).with(c2));
+    }
+
+    private Variant createPointedDripstoneVariant(Direction pDirection, DripstoneThickness pDripstoneThickness) {
+        String s = "_" + pDirection.getSerializedName() + "_" + pDripstoneThickness.getSerializedName();
+        TextureMapping texturemapping = TextureMapping.cross(TextureMapping.getBlockTexture(Blocks.POINTED_DRIPSTONE, s));
+        return Variant.variant().with(VariantProperties.MODEL, ModelTemplates.POINTED_DRIPSTONE.createWithSuffix(Blocks.POINTED_DRIPSTONE, s, texturemapping, this.modelOutput));
+    }
+
+    void skipAutoItemBlock(Block pBlock) {
+        this.skippedAutoModelsOutput.accept(pBlock.asItem());
+    }*/
+
+
 }

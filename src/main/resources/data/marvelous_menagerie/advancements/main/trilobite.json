@@ -1,0 +1,82 @@
+{
+  "parent": "minecraft:main/egg",
+  "criteria": {
+    "trilobite_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:trilo_bucket"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "damage_trilobite": {
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "marvelous_menagerie:trilobite"
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    },
+    "interact_trilobite": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:trilobite"
+            }
+          }
+        ],
+        "item": {}
+      },
+      "trigger": "minecraft:player_interacted_with_entity"
+    },
+    "killed_trilobite": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:trilobite"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.interact_trilobite.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:trilo_flask"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.interact_trilobite"
+    }
+  },
+  "requirements": [
+    [
+      "damage_trilobite",
+      "interact_trilobite",
+      "killed_trilobite",
+      "trilobite_bucket"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,31 @@
+{
+  "text": "ophthalmo.txt",
+  "title": "  Ophthalmosaurus",
+  "page_to_go": "unusualprehistory:dinosaurs",
+  "entity_renders": [
+    {
+      "entity": "marvelous_menagerie:ophthalmo",
+      "x": 105,
+      "y": 85,
+      "page" : 0,
+      "scale": 0.9,
+      "rot_x": 30,
+      "rot_y": 225,
+      "rot_z": 0,
+      "follow_cursor": false
+    }
+  ],
+  "entity_button":[
+    {
+      "entity": "marvelous_menagerie:ophthalmo",
+      "x": 290,
+      "y": 80,
+      "page" : 0,
+      "scale": 1.2,
+      "entity_scale": 0.5,
+      "offset_x": -3,
+      "offset_y": -10,
+      "hover_text": "Ophthalmosaurus"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "text": "anomalocaris.txt",
+  "title": "  Anomalocaris",
+  "page_to_go": "unusualprehistory:dinosaurs",
+  "recipes": [
+    {
+      "recipe": "marvelous_menagerie:ophthalmo_armor",
+      "shapeless": false,
+      "x": 15,
+      "y": 20,
+      "page": 1,
+      "scale": 1.3
+    },{
+      "recipe": "marvelous_menagerie:anomalous_goggles",
+      "shapeless": false,
+      "x": 15,
+      "y": 80,
+      "page": 2,
+      "scale": 1.3
+    }
+  ],
+  "entity_renders": [
+    {
+      "entity": "marvelous_menagerie:anomalocaris",
+      "x": 105,
+      "y": 85,
+      "page" : 0,
+      "scale": 1.5,
+      "rot_x": 30,
+      "rot_y": 225,
+      "rot_z": 0,
+      "follow_cursor": false
+    }
+  ],
+  "entity_button":[
+    {
+      "entity": "marvelous_menagerie:anomalocaris",
+      "x": 290,
+      "y": 80,
+      "page" : 0,
+      "scale": 1.2,
+      "entity_scale": 1,
+      "offset_x": 1,
+      "offset_y": -3,
+      "hover_text": "Anomalocaris"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "marvelous_menagerie:block/template_eggs/template_flat_water_egg",
+  "textures": {
+    "texture": "marvelous_menagerie:block/eggs/saca_eggs"
+  }
+}

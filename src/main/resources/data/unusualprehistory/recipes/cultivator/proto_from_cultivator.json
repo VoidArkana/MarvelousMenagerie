@@ -1,0 +1,11 @@
+{
+  "type": "unusualprehistory:cultivator",
+  "ingredients": [
+    {
+      "item": "marvelous_menagerie:proto_flask"
+    }
+  ],
+  "output": {
+    "item": "marvelous_menagerie:prototaxites"
+  }
+}

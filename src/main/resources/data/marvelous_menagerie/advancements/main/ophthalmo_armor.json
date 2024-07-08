@@ -1,0 +1,37 @@
+{
+  "parent": "marvelous_menagerie:main/anomalocaris",
+  "criteria": {
+    "ophthalmo_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:ophthalmo_armor"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.ophthalmo_armor.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:ophthalmo_armor"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.ophthalmo_armor"
+    }
+  },
+  "requirements": [
+    [
+      "ophthalmo_armor"
+    ]
+  ]
+}

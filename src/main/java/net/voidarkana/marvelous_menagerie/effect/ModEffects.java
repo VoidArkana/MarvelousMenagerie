@@ -15,8 +15,8 @@ public class ModEffects {
     public static final RegistryObject<MobEffect> SEA_COW_SERENITY = MOB_EFFECTS.register("sea_cow_serenity",
             ()-> new SeaCowSerenityEffect(MobEffectCategory.BENEFICIAL, 796861));
 
-    public static final RegistryObject<MobEffect> CHILLING = MOB_EFFECTS.register("chilling",
-            ()-> new ChillingEffect(MobEffectCategory.BENEFICIAL, 796861));
+    public static final RegistryObject<MobEffect> PACIFIED = MOB_EFFECTS.register("pacified",
+            ()-> new ChillingEffect(MobEffectCategory.BENEFICIAL, 16774105));
 
     public static void register(IEventBus eventBus){
         MOB_EFFECTS.register(eventBus);

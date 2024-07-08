@@ -1,9 +1,10 @@
 package net.voidarkana.marvelous_menagerie;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
@@ -13,22 +14,22 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.voidarkana.marvelous_menagerie.block.ModBlocks;
 import net.voidarkana.marvelous_menagerie.block.entity.ModBlockEntities;
+import net.voidarkana.marvelous_menagerie.client.ClientProxy;
 import net.voidarkana.marvelous_menagerie.effect.ModEffects;
+import net.voidarkana.marvelous_menagerie.enchantment.ModEnchantmentsClass;
 import net.voidarkana.marvelous_menagerie.entity.ModEntities;
-import net.voidarkana.marvelous_menagerie.entity.client.*;
-import net.voidarkana.marvelous_menagerie.entity.client.plant.CooksoniaRenderer;
-import net.voidarkana.marvelous_menagerie.entity.client.plant.PlantRenderer;
 import net.voidarkana.marvelous_menagerie.event.ModEventBusEvents;
-import net.voidarkana.marvelous_menagerie.item.ModCreativeModTabs;
 import net.voidarkana.marvelous_menagerie.item.ModItems;
 import net.voidarkana.marvelous_menagerie.sound.ModSounds;
-import net.voidarkana.marvelous_menagerie.util.ModWoodTypes;
+import net.voidarkana.marvelous_menagerie.common.CommonProxy;
+import net.voidarkana.marvelous_menagerie.worldgen.ModConfiguredFeatures;
 import net.voidarkana.marvelous_menagerie.worldgen.tree.ModFoliagePlacers;
 import net.voidarkana.marvelous_menagerie.worldgen.tree.ModTrunkPlacerTypes;
 import org.slf4j.Logger;
@@ -36,6 +37,9 @@ import org.slf4j.Logger;
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MarvelousMenagerie.MOD_ID)
 public class MarvelousMenagerie {
+
+    public static CommonProxy PROXY = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
+
     public static final String MOD_ID = "marvelous_menagerie";
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -57,12 +61,18 @@ public class MarvelousMenagerie {
         ModTrunkPlacerTypes.register(modEventBus);
         ModFoliagePlacers.register(modEventBus);
 
+        ModConfiguredFeatures.register(modEventBus);
+        ModEnchantmentsClass.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::clientSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
 
         MinecraftForge.EVENT_BUS.register(new ModEventBusEvents());
+
+        PROXY.commonInit();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -72,7 +82,16 @@ public class MarvelousMenagerie {
             ComposterBlock.COMPOSTABLES.put(ModBlocks.SIGILLARIA_LEAVES.get().asItem(), 0.4F);
 
             ComposterBlock.COMPOSTABLES.put(ModBlocks.COOKSONIA.get().asItem(), 0.4F);
+
+            ComposterBlock.COMPOSTABLES.put(ModBlocks.PROTOTAXITES.get().asItem(), 0.4F);
+            ComposterBlock.COMPOSTABLES.put(ModBlocks.PROTOTAXITES_BLOCK.get().asItem(), 0.8F);
         });
+
+
+    }
+
+    private void clientSetup(final FMLClientSetupEvent event) {
+        event.enqueueWork(() -> PROXY.clientInit());
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
@@ -86,16 +105,6 @@ public class MarvelousMenagerie {
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            Sheets.addWoodType(ModWoodTypes.SIGILLARIA);
-            EntityRenderers.register(ModEntities.DODO.get(), DodoRenderer::new);
-            EntityRenderers.register(ModEntities.THYLACINE.get(), ThylacineRenderer::new);
-            EntityRenderers.register(ModEntities.ELEPHANT_BIRD.get(), ElephantBirdRenderer::new);
-            EntityRenderers.register(ModEntities.STELLER_SEA_COW.get(), StellerRenderer::new);
-            EntityRenderers.register(ModEntities.BABY_STELLER_SEA_COW.get(), BabyStellerRenderer::new);
-            EntityRenderers.register(ModEntities.SIGILLARIA_SAPLING_ENTITY.get(), PlantRenderer::new);
-            EntityRenderers.register(ModEntities.COOKSONIA_ENTITY.get(), CooksoniaRenderer::new);
-        }
+
     }
 }

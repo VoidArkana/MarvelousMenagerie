@@ -1,7 +1,10 @@
 package net.voidarkana.marvelous_menagerie.block;
 
 import com.peeko32213.unusualprehistory.common.block.BlockDinosaurLandEggs;
+import com.peeko32213.unusualprehistory.common.block.BlockDinosaurWaterEggs;
 import com.peeko32213.unusualprehistory.common.block.BlockHorsetail;
+import com.peeko32213.unusualprehistory.core.registry.UPEntities;
+import com.peeko32213.unusualprehistory.core.registry.UPItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -9,11 +12,13 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.PlaceOnWaterBlockItem;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -23,8 +28,10 @@ import net.voidarkana.marvelous_menagerie.block.custom.*;
 import net.voidarkana.marvelous_menagerie.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.item.ModItems;
 import net.voidarkana.marvelous_menagerie.util.ModWoodTypes;
+import net.voidarkana.marvelous_menagerie.worldgen.ModConfiguredFeatures;
 import net.voidarkana.marvelous_menagerie.worldgen.tree.SigillariaTreeGrower;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModBlocks {
@@ -181,6 +188,42 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> COOKSONIA = registerBlock("cooksonia",
             ()-> new CooksoniaBlock(BlockBehaviour.Properties.copy(Blocks.SUGAR_CANE).noOcclusion().noCollission()));
+
+    public static final Supplier<Block> TRILO_EGGS = registerBlockWithItem("trilo_eggs",
+            () -> new BlockDinosaurWaterEggs(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak().noOcclusion()
+                    .noCollission().randomTicks(), ModEntities.TRILOBITE, false),
+            (entry) -> new PlaceOnWaterBlockItem(entry.get(), new Item.Properties()));
+
+    public static final Supplier<Block> SACA_EGGS = registerBlockWithItem("saca_eggs",
+            () -> new BlockDinosaurWaterEggs(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak()
+                    .noOcclusion().noCollission().randomTicks(), ModEntities.SACABAMBASPIS, false),
+            (entry) -> new PlaceOnWaterBlockItem(entry.get(), new Item.Properties()));
+
+    public static final Supplier<Block> CARIS_EGGS = registerBlockWithItem("anomalocaris_eggs",
+            () -> new BlockDinosaurWaterEggs(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak()
+                    .noOcclusion().noCollission().randomTicks(), ModEntities.BABY_ANOMALOCARIS, false),
+            (entry) -> new PlaceOnWaterBlockItem(entry.get(), new Item.Properties()));
+
+
+    public static final RegistryObject<Block> PROTOTAXITES = registerBlock("prototaxites",
+            ()-> new PrototaxitesBlock(BlockBehaviour.Properties.copy(Blocks.MUSHROOM_STEM).mapColor(MapColor.COLOR_GREEN).noOcclusion(),
+                    ModConfiguredFeatures.PROTOTAXITES_KEY));
+    public static final RegistryObject<Block> PROTOTAXITES_BLOCK = registerBlock("prototaxites_block",
+            ()-> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.MUSHROOM_STEM).mapColor(MapColor.COLOR_GREEN)));
+
+    public static final RegistryObject<Block> DICKINSONIA = registerBlock("dickinsonia",
+            ()-> new DickinsoniaBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.COLOR_LIGHT_GREEN).noOcclusion().instabreak()));
+
+
+    private static <T extends Block> Supplier<T> registerBlockWithItem(String key, Supplier<T> block, Function<Supplier<T>, Item> item) {
+        Supplier<T> entry = create(key, block);
+        ModItems.ITEMS.register(key, () -> item.apply(entry));
+        return entry;
+    }
+
+    private static <T extends Block> Supplier<T> create(String key, Supplier<T> block) {
+        return BLOCKS.register(key, block);
+    }
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

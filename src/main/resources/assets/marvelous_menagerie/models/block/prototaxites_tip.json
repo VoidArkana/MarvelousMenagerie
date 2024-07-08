@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "marvelous_menagerie:block/prototaxites",
+		"particle": "marvelous_menagerie:block/prototaxites"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 4],
+			"to": [12, 14, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 1, 8]},
+			"faces": {
+				"north": {"uv": [4, 2, 12, 16], "texture": "#1"},
+				"east": {"uv": [4, 2, 12, 16], "texture": "#1"},
+				"south": {"uv": [4, 2, 12, 16], "texture": "#1"},
+				"west": {"uv": [4, 2, 12, 16], "texture": "#1"},
+				"up": {"uv": [4, 4, 13, 12], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [4, 2, 12, 12], "texture": "#1"}
+			}
+		}
+	]
+}

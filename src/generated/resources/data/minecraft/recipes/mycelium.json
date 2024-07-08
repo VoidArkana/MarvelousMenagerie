@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "D": {
+      "item": "minecraft:dirt"
+    },
+    "P": {
+      "item": "marvelous_menagerie:prototaxites"
+    }
+  },
+  "pattern": [
+    "PP",
+    "DD"
+  ],
+  "result": {
+    "count": 2,
+    "item": "minecraft:mycelium"
+  },
+  "show_notification": true
+}

@@ -27,7 +27,6 @@ public class CooksoniaBlock extends Block implements net.minecraftforge.common.I
         if (!pState.canSurvive(pLevel, pPos)) {
             pLevel.destroyBlock(pPos, true);
         }
-
     }
 
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {

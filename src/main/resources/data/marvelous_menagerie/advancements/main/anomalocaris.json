@@ -1,0 +1,139 @@
+{
+  "parent": "minecraft:main/egg",
+  "criteria": {
+    "anomalocaris_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:anomalocaris_bucket"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "baby_anomalocaris_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:baby_anomalocaris_bucket"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "damage_anomalocaris": {
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "marvelous_menagerie:anomalocaris"
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    },
+    "interact_anomalocaris": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:anomalocaris"
+            }
+          }
+        ],
+        "item": {}
+      },
+      "trigger": "minecraft:player_interacted_with_entity"
+    },
+    "killed_anomalocaris": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:anomalocaris"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "damage_baby_anomalocaris": {
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "marvelous_menagerie:baby_anomalocaris"
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    },
+    "interact_baby_anomalocaris": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:baby_anomalocaris"
+            }
+          }
+        ],
+        "item": {}
+      },
+      "trigger": "minecraft:player_interacted_with_entity"
+    },
+    "killed_baby_anomalocaris": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:baby_anomalocaris"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.interact_anomalocaris.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:anomalocaris_flask"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.interact_anomalocaris"
+    }
+  },
+  "requirements": [
+    [
+      "damage_anomalocaris",
+      "interact_anomalocaris",
+      "killed_anomalocaris",
+      "damage_baby_anomalocaris",
+      "interact_baby_anomalocaris",
+      "killed_baby_anomalocaris",
+      "anomalocaris_bucket",
+      "baby_anomalocaris_bucket"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

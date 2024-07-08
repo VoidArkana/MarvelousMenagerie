@@ -1,0 +1,30 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.trilobite",
+				"texture_width": 48,
+				"texture_height": 48,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "body",
+					"parent": "root",
+					"pivot": [0, 1, 2],
+					"cubes": [
+						{"origin": [-6.5, 1, -5.5], "size": [13, 0, 9], "uv": [-7, 10]},
+						{"origin": [-2.5, 0, -3.5], "size": [5, 2, 7], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

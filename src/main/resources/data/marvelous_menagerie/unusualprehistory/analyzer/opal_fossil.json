@@ -1,0 +1,13 @@
+{
+  "input": ["unusualprehistory:opal_fossil"],
+  "entries": [
+    {
+      "weight": 80,
+      "item": "marvelous_menagerie:steller_sea_cow_dna"
+    },
+    {
+      "weight": 100,
+      "item": "marvelous_menagerie:ophthalmo_flask"
+    }
+  ]
+}

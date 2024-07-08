@@ -1,0 +1,37 @@
+{
+  "parent": "marvelous_menagerie:main/elephant_bird",
+  "criteria": {
+    "egg_shellmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:egg_shellmet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.egg_shellmet.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:egg_shellmet"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.egg_shellmet"
+    }
+  },
+  "requirements": [
+    [
+      "egg_shellmet"
+    ]
+  ]
+}

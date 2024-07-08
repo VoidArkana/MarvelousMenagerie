@@ -59,7 +59,6 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
 
     static final TargetingConditions SWIM_WITH_PLAYER_TARGETING = TargetingConditions.forNonCombat().range(10.0D).ignoreLineOfSight();
     private static final EntityDataAccessor<Boolean> FROM_BOOK = SynchedEntityData.defineId(StellerEntity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(StellerEntity.class, EntityDataSerializers.INT);
 
     private boolean persistenceRequired;
 
@@ -97,47 +96,15 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(FROM_BOOK, false);
-        this.entityData.define(VARIANT, 0);
         //this.entityData.define(ROTATION, 0F);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
-        pCompound.putInt("variant", this.getVariant());
-        //pCompound.putFloat("rotation", this.getRotation());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
-        this.setVariant(pCompound.getInt("variant"));
-        //this.setRotation(pCompound.getInt("rotation"));
-    }
-
-    /*public boolean isStellar() {
-        String s = ChatFormatting.stripFormatting(this.getName().getString());
-        return s != null && s.toLowerCase().contains("stellar");
-    }*/
-
-    /*rotation
-    public void setRotation(float rotation) {
-        this.entityData.set(ROTATION, rotation);
-    }
-
-    public Float getRotation() {
-        return this.entityData.get(ROTATION);
-    }*/
-
-    //variant
-    public void determineVariant(int variantChange) {
-        this.setVariant(0);
-    }
-
-    public void setVariant(int variant) {
-        this.entityData.set(VARIANT, variant);
-    }
-
-    public int getVariant() {
-        return (Integer)this.entityData.get(VARIANT);
     }
 
     @Nullable
@@ -442,7 +409,7 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
     }
 
     protected SoundEvent getSwimSound() {
-        return SoundEvents.DOLPHIN_SWIM;
+        return ModSounds.CREATURE_SWIM.get();
     }
 
     protected void playStepSound(BlockPos p_28301_, BlockState p_28302_) {

@@ -10,6 +10,14 @@
     {
       "weight": 15,
       "item": "marvelous_menagerie:cooksonia_dna"
+    },
+    {
+      "weight": 15,
+      "item": "marvelous_menagerie:proto_flask"
+    },
+    {
+      "weight": 15,
+      "item": "marvelous_menagerie:dickinsonia_flask"
     }
   ]
 }

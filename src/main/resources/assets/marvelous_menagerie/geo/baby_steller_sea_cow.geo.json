@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.steller_sea_cow",
+				"identifier": "geometry.baby_steller_sea_cow",
 				"texture_width": 80,
 				"texture_height": 80,
 				"visible_bounds_width": 10,

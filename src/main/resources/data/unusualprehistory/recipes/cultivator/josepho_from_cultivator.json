@@ -1,0 +1,11 @@
+{
+  "type": "unusualprehistory:cultivator",
+  "ingredients": [
+    {
+      "item": "marvelous_menagerie:josepho_flask"
+    }
+  ],
+  "output": {
+    "item": "marvelous_menagerie:josepho_embryo"
+  }
+}

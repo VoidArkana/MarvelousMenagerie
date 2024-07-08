@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": {
+      "item": "marvelous_menagerie:anomalocaris_lens"
+    },
+    "S": {
+      "item": "marvelous_menagerie:anomalocaris_scute"
+    }
+  },
+  "pattern": [
+    "LSL"
+  ],
+  "result": {
+    "item": "marvelous_menagerie:anomalous_goggles"
+  },
+  "show_notification": true
+}

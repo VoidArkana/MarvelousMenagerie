@@ -15,6 +15,7 @@ import java.util.List;
 
 public class ModPlacedFeatures {
 
+
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
     }

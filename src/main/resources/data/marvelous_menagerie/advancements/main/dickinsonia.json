@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:main/plants",
+  "criteria": {
+    "dickinsonia": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:dickinsonia"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.dickinsonia.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:dickinsonia"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.dickinsonia"
+    }
+  },
+  "requirements": [
+    [
+      "dickinsonia"
+    ]
+  ]
+}

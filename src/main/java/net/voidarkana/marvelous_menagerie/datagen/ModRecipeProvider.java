@@ -4,6 +4,7 @@ import com.peeko32213.unusualprehistory.datagen.UPRecipeProvider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MinecartItem;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -98,6 +99,65 @@ public class ModRecipeProvider extends UPRecipeProvider implements IConditionBui
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.LIME_DYE, 1)
                 .requires(ModBlocks.COOKSONIA.get())
                 .unlockedBy(getHasName(ModBlocks.COOKSONIA.get()), has(ModBlocks.COOKSONIA.get()))
+                .save(consumer);
+
+        //Golden Sacabambaspis
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.GOLDEN_SACA.get(), 1)
+                .pattern("GGG")
+                .pattern("GSG")
+                .pattern("GGG")
+                .define('G', Items.GOLD_INGOT)
+                .define('S', ModItems.SACABAMBASPIS.get())
+                .unlockedBy(getHasName(ModItems.SACABAMBASPIS.get()), has(ModItems.SACABAMBASPIS.get()))
+                .save(consumer);
+
+        //Mycelium from Prototaxites
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Items.MYCELIUM, 2)
+                .pattern("PP")
+                .pattern("DD")
+                .define('P', ModBlocks.PROTOTAXITES.get())
+                .define('D', Items.DIRT)
+                .unlockedBy(getHasName(ModBlocks.PROTOTAXITES.get()), has(ModBlocks.PROTOTAXITES.get()))
+                .save(consumer);
+
+        //Prototaxites Block From Prototaxites
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PROTOTAXITES_BLOCK.get(), 1)
+                .pattern("PP")
+                .pattern("PP")
+                .define('P', ModBlocks.PROTOTAXITES.get())
+                .unlockedBy(getHasName(ModBlocks.PROTOTAXITES.get()), has(ModBlocks.PROTOTAXITES.get()))
+                .save(consumer);
+
+        //Prototaxites From Prototaxites Block
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PROTOTAXITES.get(), 4)
+                .requires(ModBlocks.PROTOTAXITES_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.PROTOTAXITES.get()), has(ModBlocks.PROTOTAXITES.get()))
+                .save(consumer);
+
+        //Mushroom Stew From Prototaxites
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.MUSHROOM_STEW, 1)
+                .requires(ModBlocks.PROTOTAXITES.get(), 2)
+                .requires(Items.BOWL)
+                .unlockedBy(getHasName(ModBlocks.PROTOTAXITES.get()), has(ModBlocks.PROTOTAXITES.get()))
+                .save(consumer);
+
+        //Anomalous Goggles
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.ANOMALOUS_GOGGLES.get(), 1)
+                .pattern("LSL")
+                .define('L', ModItems.CARIS_LENS.get())
+                .define('S', ModItems.CARIS_SCUTE.get())
+                .unlockedBy(getHasName(ModItems.CARIS_SCUTE.get()), has(ModItems.CARIS_SCUTE.get()))
+                .unlockedBy(getHasName(ModItems.CARIS_LENS.get()), has(ModItems.CARIS_LENS.get()))
+                .save(consumer);
+
+
+        //Ophthalmo Armor
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.OPHTHALMO_ARMOR.get(), 1)
+                .pattern("S  ")
+                .pattern("SSS")
+                .pattern("S S")
+                .define('S', ModItems.CARIS_SCUTE.get())
+                .unlockedBy(getHasName(ModItems.CARIS_SCUTE.get()), has(ModItems.CARIS_SCUTE.get()))
                 .save(consumer);
     }
 }

@@ -222,7 +222,7 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
             this.playSound(SoundEvents.CHICKEN_STEP, 0.15F, 1.0F);
         }
         else{
-            this.playSound(SoundEvents.CAMEL_STEP, 0.25F, 1.0F);
+            this.playSound(ModSounds.LARGE_STEPS.get(), 0.25F, 1.0F);
         }
     }
 
@@ -253,6 +253,11 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
 
             return true;
         }
+    }
+
+    @Override
+    public float getVoicePitch() {
+        return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F;
     }
 
     protected SoundEvent getAmbientSound() {

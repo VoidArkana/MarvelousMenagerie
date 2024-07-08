@@ -25,12 +25,17 @@ public class ModItemTagGenerator extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
-        this.tag(Tags.Items.EGGS)
-                .add(ModBlocks.DODO_EGGS.get().asItem())
-                .add(ModItems.CRACKED_ELEPHANT_EGG.get());
+        this.tag(Tags.Items.EGGS).add(
+                ModBlocks.DODO_EGGS.get().asItem(),
+                ModBlocks.ELE_EGG.get().asItem(),
+                ModItems.CRACKED_ELEPHANT_EGG.get(),
+                ModBlocks.SACA_EGGS.get().asItem(),
+                ModBlocks.TRILO_EGGS.get().asItem(),
+                ModBlocks.CARIS_EGGS.get().asItem());
 
         this.tag(Tags.Items.ARMORS_HELMETS).add(
-                ModItems.EGG_SHELLMET.get());
+                ModItems.EGG_SHELLMET.get(),
+                ModItems.ANOMALOUS_GOGGLES.get());
 
         this.tag(ItemTags.TRIMMABLE_ARMOR).add(
                 ModItems.EGG_SHELLMET.get());
@@ -123,19 +128,54 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
         this.tag(UPTags.ANALYZER_ITEMS_OUTPUT_PLANT).add(
                 ModItems.SIGILLARIA_DNA.get(),
-                ModItems.COOKSONIA_DNA.get()
+                ModItems.COOKSONIA_DNA.get(),
+                ModItems.PROTO_FLASK.get(),
+                ModItems.DICKINSONIA_FLASK.get()
         );
 
         this.tag(UPTags.ANALYZER_ITEMS_OUTPUT_TREE).add(
-                ModItems.SIGILLARIA_DNA.get()
+                ModItems.SIGILLARIA_DNA.get(),
+                ModItems.PROTO_FLASK.get()
         );
 
         this.tag(UPTags.ANALYZER_ITEMS_OUTPUT_TAR).add(
                 ModItems.DODO_DNA.get(),
                 ModItems.ELEPHANT_BIRD_DNA.get(),
-                ModItems.STELLER_SEA_COW_DNA.get(),
-                ModItems.THYLACINE_DNA.get()
+                ModItems.THYLACINE_DNA.get(),
+                ModItems.JOSEPHO_FLASK.get()
         );
+
+        this.tag(UPTags.ANALYZER_ITEMS_OUTPUT_OPAL).add(
+                ModItems.STELLER_SEA_COW_DNA.get(),
+                ModItems.OPHTHALMO_FLASK.get()
+        );
+
+        this.tag(UPTags.ANALYZER_ITEMS_OUTPUT_PALEO).add(
+                ModItems.TRILO_FLASK.get(),
+                ModItems.SACA_FLASK.get(),
+                ModItems.CARIS_FLASK.get()
+        );
+
+        this.tag(UPTags.ANALYZER_ITEMS_INPUT).add(
+                ModItems.CRACKED_ELEPHANT_EGG.get(),
+                ModItems.SACABAMBASPIS.get(),
+                ModItems.TRILO_BITE.get(),
+                ModItems.STELLER_MILK.get()
+        );
+
+        this.tag(ItemTags.FISHES).add(
+                ModItems.SACABAMBASPIS.get(),
+                ModItems.TRILO_BITE.get()
+        );
+
+        this.tag(ItemTags.PIGLIN_LOVED).add(
+                ModItems.GOLDEN_SACA.get()
+        );
+
+        this.tag(ItemTags.AXOLOTL_TEMPT_ITEMS).add(
+                ModItems.SACA_BUCKET.get()
+        );
+
 
         this.tag(UPTags.DNA_FLASKS).add(
                 ModItems.DODO_DNA.get(),
@@ -143,7 +183,14 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 ModItems.STELLER_SEA_COW_DNA.get(),
                 ModItems.THYLACINE_DNA.get(),
                 ModItems.SIGILLARIA_DNA.get(),
-                ModItems.COOKSONIA_DNA.get()
+                ModItems.COOKSONIA_DNA.get(),
+                ModItems.TRILO_FLASK.get(),
+                ModItems.SACA_FLASK.get(),
+                ModItems.PROTO_FLASK.get(),
+                ModItems.DICKINSONIA_FLASK.get(),
+                ModItems.CARIS_FLASK.get(),
+                ModItems.OPHTHALMO_FLASK.get(),
+                ModItems.JOSEPHO_FLASK.get()
         );
     }
 }

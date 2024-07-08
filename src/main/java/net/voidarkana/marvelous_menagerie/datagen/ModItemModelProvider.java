@@ -59,6 +59,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.JUMBO_OMELETTE);
         simpleItem(ModItems.CRACKED_ELEPHANT_EGG);
         trimmedArmorItem(ModItems.EGG_SHELLMET);
+
         simpleItem(ModItems.EGG_SHELL_FRAGMENT);
 
         simpleItem(ModItems.STELLER_MILK);
@@ -88,6 +89,40 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent(ModItems.THYLA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.ELE_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.STELLER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
+        withExistingParent(ModItems.TRILOBITE_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        simpleItem(ModItems.TRILO_FLASK);
+        simpleItem(ModItems.TRILO_BUCKET);
+        simpleItem(ModItems.TRILO_BITE);
+
+        withExistingParent(ModItems.SACA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        simpleItem(ModItems.SACA_FLASK);
+        simpleItem(ModItems.SACA_BUCKET);
+        simpleItem(ModItems.SACABAMBASPIS);
+        simpleItem(ModItems.COOKED_SACA);
+        simpleItem(ModItems.GOLDEN_SACA);
+
+        simpleItem(ModItems.PROTO_FLASK);
+
+        simpleItem(ModItems.DICKINSONIA_FLASK);
+
+        withExistingParent(ModItems.CARIS_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        simpleItem(ModItems.CARIS_BUCKET);
+        simpleItem(ModItems.BABY_CARIS_BUCKET);
+        simpleItem(ModItems.CARIS_FLASK);
+        simpleItem(ModItems.CARIS_SCUTE);
+        simpleItem(ModItems.CARIS_LENS);
+        simpleItem(ModItems.ANOMALOUS_GOGGLES);
+        simpleItem(ModItems.OPHTHALMO_ARMOR);
+
+        withExistingParent(ModItems.OPHTHALMO_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        simpleItem(ModItems.BABY_OPHTHALMO_BUCKET);
+        simpleItem(ModItems.OPHTHALMO_FLASK);
+        simpleItem(ModItems.OPHTHALMO_EMBRYO);
+
+        withExistingParent(ModItems.JOSEPHO_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        simpleItem(ModItems.JOSEPHO_FLASK);
+        simpleItem(ModItems.JOSEPHO_EMBRYO);
     }
 
 

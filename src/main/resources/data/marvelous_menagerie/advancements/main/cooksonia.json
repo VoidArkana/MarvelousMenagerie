@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:main/plants",
+  "criteria": {
+    "cooksonia": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:cooksonia"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.cooksonia.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:cooksonia"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.cooksonia"
+    }
+  },
+  "requirements": [
+    [
+      "cooksonia"
+    ]
+  ]
+}

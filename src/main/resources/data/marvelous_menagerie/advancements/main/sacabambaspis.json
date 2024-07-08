@@ -1,0 +1,82 @@
+{
+  "parent": "minecraft:main/egg",
+  "criteria": {
+    "sacabambaspis_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:saca_bucket"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "damage_sacabambaspis": {
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "marvelous_menagerie:sacabambaspis"
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    },
+    "interact_sacabambaspis": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:sacabambaspis"
+            }
+          }
+        ],
+        "item": {}
+      },
+      "trigger": "minecraft:player_interacted_with_entity"
+    },
+    "killed_sacabambaspis": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:sacabambaspis"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.interact_sacabambaspis.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:saca_flask"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.interact_sacabambaspis"
+    }
+  },
+  "requirements": [
+    [
+      "damage_sacabambaspis",
+      "interact_sacabambaspis",
+      "killed_sacabambaspis",
+      "sacabambaspis_bucket"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

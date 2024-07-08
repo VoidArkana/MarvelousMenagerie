@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.fml.common.Mod;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.util.ModTags;
@@ -33,14 +34,17 @@ public class ModEntityTagsGenerator extends EntityTypeTagsProvider {
                 .add(EntityType.ENDERMAN).add(EntityType.WITHER).add(EntityType.ENDER_DRAGON).add(EntityType.HUSK)
                 .add(UPEntities.REX.get()).add(UPEntities.SMILODON.get()).add(UPEntities.HWACHA.get()).add(UPEntities.ULUG.get())
                 .add(UPEntities.AUSTRO.get()).add(UPEntities.VELOCI.get()).add(UPEntities.REX.get()).add(UPEntities.PARACERATHERIUM.get())
-                .add(UPEntities.MEGALANIA.get()).add(UPEntities.SLUDGE.get()).add(UPEntities.BARINASUCHUS.get());
+                .add(UPEntities.MEGALANIA.get()).add(UPEntities.SLUDGE.get()).add(UPEntities.BARINASUCHUS.get())
+                .add(ModEntities.ANOMALOCARIS.get()).add(ModEntities.OPHTHALMO.get());
 
         this.tag(ModTags.EntityTypes.THYLA_EMBRYO_ATTACH_TO).add(ModEntities.THYLACINE.get()).addOptional(new ResourceLocation("alexsmobs:tasmanian_devil"));
         this.tag(ModTags.EntityTypes.STELLER_EMBRYO_ATTACH_TO).add(ModEntities.STELLER_SEA_COW.get());
+        this.tag(ModTags.EntityTypes.OPHTHALMO_EMBRYO_ATTACH_TO).add(ModEntities.OPHTHALMO.get());
+        this.tag(ModTags.EntityTypes.JOSEPHO_EMBRYO_ATTACH_TO).add(ModEntities.JOSEPHO.get());
 
-        this.tag(UPTags.LAND_MOBS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.ELEPHANT_BIRD.get());
+        this.tag(UPTags.LAND_MOBS).add(ModEntities.JOSEPHO.get()).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.ELEPHANT_BIRD.get());
         this.tag(UPTags.BEELZE_TARGETS).add(ModEntities.DODO.get());
-        this.tag(UPTags.DUNK_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.BABY_STELLER_SEA_COW.get()).add(ModEntities.STELLER_SEA_COW.get()).add(ModEntities.ELEPHANT_BIRD.get());
+        this.tag(UPTags.DUNK_TARGETS).add(ModEntities.BABY_OPHTHALMO.get()).add(ModEntities.OPHTHALMO.get()).add(ModEntities.BABY_ANOMALOCARIS.get()).add(ModEntities.ANOMALOCARIS.get()).add(ModEntities.SACABAMBASPIS.get()).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.BABY_STELLER_SEA_COW.get()).add(ModEntities.STELLER_SEA_COW.get()).add(ModEntities.ELEPHANT_BIRD.get());
         this.tag(UPTags.ENCRUSTED_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.BABY_STELLER_SEA_COW.get()).add(ModEntities.STELLER_SEA_COW.get()).add(ModEntities.ELEPHANT_BIRD.get());
         this.tag(UPTags.MAJUNGA_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get());
         this.tag(UPTags.RAPTOR_TARGETS).add(ModEntities.DODO.get()).add(ModEntities.THYLACINE.get()).add(ModEntities.BABY_STELLER_SEA_COW.get());
@@ -50,7 +54,13 @@ public class ModEntityTagsGenerator extends EntityTypeTagsProvider {
                 .add(ModEntities.DODO.get())
                 .add(ModEntities.BABY_STELLER_SEA_COW.get())
                 .add(ModEntities.STELLER_SEA_COW.get())
-                .add(ModEntities.ELEPHANT_BIRD.get());
-        this.tag(UPTags.CARNIVORES).add(ModEntities.THYLACINE.get());
+                .add(ModEntities.ELEPHANT_BIRD.get())
+                .add(ModEntities.JOSEPHO.get());
+        this.tag(UPTags.CARNIVORES)
+                .add(ModEntities.THYLACINE.get())
+                .add(ModEntities.ANOMALOCARIS.get())
+                .add(ModEntities.BABY_ANOMALOCARIS.get())
+                .add(ModEntities.OPHTHALMO.get())
+                .add(ModEntities.BABY_OPHTHALMO.get());
     }
 }

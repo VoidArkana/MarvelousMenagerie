@@ -22,4 +22,20 @@ public class ModFoods {
                     new MobEffectInstance(MobEffects.WATER_BREATHING, 200,0, false, false, false,
                             new MobEffectInstance(MobEffects.WATER_BREATHING, 200,0, false, false), ModEffects.SEA_COW_SERENITY.get().createFactorData()), ModEffects.SEA_COW_SERENITY.get().createFactorData()),
                     1.0F).alwaysEat().build();
+
+    public static final FoodProperties TRILO_BITE = (new FoodProperties.Builder())
+            .nutrition(1)
+            .saturationMod(0.1F).build();
+
+    public static final FoodProperties RAW_SACA = (new FoodProperties.Builder())
+            .nutrition(2)
+            .saturationMod(0.1F).build();
+
+    public static final FoodProperties COOKED_SACA = (new FoodProperties.Builder())
+            .nutrition(5)
+            .saturationMod(0.6F).build();
+
+    public static final FoodProperties GOLDEN_SACA = (new FoodProperties.Builder())
+            .nutrition(10)
+            .saturationMod(10F).build();
 }

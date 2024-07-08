@@ -1,5 +1,9 @@
 {
   "values": [
-    "marvelous_menagerie:thylacine"
+    "marvelous_menagerie:thylacine",
+    "marvelous_menagerie:anomalocaris",
+    "marvelous_menagerie:baby_anomalocaris",
+    "marvelous_menagerie:ophthalmo",
+    "marvelous_menagerie:baby_ophthalmo"
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "marvelous_menagerie:sacabambaspis"
+  },
+  "result": "marvelous_menagerie:cooked_saca",
+  "experience": 0.35,
+  "cookingtime": 100
+}

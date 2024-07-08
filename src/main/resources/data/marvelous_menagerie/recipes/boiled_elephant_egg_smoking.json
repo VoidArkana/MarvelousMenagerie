@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "marvelous_menagerie:cracked_elephant_egg"
+  },
+  "result": "marvelous_menagerie:boiled_elephant_egg",
+  "experience": 0.35,
+  "cookingtime": 100
+}

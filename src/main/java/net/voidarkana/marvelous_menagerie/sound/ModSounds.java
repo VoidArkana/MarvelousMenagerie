@@ -38,6 +38,30 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> THYLACINE_DEATH = registerSoundEvents("thylacine_death");
     public static final RegistryObject<SoundEvent> THYLACINE_YAWN = registerSoundEvents("thylacine_yawn");
 
+    public static final RegistryObject<SoundEvent> JOSEPHO_IDLE = registerSoundEvents("josepho_idle");
+    public static final RegistryObject<SoundEvent> JOSEPHO_HURT = registerSoundEvents("josepho_hurt");
+    public static final RegistryObject<SoundEvent> JOSEPHO_DEATH = registerSoundEvents("josepho_death");
+
+    public static final RegistryObject<SoundEvent> OPHTHALMO_IDLE = registerSoundEvents("ophthalmo_idle");
+    public static final RegistryObject<SoundEvent> OPHTHALMO_HURT = registerSoundEvents("ophthalmo_hurt");
+    public static final RegistryObject<SoundEvent> OPHTHALMO_DEATH = registerSoundEvents("ophthalmo_death");
+
+    public static final RegistryObject<SoundEvent> LARGE_STEPS = registerSoundEvents("large_footsteps");
+    public static final RegistryObject<SoundEvent> CREATURE_FLOPS = registerSoundEvents("creature_flops");
+    public static final RegistryObject<SoundEvent> CREATURE_SWIM = registerSoundEvents("creature_swim");
+
+    public static final RegistryObject<SoundEvent> ARTHROPOD_HURT = registerSoundEvents("arthropod_hurt");
+    public static final RegistryObject<SoundEvent> ARTHROPOD_DEATH = registerSoundEvents("arthropod_death");
+
+    public static final RegistryObject<SoundEvent> PET_ARMOR_BREAK = registerSoundEvents("caris_armor_break");
+    public static final RegistryObject<SoundEvent> PET_ARMOR_CRACK = registerSoundEvents("caris_armor_crack");
+    public static final RegistryObject<SoundEvent> PET_ARMOR_DAMAGE = registerSoundEvents("caris_armor_damage");
+    public static final RegistryObject<SoundEvent> PET_ARMOR_REPAIR = registerSoundEvents("caris_armor_repair");
+    public static final RegistryObject<SoundEvent> PET_ARMOR_EQUIP = registerSoundEvents("caris_armor_equip");
+    public static final RegistryObject<SoundEvent> PET_ARMOR_UNEQUIP = registerSoundEvents("caris_armor_unequip");
+
+    public static final RegistryObject<SoundEvent> EGG_ARMOR = registerSoundEvents("egg_armor");
+
     private static RegistryObject<SoundEvent> registerSoundEvents(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MarvelousMenagerie.MOD_ID, name)));
     }
