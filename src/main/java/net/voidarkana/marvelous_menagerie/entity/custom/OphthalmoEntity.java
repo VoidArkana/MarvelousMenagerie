@@ -59,6 +59,7 @@ import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.voidarkana.marvelous_menagerie.client.events.ModEventBusClientEvents;
+import net.voidarkana.marvelous_menagerie.entity.custom.ai.WaterMountLookControl;
 import net.voidarkana.marvelous_menagerie.item.ModItems;
 import net.voidarkana.marvelous_menagerie.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
@@ -94,7 +95,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
     public OphthalmoEntity(EntityType<? extends WaterAnimal> entityType, Level level) {
         super(entityType, level);
         this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.01F, true);
-        this.lookControl = new SmoothSwimmingLookControl(this,10);
+        this.lookControl = new WaterMountLookControl(this,10);
         this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
         rand = 0;
     }
@@ -127,7 +128,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.0D, 10));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(5, new OphthalmoEntity.OphthalmoJumpGoal(this, 10));
+        this.goalSelector.addGoal(5, new OphthalmoEntity.OphthalmoJumpGoal(this, 3));
         this.goalSelector.addGoal(2, new OphthalmoEntity.OphthalmoMeleeAttackGoal(this, (double)1F, true));
         if (!this.hasControllingPassenger()){
             this.targetSelector.addGoal(3, new OphthalmoOwnerHurtByTargetGoal(this));
@@ -162,8 +163,6 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         pCompound.putBoolean("Tame", this.isTamed());
         pCompound.putBoolean("IsSaddled", this.getIsSaddled());
         pCompound.putBoolean("HasArmor", this.getHasArmor());
-        //Compound.putInt("EatingTime", this.getEatingTime());
-        //pCompound.putInt("OutOfWaterRidingTicks", this.getOutOfWaterRidingTicks());
 
         if (this.getOwnerUUID() != null) {
             pCompound.putUUID("Owner", this.getOwnerUUID());
@@ -174,10 +173,9 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
+        this.setTamed(pCompound.getBoolean("Tame"));
         this.setIsSaddled(pCompound.getBoolean("IsSaddled"));
         this.setHasArmor(pCompound.getBoolean("HasArmor"));
-        //this.setEatingTime(pCompound.getInt("EatingTime"));
-        //this.setOutOfWaterRidingTicks(pCompound.getInt("OutOfWaterRidingTicks"));
 
         UUID uuid;
         if (pCompound.hasUUID("Owner")) {
@@ -434,6 +432,14 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         super.tick();
 
         if (!this.isNoAi()){
+
+            if (isVehicle() && getControllingPassenger() != null && this.level().isClientSide) {
+                float added = (float) position().y() * (float) getDeltaMovement().y();
+                float xTilt = Mth.clamp(added, -25.0F, 20.0F);
+
+                setXRot(-Mth.lerp(getXRot(), xTilt, xTilt));
+            }
+
             if (this.level().isClientSide && this.isInWater() && this.getDeltaMovement().lengthSqr() > 0.03D) {
                 Vec3 vec3 = this.getViewVector(0.0F);
                 float f = Mth.cos(this.getYRot() * ((float)Math.PI / 180F)) * 0.3F;
@@ -472,14 +478,14 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
     @Override
     protected void tickRidden(Player pPlayer, Vec3 pTravelVector) {
         super.tickRidden(pPlayer, pTravelVector);
-        Vec2 vec2 = this.getRiddenRotation(pPlayer);
-        this.setRot(vec2.y, vec2.x);
+        //Vec2 vec2 = this.getRiddenRotation(pPlayer);
+        this.setRot(pPlayer.getYRot(), getXRot());
         this.yRotO = this.yBodyRot = this.yHeadRot = this.getYRot();
     }
 
-    protected Vec2 getRiddenRotation(LivingEntity pEntity) {
-        return new Vec2((float) -this.getDeltaMovement().y * 80, pEntity.getYRot());
-    }
+//    protected Vec2 getRiddenRotation(LivingEntity pEntity) {
+//        return new Vec2((float) -this.getDeltaMovement().y * 80, pEntity.getYRot());
+//    }
 
     @Override
     protected float getWaterSlowDown() {
@@ -492,6 +498,10 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         if (!this.level().isClientSide && !this.isInWater() && this.onGround() && this.isVehicle()){
             this.ejectPassengers();
         }
+
+//        if (!this.level().isClientSide && this.isVehicle()){
+//            this.xRotO = (float) (-this.getDeltaMovement().y * 80);
+//        }
     }
 
     protected void positionRider(Entity pPassenger, Entity.MoveFunction pCallback) {
@@ -513,6 +523,10 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
             double moveZ = rider.zza;
 
             yHeadRot = rider.yHeadRot;
+
+            if (this.level().isClientSide){
+                getLookControl().setLookAt(position().add(0.0D, 2.0D,0.0D));
+            }
 
             if (isControlledByLocalInstance()) {
 
@@ -609,13 +623,13 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
                         this.level().addParticle(ParticleTypes.HEART, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
                     }
 
-                    return InteractionResult.sidedSuccess(this.level().isClientSide);
+                    return InteractionResult.SUCCESS;
                 }
 
                 if (itemstack.is(Items.SADDLE) && isSaddleable() && !this.getIsSaddled()){
                     this.setIsSaddled(true);
                     this.playSound(SoundEvents.HORSE_SADDLE);
-                    return InteractionResult.sidedSuccess(this.level().isClientSide);
+                    return InteractionResult.SUCCESS;
                 }
 
                 if (this.canWearArmor() && this.isArmor(itemstack) && !this.isWearingArmor()) {
@@ -658,7 +672,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
             if (this.isTamed() && this.getIsSaddled()){
                 this.doPlayerRide(pPlayer);
-                return InteractionResult.sidedSuccess(this.level().isClientSide);
+                return InteractionResult.SUCCESS;
             }else{
                 return super.mobInteract(pPlayer, pHand);
             }
@@ -697,8 +711,8 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
             this.playSound(this.getFlopSound(), this.getSoundVolume(), this.getVoicePitch());
         }
 
-        if (this.isInWater() && this.isVehicle()) {
-            prevTilt = tilt;
+        prevTilt = tilt;
+        if (this.isInWater() && this.getControllingPassenger() != null) {
             final float v = Mth.degreesDifference(this.getYRot(), yRotO);
             if (Math.abs(v) > 1) {
                 if (Math.abs(tilt) < 25) {
@@ -746,11 +760,11 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
                 }else {
                     event.setAndContinue(ATTACK2);
                 }
-            }else if (this.isVehicle()){
+            }else if (this.hasControllingPassenger()){
 
                 if (this.getDeltaMovement().horizontalDistanceSqr() > 0.1 || (this.getDeltaMovement().y >= 2 || this.getDeltaMovement().y <= -2)){
                     event.setAndContinue(SWIM_FAST);
-                } else if (this.getDeltaMovement().horizontalDistanceSqr() > 0.0001 || (this.getDeltaMovement().y < 2 || this.getDeltaMovement().y > -2)){
+                } else if (this.getDeltaMovement().horizontalDistanceSqr() > 0.001 || (this.getDeltaMovement().y < 2 || this.getDeltaMovement().y > -2)){
                     event.setAndContinue(SWIM_SLOW);
                 } else {
                     event.setAndContinue(IDLE);
@@ -764,7 +778,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
                     event.setAndContinue(SWIM);
                 }
                 event.getController().setAnimationSpeed(1.25f);
-            } else if (!this.isInWater()&&!this.isVehicle()&&this.onGround()){
+            } else if (!this.isInWater()&&!this.isVehicle()){
                 event.setAndContinue(FLOP);
             } else {
                 if (this.getEatingTime() > 0){
@@ -1209,6 +1223,10 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
             }
 
         }
+    }
+
+    protected boolean shouldPassengersInheritMalus() {
+        return true;
     }
 
 }

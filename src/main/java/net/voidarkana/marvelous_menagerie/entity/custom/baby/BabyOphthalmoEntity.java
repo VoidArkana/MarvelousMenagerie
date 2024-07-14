@@ -19,11 +19,13 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.PanicGoal;
 import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
@@ -36,7 +38,6 @@ import net.voidarkana.marvelous_menagerie.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.entity.custom.OphthalmoEntity;
 import net.voidarkana.marvelous_menagerie.item.ModItems;
 import net.voidarkana.marvelous_menagerie.sound.ModSounds;
-import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -47,7 +48,11 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.EnumSet;
+
 public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity, GeoEntity, Bucketable {
+
+    static final TargetingConditions SWIM_WITH_ADULT_TARGETING = TargetingConditions.forNonCombat().range(15.0D).ignoreLineOfSight();
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
@@ -71,6 +76,7 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.5D));
+        this.goalSelector.addGoal(2, new BabyFollowAdultGoal(this, 1.5D));
         this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.0D, 10));
     }
 
@@ -313,5 +319,42 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
     @Override
     public boolean canBeLeashed(Player pPlayer) {
         return true;
+    }
+
+    static class BabyFollowAdultGoal extends Goal {
+        private final BabyOphthalmoEntity dolphin;
+        private final double speedModifier;
+        @javax.annotation.Nullable
+        private OphthalmoEntity adult;
+
+        BabyFollowAdultGoal(BabyOphthalmoEntity pDolphin, double pSpeedModifier) {
+            this.dolphin = pDolphin;
+            this.speedModifier = pSpeedModifier;
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
+        }
+
+        public boolean canUse() {
+            this.adult = this.dolphin.level().getNearestEntity(OphthalmoEntity.class, BabyOphthalmoEntity.SWIM_WITH_ADULT_TARGETING, this.dolphin, this.dolphin.getX(), this.dolphin.getY(), this.dolphin.getZ(), this.dolphin.getBoundingBox().inflate(6.0D, 2.0D, 6.0D));
+            return this.adult != null;
+        }
+
+        public boolean canContinueToUse() {
+            return this.adult != null && this.adult.isInWater() && this.dolphin.distanceToSqr(this.adult) < 256.0D;
+        }
+
+        public void stop() {
+            this.adult = null;
+            this.dolphin.getNavigation().stop();
+        }
+
+        public void tick() {
+            this.dolphin.getLookControl().setLookAt(this.adult, (float)(this.dolphin.getMaxHeadYRot() + 20), (float)this.dolphin.getMaxHeadXRot());
+            if (this.dolphin.distanceToSqr(this.adult) < 6.25D) {
+                this.dolphin.getNavigation().stop();
+            } else {
+                this.dolphin.getNavigation().moveTo(this.adult, this.speedModifier);
+            }
+
+        }
     }
 }

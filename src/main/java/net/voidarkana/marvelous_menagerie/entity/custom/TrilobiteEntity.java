@@ -2,6 +2,7 @@ package net.voidarkana.marvelous_menagerie.entity.custom;
 
 import com.peeko32213.unusualprehistory.common.entity.IBookEntity;
 import com.peeko32213.unusualprehistory.common.entity.IHatchableEntity;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -41,6 +42,7 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
 import net.voidarkana.marvelous_menagerie.item.ModItems;
 import net.voidarkana.marvelous_menagerie.sound.ModSounds;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -51,11 +53,11 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import javax.annotation.Nullable;
 import java.util.EnumSet;
+import java.util.Objects;
 
 
-//TODO: LGBTrilos, new models
+//TODO: LGBTrilos
 public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEntity, Bucketable, IHatchableEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
@@ -129,17 +131,6 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
     protected PathNavigation createNavigation(Level pLevel) {
         return new WaterBoundPathNavigation(this, pLevel);
     }
-
-//
-//    static class TriloJumpController extends JumpControl {
-//        public TriloJumpController(TrilobiteEntity trilobite) {
-//            super(trilobite);
-//        }
-//
-//        @Override
-//        public void jump() {
-//        }
-//    }
 
     public void aiStep() {
         super.aiStep();
@@ -219,8 +210,8 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
     //determines a number when spawning
     @Override
-    @org.jetbrains.annotations.Nullable
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType reason, @org.jetbrains.annotations.Nullable SpawnGroupData spawnDataIn, @org.jetbrains.annotations.Nullable CompoundTag dataTag) {
+    @Nullable
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType reason, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag) {
         int variant = this.random.nextInt(0,100);
         this.determineVariant(variant);
         spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
@@ -351,5 +342,105 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
     @Override
     public boolean canBeLeashed(Player pPlayer) {
         return true;
+    }
+
+    public boolean isLGBTrilo(){
+        return this.isLGBT() || this.isAroAce() || this.isAro() || this.isAce() || this.isBi() || this.isPan() || this.isGay() || this.isLesbian()
+                || this.isEnby() || this.isAgender() || this.isGenderfluid() || this.isTrans();
+    }
+
+    public boolean isLGBT(){
+        return Objects.equals(getTriloName(), "lgbt");
+    }
+
+    public boolean isAro(){
+        return Objects.equals(getTriloName(), "aro");
+    }
+
+    public boolean isAce(){
+        return Objects.equals(getTriloName(), "ace");
+    }
+
+    public boolean isAroAce(){
+        return Objects.equals(getTriloName(), "aroace");
+    }
+
+    public boolean isBi(){
+        return Objects.equals(getTriloName(), "bi");
+    }
+
+    public boolean isGay(){
+        return Objects.equals(getTriloName(), "gay");
+    }
+
+    public boolean isLesbian(){
+        return Objects.equals(getTriloName(), "lesbian");
+    }
+
+    public boolean isEnby(){
+        return Objects.equals(getTriloName(), "enby");
+    }
+
+    public boolean isAgender(){
+        return Objects.equals(getTriloName(), "agender");
+    }
+
+    public boolean isGenderfluid(){
+        return Objects.equals(getTriloName(), "genderfluid");
+    }
+
+    public boolean isPan(){
+        return Objects.equals(getTriloName(), "pan");
+    }
+
+    public boolean isTrans(){
+        return Objects.equals(getTriloName(), "trans");
+    }
+
+    public String getTriloName(){
+        String s = ChatFormatting.stripFormatting(this.getName().getString());
+        return s.toLowerCase();
+    }
+
+    public String getModelName(){
+        int i = this.getVariantModel();
+        return switch (i){
+            case 1 -> "trident";
+            case 2 -> "moon";
+            case 3 -> "spiky";
+            case 4 -> "itty";
+            case 5 -> "fat";
+            default -> "curly";
+        };
+    }
+
+    public String getMainColorName(){
+        int i = this.getVariantBaseColor();
+        return switch (i){
+            case 1 -> "black";
+            case 2 -> "blue";
+            case 3 -> "green";
+            case 4 -> "pink";
+            case 5 -> "red";
+            case 6 -> "teal";
+            default -> "brown";
+        };
+    }
+
+    public String getSecondColorName(){
+        int i = this.getVariantSecondColor();
+        return switch (i){
+            case 1 -> "blue";
+            case 2 -> "green";
+            case 3 -> "light_blue";
+            case 4 -> "orange";
+            case 5 -> "pink";
+            case 6 -> "purple";
+            case 7 -> "red";
+            case 8 -> "teal";
+            case 9 -> "white";
+            case 10 -> "yellow";
+            default -> "brown";
+        };
     }
 }

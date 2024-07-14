@@ -31,41 +31,10 @@ import java.awt.event.KeyEvent;
 @Mod.EventBusSubscriber(modid = MarvelousMenagerie.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEventBusClientEvents {
 
-    @SubscribeEvent
-    public static void onClientSetup(FMLClientSetupEvent event) {
-        Sheets.addWoodType(ModWoodTypes.SIGILLARIA);
-        EntityRenderers.register(ModEntities.DODO.get(), DodoRenderer::new);
-        EntityRenderers.register(ModEntities.THYLACINE.get(), ThylacineRenderer::new);
-        EntityRenderers.register(ModEntities.ELEPHANT_BIRD.get(), ElephantBirdRenderer::new);
-        EntityRenderers.register(ModEntities.STELLER_SEA_COW.get(), StellerRenderer::new);
-        EntityRenderers.register(ModEntities.BABY_STELLER_SEA_COW.get(), BabyStellerRenderer::new);
-        EntityRenderers.register(ModEntities.SIGILLARIA_SAPLING_ENTITY.get(), SigillariaRenderer::new);
-        EntityRenderers.register(ModEntities.COOKSONIA_ENTITY.get(), CooksoniaRenderer::new);
-
-        EntityRenderers.register(ModEntities.TRILOBITE.get(), TrilobiteRenderer::new);
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.TRILO_EGGS.get(), RenderType.cutout());
-
-        EntityRenderers.register(ModEntities.SACABAMBASPIS.get(), SacaRenderer::new);
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.SACA_EGGS.get(), RenderType.cutout());
-
-        EntityRenderers.register(ModEntities.PROTOTAXITES_ENTITY.get(), PrototaxitesRenderer::new);
-
-        EntityRenderers.register(ModEntities.DICKINSONIA_ENTITY.get(), DickinsoniaRenderer::new);
-
-        EntityRenderers.register(ModEntities.ANOMALOCARIS.get(), AnomalocarisRenderer::new);
-        EntityRenderers.register(ModEntities.BABY_ANOMALOCARIS.get(), BabyAnomalocarisRenderer::new);
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CARIS_EGGS.get(), RenderType.cutout());
-
-        EntityRenderers.register(ModEntities.OPHTHALMO.get(), OphthalmoRenderer::new);
-        EntityRenderers.register(ModEntities.BABY_OPHTHALMO.get(), BabyOphthalmoRenderer::new);
-
-        EntityRenderers.register(ModEntities.JOSEPHO.get(), JosephoRenderer::new);
-    }
-
-    /*@SubscribeEvent
-    public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions e) {
-        e.registerLayerDefinition(HippogryphModel.LAYER_LOCATION, HippogryphModel::createBodyLayer);
-    }*/
+//    @SubscribeEvent
+//    public static void onClientSetup(FMLClientSetupEvent event) {
+//
+//    }
 
     public static KeyMapping descendKey;
 

@@ -47,6 +47,9 @@ public class MarvelousMenagerie {
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::clientSetup);
+
         ModCreativeModTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
@@ -63,9 +66,6 @@ public class MarvelousMenagerie {
 
         ModConfiguredFeatures.register(modEventBus);
         ModEnchantmentsClass.register(modEventBus);
-
-        modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::clientSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);

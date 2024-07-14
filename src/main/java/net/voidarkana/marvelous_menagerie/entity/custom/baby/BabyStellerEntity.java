@@ -25,6 +25,7 @@ import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
@@ -39,6 +40,7 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.Vec3;
 import net.voidarkana.marvelous_menagerie.entity.ModEntities;
+import net.voidarkana.marvelous_menagerie.entity.custom.OphthalmoEntity;
 import net.voidarkana.marvelous_menagerie.entity.custom.StellerEntity;
 import net.voidarkana.marvelous_menagerie.item.ModItems;
 import net.voidarkana.marvelous_menagerie.sound.ModSounds;
@@ -53,8 +55,11 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import javax.annotation.Nullable;
+import java.util.EnumSet;
 
 public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEntity, Bucketable {
+    static final TargetingConditions SWIM_WITH_ADULT_TARGETING = TargetingConditions.forNonCombat().range(15.0D).ignoreLineOfSight();
+
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public static final Ingredient FOOD_ITEMS = Ingredient.of(Items.KELP);
@@ -105,9 +110,8 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.1));
+        this.goalSelector.addGoal(2, new BabyFollowAdultGoal(this, 1.1));
         this.goalSelector.addGoal(3, new RandomShallowSwimmingGoal(this, 1, 10));
-        //this.goalSelector.addGoal(3, new SeaCowEatKelpGoal(this);
-        //this.goalSelector.addGoal(4, new SeaCowBreachGoal(this));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F, 0.02F, true));
     }
@@ -492,5 +496,41 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
         return ModSounds.STELLER_DEATH.get();
     }
 
+    static class BabyFollowAdultGoal extends Goal {
+        private final BabyStellerEntity dolphin;
+        private final double speedModifier;
+        @javax.annotation.Nullable
+        private StellerEntity adult;
+
+        BabyFollowAdultGoal(BabyStellerEntity pDolphin, double pSpeedModifier) {
+            this.dolphin = pDolphin;
+            this.speedModifier = pSpeedModifier;
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
+        }
+
+        public boolean canUse() {
+            this.adult = this.dolphin.level().getNearestEntity(StellerEntity.class, BabyStellerEntity.SWIM_WITH_ADULT_TARGETING, this.dolphin, this.dolphin.getX(), this.dolphin.getY(), this.dolphin.getZ(), this.dolphin.getBoundingBox().inflate(6.0D, 2.0D, 6.0D));
+            return this.adult != null;
+        }
+
+        public boolean canContinueToUse() {
+            return this.adult != null && this.adult.isInWater() && this.dolphin.distanceToSqr(this.adult) < 256.0D;
+        }
+
+        public void stop() {
+            this.adult = null;
+            this.dolphin.getNavigation().stop();
+        }
+
+        public void tick() {
+            this.dolphin.getLookControl().setLookAt(this.adult, (float)(this.dolphin.getMaxHeadYRot() + 20), (float)this.dolphin.getMaxHeadXRot());
+            if (this.dolphin.distanceToSqr(this.adult) < 6.25D) {
+                this.dolphin.getNavigation().stop();
+            } else {
+                this.dolphin.getNavigation().moveTo(this.adult, this.speedModifier);
+            }
+
+        }
+    }
 
 }
