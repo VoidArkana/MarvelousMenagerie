@@ -69,7 +69,7 @@ public class ModEntities {
     public static final RegistryObject<EntityType<TrilobiteEntity>> TRILOBITE =
             ENTITY_TYPES.register("trilobite",
                     () -> EntityType.Builder.of(TrilobiteEntity::new, MobCategory.WATER_AMBIENT)
-                            .sized(0.4f, 0.1f)
+                            .sized(0.6f, 0.1f)
                             .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "trilobite").toString()));
 
     public static final RegistryObject<EntityType<SacabambaspisEntity>> SACABAMBASPIS =

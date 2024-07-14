@@ -212,7 +212,7 @@ public class ModBlocks {
             ()-> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.MUSHROOM_STEM).mapColor(MapColor.COLOR_GREEN)));
 
     public static final RegistryObject<Block> DICKINSONIA = registerBlock("dickinsonia",
-            ()-> new DickinsoniaBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.COLOR_LIGHT_GREEN).noOcclusion().instabreak()));
+            ()-> new DickinsoniaBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.COLOR_LIGHT_GREEN).noOcclusion().instabreak().lightLevel((p_152684_) -> {return 6;})));
 
 
     private static <T extends Block> Supplier<T> registerBlockWithItem(String key, Supplier<T> block, Function<Supplier<T>, Item> item) {

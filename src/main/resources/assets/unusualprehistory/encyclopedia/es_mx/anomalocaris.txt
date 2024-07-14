@@ -1,0 +1,18 @@
+<NEWLINE>
+<NEWLINE>
+<NEWLINE>
+<NEWLINE>
+Anomalocaris fue uno de los primeros artrópodos del Cámbrico, y por un tiempo se creía que era el primer depredador apex.
+A pesar de lo que se creía inicialmente, Anomalocaris prefería cazar presas suaves, por lo que no atacarán a menos de
+ser provocados, pero aceptarán Trilobocados de la mano de alguien, haciendo que se sacudan y suelten Escleritos.
+Estos Escleritos pueden ser combinados para crear armadura de Ophthalmosaurus, que los protejerán de casi todo tipo
+de daño y pueden ser reparadas con Escleritos sin ser quitadas.
+<NEWLINE>
+Anomalocaris también era bien conocido por ser uno de los animales con la mejor vista de todos los tiempos, y cuando
+crecen sueltan las lentes de sus ojos, ingrediente útil para crear los Goggles Anómalos. El proceso puede ser acelerado
+alimentándolos con Trilobocados.
+<NEWLINE>
+Los Goggles Anómalos son un nuevo objeto que se crean con dos Lentes Oculares de Anomalocaris y un Esclerito, y otorgan
+mejor visión bajo el agua. Pueden ser mejorados incluso más con dos nuevos encantamientos, Visión Arcáica que hace que
+las áreas oscuras bajo el agua sean más fáciles de ver, o Visión Infernal, que mejorarán la visión bajo la lava, aunque
+no se pueden combinar.

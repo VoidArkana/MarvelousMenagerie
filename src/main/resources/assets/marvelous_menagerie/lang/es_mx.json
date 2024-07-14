@@ -10,9 +10,9 @@
   "entity.marvelous_menagerie.steller_sea_cow": "Vaca Marina de Steller",
   "entity.marvelous_menagerie.baby_steller_sea_cow": "Vaca Marina de Steller",
 
-  "block.marvelous_menagerie.dodo_eggs": "Dodo Egg",
-  "block.marvelous_menagerie.elephant_bird_egg": "Elephant Bird Egg",
-  "item.marvelous_menagerie.thylacine_embryo": "Thylacine Embryo",
+  "block.marvelous_menagerie.dodo_eggs": "Huevo de Dodo",
+  "block.marvelous_menagerie.elephant_bird_egg": "Huevo de Ave Elefante",
+  "item.marvelous_menagerie.thylacine_embryo": "Embrión de Tilacino",
   "item.marvelous_menagerie.steller_sea_cow_embryo": "Embrión de Vaca Marina de Steller",
 
   "item.marvelous_menagerie.cracked_elephant_egg": "Huevo de Ave Elefante Roto",
@@ -75,7 +75,7 @@
   "marvelous_menagerie.sound.subtitle.elephant_bird_baby_hurt": "Ave elefante bebé adolorida",
   "marvelous_menagerie.sound.subtitle.elephant_bird_baby_death": "Ave elefante bebé muere",
 
-  "marvelous_menagerie.sound.subtitle.steller_idle": "Vaca Marina de Steller respira",
+  "marvelous_menagerie.sound.subtitle.steller_idle": "Vaca Marina de Steller chilla",
   "marvelous_menagerie.sound.subtitle.steller_hurt": "Vaca Marina de Steller adolorida",
   "marvelous_menagerie.sound.subtitle.steller_land_hurt": "Vaca Marina de Steller adolorida",
   "marvelous_menagerie.sound.subtitle.steller_death": "Vaca Marina de Steller muere",
@@ -92,6 +92,119 @@
   "block.marvelous_menagerie.cooksonia": "Cooksonia",
 
   "marvelous_menagerie.sound.subtitle.elephant_bird_grumble": "Ave elefante se queja",
+
+  "entity.marvelous_menagerie.trilobite": "Trilobite",
+  "item.marvelous_menagerie.trilobite_spawn_egg": "Generar Trilobite",
+  "item.marvelous_menagerie.trilo_flask": "Frasco de ADN de Trilobite",
+  "item.marvelous_menagerie.trilo_bite": "Trilobocado",
+  "item.marvelous_menagerie.trilo_bucket": "Cubeta con Trilobite",
+  "block.marvelous_menagerie.trilo_eggs": "Hueva de Trilobite",
+
+  "entity.marvelous_menagerie.sacabambaspis": "Sacabambaspis",
+  "item.marvelous_menagerie.saca_bucket": "Cubeta con Sacabambaspis",
+  "block.marvelous_menagerie.saca_eggs": "Hueva de Sacabambaspis",
+  "item.marvelous_menagerie.saca_flask": "Frasco de ADN de Sacabambaspis",
+  "item.marvelous_menagerie.saca_spawn_egg": "Generar Sacabambaspis",
+  "item.marvelous_menagerie.sacabambaspis": "Sacabambaspis",
+  "item.marvelous_menagerie.cooked_saca": "Sacabambaspis Cocinado",
+  "item.marvelous_menagerie.golden_saca": "Sacabambaspis Dorado",
+
+  "block.marvelous_menagerie.prototaxites": "Prototaxites",
+  "block.marvelous_menagerie.prototaxites_block": "Bloque de Prototaxites",
+  "item.marvelous_menagerie.proto_flask": "Frasco de ADN de Prototaxites",
+
+  "block.marvelous_menagerie.dickinsonia": "Dickinsonia",
+  "item.marvelous_menagerie.dickinsonia_flask": "Frasco de ADN de Dickinsonia",
+
+  "entity.marvelous_menagerie.anomalocaris": "Anomalocaris",
+  "item.marvelous_menagerie.anomalocaris_flask": "Frasco de ADN de Anomalocaris",
+  "entity.marvelous_menagerie.baby_anomalocaris": "Anomalocaris",
+  "item.marvelous_menagerie.anomalocaris_bucket": "Cubeta con Anomalocaris",
+  "item.marvelous_menagerie.baby_anomalocaris_bucket": "Cubeta con Anomalocaris",
+  "item.marvelous_menagerie.anomalocaris_lens": "Lente Ocular de Anomalocaris",
+  "item.marvelous_menagerie.anomalocaris_scute": "Esclerito de Anomalocaris",
+  "item.marvelous_menagerie.anomalocaris_spawn_egg": "Generar Anomalocaris",
+  "block.marvelous_menagerie.anomalocaris_eggs": "Huevecillo de Anomalocaris",
+  "item.marvelous_menagerie.anomalous_goggles": "Goggles Anómalos",
+
+  "entity.marvelous_menagerie.ophthalmo": "Ophthalmosaurus",
+  "entity.marvelous_menagerie.baby_ophthalmo": "Ophthalmosaurus",
+  "item.marvelous_menagerie.ophthalmo_spawn_egg": "Generar Ophthalmosaurus",
+  "item.marvelous_menagerie.ophthalmo_armor": "Armadura de Ophthalmosaurus",
+  "item.marvelous_menagerie.ophthalmo_flask": "Frasco de ADN de Ophthalmosaurus",
+  "item.marvelous_menagerie.ophthalmo_embryo": "Embrión de Ophthalmosaurus",
+  "item.marvelous_menagerie.baby_ophthalmo_bucket": "Cubeta de Ophthalmosaurus Bebé",
+
+  "key.marvelous_menagerie.ophthalmoSwimDown" : "Controlar Ophthalmosaurus Hacia Abajo",
+
+  "entity.marvelous_menagerie.josepho": "Josephoartigasia",
+  "item.marvelous_menagerie.josepho_spawn_egg": "Generar Josephoartigasia",
+  "item.marvelous_menagerie.josepho_flask": "Frasco de ADN de Josephoartigasia",
+  "item.marvelous_menagerie.josepho_embryo": "Embrión Josephoartigasia",
+
+  "effect.marvelous_menagerie.pacified": "Tregua",
+
+  "enchantment.marvelous_menagerie.cambrian_vision" : "Visión Arcáica",
+  "enchantment.marvelous_menagerie.infernal_vision" : "Visión Infernal",
+
+  "marvelous_menagerie.sound.subtitle.josepho_idle": "Josephoartigasia chilla",
+  "marvelous_menagerie.sound.subtitle.josepho_hurt": "Josephoartigasia adolorido",
+  "marvelous_menagerie.sound.subtitle.josepho_death": "Josephoartigasia muere",
+
+  "marvelous_menagerie.sound.subtitle.ophthalmo_idle": "Ophthalmosaurus chilla",
+  "marvelous_menagerie.sound.subtitle.ophthalmo_hurt": "Ophthalmosaurus adolorido",
+  "marvelous_menagerie.sound.subtitle.ophthalmo_death": "Ophthalmosaurus muere",
+
+  "marvelous_menagerie.sound.subtitle.arthropod_hurt": "Bicho adolorido",
+  "marvelous_menagerie.sound.subtitle.arthropod_death": "Bicho muere",
+
+  "marvelous_menagerie.sound.subtitle.large_footsteps": "Pasos Pesados",
+  "marvelous_menagerie.sound.subtitle.creature_swim": "Criatura Acuática Nadando",
+  "marvelous_menagerie.sound.subtitle.creature_flops": "Criatura Acuática en Tierra",
+
+  "marvelous_menagerie.sound.subtitle.caris_armor_break": "Armadura de Mascota se rompe",
+  "marvelous_menagerie.sound.subtitle.caris_armor_crack": "Armadura de Mascota se agrieta",
+  "marvelous_menagerie.sound.subtitle.caris_armor_damage": "Armadura de Mascota absorbe daño",
+  "marvelous_menagerie.sound.subtitle.caris_armor_repair": "Armadura de Mascota es reparada",
+  "marvelous_menagerie.sound.subtitle.caris_armor_equip": "Armadura de Mascota es equipada",
+  "marvelous_menagerie.sound.subtitle.caris_armor_unequip": "Armadura de Mascota es desequipada",
+
+  "marvelous_menagerie.advancement.cooksonia": "Las plantas de Sonia",
+  "marvelous_menagerie.advancement.cooksonia.desc": "Revive una Cooksonia",
+  "marvelous_menagerie.advancement.prototaxites" : "¿Qué tal el clima allá arriba?",
+  "marvelous_menagerie.advancement.prototaxites.desc" : "Revive un Prototaxites",
+  "marvelous_menagerie.advancement.dickinsonia": "Hotcake marino",
+  "marvelous_menagerie.advancement.dickinsonia.desc" : "Revive una Dickinsonia",
+  "marvelous_menagerie.advancement.sigillaria" : "Caminos Bifurcados",
+  "marvelous_menagerie.advancement.sigillaria.desc" : "Revive un Árbol de Sigillaria",
+
+  "marvelous_menagerie.advancement.interact_dodo" : "Ahí va la última hembra...",
+  "marvelous_menagerie.advancement.interact_dodo.desc" : "Revive un Dodo",
+  "marvelous_menagerie.advancement.interact_elephant_bird" : "Más ave que elefante",
+  "marvelous_menagerie.advancement.interact_elephant_bird.desc" : "Revive un Ave Elefante",
+  "marvelous_menagerie.advancement.interact_sacabambaspis" : "Pescao Descerebrado",
+  "marvelous_menagerie.advancement.interact_sacabambaspis.desc" : "Revive un Sacabambaspis",
+  "marvelous_menagerie.advancement.interact_steller_sea_cow" : "Las favoritas de Moto Moto",
+  "marvelous_menagerie.advancement.interact_steller_sea_cow.desc" : "Revive una Vaca Marina de Steller",
+  "marvelous_menagerie.advancement.interact_thylacine" : "Eso Tilin...cino",
+  "marvelous_menagerie.advancement.interact_thylacine.desc" : "Revive un Tilacino",
+  "marvelous_menagerie.advancement.interact_trilobite" : "Colecciónalos como si fueran tazos",
+  "marvelous_menagerie.advancement.interact_trilobite.desc" : "Revive un Trilobite",
+  "marvelous_menagerie.advancement.interact_anomalocaris" : "Camarón Anómalo",
+  "marvelous_menagerie.advancement.interact_anomalocaris.desc" : "Revive un Anomalocaris",
+  "marvelous_menagerie.advancement.interact_ophthalmo" : "¡Pero qué ojos tan grandes tienes!",
+  "marvelous_menagerie.advancement.interact_ophthalmo.desc" : "Revive un Ophthalmosaurus",
+  "marvelous_menagerie.advancement.interact_josepho" : "Tú no tienes enemigos...",
+  "marvelous_menagerie.advancement.interact_josepho.desc" : "Revive un Josephoartigasia",
+
+  "marvelous_menagerie.advancement.egg_shellmet": "Un casco a la moda",
+  "marvelous_menagerie.advancement.egg_shellmet.desc": "Crea un Cascorón con Fragmentos de Cáscara",
+  "marvelous_menagerie.advancement.steller_ice_cream": "No es bajo en grasas",
+  "marvelous_menagerie.advancement.steller_ice_cream.desc": "Crea Helado de Steller con leche de una Vaca Marina de Steller",
+  "marvelous_menagerie.advancement.anomalous_goggles": "Pongan la canción de CSI Miami",
+  "marvelous_menagerie.advancement.anomalous_goggles.desc": "Crea unos Goggles Anómalos para ver mejor bajo el agua",
+  "marvelous_menagerie.advancement.ophthalmo_armor": "¿Quién necesita armadillos?",
+  "marvelous_menagerie.advancement.ophthalmo_armor.desc": "Crea una armadura para Ophthalmosaurus",
 
   "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
 }

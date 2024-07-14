@@ -93,5 +93,136 @@
 
   "marvelous_menagerie.sound.subtitle.elephant_bird_grumble": "Эпиорнис ворчит",
 
+  "entity.marvelous_menagerie.trilobite": "Трилобит",
+  "item.marvelous_menagerie.trilobite_spawn_egg": "Яйцо призыва Трилобита",
+  "item.marvelous_menagerie.trilo_flask": "Колба с ДНК Трилобита",
+
+  "item.marvelous_menagerie.trilo_bite": "Биточки из Трилобита",
+
+  "item.marvelous_menagerie.trilo_bucket": "Ведро с Трилобитом",
+  "block.marvelous_menagerie.trilo_eggs": "Яйцо Трилобита",
+
+  "entity.marvelous_menagerie.sacabambaspis": "Сакабамбаспис",
+  "item.marvelous_menagerie.saca_bucket": "Ведро со Сакабамбасписом",
+  "block.marvelous_menagerie.saca_eggs": "Яйцо Сакабамбасписа",
+  "item.marvelous_menagerie.saca_flask": "Колба с ДНК Сакабамбасписа",
+  "item.marvelous_menagerie.saca_spawn_egg": "Яйцо призыва Сакабамбасписа",
+  "item.marvelous_menagerie.sacabambaspis": "Сакабамбаспис",
+  "item.marvelous_menagerie.cooked_saca": "Жареный Cакабамбаспис",
+  "item.marvelous_menagerie.golden_saca": "Золотой Cакабамбаспис",
+
+  "block.marvelous_menagerie.prototaxites": "Прототаксит",
+  "block.marvelous_menagerie.prototaxites_block": "Блок Прототаксита",
+  "item.marvelous_menagerie.proto_flask": "Колба с ДНК Прототаксита",
+
+  "block.marvelous_menagerie.dickinsonia": "Дикинсония",
+  "item.marvelous_menagerie.dickinsonia_flask": "Колба с ДНК Дикинсонии",
+
+  "entity.marvelous_menagerie.anomalocaris": "Аномалокарис",
+  "entity.marvelous_menagerie.baby_anomalocaris": "Аномалокарис",
+  "item.marvelous_menagerie.anomalocaris_flask": "Колба с ДНК Аномалокариса",
+  "item.marvelous_menagerie.anomalocaris_bucket": "Ведро с Аномалокарисом",
+  "item.marvelous_menagerie.baby_anomalocaris_bucket": "Ведро с Аномалокарисом",
+  "item.marvelous_menagerie.anomalocaris_lens": "Хрусталики глаз Аномалокариса",
+  "item.marvelous_menagerie.anomalocaris_scute": "Склерит Аномалокариса",
+  "item.marvelous_menagerie.anomalocaris_spawn_egg": "Яйцо призыва Аномалокариса",
+  "block.marvelous_menagerie.anomalocaris_eggs": "Яйцо Аномалокариса",
+  "item.marvelous_menagerie.anomalous_goggles": "Аномальные очки",
+
+  "entity.marvelous_menagerie.ophthalmo": "Офтальмозавр",
+  "entity.marvelous_menagerie.baby_ophthalmo": "Офтальмозавр",
+  "item.marvelous_menagerie.ophthalmo_spawn_egg": "Яйцо призыва Офтальмозавра",
+  "item.marvelous_menagerie.ophthalmo_armor": "Броня для Офтальмозавра",
+  "item.marvelous_menagerie.ophthalmo_flask": "Колба с ДНК Офтальмозавра",
+  "item.marvelous_menagerie.ophthalmo_embryo": "Эмбрион Офтальмозавра",
+  "item.marvelous_menagerie.baby_ophthalmo_bucket": "Ведро с Офтальмозавром",
+
+  "key.marvelous_menagerie.ophthalmoSwimDown" : "Офтальмозавр плывет вниз",
+
+  "entity.marvelous_menagerie.josepho": "Джозефоартигасия",
+  "item.marvelous_menagerie.josepho_spawn_egg": "Яйцо призыва Джозефоартигасии",
+  "item.marvelous_menagerie.josepho_flask": "Колба с ДНК Джозефоартигасии",
+  "item.marvelous_menagerie.josepho_embryo": "Эмбрион Джозефоартигасии",
+
+  "effect.marvelous_menagerie.pacified": "Умиротворение",
+
+  "enchantment.marvelous_menagerie.cambrian_vision" : "Кембрийское зрение",
+  "enchantment.marvelous_menagerie.infernal_vision" : "Инфернальное зрение",
+
+  "marvelous_menagerie.sound.subtitle.josepho_idle": "Джозефоартигасия бродит",
+  "marvelous_menagerie.sound.subtitle.josepho_hurt": "Джозефоартигасия ранена",
+  "marvelous_menagerie.sound.subtitle.josepho_death": "Джозефоартигасия погибла",
+
+  "marvelous_menagerie.sound.subtitle.ophthalmo_idle": "Офтальмозавр пищит",
+  "marvelous_menagerie.sound.subtitle.ophthalmo_hurt": "Офтальмозавр ранен",
+  "marvelous_menagerie.sound.subtitle.ophthalmo_death": "Офтальмозавр погиб",
+
+  "marvelous_menagerie.sound.subtitle.arthropod_hurt": "Членистоногое ранено",
+  "marvelous_menagerie.sound.subtitle.arthropod_death": "Членистоногое погибло",
+
+  "marvelous_menagerie.sound.subtitle.large_footsteps": "Громкие шаги", 			  
+  "marvelous_menagerie.sound.subtitle.creature_swim": "Водное животное плавает", 			  
+  "marvelous_menagerie.sound.subtitle.creature_flops": "Водное существо плюхается", 			  
+
+  "marvelous_menagerie.sound.subtitle.caris_armor_break": "Броня питомца сломалась", 			  
+  "marvelous_menagerie.sound.subtitle.caris_armor_crack": "Броня питомца трескается", 			  
+  "marvelous_menagerie.sound.subtitle.caris_armor_damage": "Броня питомца поглощает урон", 			  
+  "marvelous_menagerie.sound.subtitle.caris_armor_repair": "Броня питомца чинится", 			  
+  "marvelous_menagerie.sound.subtitle.caris_armor_equip": "Броня экипирована на питомца", 			  
+  "marvelous_menagerie.sound.subtitle.caris_armor_unequip": "Броня снята с питомца", 			  
+
+  "marvelous_menagerie.advancement.cooksonia": "Капитан Кук Сония!", 			 
+  "marvelous_menagerie.advancement.cooksonia.desc": "Воссоздайте куксонию",
+
+  "marvelous_menagerie.advancement.prototaxites" : "Как там погодка наверху?", 				 
+  "marvelous_menagerie.advancement.prototaxites.desc" : "Воссоздайте прототаксит",
+
+  "marvelous_menagerie.advancement.dickinsonia": "Если бы мы знали,что это такое...", 			 
+  "marvelous_menagerie.advancement.dickinsonia.desc" : "Воссоздайте дикинсонию",
+
+  "marvelous_menagerie.advancement.sigillaria" : "Дерево повествования", 			 
+  "marvelous_menagerie.advancement.sigillaria.desc" : "Воссоздайте сигиллярию",
+
+  "marvelous_menagerie.advancement.interact_dodo" : "Последний герой",			  
+  "marvelous_menagerie.advancement.interact_dodo.desc" : "Воссоздайте Додо",
+
+  "marvelous_menagerie.advancement.interact_elephant_bird" : "Все выше,и выше!",			  
+  "marvelous_menagerie.advancement.interact_elephant_bird.desc" : "Воссоздайте Эпиорниса",
+
+  "marvelous_menagerie.advancement.interact_sacabambaspis" : "Рыбов показываем", 			 
+  "marvelous_menagerie.advancement.interact_sacabambaspis.desc" : "Воссоздайте Сакабамбасписа",
+
+  "marvelous_menagerie.advancement.interact_steller_sea_cow" : "А вот в наше время..",			  
+  "marvelous_menagerie.advancement.interact_steller_sea_cow.desc" : "Воссоздайте Стеллерову корову",
+
+  "marvelous_menagerie.advancement.interact_thylacine" : "Это точно не Жеводанский зверь?",			  
+  "marvelous_menagerie.advancement.interact_thylacine.desc" : "Воссоздайте Тилацина",
+
+  "marvelous_menagerie.advancement.interact_trilobite" : "Калейдоскоп разновидностей!", 			 
+  "marvelous_menagerie.advancement.interact_trilobite.desc" : "Воссоздайте Трилобита",
+
+  "marvelous_menagerie.advancement.interact_anomalocaris" : "Я всегда возвращаюсь!",			  
+  "marvelous_menagerie.advancement.interact_anomalocaris.desc" : "Воссоздайте Аномалокариса",
+
+  "marvelous_menagerie.advancement.interact_ophthalmo" : "Какие милые глазки!", 			 
+  "marvelous_menagerie.advancement.interact_ophthalmo.desc" : "Воссоздайте Офтальмозавра",
+
+  "marvelous_menagerie.advancement.interact_josepho" : "Большой,и добрый друг!", 			 
+  "marvelous_menagerie.advancement.interact_josepho.desc" : "Воссоздайте Джозефоартигасии",
+
+
+
+  "marvelous_menagerie.advancement.egg_shellmet": "Ты выглядишь так несовременно рядом со мной!",			 
+  "marvelous_menagerie.advancement.egg_shellmet.desc": "Сделайте шлем из скорлупы яйца Эпиорниса",
+
+  "marvelous_menagerie.advancement.steller_ice_cream": "Совершенно не подойдет для худеющих!",			 
+  "marvelous_menagerie.advancement.steller_ice_cream.desc": "Сделайте мороженое из молока Стеллеровой коровы",
+
+  "marvelous_menagerie.advancement.anomalous_goggles": "Как в молодости!",			 
+  "marvelous_menagerie.advancement.anomalous_goggles.desc": "Создайте Аномальные очки из материалов, добытых с Аномалокариса",
+
+  "marvelous_menagerie.advancement.ophthalmo_armor": "Не забывай о питомцах!", 			
+  "marvelous_menagerie.advancement.ophthalmo_armor.desc": "Сделайте броню для офтальмозавра, используя Склериты Аномалокариса",
+  
   "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
 }
