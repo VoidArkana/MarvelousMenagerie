@@ -14,9 +14,6 @@ public class WaterMountLookControl extends LookControl {
         this.maxYRotFromCenter = pMaxYRotFromCenter;
     }
 
-    /**
-     * Updates look
-     */
     public void tick() {
         if (this.lookAtCooldown > 0) {
             --this.lookAtCooldown;

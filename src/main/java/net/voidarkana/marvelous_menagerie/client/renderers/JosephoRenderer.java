@@ -5,9 +5,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
-import net.voidarkana.marvelous_menagerie.client.layer.JosephoSaddleLayer;
-import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoArmorLayer;
-import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoSaddleLayer;
+import net.voidarkana.marvelous_menagerie.client.layer.*;
 import net.voidarkana.marvelous_menagerie.client.models.JosephoModel;
 import net.voidarkana.marvelous_menagerie.client.models.OphthalmoModel;
 import net.voidarkana.marvelous_menagerie.entity.custom.JosephoEntity;
@@ -18,6 +16,7 @@ public class JosephoRenderer extends GeoEntityRenderer<JosephoEntity> {
     public JosephoRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new JosephoModel());
         this.addRenderLayer(new JosephoSaddleLayer(this));
+        this.addRenderLayer(new JosephoPassengerLayer(this));
     }
 
     @Override

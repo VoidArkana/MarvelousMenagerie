@@ -30,6 +30,11 @@
 					]
 				},
 				{
+					"name": "passenger",
+					"parent": "body_without_head",
+					"pivot": [0, 27, 0]
+				},
+				{
 					"name": "head",
 					"parent": "body_without_head",
 					"pivot": [0, 23.5, -13],

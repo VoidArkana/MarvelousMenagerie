@@ -34,7 +34,7 @@
 					]
 				},
 				{
-					"name": "flipper_f_r",
+					"name": "f_flipper_r",
 					"parent": "body",
 					"pivot": [-3, 1, -2.5],
 					"cubes": [
@@ -42,7 +42,7 @@
 					]
 				},
 				{
-					"name": "flipper_f_l",
+					"name": "f_flipper_l",
 					"parent": "body",
 					"pivot": [3, 1, -2.5],
 					"cubes": [
@@ -50,7 +50,7 @@
 					]
 				},
 				{
-					"name": "flipper_b_r",
+					"name": "b_flipper_r",
 					"parent": "body",
 					"pivot": [-3, 1, 4],
 					"cubes": [
@@ -58,7 +58,7 @@
 					]
 				},
 				{
-					"name": "flipper_b_l",
+					"name": "b_flipper_l",
 					"parent": "body",
 					"pivot": [3, 1, 4],
 					"cubes": [

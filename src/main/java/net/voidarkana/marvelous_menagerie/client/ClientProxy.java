@@ -36,7 +36,6 @@ public class ClientProxy extends CommonProxy {
 
     public void clientInit() {
         MinecraftForge.EVENT_BUS.register(new ModClientEvents());
-        //MinecraftForge.EVENT_BUS.register(new ForgeClientEvents());
 
         Sheets.addWoodType(ModWoodTypes.SIGILLARIA);
         EntityRenderers.register(ModEntities.DODO.get(), DodoRenderer::new);

@@ -2,13 +2,13 @@
 <NEWLINE>
 <NEWLINE>
 <NEWLINE>
-Ophthalmosaurus was a genus of Ichthyosaur from the Jurassic, characterized from their huge eyes and being known to
-superficially resemble dolphins and sharks in their body shape. Ichthyosaurs were marine reptiles that were capable of
-giving live birth since they could no longer return to land.
-They can be tamed with a Golden Sacabambaspis and saddled
-to make for a very fast underwater mount that can also jump out of the water for short periods. They will also follow
-their owners if they're swimming around, but cannot be commanded like other creatures, and will even defend their owners
-if attacked or themselves.
-To further protect them, one can armor them up with Ophthalmosaurus Armor, which will make the armor absorb almost all
-types of damage. The armor can also be repaired with Anomalocaris Sclerites, and both the saddle and the armor can be
-taken off with shears.
+Ophthalmosaurus era un género de Ichthyosaurios del Jurásico, caracterizados por sus enormes ojos y siendo conocidos por
+parecer delfines superficialmente. Los Ichtyosaurios eran reptiles marinos capaces de dar a luz así que no necesitaban
+volver a tierra firme.
+Pueden ser domesticados con Sacabambaspis Dorado para ponerles una montura, haciéndolos una montura bastante rápida y
+ágil bajo el agua, aunque igual pueden saltar fuera de ella por periodos cortos. También seguirán a sus dueños si están
+nadando cerca de ellos, pero no pueden ser comandados como otras criaturas, y pueden incluso defender a sus dueños si
+los atacan o se pueden defender a ellos mismos.
+Para protegerlos aún más, se les puede equipar con Armadura de Ophthalmosaurus, la cuál absorberá casi todo tipo de daño.
+La armadura puede ser reparada con Escleritos de Anomalocaris, y tanto ésta como la montura pueden ser removidas con
+tijeras.

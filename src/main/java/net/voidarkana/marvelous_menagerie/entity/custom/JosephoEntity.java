@@ -31,6 +31,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.voidarkana.marvelous_menagerie.effect.ModEffects;
 import net.voidarkana.marvelous_menagerie.entity.custom.baby.BabyStellerEntity;
@@ -46,6 +47,8 @@ import software.bernie.geckolib.core.object.PlayState;
 import java.util.List;
 
 public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements CustomFollower {
+
+    public Vec3 movement;
 
     static final TargetingConditions ADULT_TO_RIDE = TargetingConditions.forNonCombat().range(15.0D).ignoreLineOfSight();
 
@@ -67,6 +70,8 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
     }
 
     protected static final RawAnimation JOSEPHO_WALK = RawAnimation.begin().thenLoop("animation.josepho.walk");
+    protected static final RawAnimation JOSEPHO_SWIM = RawAnimation.begin().thenLoop("animation.josepho.swim");
+
     protected static final RawAnimation JOSEPHO_IDLE = RawAnimation.begin().thenLoop("animation.josepho.idle");
     protected static final RawAnimation JOSEPHO_IDLE_SIT = RawAnimation.begin().thenLoop("animation.josepho.idle_sitting");
 
@@ -110,6 +115,7 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
         super.registerGoals();
     }
 
+    @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(SADDLED, false);
@@ -121,6 +127,7 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
         this.entityData.define(WIGGLING_TYPE, 0);
     }
 
+    @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putBoolean("Saddle", this.isSaddled());
@@ -132,6 +139,7 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
         compound.putInt("WigglingType", this.getWigglingType());
     }
 
+    @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         this.setSaddled(compound.getBoolean("Saddle"));
@@ -229,6 +237,11 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
         return entityIn.is(this);
     }
 
+    @Override
+    public boolean dismountsUnderwater() {
+        return true;
+    }
+
     public void travel(Vec3 pos) {
         if (this.isAlive()) {
             LivingEntity livingentity = this.getControllingPassenger();
@@ -252,7 +265,11 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
                 }
 
                 this.setSpeed(0.1F);
-                super.travel(new Vec3(f, moveY, f1));
+
+                Vec3 vec = new Vec3(f, moveY, f1);
+
+                super.travel(vec);
+
             } else {
                 super.travel(pos);
             }
@@ -327,11 +344,11 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
                 boolean sit = this.getCommand() == 2;
                 if (sit) {
                     this.setOrderedToSit(true);
-                    if (!this.isInSittingPose()){
+                    if (!this.isInSittingPose() && this.onGround()){
                         this.setSittingTime(80);
                     }
                 } else {
-                    if (this.isInSittingPose()){
+                    if (this.isInSittingPose() && this.onGround()){
                         this.setStandingTime(90);
                     }
                     this.setOrderedToSit(false);
@@ -355,7 +372,12 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
 
     @Override
     public void tick() {
+
         super.tick();
+
+        if (this.isVehicle()){
+            movement = new Vec3(this.getX() - this.xo, this.getY() - this.yo, this.getZ() - this.zo);
+        }
 
         if (this.isTame() && this.getSittingTime()==0 && this.getStandingTime()==0){
             refreshDimensions();
@@ -403,11 +425,22 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
             this.setStandingTime(prev-1);
         }
 
+
+    }
+
+    @Override
+    protected void tickRidden(Player pPlayer, Vec3 pTravelVector) {
+
+        super.tickRidden(pPlayer, pTravelVector);
+
+        this.setRot(pPlayer.getYRot(),pPlayer.getXRot() * 0.5F);
+        this.yRotO = this.yBodyRot = this.yHeadRot = this.getYRot();
     }
 
     @Override
     public void aiStep() {
         super.aiStep();
+
         if (!level().isClientSide && level().getGameTime() % 20 == 0) {
             for (LivingEntity living : this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(20.0D, 10.0D, 20.0D))) {
                     living.addEffect(new MobEffectInstance(ModEffects.PACIFIED.get(), 100, 0, false, false));
@@ -422,24 +455,37 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
         controllers.add(new AnimationController[]{new AnimationController(this, "SitController", 5, this::SitController)});
     }
 
-
-    protected <E extends JosephoEntity> PlayState Controller(AnimationState<E> event) {
+    private <E extends JosephoEntity> PlayState Controller(AnimationState<E> event) {
         if (this.isFromBook()){
             return PlayState.STOP;
-        } else if (this.isPassenger()){
-            event.setAndContinue(JOSEPHO_IDLE);
-            return PlayState.CONTINUE;
-        }
-        else if (!this.isInSittingPose() && this.getSittingTime()<=0 && this.getStandingTime()<=0){
-            if(!this.isInSittingPose() && this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && this.getSittingTime()<=0 && this.getStandingTime()<=0) {
-                event.setAndContinue(JOSEPHO_WALK);
-                event.getController().setAnimationSpeed(this.isBaby() ? 1.5 : this.isVehicle() ? this.isInWater() && this.onGround() ? 0.6 : 1.1 : 0.8);
-            } else if (this.onGround()){
+        } else {
+
+            if (this.isPassenger()) {
                 event.setAndContinue(JOSEPHO_IDLE);
+
+            } else if (this.isInWater() && !this.onGround()) {
+
+                event.setAndContinue(JOSEPHO_SWIM);
+
+            } else if (!this.isInSittingPose() && this.getSittingTime() <= 0 && this.getStandingTime() <= 0) {
+
+                if (this.isVehicle() && this.movement != null){
+                    if (this.movement.horizontalDistanceSqr()>0.0001){
+                        event.setAndContinue(JOSEPHO_WALK);
+                    }
+                }
+
+                if (!this.isInSittingPose() &&  this.getDeltaMovement().horizontalDistanceSqr() > 0.000001 && this.getSittingTime() <= 0 && this.getStandingTime() <= 0) {
+
+                    event.setAndContinue(JOSEPHO_WALK);
+                    event.getController().setAnimationSpeed(this.isBaby() ? 1.5 : this.isVehicle() ? this.isInWater() && this.onGround() ? 0.6 : 1.1 : 0.8);
+
+                } else if (this.onGround()) {
+                    event.setAndContinue(JOSEPHO_IDLE);
+                }
             }
+
             return PlayState.CONTINUE;
-        }else {
-            return PlayState.STOP;
         }
     }
 

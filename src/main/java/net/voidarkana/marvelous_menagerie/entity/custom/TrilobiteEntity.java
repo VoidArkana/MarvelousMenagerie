@@ -83,6 +83,8 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
     protected static final RawAnimation TRILOBITE_ITTY_WALK = RawAnimation.begin().thenLoop("animation.trilobite.walk_itty");
     protected static final RawAnimation TRILOBITE_FAT_WALK = RawAnimation.begin().thenLoop("animation.trilobite.walk_fat");
 
+    protected static final RawAnimation TRILOBITE_FLOP = RawAnimation.begin().thenLoop("animation.trilobite.flop");
+
     protected static final RawAnimation IDLE_CURLY = RawAnimation.begin().thenLoop("animation.trilobite.idle_curly");
     protected static final RawAnimation IDLE_RIGID = RawAnimation.begin().thenLoop("animation.trilobite.idle_rigid");
     protected static final RawAnimation IDLE_TRIDENT = RawAnimation.begin().thenLoop("animation.trilobite.idle_trident");
@@ -160,17 +162,17 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
     }
 
     public void onSyncedDataUpdated(EntityDataAccessor<?> pKey) {
-        if (this.getVariantModel()==5) {
-            this.refreshDimensions();
-        }
+        this.refreshDimensions();
         super.onSyncedDataUpdated(pKey);
     }
 
     @Override
     public EntityDimensions getDimensions(Pose pPose) {
         if (this.getVariantModel() == 5) {
-            return super.getDimensions(pPose).scale(2.5F, 2.5F);
-        } else {
+            return super.getDimensions(pPose).scale(2F, 2.5F);
+        } else if (this.getVariantModel() == 4){
+            return super.getDimensions(pPose).scale(0.8F, 1F);
+        }else {
             return super.getDimensions(pPose);
         }
     }
@@ -286,25 +288,29 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
     protected <E extends GeoAnimatable> PlayState Controller(AnimationState<E> event) {
         if (this.isFromBook()){
             return PlayState.STOP;
-        }else if(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6) {
-            switch(this.getVariantModel()){
-                case 1 -> event.setAndContinue(TRILOBITE_TRIDENT_WALK);
-                case 2, 3 -> event.setAndContinue(TRILOBITE_RIGID_WALK);
-                case 4 -> event.setAndContinue(TRILOBITE_ITTY_WALK);
-                case 5 -> event.setAndContinue(TRILOBITE_FAT_WALK);
-                default -> event.setAndContinue(TRILOBITE_CURLY_WALK);
+        }else {
+            if (!this.isInWater()){
+                event.setAndContinue(TRILOBITE_FLOP);
+            }else if(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6) {
+                switch(this.getVariantModel()){
+                    case 1 -> event.setAndContinue(TRILOBITE_TRIDENT_WALK);
+                    case 2, 3 -> event.setAndContinue(TRILOBITE_RIGID_WALK);
+                    case 4 -> event.setAndContinue(TRILOBITE_ITTY_WALK);
+                    case 5 -> event.setAndContinue(TRILOBITE_FAT_WALK);
+                    default -> event.setAndContinue(TRILOBITE_CURLY_WALK);
+                }
+            } else {
+                switch(this.getVariantModel()){
+                    case 1 -> event.setAndContinue(IDLE_TRIDENT);
+                    case 2, 3 -> event.setAndContinue(IDLE_RIGID);
+                    case 4 -> event.setAndContinue(IDLE_ITTY);
+                    case 5 -> event.setAndContinue(IDLE_FAT);
+                    default -> event.setAndContinue(IDLE_CURLY);
+                }
             }
+
             return PlayState.CONTINUE;
-        } else {
-            switch(this.getVariantModel()){
-                case 1 -> event.setAndContinue(IDLE_TRIDENT);
-                case 2, 3 -> event.setAndContinue(IDLE_RIGID);
-                case 4 -> event.setAndContinue(IDLE_ITTY);
-                case 5 -> event.setAndContinue(IDLE_FAT);
-                default -> event.setAndContinue(IDLE_CURLY);
-            }
         }
-        return PlayState.CONTINUE;
     }
 
     public void setPersistenceRequired() {

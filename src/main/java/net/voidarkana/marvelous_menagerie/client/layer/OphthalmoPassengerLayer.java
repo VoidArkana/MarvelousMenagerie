@@ -12,17 +12,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
-import net.voidarkana.marvelous_menagerie.client.ClientProxy;
-import net.voidarkana.marvelous_menagerie.client.renderers.OphthalmoRenderer;
 import net.voidarkana.marvelous_menagerie.entity.custom.OphthalmoEntity;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.GeoRenderer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 import software.bernie.geckolib.util.RenderUtils;
@@ -30,8 +23,6 @@ import software.bernie.geckolib.util.RenderUtils;
 import static software.bernie.geckolib.util.RenderUtils.rotateMatrixAroundBone;
 
 public class OphthalmoPassengerLayer extends GeoRenderLayer<OphthalmoEntity> {
-
-    //private static final ResourceLocation MODEL = new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/ophthalmo.geo.json");
 
     public OphthalmoPassengerLayer(GeoRenderer<OphthalmoEntity> entityRendererIn) {
         super(entityRendererIn);
