@@ -11,6 +11,8 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.PineFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AlterGroundDecorator;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -20,6 +22,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.block.ModBlocks;
 import net.voidarkana.marvelous_menagerie.worldgen.features.HugePrototaxitesFeature;
+import net.voidarkana.marvelous_menagerie.worldgen.tree.custom.HugeSigillariaTrunkPlacer;
 import net.voidarkana.marvelous_menagerie.worldgen.tree.custom.SigillariaTrunkPlacer;
 import net.voidarkana.marvelous_menagerie.worldgen.tree.custom.SigillariaFoliagePlacer;
 import net.voidarkana.marvelous_menagerie.worldgen.util.HugePrototaxitesFeatureConfiguration;
@@ -34,6 +37,7 @@ public class ModConfiguredFeatures {
             register_feature("prototaxites_feature", () -> new HugePrototaxitesFeature(HugePrototaxitesFeatureConfiguration.CODEC));
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SIGILLARIA_KEY = registerKey("sigillaria");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SIGILLARIA_HUGE = registerKey("sigillaria_huge");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PROTOTAXITES_KEY = registerKey("prototaxites");
 
 
@@ -45,6 +49,13 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.simple(ModBlocks.SIGILLARIA_LEAVES.get()),
                 new SigillariaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 2),
                 new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build());
+
+        register(context, SIGILLARIA_HUGE, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.SIGILLARIA_STEM.get()),
+                new HugeSigillariaTrunkPlacer(20, 1, 1),
+                BlockStateProvider.simple(ModBlocks.SIGILLARIA_LEAVES.get()),
+                new SpruceFoliagePlacer(ConstantInt.of(3), ConstantInt.of(2), ConstantInt.of(2)),
+                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build());
 
         register(context, PROTOTAXITES_KEY, ModConfiguredFeatures.PROTOTAXITES_FEATURE.get(), new HugePrototaxitesFeatureConfiguration(
                 BlockStateProvider.simple(ModBlocks.PROTOTAXITES_BLOCK.get()), 3));
