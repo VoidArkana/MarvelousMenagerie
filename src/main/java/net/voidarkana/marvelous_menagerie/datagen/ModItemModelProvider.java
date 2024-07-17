@@ -44,6 +44,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
 
+        simpleItem(ModItems.TAB_ICON);
 
         simpleItem(ModItems.DODO_DNA);
         simpleItem(ModItems.ELEPHANT_BIRD_DNA);

@@ -31,7 +31,7 @@ public class JosephoPassengerLayer extends GeoRenderLayer<JosephoEntity> {
     public void renderForBone(PoseStack poseStack, JosephoEntity entity, GeoBone bone, RenderType renderType, MultiBufferSource bufferSource, VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
         super.renderForBone(poseStack, entity, bone, renderType, bufferSource, buffer, partialTick, packedLight, packedOverlay);
 
-        if (entity.isVehicle() && bone.getName().equals("passenger")) {
+        if (entity.isVehicle() && bone.getName().equals("passenger") && !(entity.getFirstPassenger() instanceof JosephoEntity)) {
             for (Entity passenger : entity.getPassengers()) {
                 if (passenger == Minecraft.getInstance().player && Minecraft.getInstance().options.getCameraType().isFirstPerson()) {
                     continue;

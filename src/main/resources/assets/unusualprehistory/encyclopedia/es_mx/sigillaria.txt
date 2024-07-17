@@ -2,12 +2,8 @@
 <NEWLINE>
 <NEWLINE>
 <NEWLINE>
-Sigillaria, as a genus, were a kind of tree-like plants from the late Carboniferous and Permian periods, characterized
-from the pattern in their trunks left behind by leaves that used to be there, as they didn't have true bark like modern
-trees. They don't have true wood, and as such the many products crafted from these plants are green in color, which can
-be used if one is looking for unusually colored planks.
-
 Sigillaria, como género, eran un tipo de plantas parecidas a los árboles de los periodos Carbónifero tardío y Pérmico,
 caracterizadas por los patrones en sus troncos que las hojas dejaban conforme iban creciendo y mudándolas, pues no tenían
 una corteza verdadera como los árboles modernos. No tienen madera verdadera, y debido a eso los productos fabricados de esta
 planta serán verdes, lo que puede ser útitl si buscas colores inusuales de madera.
+También puedes poner retoños de Sigillaria en una formación de 3x3 para hacer crecer una Sigillaria enorme.

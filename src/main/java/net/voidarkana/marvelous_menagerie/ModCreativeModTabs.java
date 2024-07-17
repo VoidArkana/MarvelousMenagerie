@@ -18,7 +18,7 @@ public class ModCreativeModTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MarvelousMenagerie.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> MARVELOUS_MENAGERIE_TAB =
-            CREATIVE_MODE_TABS.register("marvelous_menagerie_tab", ()-> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.DODO_DNA.get()))
+            CREATIVE_MODE_TABS.register("marvelous_menagerie_tab", ()-> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.TAB_ICON.get()))
                     .title(Component.translatable("creativetab.marvelous_menagerie_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.CARIS_FLASK.get());

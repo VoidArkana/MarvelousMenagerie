@@ -9,10 +9,10 @@
       }
     },
     "foliage_placer": {
-      "type": "minecraft:spruce_foliage_placer",
-      "offset": 2,
-      "radius": 3,
-      "trunk_height": 2
+      "type": "marvelous_menagerie:huge_sigillaria_foliage_placer",
+      "height": 5,
+      "offset": 0,
+      "radius": 2
     },
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
@@ -29,9 +29,9 @@
     "ignore_vines": true,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",
-      "limit": 2,
+      "limit": 1,
       "lower_size": 0,
-      "upper_size": 2
+      "upper_size": 1
     },
     "trunk_placer": {
       "type": "marvelous_menagerie:huge_sigillaria_trunk_placer",

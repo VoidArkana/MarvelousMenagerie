@@ -22,6 +22,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.block.ModBlocks;
 import net.voidarkana.marvelous_menagerie.worldgen.features.HugePrototaxitesFeature;
+import net.voidarkana.marvelous_menagerie.worldgen.tree.custom.HugeSigillariaFoliagePlacer;
 import net.voidarkana.marvelous_menagerie.worldgen.tree.custom.HugeSigillariaTrunkPlacer;
 import net.voidarkana.marvelous_menagerie.worldgen.tree.custom.SigillariaTrunkPlacer;
 import net.voidarkana.marvelous_menagerie.worldgen.tree.custom.SigillariaFoliagePlacer;
@@ -54,8 +55,8 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.simple(ModBlocks.SIGILLARIA_STEM.get()),
                 new HugeSigillariaTrunkPlacer(20, 1, 1),
                 BlockStateProvider.simple(ModBlocks.SIGILLARIA_LEAVES.get()),
-                new SpruceFoliagePlacer(ConstantInt.of(3), ConstantInt.of(2), ConstantInt.of(2)),
-                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build());
+                new HugeSigillariaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 5),
+                new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build());
 
         register(context, PROTOTAXITES_KEY, ModConfiguredFeatures.PROTOTAXITES_FEATURE.get(), new HugePrototaxitesFeatureConfiguration(
                 BlockStateProvider.simple(ModBlocks.PROTOTAXITES_BLOCK.get()), 3));

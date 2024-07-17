@@ -6,3 +6,4 @@ Sigillaria, as a genus, were a kind of tree-like plants from the late Carbonifer
 from the pattern in their trunks left behind by leaves that used to be there, as they didn't have true bark like modern
 trees. They don't have true wood, and as such the many products crafted from these plants are green in color, which can
 be used if one is looking for unusually colored planks.
+Sigillaria saplings can also be placed in a 3x3 formation to grow huge a Sigillaria tree.

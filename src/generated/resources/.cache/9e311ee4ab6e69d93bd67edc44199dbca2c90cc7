@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-03T15:43:23.686244	Item Models: marvelous_menagerie
+// 1.20.1	2024-07-17T13:26:17.0949485	Item Models: marvelous_menagerie
 f1beaaba90d54436c7df39f75ea0f9de1d59a9b2 assets/marvelous_menagerie/models/item/anomalocaris_bucket.json
 6edb806a722825bc7b930da88d1532ea3635046c assets/marvelous_menagerie/models/item/anomalocaris_flask.json
 ddfa6dc18fe3f43748810cd2165d1457615eadce assets/marvelous_menagerie/models/item/anomalocaris_lens.json
@@ -63,6 +63,7 @@ bb3d83873c821d793d36d83bf4606d12144982e8 assets/marvelous_menagerie/models/item/
 7828ad64f02f43e95ea68dd495a551c29938ac36 assets/marvelous_menagerie/models/item/steller_sea_cow_embryo.json
 10f9b77f47b09be08105efc02f614cfc0103f7ab assets/marvelous_menagerie/models/item/steller_sea_cow_milk_bucket.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/marvelous_menagerie/models/item/steller_sea_cow_spawn_egg.json
+4bc126942e970efda6316bb3e1b5a9f806d09b62 assets/marvelous_menagerie/models/item/tab_icon.json
 b836692be16f5d217ffe65363fbefd0651f5b378 assets/marvelous_menagerie/models/item/thylacine_dna.json
 e67a0127c692cc95a516b3828339138d89ad84d6 assets/marvelous_menagerie/models/item/thylacine_embryo.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/marvelous_menagerie/models/item/thylacine_spawn_egg.json

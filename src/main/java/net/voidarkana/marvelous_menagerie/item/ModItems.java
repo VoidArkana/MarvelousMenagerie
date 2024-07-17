@@ -20,6 +20,10 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, MarvelousMenagerie.MOD_ID);
 
+
+    public static final RegistryObject<Item> TAB_ICON = ITEMS.register("tab_icon",
+            ()-> new Item(new Item.Properties()));
+
     //dodo items
     public static final RegistryObject<Item> DODO_DNA = ITEMS.register("dodo_dna",
             ()-> new Item(new Item.Properties()));

@@ -106,7 +106,6 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
     private static final EntityDataAccessor<Boolean> IS_SADDLED = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> HAS_ARMOR = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> EATING_TIME = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.INT);
-    private static final EntityDataAccessor<Integer> DIRECTION = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> OUT_OF_WATER_RIDING_TICKS = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.INT);
     protected static final EntityDataAccessor<Optional<UUID>> DATA_OWNERUUID_ID = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.OPTIONAL_UUID);
     private static final EntityDataAccessor<Boolean> IS_TAMED = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.BOOLEAN);
@@ -155,7 +154,6 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         this.entityData.define(IS_SADDLED, false);
         this.entityData.define(HAS_ARMOR, false);
         this.entityData.define(EATING_TIME, 0);
-        this.entityData.define(DIRECTION, 0);
         this.entityData.define(OUT_OF_WATER_RIDING_TICKS, 0);
         this.entityData.define(IS_TAMED, false);
         this.entityData.define(DATA_OWNERUUID_ID, Optional.empty());
@@ -207,13 +205,6 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         }
     }
 
-    public int getSwimDirection() {
-        return this.entityData.get(DIRECTION);
-    }
-
-    public void setSwimDirection(int pTime) {
-        this.entityData.set(DIRECTION, pTime);
-    }
 
     public int getRemainingPersistentAngerTime() {
         return this.entityData.get(DATA_REMAINING_ANGER_TIME);
@@ -530,9 +521,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
     public void travel(Vec3 vec3d) {
 
         float speed = this.getSpeed();
-        if (this.isNoAi()){
-            return;
-        }
+
         if (isControlledByLocalInstance() && getControllingPassenger() != null && getControllingPassenger() instanceof Player rider) {
             speed = (float) this.getAttributeValue(Attributes.MOVEMENT_SPEED);
 
@@ -572,19 +561,9 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
                         this.setDeltaMovement(this.getDeltaMovement().add(0, 0.08, 0));
                     }
 
-                    if (this.getSwimDirection()!=1){
-                        this.setSwimDirection(1);
-                    }
-
                 }else if (ModEventBusClientEvents.descendKey.isDown() && this.isInWater()){
                     this.setDeltaMovement(this.getDeltaMovement().add(0, -0.08, 0));
 
-                    if (this.getSwimDirection()!=-1){
-                        this.setSwimDirection(-1);
-                    }
-
-                }else if (this.getSwimDirection()!=0){
-                    this.setSwimDirection(0);
                 }
 
                 vec3d = new Vec3(moveX, moveY, moveZ);
@@ -592,22 +571,20 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
                 this.setSpeed(speed);
             }
             else if (rider instanceof Player) {
-                calculateEntityAnimation(true);
+//                calculateEntityAnimation(true);
                 setDeltaMovement(Vec3.ZERO);
                 return;
             }
         }
-        if (this.isEffectiveAi() && this.isInWater() && !this.isNoAi()) {
 
-            this.moveRelative(speed, vec3d);
+        if (this.isEffectiveAi() && this.isInWater()) {
+            this.moveRelative(this.getSpeed(), vec3d);
             this.move(MoverType.SELF, this.getDeltaMovement());
-
+            this.setDeltaMovement(this.getDeltaMovement().scale(0.9D));
             if (this.getTarget() == null) {
                 this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.005D, 0.0D));
             }
-
-            calculateEntityAnimation(true);
-        } else {
+        }else {
             super.travel(vec3d);
         }
     }
