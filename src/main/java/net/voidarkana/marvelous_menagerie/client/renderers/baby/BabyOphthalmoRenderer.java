@@ -5,10 +5,8 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
-import net.voidarkana.marvelous_menagerie.client.models.baby.BabyAnomalocarisModel;
 import net.voidarkana.marvelous_menagerie.client.models.baby.BabyOphthalmoModel;
-import net.voidarkana.marvelous_menagerie.entity.custom.baby.BabyAnomalocarisEntity;
-import net.voidarkana.marvelous_menagerie.entity.custom.baby.BabyOphthalmoEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.baby.BabyOphthalmoEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class BabyOphthalmoRenderer extends GeoEntityRenderer<BabyOphthalmoEntity> {

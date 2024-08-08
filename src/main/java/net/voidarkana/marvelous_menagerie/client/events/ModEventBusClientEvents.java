@@ -1,30 +1,14 @@
 package net.voidarkana.marvelous_menagerie.client.events;
 import net.minecraft.client.KeyMapping;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
-import net.voidarkana.marvelous_menagerie.block.ModBlocks;
-import net.voidarkana.marvelous_menagerie.block.entity.ModBlockEntities;
-import net.voidarkana.marvelous_menagerie.client.renderers.*;
-import net.voidarkana.marvelous_menagerie.client.renderers.baby.BabyAnomalocarisRenderer;
-import net.voidarkana.marvelous_menagerie.client.renderers.baby.BabyOphthalmoRenderer;
-import net.voidarkana.marvelous_menagerie.client.renderers.baby.BabyStellerRenderer;
-import net.voidarkana.marvelous_menagerie.client.renderers.plant.CooksoniaRenderer;
-import net.voidarkana.marvelous_menagerie.client.renderers.plant.DickinsoniaRenderer;
-import net.voidarkana.marvelous_menagerie.client.renderers.plant.PrototaxitesRenderer;
-import net.voidarkana.marvelous_menagerie.client.renderers.plant.SigillariaRenderer;
-import net.voidarkana.marvelous_menagerie.entity.ModEntities;
-import net.voidarkana.marvelous_menagerie.util.ModWoodTypes;
+import net.voidarkana.marvelous_menagerie.common.block.entity.ModBlockEntities;
 
 import java.awt.event.KeyEvent;
 

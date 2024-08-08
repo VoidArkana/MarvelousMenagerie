@@ -5,12 +5,12 @@ import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
-import net.voidarkana.marvelous_menagerie.effect.ModEffects;
-import net.voidarkana.marvelous_menagerie.entity.ModEntities;
-import net.voidarkana.marvelous_menagerie.entity.custom.*;
-import net.voidarkana.marvelous_menagerie.entity.custom.baby.BabyAnomalocarisEntity;
-import net.voidarkana.marvelous_menagerie.entity.custom.baby.BabyOphthalmoEntity;
-import net.voidarkana.marvelous_menagerie.entity.custom.baby.BabyStellerEntity;
+import net.voidarkana.marvelous_menagerie.common.effect.ModEffects;
+import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.*;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.baby.BabyAnomalocarisEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.baby.BabyOphthalmoEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.baby.BabyStellerEntity;
 
 @Mod.EventBusSubscriber(modid = MarvelousMenagerie.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusEvents {

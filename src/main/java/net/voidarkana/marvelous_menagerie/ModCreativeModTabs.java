@@ -3,22 +3,19 @@ package net.voidarkana.marvelous_menagerie;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-import net.voidarkana.marvelous_menagerie.block.ModBlocks;
-import net.voidarkana.marvelous_menagerie.enchantment.ModEnchantmentsClass;
-import net.voidarkana.marvelous_menagerie.item.ModItems;
+import net.voidarkana.marvelous_menagerie.common.block.ModBlocks;
+import net.voidarkana.marvelous_menagerie.common.item.ModItems;
 
 public class ModCreativeModTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MarvelousMenagerie.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> MARVELOUS_MENAGERIE_TAB =
-            CREATIVE_MODE_TABS.register("marvelous_menagerie_tab", ()-> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.TAB_ICON.get()))
+            CREATIVE_MODE_TABS.register("marvelous_menagerie_tab", ()-> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CARIS_BUCKET.get()))
                     .title(Component.translatable("creativetab.marvelous_menagerie_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.CARIS_FLASK.get());

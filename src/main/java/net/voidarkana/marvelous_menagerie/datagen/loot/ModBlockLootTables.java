@@ -4,8 +4,8 @@ import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.RegistryObject;
-import net.voidarkana.marvelous_menagerie.block.ModBlocks;
-import net.voidarkana.marvelous_menagerie.item.ModItems;
+import net.voidarkana.marvelous_menagerie.common.block.ModBlocks;
+import net.voidarkana.marvelous_menagerie.common.item.ModItems;
 
 import java.util.Set;
 

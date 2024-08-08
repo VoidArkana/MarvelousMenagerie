@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.client.models.StellerModel;
-import net.voidarkana.marvelous_menagerie.entity.custom.StellerEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.StellerEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class StellerRenderer extends GeoEntityRenderer<StellerEntity> {

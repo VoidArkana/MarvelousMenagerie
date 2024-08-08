@@ -2,30 +2,19 @@ package net.voidarkana.marvelous_menagerie.client.events;
 
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.client.event.ViewportEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
-import net.voidarkana.marvelous_menagerie.client.ClientProxy;
-import net.voidarkana.marvelous_menagerie.enchantment.ModEnchantmentsClass;
-import net.voidarkana.marvelous_menagerie.item.custom.AnomalousGogglesItem;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import net.voidarkana.marvelous_menagerie.common.enchantment.ModEnchantmentsClass;
+import net.voidarkana.marvelous_menagerie.common.item.custom.AnomalousGogglesItem;
 
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public class ModClientEvents {

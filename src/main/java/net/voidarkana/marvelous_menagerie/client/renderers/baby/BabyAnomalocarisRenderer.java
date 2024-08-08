@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.client.models.baby.BabyAnomalocarisModel;
-import net.voidarkana.marvelous_menagerie.entity.custom.baby.BabyAnomalocarisEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.baby.BabyAnomalocarisEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class BabyAnomalocarisRenderer extends GeoEntityRenderer<BabyAnomalocarisEntity> {

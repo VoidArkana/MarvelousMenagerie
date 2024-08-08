@@ -6,8 +6,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
-import net.voidarkana.marvelous_menagerie.worldgen.ModConfiguredFeatures;
-import net.voidarkana.marvelous_menagerie.worldgen.ModPlacedFeatures;
+import net.voidarkana.marvelous_menagerie.common.worldgen.ModConfiguredFeatures;
+import net.voidarkana.marvelous_menagerie.common.worldgen.ModPlacedFeatures;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;

@@ -9,7 +9,7 @@ import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoArmorLayer;
 import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoPassengerLayer;
 import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoSaddleLayer;
 import net.voidarkana.marvelous_menagerie.client.models.OphthalmoModel;
-import net.voidarkana.marvelous_menagerie.entity.custom.OphthalmoEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.OphthalmoEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class OphthalmoRenderer extends GeoEntityRenderer<OphthalmoEntity> {

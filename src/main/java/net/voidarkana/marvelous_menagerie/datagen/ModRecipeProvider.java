@@ -1,17 +1,14 @@
 package net.voidarkana.marvelous_menagerie.datagen;
 
 import com.peeko32213.unusualprehistory.datagen.UPRecipeProvider;
-import net.minecraft.client.Minecraft;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.MinecartItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-import net.voidarkana.marvelous_menagerie.block.ModBlocks;
-import net.voidarkana.marvelous_menagerie.item.ModItems;
+import net.voidarkana.marvelous_menagerie.common.block.ModBlocks;
+import net.voidarkana.marvelous_menagerie.common.item.ModItems;
 import net.voidarkana.marvelous_menagerie.util.ModTags;
 
 import java.util.function.Consumer;

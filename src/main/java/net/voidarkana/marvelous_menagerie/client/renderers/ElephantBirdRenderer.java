@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.client.models.ElephantBirdModel;
-import net.voidarkana.marvelous_menagerie.entity.custom.ElephantBirdEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.ElephantBirdEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class ElephantBirdRenderer extends GeoEntityRenderer<ElephantBirdEntity> {

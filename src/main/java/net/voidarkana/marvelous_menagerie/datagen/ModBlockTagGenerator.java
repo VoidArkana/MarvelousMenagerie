@@ -1,16 +1,13 @@
 package net.voidarkana.marvelous_menagerie.datagen;
 
-import com.peeko32213.unusualprehistory.core.registry.UPTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
-import net.voidarkana.marvelous_menagerie.block.ModBlocks;
+import net.voidarkana.marvelous_menagerie.common.block.ModBlocks;
 import net.voidarkana.marvelous_menagerie.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 

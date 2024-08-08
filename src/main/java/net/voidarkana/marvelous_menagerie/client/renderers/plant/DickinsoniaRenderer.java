@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.client.models.DickinsoniaModel;
-import net.voidarkana.marvelous_menagerie.entity.custom.PlantEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.PlantEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class DickinsoniaRenderer extends GeoEntityRenderer<PlantEntity> {

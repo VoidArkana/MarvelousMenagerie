@@ -2,7 +2,7 @@ package net.voidarkana.marvelous_menagerie.client.models;
 
 import net.minecraft.resources.ResourceLocation;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
-import net.voidarkana.marvelous_menagerie.entity.custom.ElephantBirdEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.ElephantBirdEntity;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 import software.bernie.geckolib.core.animation.AnimationState;

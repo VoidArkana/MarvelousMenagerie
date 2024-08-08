@@ -9,7 +9,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.voidarkana.marvelous_menagerie.block.ModBlocks;
+import net.voidarkana.marvelous_menagerie.common.block.ModBlocks;
 import net.voidarkana.marvelous_menagerie.client.events.ModClientEvents;
 import net.voidarkana.marvelous_menagerie.client.renderers.*;
 import net.voidarkana.marvelous_menagerie.client.renderers.baby.BabyAnomalocarisRenderer;
@@ -20,7 +20,7 @@ import net.voidarkana.marvelous_menagerie.client.renderers.plant.DickinsoniaRend
 import net.voidarkana.marvelous_menagerie.client.renderers.plant.PrototaxitesRenderer;
 import net.voidarkana.marvelous_menagerie.client.renderers.plant.SigillariaRenderer;
 import net.voidarkana.marvelous_menagerie.common.CommonProxy;
-import net.voidarkana.marvelous_menagerie.entity.ModEntities;
+import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.util.ModWoodTypes;
 
 import java.util.ArrayList;

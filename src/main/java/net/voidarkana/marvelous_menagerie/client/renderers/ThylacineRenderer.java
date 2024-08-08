@@ -7,7 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.client.layer.ThylacineHandkerchiefLayer;
 import net.voidarkana.marvelous_menagerie.client.models.ThylacineModel;
-import net.voidarkana.marvelous_menagerie.entity.custom.ThylacineEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.ThylacineEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class ThylacineRenderer extends GeoEntityRenderer<ThylacineEntity> {

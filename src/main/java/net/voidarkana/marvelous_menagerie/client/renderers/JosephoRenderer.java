@@ -7,8 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.client.layer.*;
 import net.voidarkana.marvelous_menagerie.client.models.JosephoModel;
-import net.voidarkana.marvelous_menagerie.client.models.OphthalmoModel;
-import net.voidarkana.marvelous_menagerie.entity.custom.JosephoEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.JosephoEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class JosephoRenderer extends GeoEntityRenderer<JosephoEntity> {

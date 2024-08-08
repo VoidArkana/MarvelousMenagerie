@@ -10,7 +10,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
-import net.voidarkana.marvelous_menagerie.block.ModBlocks;
+import net.voidarkana.marvelous_menagerie.common.block.ModBlocks;
 
 import java.util.ArrayList;
 import java.util.Arrays;

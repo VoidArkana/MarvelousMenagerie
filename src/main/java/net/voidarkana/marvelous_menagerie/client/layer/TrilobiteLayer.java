@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
-import net.voidarkana.marvelous_menagerie.entity.custom.TrilobiteEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.TrilobiteEntity;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.renderer.GeoRenderer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
@@ -23,8 +23,10 @@ public class TrilobiteLayer extends GeoRenderLayer<TrilobiteEntity> {
 
         if (!entity.isLGBTrilo()){
 
-            RenderType cameo = RenderType.entityCutout(new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/trilobite/trilobite_"+entity.getModelName()+"_second/trilobite_"+entity.getModelName()+"_second_"+entity.getSecondColorName()+".png"));
-            ResourceLocation trilobiteModel = new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/trilobite/trilobite_"+entity.getModelName()+".geo.json");
+            RenderType cameo = RenderType.entityCutout(new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/trilobite/trilobite_"+entity.getModelName(entity.getVariantModel())
+                    +"_second/trilobite_"+entity.getModelName(entity.getVariantModel())+"_second_"+entity.getSecondColorName(entity.getVariantSecondColor())+".png"));
+            ResourceLocation trilobiteModel = new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/trilobite/trilobite_"
+                    +entity.getModelName(entity.getVariantModel())+".geo.json");
 
             this.getRenderer().reRender(this.getGeoModel().getBakedModel(trilobiteModel), poseStack, bufferSource, entity, renderType,
                     bufferSource.getBuffer(cameo), partialTick, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);

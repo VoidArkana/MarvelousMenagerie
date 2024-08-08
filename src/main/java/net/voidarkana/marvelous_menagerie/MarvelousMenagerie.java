@@ -1,10 +1,6 @@
 package net.voidarkana.marvelous_menagerie;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
@@ -15,26 +11,28 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.voidarkana.marvelous_menagerie.block.ModBlocks;
-import net.voidarkana.marvelous_menagerie.block.entity.ModBlockEntities;
+import net.voidarkana.marvelous_menagerie.common.block.ModBlocks;
+import net.voidarkana.marvelous_menagerie.common.block.entity.ModBlockEntities;
 import net.voidarkana.marvelous_menagerie.client.ClientProxy;
-import net.voidarkana.marvelous_menagerie.effect.ModEffects;
-import net.voidarkana.marvelous_menagerie.enchantment.ModEnchantmentsClass;
-import net.voidarkana.marvelous_menagerie.entity.ModEntities;
+import net.voidarkana.marvelous_menagerie.common.effect.ModEffects;
+import net.voidarkana.marvelous_menagerie.common.enchantment.ModEnchantmentsClass;
+import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.event.ModEventBusEvents;
-import net.voidarkana.marvelous_menagerie.item.ModItems;
-import net.voidarkana.marvelous_menagerie.sound.ModSounds;
+import net.voidarkana.marvelous_menagerie.common.item.ModItems;
+import net.voidarkana.marvelous_menagerie.client.sound.ModSounds;
 import net.voidarkana.marvelous_menagerie.common.CommonProxy;
-import net.voidarkana.marvelous_menagerie.worldgen.ModConfiguredFeatures;
-import net.voidarkana.marvelous_menagerie.worldgen.tree.ModFoliagePlacers;
-import net.voidarkana.marvelous_menagerie.worldgen.tree.ModTrunkPlacerTypes;
+import net.voidarkana.marvelous_menagerie.common.worldgen.ModConfiguredFeatures;
+import net.voidarkana.marvelous_menagerie.common.worldgen.tree.ModFoliagePlacers;
+import net.voidarkana.marvelous_menagerie.common.worldgen.tree.ModTrunkPlacerTypes;
+import net.voidarkana.marvelous_menagerie.util.config.CommonConfig;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(MarvelousMenagerie.MOD_ID)
 public class MarvelousMenagerie {
 
@@ -69,6 +67,9 @@ public class MarvelousMenagerie {
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC,
+                "marvelous_menagerie.toml");
 
         MinecraftForge.EVENT_BUS.register(new ModEventBusEvents());
 
