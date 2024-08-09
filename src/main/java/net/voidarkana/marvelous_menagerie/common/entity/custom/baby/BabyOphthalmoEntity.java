@@ -187,7 +187,10 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
                 frog.setCustomName(this.getCustomName());
                 frog.setCustomNameVisible(this.isCustomNameVisible());
             }
-            //frog.setPersistenceRequired();
+
+            //persistance stuff
+            frog.setIsFromEgg(true);
+
             this.playSound(SoundEvents.PLAYER_LEVELUP, 0.15F, 1.0F);
             server.addFreshEntityWithPassengers(frog);
             this.discard();
@@ -271,18 +274,6 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
 
     protected void playStepSound(BlockPos p_28301_, BlockState p_28302_) {}
 
-//    protected SoundEvent getAmbientSound() {
-//        return SoundEvents.COD_AMBIENT;
-//    }
-//
-//    protected SoundEvent getDeathSound() {
-//        return SoundEvents.TURTLE_EGG_BREAK;
-//    }
-//
-//    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
-//        return SoundEvents.TURTLE_EGG_CRACK;
-//    }
-
     @Override
     public float getVoicePitch() {
         return (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.5F;
@@ -308,6 +299,8 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
     protected SoundEvent getDeathSound() {
         return ModSounds.OPHTHALMO_DEATH.get();
     }
+
+    //persistance stuff, only babies don't despawn because they can't spawn naturally
     public void checkDespawn() {
         this.noActionTime = 0;
     }

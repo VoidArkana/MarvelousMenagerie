@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#marvelous_menagerie:is_saca_biome",
+  "spawners": {
+    "type": "marvelous_menagerie:sacabambaspis",
+    "weight": 10,
+    "minCount": 2,
+    "maxCount": 5,
+    "category": "water_creature"
+  }
+}

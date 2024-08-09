@@ -2,11 +2,13 @@ package net.voidarkana.marvelous_menagerie.util;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 
@@ -24,8 +26,25 @@ public class ModTags {
         }
     }
 
-    public static class Blocks {
+    public static class Biomes {
 
+        public static final TagKey<Biome> DODO_BIOMES = create("is_dodo_biome");
+        public static final TagKey<Biome> ELEPHANT_BIRD_BIOMES = create("is_elephant_bird_biome");
+        public static final TagKey<Biome> THYLACINE_BIOMES = create("is_thylacine_biome");
+        public static final TagKey<Biome> STELLER_BIOMES = create("is_steller_biome");
+
+        public static final TagKey<Biome> JOSEPHO_BIOMES = create("is_josepho_biome");
+        public static final TagKey<Biome> TRILO_BIOMES = create("is_trilo_biome");
+        public static final TagKey<Biome> CARIS_BIOMES = create("is_caris_biome");
+        public static final TagKey<Biome> SACA_BIOMES = create("is_saca_biome");
+        public static final TagKey<Biome> OPHTHALMO_BIOMES = create("is_ophthalmo_biome");
+
+        private static TagKey<Biome> create(String pName) {
+            return TagKey.create(Registries.BIOME, new ResourceLocation(MarvelousMenagerie.MOD_ID, pName));
+        }
+    }
+
+    public static class Blocks {
         public static final TagKey<Block> SIGILLARIA_LOG_BLOCK = tag("sigillaria_log_block");
 
         public static final TagKey<Block> DYE_DEPOT_WOOL = tag("dye_depot_wool");

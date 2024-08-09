@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#marvelous_menagerie:is_dodo_biome",
+  "spawners": {
+    "type": "marvelous_menagerie:dodo",
+    "weight": 10,
+    "minCount": 3,
+    "maxCount": 5,
+    "category": "creature"
+  }
+}

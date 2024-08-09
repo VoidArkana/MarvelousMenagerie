@@ -1,5 +1,6 @@
 package net.voidarkana.marvelous_menagerie.common.entity.custom;
 
+import com.peeko32213.unusualprehistory.common.config.UnusualPrehistoryConfig;
 import com.peeko32213.unusualprehistory.common.entity.IBookEntity;
 import com.peeko32213.unusualprehistory.common.entity.IHatchableEntity;
 import net.minecraft.core.BlockPos;
@@ -9,11 +10,14 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -27,6 +31,8 @@ import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.voidarkana.marvelous_menagerie.common.item.ModItems;
@@ -43,7 +49,9 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class SacabambaspisEntity extends WaterAnimal implements IBookEntity, IHatchableEntity, GeoEntity, Bucketable {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private boolean persistenceRequired;
+
+    //persistence stuff, variable not needed
+    //private boolean persistenceRequired;
 
     public SacabambaspisEntity(EntityType<? extends WaterAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -72,16 +80,19 @@ public class SacabambaspisEntity extends WaterAnimal implements IBookEntity, IHa
         super.defineSynchedData();
         this.entityData.define(FROM_BOOK, false);
         this.entityData.define(FROM_BUCKET, false);
+        this.entityData.define(FROM_EGG, false);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putBoolean("FromBucket", this.fromBucket());
+        pCompound.putBoolean("FromEgg", this.isFromEgg());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         this.setFromBucket(pCompound.getBoolean("FromBucket"));
+        this.setIsFromEgg(pCompound.getBoolean("FromEgg"));
     }
 
     public boolean isFromBook() {
@@ -92,8 +103,10 @@ public class SacabambaspisEntity extends WaterAnimal implements IBookEntity, IHa
         this.entityData.set(FROM_BOOK, fromBook);
     }
 
+    //persistence stuff, called when hatching only
     @Override
     public void determineVariant(int i) {
+        this.setIsFromEgg(true);
     }
 
     public boolean fromBucket() {
@@ -204,15 +217,39 @@ public class SacabambaspisEntity extends WaterAnimal implements IBookEntity, IHa
         return SoundEvents.FISH_SWIM;
     }
 
-    public void setPersistenceRequired() {
-        this.persistenceRequired = false;}
+    //persistence stuff, methods not needed
 
-    public void checkDespawn() {
-        this.noActionTime = 0;
-    }
+//    public void setPersistenceRequired() {
+//        this.persistenceRequired = false;}
+//
+//    public void checkDespawn() {
+//        this.noActionTime = 0;
+//    }
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
+    }
+
+
+    public static boolean checkSurfaceWaterDinoSpawnRules(EntityType<? extends SacabambaspisEntity> pWaterAnimal, LevelAccessor pLevel, MobSpawnType pSpawnType, BlockPos pPos, RandomSource pRandom) {
+        int i = pLevel.getSeaLevel();
+        int j = i - 13;
+        return pPos.getY() >= j && pPos.getY() <= i && pLevel.getFluidState(pPos.below()).is(FluidTags.WATER) && pLevel.getBlockState(pPos.above()).is(Blocks.WATER) && UnusualPrehistoryConfig.DINO_NATURAL_SPAWNING.get();
+    }
+
+    //persistance stuff
+    private static final EntityDataAccessor<Boolean> FROM_EGG = SynchedEntityData.defineId(SacabambaspisEntity.class, EntityDataSerializers.BOOLEAN);
+
+    public void setIsFromEgg(boolean pTamed) {
+        this.entityData.set(FROM_EGG, pTamed);
+    }
+
+    public boolean isFromEgg() {
+        return this.entityData.get(FROM_EGG);
+    }
+
+    public boolean removeWhenFarAway(double p_213397_1_) {
+        return !this.hasCustomName() && !this.fromBucket() && !this.isFromEgg();
     }
 }

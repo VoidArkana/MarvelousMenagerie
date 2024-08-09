@@ -1,5 +1,6 @@
 package net.voidarkana.marvelous_menagerie.common.entity.custom;
 
+import com.peeko32213.unusualprehistory.common.config.UnusualPrehistoryConfig;
 import com.peeko32213.unusualprehistory.common.entity.IBookEntity;
 import com.peeko32213.unusualprehistory.common.entity.msc.util.HitboxHelper;
 import net.minecraft.core.BlockPos;
@@ -9,6 +10,8 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -28,6 +31,8 @@ import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.Node;
 import net.minecraft.world.level.pathfinder.Path;
@@ -50,7 +55,6 @@ import java.util.EnumSet;
 public class AnomalocarisEntity extends WaterAnimal implements IBookEntity, GeoEntity, Bucketable {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    private boolean persistenceRequired;
     private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(AnomalocarisEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> FROM_BOOK = SynchedEntityData.defineId(AnomalocarisEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> SHAKING_TIME = SynchedEntityData.defineId(AnomalocarisEntity.class, EntityDataSerializers.INT);
@@ -90,18 +94,21 @@ public class AnomalocarisEntity extends WaterAnimal implements IBookEntity, GeoE
         this.entityData.define(FROM_BUCKET, false);
         this.entityData.define(SHAKING_TIME, 0);
         this.entityData.define(ANIMATION_STATE, 0);
+        this.entityData.define(FROM_EGG, false);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putBoolean("FromBucket", this.fromBucket());
         pCompound.putInt("ShakingTime", this.getShakingTime());
+        pCompound.putBoolean("FromEgg", this.isFromEgg());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         this.setFromBucket(pCompound.getBoolean("FromBucket"));
         this.setShakingTime(pCompound.getInt("ShakingTime"));
+        this.setIsFromEgg(pCompound.getBoolean("FromEgg"));
     }
 
     public boolean doHurtTarget(Entity pEntity) {
@@ -286,13 +293,6 @@ public class AnomalocarisEntity extends WaterAnimal implements IBookEntity, GeoE
 
     protected SoundEvent getSwimSound() {
         return ModSounds.CREATURE_SWIM.get();
-    }
-
-    public void setPersistenceRequired() {
-        this.persistenceRequired = false;}
-
-    public void checkDespawn() {
-        this.noActionTime = 0;
     }
 
     @Override
@@ -491,6 +491,27 @@ public class AnomalocarisEntity extends WaterAnimal implements IBookEntity, GeoE
         protected double getAttackReachSqr(LivingEntity p_179512_1_) {
             return (double)(this.mob.getBbWidth() * 2.5F * this.mob.getBbWidth() * 1.8F + p_179512_1_.getBbWidth());
         }
+    }
+
+    public static boolean checkSurfaceWaterDinoSpawnRules(EntityType<? extends AnomalocarisEntity> pWaterAnimal, LevelAccessor pLevel, MobSpawnType pSpawnType, BlockPos pPos, RandomSource pRandom) {
+        int i = pLevel.getSeaLevel();
+        int j = i - 13;
+        return pPos.getY() >= j && pPos.getY() <= i && pLevel.getFluidState(pPos.below()).is(FluidTags.WATER) && pLevel.getBlockState(pPos.above()).is(Blocks.WATER) && UnusualPrehistoryConfig.DINO_NATURAL_SPAWNING.get();
+    }
+
+    //persistance stuff
+    private static final EntityDataAccessor<Boolean> FROM_EGG = SynchedEntityData.defineId(AnomalocarisEntity.class, EntityDataSerializers.BOOLEAN);
+
+    public void setIsFromEgg(boolean pTamed) {
+        this.entityData.set(FROM_EGG, pTamed);
+    }
+
+    public boolean isFromEgg() {
+        return this.entityData.get(FROM_EGG);
+    }
+
+    public boolean removeWhenFarAway(double p_213397_1_) {
+        return !this.hasCustomName() && !this.fromBucket() && !this.isFromEgg();
     }
 
 }

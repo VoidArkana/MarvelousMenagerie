@@ -1,5 +1,6 @@
 package net.voidarkana.marvelous_menagerie.common.entity.custom;
 
+import com.peeko32213.unusualprehistory.common.config.UnusualPrehistoryConfig;
 import com.peeko32213.unusualprehistory.common.entity.IBookEntity;
 import com.peeko32213.unusualprehistory.common.entity.msc.util.HitboxHelper;
 import net.minecraft.client.Minecraft;
@@ -15,8 +16,10 @@ import net.minecraft.server.players.OldUsersConverter;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -42,6 +45,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
@@ -93,6 +99,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         rand = 0;
     }
 
+    private static final EntityDataAccessor<Boolean> FROM_EGG = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> FROM_BOOK = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_SADDLED = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> HAS_ARMOR = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.BOOLEAN);
@@ -141,6 +148,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
     protected void defineSynchedData() {
         super.defineSynchedData();
+        this.entityData.define(FROM_EGG, false);
         this.entityData.define(FROM_BOOK, false);
         this.entityData.define(IS_SADDLED, false);
         this.entityData.define(HAS_ARMOR, false);
@@ -155,6 +163,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putBoolean("Tame", this.isTamed());
+        pCompound.putBoolean("FromEgg", this.isFromEgg());
         pCompound.putBoolean("IsSaddled", this.getIsSaddled());
         pCompound.putBoolean("HasArmor", this.getHasArmor());
 
@@ -168,6 +177,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         this.setTamed(pCompound.getBoolean("Tame"));
+        this.setIsFromEgg(pCompound.getBoolean("FromEgg"));
         this.setIsSaddled(pCompound.getBoolean("IsSaddled"));
         this.setHasArmor(pCompound.getBoolean("HasArmor"));
 
@@ -250,6 +260,14 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         return this.entityData.get(IS_TAMED);
     }
 
+    public void setIsFromEgg(boolean pTamed) {
+        this.entityData.set(FROM_EGG, pTamed);
+    }
+
+    public boolean isFromEgg() {
+        return this.entityData.get(FROM_EGG);
+    }
+
     public void tame(Player pPlayer) {
         this.setTamed(true);
         this.setOwnerUUID(pPlayer.getUUID());
@@ -302,10 +320,6 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         } else {
             return false;
         }
-    }
-
-    public void checkDespawn() {
-        this.noActionTime = 0;
     }
 
     public int getEatingTime() {
@@ -1239,6 +1253,17 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
     protected boolean shouldPassengersInheritMalus() {
         return true;
+    }
+
+    public static boolean checkSurfaceWaterDinoSpawnRules(EntityType<? extends OphthalmoEntity> pWaterAnimal, LevelAccessor pLevel, MobSpawnType pSpawnType, BlockPos pPos, RandomSource pRandom) {
+        int i = pLevel.getSeaLevel();
+        int j = i - 13;
+        return pPos.getY() >= j && pPos.getY() <= i && pLevel.getFluidState(pPos.below()).is(FluidTags.WATER) && pLevel.getBlockState(pPos.above()).is(Blocks.WATER) && UnusualPrehistoryConfig.DINO_NATURAL_SPAWNING.get();
+    }
+
+    //persistance stuff
+    public boolean removeWhenFarAway(double p_213397_1_) {
+        return !this.hasCustomName() && !this.isTamed() && !this.isFromEgg();
     }
 
 }

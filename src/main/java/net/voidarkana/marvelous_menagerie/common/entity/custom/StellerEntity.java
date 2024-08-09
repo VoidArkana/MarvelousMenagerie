@@ -1,5 +1,6 @@
 package net.voidarkana.marvelous_menagerie.common.entity.custom;
 
+import com.peeko32213.unusualprehistory.common.config.UnusualPrehistoryConfig;
 import com.peeko32213.unusualprehistory.common.entity.IBookEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -10,6 +11,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -31,8 +33,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.PathComputationType;
@@ -58,8 +62,6 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
 
     static final TargetingConditions SWIM_WITH_PLAYER_TARGETING = TargetingConditions.forNonCombat().range(10.0D).ignoreLineOfSight();
     private static final EntityDataAccessor<Boolean> FROM_BOOK = SynchedEntityData.defineId(StellerEntity.class, EntityDataSerializers.BOOLEAN);
-
-    private boolean persistenceRequired;
 
     protected static final RawAnimation STELLER_SWIM = RawAnimation.begin().thenLoop("animation.steller_sea_cow.swim");
     protected static final RawAnimation STELLER_IDLE = RawAnimation.begin().thenLoop("animation.steller_sea_cow.idle");
@@ -95,15 +97,20 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(FROM_BOOK, false);
-        //this.entityData.define(ROTATION, 0F);
+        this.entityData.define(FROM_EGG, false);
+        this.entityData.define(MILKED, false);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
+        pCompound.putBoolean("FromEgg", this.isFromEgg());
+        pCompound.putBoolean("HasBeenMilked", this.hasBeenMilked());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
+        this.setIsFromEgg(pCompound.getBoolean("FromEgg"));
+        this.setHasBeenMilked(pCompound.getBoolean("HasBeenMilked"));
     }
 
     @Nullable
@@ -136,6 +143,11 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
             pPlayer.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
             ItemStack itemstack1 = ItemUtils.createFilledResult(itemstack, pPlayer, ModItems.STELLER_MILK.get().getDefaultInstance());
             pPlayer.setItemInHand(pHand, itemstack1);
+
+            if (!this.hasBeenMilked()){
+                this.setHasBeenMilked(true);
+            }
+
             return InteractionResult.sidedSuccess(this.level().isClientSide);
         } else {
             return super.mobInteract(pPlayer, pHand);
@@ -178,10 +190,6 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
 
     public void setFromBook(boolean fromBook) {
         this.entityData.set(FROM_BOOK, fromBook);
-    }
-
-    public void checkDespawn() {
-        this.noActionTime = 0;
     }
 
     public void travel(Vec3 travelVector) {
@@ -419,10 +427,6 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
         return !this.isEyeInFluid(FluidTags.WATER) && !this.onGround();
     }
 
-    public void setPersistenceRequired() {
-        this.persistenceRequired = false;
-    }
-
     public boolean canBreatheUnderwater() {
         return true;
     }
@@ -449,6 +453,36 @@ public class StellerEntity extends WaterAnimal implements GeoEntity, IBookEntity
 
     protected SoundEvent getDeathSound() {
             return ModSounds.STELLER_DEATH.get();
+    }
+
+    public static boolean checkSurfaceWaterDinoSpawnRules(EntityType<? extends StellerEntity> pWaterAnimal, LevelAccessor pLevel, MobSpawnType pSpawnType, BlockPos pPos, RandomSource pRandom) {
+        int i = pLevel.getSeaLevel();
+        int j = i - 13;
+        return pPos.getY() >= j && pPos.getY() <= i && pLevel.getFluidState(pPos.below()).is(FluidTags.WATER) && pLevel.getBlockState(pPos.above()).is(Blocks.WATER) && UnusualPrehistoryConfig.DINO_NATURAL_SPAWNING.get();
+    }
+
+    //persistance stuff
+    private static final EntityDataAccessor<Boolean> FROM_EGG = SynchedEntityData.defineId(StellerEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> MILKED = SynchedEntityData.defineId(StellerEntity.class, EntityDataSerializers.BOOLEAN);
+
+    public void setIsFromEgg(boolean pTamed) {
+        this.entityData.set(FROM_EGG, pTamed);
+    }
+
+    public boolean isFromEgg() {
+        return this.entityData.get(FROM_EGG);
+    }
+
+    public void setHasBeenMilked(boolean pTamed) {
+        this.entityData.set(MILKED, pTamed);
+    }
+
+    public boolean hasBeenMilked() {
+        return this.entityData.get(MILKED);
+    }
+
+    public boolean removeWhenFarAway(double p_213397_1_) {
+        return !this.hasCustomName() && !this.hasBeenMilked() && !this.isFromEgg();
     }
 
 }

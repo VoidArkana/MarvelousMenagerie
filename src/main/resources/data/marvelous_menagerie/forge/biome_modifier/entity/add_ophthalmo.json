@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#marvelous_menagerie:is_ophthalmo_biome",
+  "spawners": {
+    "type": "marvelous_menagerie:ophthalmo",
+    "weight": 8,
+    "minCount": 1,
+    "maxCount": 3,
+    "category": "water_creature"
+  }
+}

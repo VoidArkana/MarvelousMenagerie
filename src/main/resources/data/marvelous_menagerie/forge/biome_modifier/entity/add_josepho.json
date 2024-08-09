@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#marvelous_menagerie:is_josepho_biome",
+  "spawners": {
+    "type": "marvelous_menagerie:josepho",
+    "weight": 7,
+    "minCount": 2,
+    "maxCount": 4,
+    "category": "creature"
+  }
+}

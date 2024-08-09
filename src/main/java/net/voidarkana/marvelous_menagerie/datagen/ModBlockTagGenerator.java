@@ -1,9 +1,11 @@
 package net.voidarkana.marvelous_menagerie.datagen;
 
+import com.peeko32213.unusualprehistory.core.registry.UPTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
@@ -22,6 +24,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+
+        this.tag(UPTags.DINO_NATURAL_SPAWNABLE).add(Blocks.MYCELIUM);
 
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(
                 ModBlocks.SIGILLARIA_PLANKS.get(),

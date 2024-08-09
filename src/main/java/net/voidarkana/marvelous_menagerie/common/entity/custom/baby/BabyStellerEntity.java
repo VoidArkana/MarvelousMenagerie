@@ -67,7 +67,6 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
     private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(BabyStellerEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> FROM_BOOK = SynchedEntityData.defineId(BabyStellerEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(BabyStellerEntity.class, EntityDataSerializers.INT);
-    private boolean persistenceRequired;
 
     protected static final RawAnimation BABY_STELLER_SWIM = RawAnimation.begin().thenLoop("animation.baby_steller_sea_cow.swim");
     protected static final RawAnimation BABY_STELLER_IDLE = RawAnimation.begin().thenLoop("animation.baby_steller_sea_cow.idle");
@@ -239,15 +238,12 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
                 frog.setCustomNameVisible(this.isCustomNameVisible());
             }
 
-            frog.setPersistenceRequired();
+            frog.setIsFromEgg(true);
+
             this.playSound(SoundEvents.PLAYER_LEVELUP, 0.15F, 1.0F);
             server.addFreshEntityWithPassengers(frog);
             this.discard();
         }
-    }
-
-    public void setPersistenceRequired() {
-        this.persistenceRequired = false;
     }
 
     @Nullable
@@ -325,6 +321,7 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
         this.entityData.set(FROM_BOOK, fromBook);
     }
 
+    //persistance stuff, only babies don't despawn because they can't spawn naturally
     public void checkDespawn() {
         this.noActionTime = 0;
     }

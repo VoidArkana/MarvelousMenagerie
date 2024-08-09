@@ -1,5 +1,6 @@
 package net.voidarkana.marvelous_menagerie.common.entity.custom;
 
+import com.peeko32213.unusualprehistory.common.config.UnusualPrehistoryConfig;
 import com.peeko32213.unusualprehistory.common.entity.IBookEntity;
 import com.peeko32213.unusualprehistory.common.entity.IHatchableEntity;
 import net.minecraft.ChatFormatting;
@@ -10,6 +11,8 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -26,7 +29,9 @@ import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
@@ -45,8 +50,6 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Objects;
 
-
-//TODO: LGBTrilos
 public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEntity, Bucketable, IHatchableEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
@@ -63,7 +66,6 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
     private static final EntityDataAccessor<Integer> VARIANT_MODEL = SynchedEntityData.defineId(TrilobiteEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> VARIANT_BASE_COLOR = SynchedEntityData.defineId(TrilobiteEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> VARIANT_SECOND_COLOR = SynchedEntityData.defineId(TrilobiteEntity.class, EntityDataSerializers.INT);
-    private boolean persistenceRequired;
 
     protected static final RawAnimation TRILOBITE_CURLY_WALK = RawAnimation.begin().thenLoop("animation.trilobite.walk_curly");
     protected static final RawAnimation TRILOBITE_TRIDENT_WALK = RawAnimation.begin().thenLoop("animation.trilobite.walk_trident");
@@ -100,6 +102,7 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
         this.entityData.define(VARIANT_MODEL, 0);
         this.entityData.define(VARIANT_BASE_COLOR, 0);
         this.entityData.define(VARIANT_SECOND_COLOR, 0);
+        this.entityData.define(FROM_EGG, false);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
@@ -108,6 +111,7 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
         pCompound.putInt("model_variant", this.getVariantModel());
         pCompound.putInt("base_color_variant", this.getVariantBaseColor());
         pCompound.putInt("second_color_variant", this.getVariantSecondColor());
+        pCompound.putBoolean("FromEgg", this.isFromEgg());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
@@ -116,6 +120,7 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
         this.setVariantModel(pCompound.getInt("model_variant"));
         this.setVariantBaseColor(pCompound.getInt("base_color_variant"));
         this.setVariantSecondColor(pCompound.getInt("second_color_variant"));
+        this.setIsFromEgg(pCompound.getBoolean("FromEgg"));
     }
 
     protected PathNavigation createNavigation(Level pLevel) {
@@ -196,14 +201,31 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
         this.setVariantModel(variantModelChange);
         this.setVariantBaseColor(variantColorBaseChange);
         this.setVariantSecondColor(variantColorSecondChange);
+
+        //persistence stuff, only called on hatching
+        this.setIsFromEgg(true);
     }
 
     //determines a number when spawning
     @Override
     @Nullable
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType reason, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag) {
-        int variant = this.random.nextInt(0,100);
-        this.determineVariant(variant);
+
+        if (reason == MobSpawnType.BUCKET && dataTag != null && dataTag.contains("model_variant", 3)) {
+            this.setVariantModel(dataTag.getInt("model_variant"));
+            this.setVariantBaseColor(dataTag.getInt("base_color_variant"));
+            this.setVariantSecondColor(dataTag.getInt("second_color_variant"));
+        }else{
+            int variantModelChange = this.random.nextInt(0, 6);
+            int variantColorBaseChange = this.random.nextInt(0, 7);
+            int variantColorSecondChange = this.random.nextInt(0, 11);
+
+            this.setVariantModel(variantModelChange);
+            this.setVariantBaseColor(variantColorBaseChange);
+            this.setVariantSecondColor(variantColorSecondChange);
+        }
+
+
         spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
         return super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
     }
@@ -228,8 +250,10 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
     @Override
     public void saveToBucketTag(ItemStack bucket) {
-        CompoundTag compoundnbt = bucket.getOrCreateTag();
         Bucketable.saveDefaultDataToBucketTag(this, bucket);
+
+        CompoundTag compoundnbt = bucket.getOrCreateTag();
+
         compoundnbt.putFloat("Health", this.getHealth());
         compoundnbt.putInt("model_variant", this.getVariantModel());
         compoundnbt.putInt("base_color_variant", this.getVariantBaseColor());
@@ -242,9 +266,10 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
     @Override
     public void loadFromBucketTag(CompoundTag pTag) {
         Bucketable.loadDefaultDataFromBucketTag(this, pTag);
-        this.setVariantModel(pTag.getInt("model_variant"));
-        this.setVariantBaseColor(pTag.getInt("base_color_variant"));
-        this.setVariantSecondColor(pTag.getInt("second_color_variant"));
+
+//        this.setVariantModel(pTag.getInt("model_variant"));
+//        this.setVariantBaseColor(pTag.getInt("base_color_variant"));
+//        this.setVariantSecondColor(pTag.getInt("second_color_variant"));
     }
 
     @Override
@@ -299,14 +324,6 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
             return PlayState.CONTINUE;
         }
-    }
-
-    public void setPersistenceRequired() {
-        this.persistenceRequired = false;
-    }
-
-    public void checkDespawn() {
-        this.noActionTime = 0;
     }
 
     public boolean canBreatheUnderwater() {
@@ -433,5 +450,27 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
             case 10 -> "yellow";
             default -> "brown";
         };
+    }
+
+
+    public static boolean checkSurfaceWaterDinoSpawnRules(EntityType<? extends TrilobiteEntity> pWaterAnimal, LevelAccessor pLevel, MobSpawnType pSpawnType, BlockPos pPos, RandomSource pRandom) {
+        int i = pLevel.getSeaLevel();
+        int j = i - 13;
+        return pPos.getY() >= j && pPos.getY() <= i && pLevel.getFluidState(pPos.below()).is(FluidTags.WATER) && pLevel.getBlockState(pPos.above()).is(Blocks.WATER) && UnusualPrehistoryConfig.DINO_NATURAL_SPAWNING.get();
+    }
+
+    //persistance stuff
+    private static final EntityDataAccessor<Boolean> FROM_EGG = SynchedEntityData.defineId(TrilobiteEntity.class, EntityDataSerializers.BOOLEAN);
+
+    public void setIsFromEgg(boolean pTamed) {
+        this.entityData.set(FROM_EGG, pTamed);
+    }
+
+    public boolean isFromEgg() {
+        return this.entityData.get(FROM_EGG);
+    }
+
+    public boolean removeWhenFarAway(double p_213397_1_) {
+        return !this.hasCustomName() && !this.fromBucket() && !this.isFromEgg();
     }
 }

@@ -54,7 +54,6 @@ public class BabyAnomalocarisEntity extends WaterAnimal implements IHatchableEnt
     public static final Ingredient FOOD_ITEMS = Ingredient.of(ModItems.TRILO_BITE.get());
     public static final int MAX_TADPOLE_AGE = Math.abs(-30000);
     private int age;
-    private boolean persistenceRequired;
 
     protected static final RawAnimation CARIS_SWIM = RawAnimation.begin().thenLoop("animation.anomalocaris.swim");
     protected static final RawAnimation CARIS_IDLE = RawAnimation.begin().thenLoop("animation.anomalocaris.idle");
@@ -184,15 +183,13 @@ public class BabyAnomalocarisEntity extends WaterAnimal implements IHatchableEnt
             this.spawnAtLocation(ModItems.CARIS_LENS.get());
             this.spawnAtLocation(ModItems.CARIS_LENS.get());
 
-            frog.setPersistenceRequired();
+            //persistance stuff
+            frog.setIsFromEgg(true);
+
             this.playSound(SoundEvents.PLAYER_LEVELUP, 0.15F, 1.0F);
             server.addFreshEntityWithPassengers(frog);
             this.discard();
         }
-    }
-
-    public void setPersistenceRequired() {
-        this.persistenceRequired = false;
     }
 
     //underwater navigation
@@ -288,6 +285,7 @@ public class BabyAnomalocarisEntity extends WaterAnimal implements IHatchableEnt
         return ModSounds.CREATURE_SWIM.get();
     }
 
+    //persistance stuff, only babies don't despawn because they can't spawn naturally
     public void checkDespawn() {
         this.noActionTime = 0;
     }

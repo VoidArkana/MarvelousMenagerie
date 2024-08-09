@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#marvelous_menagerie:is_elephant_bird_biome",
+  "spawners": {
+    "type": "marvelous_menagerie:elephant_bird",
+    "weight": 6,
+    "minCount": 1,
+    "maxCount": 3,
+    "category": "creature"
+  }
+}

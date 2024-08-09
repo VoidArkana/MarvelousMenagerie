@@ -30,6 +30,7 @@ import net.voidarkana.marvelous_menagerie.common.CommonProxy;
 import net.voidarkana.marvelous_menagerie.common.worldgen.ModConfiguredFeatures;
 import net.voidarkana.marvelous_menagerie.common.worldgen.tree.ModFoliagePlacers;
 import net.voidarkana.marvelous_menagerie.common.worldgen.tree.ModTrunkPlacerTypes;
+import net.voidarkana.marvelous_menagerie.util.MarvelousEntityPlacement;
 import net.voidarkana.marvelous_menagerie.util.config.CommonConfig;
 import org.slf4j.Logger;
 
@@ -78,6 +79,9 @@ public class MarvelousMenagerie {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(()->{
+
+            MarvelousEntityPlacement.entityPlacement();
+
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.SIGILLARIA_SAPLING.getId(), ModBlocks.POTTED_SIGILLARIA_SAPLING);
             ComposterBlock.COMPOSTABLES.put(ModBlocks.SIGILLARIA_SAPLING.get().asItem(), 0.4F);
             ComposterBlock.COMPOSTABLES.put(ModBlocks.SIGILLARIA_LEAVES.get().asItem(), 0.4F);
