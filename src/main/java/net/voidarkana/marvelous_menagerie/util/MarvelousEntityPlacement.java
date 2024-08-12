@@ -17,5 +17,7 @@ public class MarvelousEntityPlacement {
         SpawnPlacements.register(ModEntities.ANOMALOCARIS.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, AnomalocarisEntity::checkSurfaceWaterDinoSpawnRules);
         SpawnPlacements.register(ModEntities.TRILOBITE.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, TrilobiteEntity::checkSurfaceWaterDinoSpawnRules);
         SpawnPlacements.register(ModEntities.SACABAMBASPIS.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SacabambaspisEntity::checkSurfaceWaterDinoSpawnRules);
+
+        SpawnPlacements.register(ModEntities.PIKAIA.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, PikaiaEntity::checkSurfaceWaterDinoSpawnRules);
     }
 }

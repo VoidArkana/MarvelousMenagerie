@@ -126,6 +126,13 @@ public class ModEntities {
                             .sized(1.5f, 1.9f)
                             .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "josepho").toString()));
 
+
+    public static final RegistryObject<EntityType<PikaiaEntity>> PIKAIA =
+            ENTITY_TYPES.register("pikaia",
+                    () -> EntityType.Builder.of(PikaiaEntity::new, MobCategory.WATER_AMBIENT)
+                            .sized(0.7f, 0.3f)
+                            .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "pikaia").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

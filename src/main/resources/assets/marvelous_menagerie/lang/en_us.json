@@ -236,5 +236,14 @@
   "enchantment.marvelous_menagerie.cambrian_vision.desc": "Gives night vision when underwater",
   "enchantment.marvelous_menagerie.infernal_vision.desc": "Increases visibility under lava",
 
+  "entity.marvelous_menagerie.pikaia": "Pikaia",
+  "item.marvelous_menagerie.pikaia_bucket": "Bucket of Pikaia",
+  "item.marvelous_menagerie.pikaia_flask": "Pikaia DNA Flask",
+  "item.marvelous_menagerie.pikaia_spawn_egg": "Pikaia Spawn Egg",
+  "block.marvelous_menagerie.pikaia_eggs": "Pikaia Egg",
+
+  "marvelous_menagerie.advancement.interact_pikaia" : "I choose you!",
+  "marvelous_menagerie.advancement.interact_pikaia.desc" : "Revive a Pikaia",
+
   "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
 }

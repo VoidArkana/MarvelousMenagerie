@@ -210,8 +210,6 @@
   "marvelous_menagerie.advancement.interact_josepho" : "Большой,и добрый друг!", 			 
   "marvelous_menagerie.advancement.interact_josepho.desc" : "Воссоздайте Джозефоартигасии",
 
-
-
   "marvelous_menagerie.advancement.egg_shellmet": "Ты выглядишь так несовременно рядом со мной!",			 
   "marvelous_menagerie.advancement.egg_shellmet.desc": "Сделайте шлем из скорлупы яйца Эпиорниса",
 
@@ -223,6 +221,34 @@
 
   "marvelous_menagerie.advancement.ophthalmo_armor": "Не забывай о питомцах!", 			
   "marvelous_menagerie.advancement.ophthalmo_armor.desc": "Сделайте броню для офтальмозавра, используя Склериты Аномалокариса",
-  
+
+
+  "translatable.marvelous_menagerie.trilo_model.curly" : "Кудрявый",
+  "translatable.marvelous_menagerie.trilo_model.trident" : "Трезубец",
+  "translatable.marvelous_menagerie.trilo_model.moon" : "Лунный",
+  "translatable.marvelous_menagerie.trilo_model.spiky" : "Колючий",
+  "translatable.marvelous_menagerie.trilo_model.itty" : "Крошечный",
+  "translatable.marvelous_menagerie.trilo_model.fat" : "Крупный",
+
+  "translatable.marvelous_menagerie.trilo_base_color.black" : "Основной цвет: Чёрный",
+  "translatable.marvelous_menagerie.trilo_base_color.blue" : "Основной цвет: Синий",
+  "translatable.marvelous_menagerie.trilo_base_color.green" : "Основной цвет: Зелёный",
+  "translatable.marvelous_menagerie.trilo_base_color.pink" : "Основной цвет: Розовый",
+  "translatable.marvelous_menagerie.trilo_base_color.red" : "Основной цвет: Красный",
+  "translatable.marvelous_menagerie.trilo_base_color.teal" : "Основной цвет: Бирюзовый",
+  "translatable.marvelous_menagerie.trilo_base_color.brown" : "Основной цвет: Коричневый",
+
+  "translatable.marvelous_menagerie.trilo_second_color.purple" : "Вторичный цвет: Фиолетовый",
+  "translatable.marvelous_menagerie.trilo_second_color.blue" : "Вторичный цвет: Синий",
+  "translatable.marvelous_menagerie.trilo_second_color.light_blue" : "Вторичный цвет: Голубой",
+  "translatable.marvelous_menagerie.trilo_second_color.green" : "Вторичный цвет: Зелёный",
+  "translatable.marvelous_menagerie.trilo_second_color.pink" : "Вторичный цвет: Розовый",
+  "translatable.marvelous_menagerie.trilo_second_color.orange" : "Вторичный цвет: Оранжевый",
+  "translatable.marvelous_menagerie.trilo_second_color.red" : "Вторичный цвет: Красный",
+  "translatable.marvelous_menagerie.trilo_second_color.teal" : "Вторичный цвет: Бирюзовый",
+  "translatable.marvelous_menagerie.trilo_second_color.white" : "Вторичный цвет: Белый",
+  "translatable.marvelous_menagerie.trilo_second_color.yellow" : "Вторичный цвет: Жёлтый",
+  "translatable.marvelous_menagerie.trilo_second_color.brown" : "Вторичный цвет: Коричневый",
+
   "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
 }

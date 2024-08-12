@@ -73,6 +73,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         this.createFlatWaterEgg(ModBlocks.SACA_EGGS.get());
 
         this.createFlatWaterEgg(ModBlocks.CARIS_EGGS.get());
+
+        this.createFlatWaterEgg(ModBlocks.PIKAIA_EGGS.get());
     }
 
     public void hangingSignBlock(Block signBlock, Block wallSignBlock, ResourceLocation texture) {

@@ -206,5 +206,37 @@
   "marvelous_menagerie.advancement.ophthalmo_armor": "¿Quién necesita armadillos?",
   "marvelous_menagerie.advancement.ophthalmo_armor.desc": "Crea una armadura para Ophthalmosaurus",
 
+
+  "translatable.marvelous_menagerie.trilo_model.curly" : "Curly",
+  "translatable.marvelous_menagerie.trilo_model.trident" : "Trident",
+  "translatable.marvelous_menagerie.trilo_model.moon" : "Moon",
+  "translatable.marvelous_menagerie.trilo_model.spiky" : "Spiky",
+  "translatable.marvelous_menagerie.trilo_model.itty" : "Itty",
+  "translatable.marvelous_menagerie.trilo_model.fat" : "Fat",
+
+  "translatable.marvelous_menagerie.trilo_base_color.black" : "Black base color",
+  "translatable.marvelous_menagerie.trilo_base_color.blue" : "Blue base color",
+  "translatable.marvelous_menagerie.trilo_base_color.green" : "Green base color",
+  "translatable.marvelous_menagerie.trilo_base_color.pink" : "Pink base color",
+  "translatable.marvelous_menagerie.trilo_base_color.red" : "Red base color",
+  "translatable.marvelous_menagerie.trilo_base_color.teal" : "Teal base color",
+  "translatable.marvelous_menagerie.trilo_base_color.brown" : "Brown base color",
+
+  "translatable.marvelous_menagerie.trilo_second_color.purple" : "Purple accent color",
+  "translatable.marvelous_menagerie.trilo_second_color.blue" : "Blue accent color",
+  "translatable.marvelous_menagerie.trilo_second_color.light_blue" : "Light Blue accent color",
+  "translatable.marvelous_menagerie.trilo_second_color.green" : "Green accent color",
+  "translatable.marvelous_menagerie.trilo_second_color.pink" : "Pink accent color",
+  "translatable.marvelous_menagerie.trilo_second_color.orange" : "Orange accent color",
+  "translatable.marvelous_menagerie.trilo_second_color.red" : "Red accent color",
+  "translatable.marvelous_menagerie.trilo_second_color.teal" : "Teal accent color",
+  "translatable.marvelous_menagerie.trilo_second_color.white" : "White accent color",
+  "translatable.marvelous_menagerie.trilo_second_color.yellow" : "Yellow accent color",
+  "translatable.marvelous_menagerie.trilo_second_color.brown" : "Brown accent color",
+
+  "enchantment.marvelous_menagerie.cambrian_vision.desc": "Gives night vision when underwater",
+  "enchantment.marvelous_menagerie.infernal_vision.desc": "Increases visibility under lava",
+
+
   "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
 }

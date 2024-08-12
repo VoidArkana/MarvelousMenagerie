@@ -23,6 +23,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.ELEPHANT_BIRD_DNA.get());
                         output.accept(ModItems.JOSEPHO_FLASK.get());
                         output.accept(ModItems.OPHTHALMO_FLASK.get());
+                        output.accept(ModItems.PIKAIA_FLASK.get());
                         output.accept(ModItems.SACA_FLASK.get());
                         output.accept(ModItems.STELLER_SEA_COW_DNA.get());
                         output.accept(ModItems.THYLACINE_DNA.get());
@@ -35,6 +36,7 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.CARIS_EGGS.get());
                         output.accept(ModBlocks.DODO_EGGS.get());
                         output.accept(ModBlocks.ELE_EGG.get());
+                        output.accept(ModBlocks.PIKAIA_EGGS.get());
                         output.accept(ModBlocks.SACA_EGGS.get());
                         output.accept(ModBlocks.TRILO_EGGS.get());
                         output.accept(ModItems.JOSEPHO_EMBRYO.get());
@@ -65,6 +67,8 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.CARIS_SCUTE.get());
                         output.accept(ModItems.ANOMALOUS_GOGGLES.get());
                         output.accept(ModItems.OPHTHALMO_ARMOR.get());
+
+                        output.accept(ModItems.PIKAIA_BUCKET.get());
 
                         output.accept(ModItems.BABY_OPHTHALMO_BUCKET.get());
 
@@ -104,6 +108,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.ELE_SPAWN_EGG.get());
                         output.accept(ModItems.JOSEPHO_SPAWN_EGG.get());
                         output.accept(ModItems.OPHTHALMO_SPAWN_EGG.get());
+                        output.accept(ModItems.PIKAIA_SPAWN_EGG.get());
                         output.accept(ModItems.SACA_SPAWN_EGG.get());
                         output.accept(ModItems.STELLER_SPAWN_EGG.get());
                         output.accept(ModItems.THYLA_SPAWN_EGG.get());

@@ -36,6 +36,8 @@ public class ModEventBusEvents {
         event.put(ModEntities.BABY_OPHTHALMO.get(), BabyOphthalmoEntity.createAttributes().build());
 
         event.put(ModEntities.JOSEPHO.get(), JosephoEntity.createAttributes().build());
+
+        event.put(ModEntities.PIKAIA.get(), PikaiaEntity.createAttributes().build());
     }
 
     @SubscribeEvent

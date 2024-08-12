@@ -124,6 +124,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent(ModItems.JOSEPHO_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         simpleItem(ModItems.JOSEPHO_FLASK);
         simpleItem(ModItems.JOSEPHO_EMBRYO);
+
+        withExistingParent(ModItems.PIKAIA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        simpleItem(ModItems.PIKAIA_BUCKET);
+        simpleItem(ModItems.PIKAIA_FLASK);
     }
 
 

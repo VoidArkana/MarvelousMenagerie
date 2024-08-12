@@ -1,0 +1,82 @@
+{
+  "parent": "minecraft:main/egg",
+  "criteria": {
+    "pikaia_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:pikaia_bucket"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "damage_pikaia": {
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "marvelous_menagerie:pikaia"
+            }
+          }
+        }
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    },
+    "interact_pikaia": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:pikaia"
+            }
+          }
+        ],
+        "item": {}
+      },
+      "trigger": "minecraft:player_interacted_with_entity"
+    },
+    "killed_pikaia": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "marvelous_menagerie:pikaia"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.interact_pikaia.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:pikaia_flask"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.interact_pikaia"
+    }
+  },
+  "requirements": [
+    [
+      "damage_pikaia",
+      "interact_pikaia",
+      "killed_pikaia",
+      "pikaia_bucket"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

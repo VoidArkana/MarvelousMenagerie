@@ -71,6 +71,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.PROTOTAXITES_BLOCK.get());
 
         this.dropSelf(ModBlocks.DICKINSONIA.get());
+
+        this.dropSelf(ModBlocks.PIKAIA_EGGS.get());
     }
 
     @Override

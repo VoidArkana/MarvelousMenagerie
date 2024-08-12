@@ -164,6 +164,15 @@ public class ModItems {
             ()-> new AnimalAttacherItem(new Item.Properties().stacksTo(16), ModTags.EntityTypes.JOSEPHO_EMBRYO_ATTACH_TO,
                     ModEntities.JOSEPHO, 1000));
 
+    //pikaia
+    public static final RegistryObject<Item> PIKAIA_FLASK = ITEMS.register("pikaia_flask",
+            ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PIKAIA_SPAWN_EGG = ITEMS.register("pikaia_spawn_egg",
+            ()-> new ForgeSpawnEggItem(ModEntities.PIKAIA, 0xc7d3d2, 0x9db7b7, new Item.Properties()));
+    public static final RegistryObject<Item> PIKAIA_BUCKET = ITEMS.register("pikaia_bucket",
+            () -> new ItemModFishBucket(ModEntities.PIKAIA, () -> Fluids.WATER, Items.BUCKET, false,
+                    (new Item.Properties()).stacksTo(1)));
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

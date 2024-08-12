@@ -35,5 +35,7 @@ public class ModBiomeTagGenerator extends BiomeTagsProvider {
         tag(ModTags.Biomes.OPHTHALMO_BIOMES).add(Biomes.WARM_OCEAN).add(Biomes.LUKEWARM_OCEAN).add(Biomes.DEEP_LUKEWARM_OCEAN);
         tag(ModTags.Biomes.SACA_BIOMES).addTags(BiomeTags.IS_OCEAN);
         tag(ModTags.Biomes.JOSEPHO_BIOMES).addTags(BiomeTags.IS_JUNGLE).addTags(Tags.Biomes.IS_SWAMP);
+
+        tag(ModTags.Biomes.PIKAIA_BIOMES).add(Biomes.WARM_OCEAN);
     }
 }

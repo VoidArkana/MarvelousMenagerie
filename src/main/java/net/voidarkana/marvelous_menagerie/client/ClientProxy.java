@@ -65,6 +65,9 @@ public class ClientProxy extends CommonProxy {
 
         EntityRenderers.register(ModEntities.JOSEPHO.get(), JosephoRenderer::new);
 
+        EntityRenderers.register(ModEntities.PIKAIA.get(), PikaiaRenderer::new);
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PIKAIA_EGGS.get(), RenderType.translucent());
+
     }
 
     public void blockRenderingEntity(UUID id) {

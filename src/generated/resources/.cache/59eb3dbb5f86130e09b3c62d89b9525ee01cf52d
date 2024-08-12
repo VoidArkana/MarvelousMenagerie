@@ -1,9 +1,10 @@
-// 1.20.1	2024-06-28T20:29:32.1912386	Loot Tables
+// 1.20.1	2024-08-12T00:54:08.9852497	Loot Tables
 717325883dd194d20b7e7f3a39abf16d30c0745d data/marvelous_menagerie/loot_tables/blocks/anomalocaris_eggs.json
 d4f5d7c02195f240292e16dd84da0b2e42295ea6 data/marvelous_menagerie/loot_tables/blocks/cooksonia.json
 6d808e40eacad9036b658e8fdb96c647052518e1 data/marvelous_menagerie/loot_tables/blocks/dickinsonia.json
 4a7bf86d32483d7def09026df4f225c6452ac321 data/marvelous_menagerie/loot_tables/blocks/dodo_eggs.json
 bd13a48952cee9be0508ccf7935e4c984743c27b data/marvelous_menagerie/loot_tables/blocks/elephant_bird_egg.json
+cdfe2efa74351b8c1bca8db7bce678f0bc7a05e2 data/marvelous_menagerie/loot_tables/blocks/pikaia_eggs.json
 c0c00f1b1986642c56992473ce076a96f9c9966b data/marvelous_menagerie/loot_tables/blocks/potted_sigillaria_sapling.json
 753c22063f87fd75bb94fa13ae844b447c43069d data/marvelous_menagerie/loot_tables/blocks/prototaxites.json
 9246451c63614310636548e9cb88b8876765b85a data/marvelous_menagerie/loot_tables/blocks/prototaxites_block.json
