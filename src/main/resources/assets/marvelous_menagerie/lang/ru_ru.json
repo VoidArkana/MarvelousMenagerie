@@ -250,5 +250,14 @@
   "translatable.marvelous_menagerie.trilo_second_color.yellow" : "Вторичный цвет: Жёлтый",
   "translatable.marvelous_menagerie.trilo_second_color.brown" : "Вторичный цвет: Коричневый",
 
+  "entity.marvelous_menagerie.pikaia": "Пикайя",
+  "item.marvelous_menagerie.pikaia_bucket": "Ведро с Пикайей",
+  "item.marvelous_menagerie.pikaia_flask": "Колба с ДНК Пикайи",
+  "item.marvelous_menagerie.pikaia_spawn_egg": "Яйцо призыва Пикайи",
+  "block.marvelous_menagerie.pikaia_eggs": "Яйцо Пикайи",
+
+  "marvelous_menagerie.advancement.interact_pikaia" : "Я выбираю тебя!",
+  "marvelous_menagerie.advancement.interact_pikaia.desc" : "Воссоздайте Пикайу",
+
   "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
 }
