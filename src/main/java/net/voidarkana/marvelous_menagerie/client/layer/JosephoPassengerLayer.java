@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.world.entity.Entity;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
+import net.voidarkana.marvelous_menagerie.client.renderers.util.ICustomPlayerRidePose;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.JosephoEntity;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.renderer.GeoRenderer;
@@ -41,8 +42,8 @@ public class JosephoPassengerLayer extends GeoRenderLayer<JosephoEntity> {
                 RenderUtils.translateToPivotPoint(poseStack, bone);
                 RenderUtils.translateMatrixToBone(poseStack, bone);
                 rotateMatrixAroundBone(poseStack, bone);
-                poseStack.mulPose(Axis.YP.rotationDegrees(passenger.getYRot()));
-                poseStack.mulPose(Axis.YP.rotationDegrees(180F));
+                //poseStack.mulPose(Axis.YP.rotationDegrees(passenger.getYRot()));
+                //poseStack.mulPose(Axis.YP.rotationDegrees(180F));
                 poseStack.translate(0, -0.6F, 0);
                 renderPassenger(passenger, 0, 0, 0, 0, partialTick, poseStack, bufferSource, packedLight);
                 buffer = bufferSource.getBuffer(renderType);

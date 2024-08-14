@@ -11,6 +11,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.client.ClientProxy;
+import net.voidarkana.marvelous_menagerie.client.events.custom.ModelRotationEvent;
+import net.voidarkana.marvelous_menagerie.client.events.custom.PlayerPoseEvent;
+import net.voidarkana.marvelous_menagerie.client.renderers.util.ICustomPlayerRidePose;
+import net.voidarkana.marvelous_menagerie.util.RenderUtil;
 
 @Mod.EventBusSubscriber(modid = MarvelousMenagerie.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ForgeClientEvents {
@@ -27,5 +31,23 @@ public class ForgeClientEvents {
 
     public static boolean isFirstPersonPlayer(LivingEntity entity) {
         return entity.equals(Minecraft.getInstance().cameraEntity) && Minecraft.getInstance().options.getCameraType().isFirstPerson();
+    }
+
+    @SubscribeEvent
+    public static <T extends LivingEntity> void onModelRotation(ModelRotationEvent<T> pEvent) {
+        T entity = pEvent.getEntity();
+        if (entity instanceof Player) {
+            pEvent.setCanceled(RenderUtil.getEntityRenderer(entity.getVehicle()) instanceof ICustomPlayerRidePose);
+        }
+    }
+
+    @SubscribeEvent
+    public static <T extends LivingEntity> void onPlayerPose(PlayerPoseEvent<T> pEvent) {
+        T entity = pEvent.getEntity();
+        if (entity instanceof Player) {
+            if (RenderUtil.getEntityRenderer(entity.getVehicle()) instanceof ICustomPlayerRidePose customRidePos) {
+                customRidePos.applyRiderPose(pEvent.getHumanoidModel(), entity);
+            }
+        }
     }
 }

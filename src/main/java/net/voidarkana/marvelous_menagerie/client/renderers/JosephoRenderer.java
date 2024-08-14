@@ -7,10 +7,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.client.layer.*;
 import net.voidarkana.marvelous_menagerie.client.models.JosephoModel;
+import net.voidarkana.marvelous_menagerie.client.renderers.util.ICustomPlayerRidePose;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.JosephoEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
-public class JosephoRenderer extends GeoEntityRenderer<JosephoEntity> {
+public class JosephoRenderer extends GeoEntityRenderer<JosephoEntity> implements ICustomPlayerRidePose {
 
     public JosephoRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new JosephoModel());

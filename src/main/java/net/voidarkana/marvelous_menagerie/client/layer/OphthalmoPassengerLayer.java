@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.material.Fluids;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.OphthalmoEntity;
 import software.bernie.geckolib.cache.object.GeoBone;
@@ -41,9 +42,19 @@ public class OphthalmoPassengerLayer extends GeoRenderLayer<OphthalmoEntity> {
                 RenderUtils.translateToPivotPoint(poseStack, bone);
                 RenderUtils.translateMatrixToBone(poseStack, bone);
                 rotateMatrixAroundBone(poseStack, bone);
-                poseStack.mulPose(Axis.YP.rotationDegrees(passenger.getYRot()));
-                poseStack.mulPose(Axis.YP.rotationDegrees(180F));
-                poseStack.translate(0, -0.6F, 0);
+                //poseStack.mulPose(Axis.YP.rotationDegrees(passenger.getYRot()));
+
+//                if (entity.isEyeInFluidType(Fluids.WATER.getFluidType())){
+//                    poseStack.mulPose(Axis.YP.rotationDegrees(180F));
+//                    poseStack.mulPose(Axis.ZP.rotationDegrees(180F));
+//                    poseStack.mulPose(Axis.XP.rotationDegrees(70F));
+//                    poseStack.translate(0, -1.85F, 0.425);
+//                }else{
+                    poseStack.mulPose(Axis.YP.rotationDegrees(180F));
+                    poseStack.mulPose(Axis.ZP.rotationDegrees(180F));
+                    poseStack.mulPose(Axis.XP.rotationDegrees(90F));
+                    poseStack.translate(0, -1.7F, 0.3);
+//                }
                 renderPassenger(passenger, 0, 0, 0, 0, partialTick, poseStack, bufferSource, packedLight);
                 buffer = bufferSource.getBuffer(renderType);
                 poseStack.popPose();
