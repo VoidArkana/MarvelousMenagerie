@@ -2,6 +2,10 @@
   "input": ["unusualprehistory:paleo_fossil"],
   "entries": [
     {
+      "weight": 13,
+      "item": "marvelous_menagerie:pikaia_flask"
+    },
+    {
       "weight": 15,
       "item": "marvelous_menagerie:trilo_flask"
     },

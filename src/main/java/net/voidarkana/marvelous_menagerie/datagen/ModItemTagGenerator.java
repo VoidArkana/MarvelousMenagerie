@@ -30,7 +30,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 ModItems.CRACKED_ELEPHANT_EGG.get(),
                 ModBlocks.SACA_EGGS.get().asItem(),
                 ModBlocks.TRILO_EGGS.get().asItem(),
-                ModBlocks.CARIS_EGGS.get().asItem());
+                ModBlocks.CARIS_EGGS.get().asItem(),
+                ModBlocks.PIKAIA_EGGS.get().asItem());
 
         this.tag(Tags.Items.ARMORS_HELMETS).add(
                 ModItems.EGG_SHELLMET.get(),
@@ -152,7 +153,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
         this.tag(UPTags.ANALYZER_ITEMS_OUTPUT_PALEO).add(
                 ModItems.TRILO_FLASK.get(),
                 ModItems.SACA_FLASK.get(),
-                ModItems.CARIS_FLASK.get()
+                ModItems.CARIS_FLASK.get(),
+                ModItems.PIKAIA_FLASK.get()
         );
 
         this.tag(UPTags.ANALYZER_ITEMS_INPUT).add(
@@ -172,7 +174,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
         );
 
         this.tag(ItemTags.AXOLOTL_TEMPT_ITEMS).add(
-                ModItems.SACA_BUCKET.get()
+                ModItems.SACA_BUCKET.get(),
+                ModItems.PIKAIA_BUCKET.get()
         );
 
 
@@ -189,7 +192,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 ModItems.DICKINSONIA_FLASK.get(),
                 ModItems.CARIS_FLASK.get(),
                 ModItems.OPHTHALMO_FLASK.get(),
-                ModItems.JOSEPHO_FLASK.get()
+                ModItems.JOSEPHO_FLASK.get(),
+                ModItems.PIKAIA_FLASK.get()
         );
     }
 }

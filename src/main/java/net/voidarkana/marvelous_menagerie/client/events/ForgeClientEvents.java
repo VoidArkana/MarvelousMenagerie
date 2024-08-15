@@ -18,20 +18,21 @@ import net.voidarkana.marvelous_menagerie.util.RenderUtil;
 
 @Mod.EventBusSubscriber(modid = MarvelousMenagerie.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ForgeClientEvents {
+
     @SubscribeEvent
-    public static void preRenderLiving(RenderLivingEvent.Pre<Player, HumanoidModel<Player>> event) {
+    public static void preRenderLiving(RenderLivingEvent.Pre event) {
         if (ClientProxy.blockedEntityRenders.contains(event.getEntity().getUUID())) {
-            if (!isFirstPersonPlayer(event.getEntity())){
-                MinecraftForge.EVENT_BUS.post(new RenderLivingEvent.Post<>(event.getEntity(), event.getRenderer(), event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight()));
+            if (!MarvelousMenagerie.PROXY.isFirstPersonPlayer(event.getEntity())){
+                MinecraftForge.EVENT_BUS.post(new RenderLivingEvent.Post(event.getEntity(), event.getRenderer(), event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight()));
                 event.setCanceled(true);
             }
             ClientProxy.blockedEntityRenders.remove(event.getEntity().getUUID());
         }
     }
 
-    public static boolean isFirstPersonPlayer(LivingEntity entity) {
-        return entity.equals(Minecraft.getInstance().cameraEntity) && Minecraft.getInstance().options.getCameraType().isFirstPerson();
-    }
+//    public static boolean isFirstPersonPlayer(LivingEntity entity) {
+//        return entity.equals(Minecraft.getInstance().cameraEntity) && Minecraft.getInstance().options.getCameraType().isFirstPerson();
+//    }
 
     @SubscribeEvent
     public static <T extends LivingEntity> void onModelRotation(ModelRotationEvent<T> pEvent) {
