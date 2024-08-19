@@ -107,7 +107,7 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
-        this.setFromBucket(pCompound.getBoolean("FromBucket"));
+        pCompound.putBoolean("FromBucket", this.fromBucket());
         pCompound.putInt("model_variant", this.getVariantModel());
         pCompound.putInt("base_color_variant", this.getVariantBaseColor());
         pCompound.putInt("second_color_variant", this.getVariantSecondColor());
@@ -215,6 +215,8 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
             this.setVariantModel(dataTag.getInt("model_variant"));
             this.setVariantBaseColor(dataTag.getInt("base_color_variant"));
             this.setVariantSecondColor(dataTag.getInt("second_color_variant"));
+            this.setIsFromEgg(dataTag.getBoolean("FromEgg"));
+            this.setFromBucket(true);
         }else{
             int variantModelChange = this.random.nextInt(0, 6);
             int variantColorBaseChange = this.random.nextInt(0, 7);
@@ -258,6 +260,7 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
         compoundnbt.putInt("model_variant", this.getVariantModel());
         compoundnbt.putInt("base_color_variant", this.getVariantBaseColor());
         compoundnbt.putInt("second_color_variant", this.getVariantSecondColor());
+        compoundnbt.putBoolean("FromEgg", this.isFromEgg());
         if (this.hasCustomName()) {
             bucket.setHoverName(this.getCustomName());
         }
@@ -266,10 +269,6 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
     @Override
     public void loadFromBucketTag(CompoundTag pTag) {
         Bucketable.loadDefaultDataFromBucketTag(this, pTag);
-
-//        this.setVariantModel(pTag.getInt("model_variant"));
-//        this.setVariantBaseColor(pTag.getInt("base_color_variant"));
-//        this.setVariantSecondColor(pTag.getInt("second_color_variant"));
     }
 
     @Override

@@ -162,7 +162,6 @@ public class BabyAnomalocarisEntity extends WaterAnimal implements IHatchableEnt
         }
     }
 
-
     private void growUp() {
         Level var2 = this.level();
         if (var2 instanceof ServerLevel server) {
