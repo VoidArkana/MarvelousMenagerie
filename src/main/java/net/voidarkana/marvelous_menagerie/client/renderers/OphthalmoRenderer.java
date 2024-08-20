@@ -16,6 +16,7 @@ import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoSaddleLayer;
 import net.voidarkana.marvelous_menagerie.client.models.OphthalmoModel;
 import net.voidarkana.marvelous_menagerie.client.renderers.util.ICustomPlayerRidePose;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.OphthalmoEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.SacabambaspisEntity;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
@@ -67,5 +68,12 @@ public class OphthalmoRenderer extends GeoEntityRenderer<OphthalmoEntity> implem
     public void render(OphthalmoEntity entity, float entityYaw, float partialTicks, PoseStack poseStack,
                        MultiBufferSource bufferSource, int packedLightIn) {
         super.render(entity, entityYaw, partialTicks, poseStack, bufferSource, packedLightIn);
+    }
+
+    @Override
+    protected void applyRotations(OphthalmoEntity animatable, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTick) {
+        super.applyRotations(animatable, poseStack, ageInTicks, rotationYaw, partialTick);
+
+        poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(partialTick, -animatable.prevTilt, -animatable.tilt)));
     }
 }

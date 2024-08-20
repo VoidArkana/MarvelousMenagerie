@@ -730,8 +730,10 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
             this.playSound(this.getFlopSound(), this.getSoundVolume(), this.getVoicePitch());
         }
 
+        super.aiStep();
+
         prevTilt = tilt;
-        if (this.isInWater() && this.getControllingPassenger() != null) {
+        if (this.isInWater()) {
             final float v = Mth.degreesDifference(this.getYRot(), yRotO);
             if (Math.abs(v) > 1) {
                 if (Math.abs(tilt) < 25) {
@@ -749,8 +751,6 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         } else {
             tilt = 0;
         }
-
-        super.aiStep();
 
         if (!this.level().isClientSide) {
             this.updatePersistentAnger((ServerLevel)this.level(), true);

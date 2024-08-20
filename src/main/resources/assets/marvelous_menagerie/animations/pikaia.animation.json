@@ -34,7 +34,7 @@
 						"easing": "linear"
 					}
 				},
-				"bone2": {
+				"tail": {
 					"rotation": {
 						"vector": [0, "math.sin(query.anim_time * 360-50)*10", 0],
 						"easing": "linear"
@@ -93,7 +93,7 @@
 						"easing": "linear"
 					}
 				},
-				"bone2": {
+				"tail": {
 					"rotation": {
 						"vector": [0, "math.sin(query.anim_time * 360/4-50)*2", 0],
 						"easing": "linear"
@@ -152,7 +152,7 @@
 						"easing": "linear"
 					}
 				},
-				"bone2": {
+				"tail": {
 					"rotation": {
 						"vector": [0, "-math.sin(query.anim_time * 800)*10", 0],
 						"easing": "linear"

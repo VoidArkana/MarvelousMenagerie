@@ -11,6 +11,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
@@ -49,6 +50,9 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class SacabambaspisEntity extends WaterAnimal implements IBookEntity, IHatchableEntity, GeoEntity, Bucketable {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+
+    public float prevTilt;
+    public float tilt;
 
     //persistence stuff, variable not needed
     //private boolean persistenceRequired;
@@ -144,6 +148,7 @@ public class SacabambaspisEntity extends WaterAnimal implements IBookEntity, IHa
     }
 
     public void aiStep() {
+
         if (!this.isInWater() && this.onGround() && this.verticalCollision) {
             this.setDeltaMovement(this.getDeltaMovement().add((double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F), (double)0.4F, (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F)));
             this.setOnGround(false);
@@ -152,6 +157,26 @@ public class SacabambaspisEntity extends WaterAnimal implements IBookEntity, IHa
         }
 
         super.aiStep();
+
+        prevTilt = tilt;
+        if (this.isInWater()) {
+            final float v = Mth.degreesDifference(this.getYRot(), yRotO);
+            if (Math.abs(v) > 1) {
+                if (Math.abs(tilt) < 25) {
+                    tilt -= Math.signum(v);
+                }
+            } else {
+                if (Math.abs(tilt) > 0) {
+                    final float tiltSign = Math.signum(tilt);
+                    tilt -= tiltSign * 0.85F;
+                    if (tilt * tiltSign < 0) {
+                        tilt = 0;
+                    }
+                }
+            }
+        } else {
+            tilt = 0;
+        }
     }
 
     protected PathNavigation createNavigation(Level pLevel) {

@@ -74,16 +74,26 @@
 					]
 				},
 				{
-					"name": "bone2",
+					"name": "tail_rot",
 					"parent": "body",
+					"pivot": [0, 1.5, -5]
+				},
+				{
+					"name": "tail",
+					"parent": "tail_rot",
 					"pivot": [0, 1.5, -5],
 					"cubes": [
 						{"origin": [0, 0, -5], "size": [0, 4, 8], "uv": [9, 6]}
 					]
 				},
 				{
+					"name": "tail_tip_rot",
+					"parent": "tail",
+					"pivot": [0, 1.5, 3]
+				},
+				{
 					"name": "tail_tip",
-					"parent": "bone2",
+					"parent": "tail_tip_rot",
 					"pivot": [0, 1.5, 3],
 					"cubes": [
 						{"origin": [0, 0, 3], "size": [0, 5, 8], "uv": [0, 0]}

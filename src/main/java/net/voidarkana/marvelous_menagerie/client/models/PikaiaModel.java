@@ -20,8 +20,8 @@ public class PikaiaModel extends GeoModel<PikaiaEntity> {
     }
 
     @Override
-    public ResourceLocation getTextureResource(PikaiaEntity pikaiaEntity) {
-        return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/pikaia.png");
+    public ResourceLocation getTextureResource(PikaiaEntity entity) {
+        return new ResourceLocation(MarvelousMenagerie.MOD_ID, entity.isPikachu() ? "textures/entity/pikaia/pikaiachu.png" : "textures/entity/pikaia/pikaia.png");
     }
 
     @Override
@@ -38,6 +38,18 @@ public class PikaiaModel extends GeoModel<PikaiaEntity> {
         EntityModelData entityData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
 
         swimControl.setRotX(((entityData.headPitch() * ((float) Math.PI / 180F))));
+
+        CoreGeoBone tailRot = this.getAnimationProcessor().getBone("tail_rot");
+        tailRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+
+        CoreGeoBone tailTipRot = this.getAnimationProcessor().getBone("tail_tip_rot");
+        tailTipRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+
+    }
+
+    @Override
+    public RenderType getRenderType(PikaiaEntity animatable, ResourceLocation texture) {
+        return RenderType.entityTranslucent(texture);
     }
 
 }

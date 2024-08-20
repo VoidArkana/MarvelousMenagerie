@@ -60,6 +60,8 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
     static final TargetingConditions SWIM_WITH_ADULT_TARGETING = TargetingConditions.forNonCombat().range(15.0D).ignoreLineOfSight();
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    public float prevTilt;
+    public float tilt;
 
     public static final Ingredient FOOD_ITEMS = Ingredient.of(Items.KELP);
     public static final int MAX_TADPOLE_AGE = Math.abs(-30000);
@@ -102,6 +104,26 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
         }
 
         super.aiStep();
+
+        prevTilt = tilt;
+        if (this.isInWater()) {
+            final float v = Mth.degreesDifference(this.getYRot(), yRotO);
+            if (Math.abs(v) > 1) {
+                if (Math.abs(tilt) < 25) {
+                    tilt -= Math.signum(v);
+                }
+            } else {
+                if (Math.abs(tilt) > 0) {
+                    final float tiltSign = Math.signum(tilt);
+                    tilt -= tiltSign * 0.85F;
+                    if (tilt * tiltSign < 0) {
+                        tilt = 0;
+                    }
+                }
+            }
+        } else {
+            tilt = 0;
+        }
     }
 
     @Override

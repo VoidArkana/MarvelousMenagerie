@@ -44,6 +44,19 @@ public class StellerModel extends GeoModel<StellerEntity> {
         neck.setRotY(((entityData.netHeadYaw() * ((float) Math.PI / 180F))*0.15F));
 
         body.setRotX(((entityData.headPitch() * ((float) Math.PI / 180F))*0.25F));
+
+
+        CoreGeoBone headRot = this.getAnimationProcessor().getBone("head_rot");
+        headRot.setRotY(-((animatable.tilt * ((float) Math.PI / 180F))));
+
+        CoreGeoBone neckRot = this.getAnimationProcessor().getBone("neck_rot");
+        neckRot.setRotY(-((animatable.tilt * ((float) Math.PI / 180F))));
+
+        CoreGeoBone tailRot = this.getAnimationProcessor().getBone("tail_rot");
+        tailRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+
+        CoreGeoBone tailTipRot = this.getAnimationProcessor().getBone("tail_tip_rot");
+        tailTipRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F)))/2);
     }
 
 }

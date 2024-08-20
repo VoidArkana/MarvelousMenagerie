@@ -45,11 +45,22 @@ public class OphthalmoModel extends GeoModel<OphthalmoEntity> {
         CoreGeoBone swimControl = this.getAnimationProcessor().getBone("swim_control");
         swimControl.setRotX( (entityData.headPitch() * ((float) Math.PI / 180F)*0.75F) );
 
+        CoreGeoBone head = this.getAnimationProcessor().getBone("head");
+
+        CoreGeoBone headRot = this.getAnimationProcessor().getBone("head_rot");
+        headRot.setRotY(-((animatable.tilt * ((float) Math.PI / 180F))));
+
+        CoreGeoBone tailRot = this.getAnimationProcessor().getBone("tail_rot");
+        tailRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+
+        CoreGeoBone tailTipRot = this.getAnimationProcessor().getBone("tail_tip_rot");
+        tailTipRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+
         if (!animatable.isVehicle()){
-            CoreGeoBone head = this.getAnimationProcessor().getBone("head");
 
             head.setRotX( (entityData.headPitch() * ((float) Math.PI / 180F)*0.05F) );
             head.setRotY( (entityData.netHeadYaw() * ((float) Math.PI / 180F)*0.05F) );
+
         }
 
     }
