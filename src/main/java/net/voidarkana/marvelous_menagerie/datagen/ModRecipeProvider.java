@@ -93,10 +93,10 @@ public class ModRecipeProvider extends UPRecipeProvider implements IConditionBui
                 .save(consumer);
 
         //Lime Pigment From Cooksonia
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.LIME_DYE, 1)
-                .requires(ModBlocks.COOKSONIA.get())
-                .unlockedBy(getHasName(ModBlocks.COOKSONIA.get()), has(ModBlocks.COOKSONIA.get()))
-                .save(consumer);
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.LIME_DYE, 1)
+//                .requires(ModBlocks.COOKSONIA.get())
+//                .unlockedBy(getHasName(ModBlocks.COOKSONIA.get()), has(ModBlocks.COOKSONIA.get()))
+//                .save(consumer);
 
         //Golden Sacabambaspis
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.GOLDEN_SACA.get(), 1)
@@ -132,11 +132,11 @@ public class ModRecipeProvider extends UPRecipeProvider implements IConditionBui
                 .save(consumer);
 
         //Mushroom Stew From Prototaxites
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.MUSHROOM_STEW, 1)
-                .requires(ModBlocks.PROTOTAXITES.get(), 2)
-                .requires(Items.BOWL)
-                .unlockedBy(getHasName(ModBlocks.PROTOTAXITES.get()), has(ModBlocks.PROTOTAXITES.get()))
-                .save(consumer);
+//        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.MUSHROOM_STEW, 1)
+//                .requires(ModBlocks.PROTOTAXITES.get(), 2)
+//                .requires(Items.BOWL)
+//                .unlockedBy(getHasName(ModBlocks.PROTOTAXITES.get()), has(ModBlocks.PROTOTAXITES.get()))
+//                .save(consumer);
 
         //Anomalous Goggles
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.ANOMALOUS_GOGGLES.get(), 1)

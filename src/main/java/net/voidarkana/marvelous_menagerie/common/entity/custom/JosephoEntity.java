@@ -447,7 +447,7 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
     }
 
     private <E extends JosephoEntity> PlayState Controller(AnimationState<E> event) {
-        if (this.isFromBook()){
+        if (this.isFromBook() || this.isInSittingPose()){
             return PlayState.STOP;
         } else {
 

@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-30T17:28:38.3842457	Recipes
+// 1.20.1	2024-10-06T14:30:22.24965	Recipes
 7fd4bc5683f4cb5a13089cac58405c419d548fd5 data/marvelous_menagerie/advancements/recipes/building_blocks/prototaxites.json
 e9a5e87fd6e1a331d84c1663044c4f1f2ed9eaa1 data/marvelous_menagerie/advancements/recipes/building_blocks/prototaxites_block.json
 7f3a48751d56491d8e365f5a538b48d60f19357c data/marvelous_menagerie/advancements/recipes/building_blocks/sigillaria_button.json
@@ -48,8 +48,4 @@ b259669fa9b589bd972daa3f06030fae5fb0dfdc data/marvelous_menagerie/recipes/sigill
 cd46c8c8cd38700b3da0105b7f6c421efcb55b48 data/marvelous_menagerie/recipes/steller_ice_cream.json
 b8f7d36d1c128c91e542c193868edbac584a5690 data/marvelous_menagerie/recipes/stripped_sigillaria_wood.json
 808add87c4bcc41e9acd3b66ba23dc660ab1af08 data/minecraft/advancements/recipes/building_blocks/mycelium.json
-90509944f63e558d1155bbfd23db262dac199386 data/minecraft/advancements/recipes/misc/lime_dye.json
-c03ac00b8e3c9b16f3dff936a3f526b9c4dc353b data/minecraft/advancements/recipes/misc/mushroom_stew.json
-0ef26ed4b2f4d6c8d0acd9a6a7dd17e83bba2db7 data/minecraft/recipes/lime_dye.json
-e930fbb5b0edef45494e4ff1b2121b8e9af315f2 data/minecraft/recipes/mushroom_stew.json
 a877095b00d6362d1c8beac4e498aa0f8e9ecb0e data/minecraft/recipes/mycelium.json

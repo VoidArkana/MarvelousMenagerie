@@ -381,8 +381,9 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         if (pPlayer.getAbilities().instabuild){
             this.setItemSlot(EquipmentSlot.CHEST, pArmor.copyWithCount(1));
         }else {
+            //this.setItemSlot(EquipmentSlot.CHEST, pArmor.copyWithCount(1));
             this.setItemSlot(EquipmentSlot.CHEST, pArmor);
-            pArmor.shrink(1);
+            //pArmor.shrink(1);
         }
         this.setDropChance(EquipmentSlot.CHEST, 0.0F);
     }
@@ -606,6 +607,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
             ItemStack itemstack = pPlayer.getItemInHand(pHand);
 
+
             if (!itemstack.isEmpty()) {
                 InteractionResult interactionresult = itemstack.interactLivingEntity(pPlayer, this, pHand);
                 if (interactionresult.consumesAction()) {
@@ -633,6 +635,10 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
                 if (itemstack.is(ModItems.GOLDEN_SACA.get()) && !this.isTamed() && this.getEatingTime()==0){
 
+                    if (!pPlayer.getAbilities().instabuild) {
+                        itemstack.shrink(1);
+                    }
+
                     this.setEatingTime(20);
                     this.tame(pPlayer);
 
@@ -646,6 +652,9 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
                 }
 
                 if (itemstack.is(Items.SADDLE) && isSaddleable() && !this.getIsSaddled()){
+                    if (!pPlayer.getAbilities().instabuild) {
+                        itemstack.shrink(1);
+                    }
                     this.setIsSaddled(true);
                     this.playSound(SoundEvents.HORSE_SADDLE);
                     return InteractionResult.SUCCESS;
@@ -659,6 +668,9 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
                 if (this.isTamed()){
                     if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()){
+                        if (!pPlayer.getAbilities().instabuild) {
+                            itemstack.shrink(1);
+                        }
                         this.heal((float)itemstack.getFoodProperties(this).getNutrition());
                         if (!pPlayer.getAbilities().instabuild) {
                             itemstack.shrink(1);
@@ -671,6 +683,9 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
                     }
 
                     if (itemstack.is(ModItems.CARIS_SCUTE.get()) && this.getHasArmor()){
+                        if (!pPlayer.getAbilities().instabuild) {
+                            itemstack.shrink(1);
+                        }
                         ItemStack armor = this.getItemBySlot(EquipmentSlot.CHEST);
                         int prevDamage = armor.getDamageValue();
                         int durabilityLeft = armor.getMaxDamage() - armor.getDamageValue();
