@@ -76,7 +76,7 @@ import java.util.Iterator;
 import java.util.Optional;
 import java.util.UUID;
 
-//TODO: calculate distance moved with current pos and pos 10 ticks ago
+//TODO: Try to fix the head in the renderer
 public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEntity, OwnableEntity, NeutralMob {
 
     static final TargetingConditions SWIM_WITH_PLAYER_TARGETING = TargetingConditions.forNonCombat().range(15.0D).ignoreLineOfSight();
@@ -378,13 +378,13 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
     }
 
     private void setArmor(ItemStack pArmor, Player pPlayer) {
-        if (pPlayer.getAbilities().instabuild){
+//        if (pPlayer.getAbilities().instabuild){
             this.setItemSlot(EquipmentSlot.CHEST, pArmor.copyWithCount(1));
-        }else {
-            //this.setItemSlot(EquipmentSlot.CHEST, pArmor.copyWithCount(1));
-            this.setItemSlot(EquipmentSlot.CHEST, pArmor);
-            //pArmor.shrink(1);
-        }
+//        }else {
+//            //this.setItemSlot(EquipmentSlot.CHEST, pArmor.copyWithCount(1));
+//            this.setItemSlot(EquipmentSlot.CHEST, pArmor);
+//            //pArmor.shrink(1);
+//        }
         this.setDropChance(EquipmentSlot.CHEST, 0.0F);
     }
 
@@ -662,6 +662,9 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
                 if (this.canWearArmor() && this.isArmor(itemstack) && !this.isWearingArmor()) {
                     this.equipArmor(pPlayer, itemstack);
+                    if (!pPlayer.getAbilities().instabuild) {
+                        itemstack.shrink(1);
+                    }
                     this.playSound(ModSounds.PET_ARMOR_EQUIP.get());
                     return InteractionResult.SUCCESS;
                 }

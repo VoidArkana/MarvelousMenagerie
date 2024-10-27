@@ -35,14 +35,18 @@ public class OphthalmoRenderer extends GeoEntityRenderer<OphthalmoEntity> implem
 
     @Override
     public <T extends LivingEntity> void applyRiderPose(HumanoidModel<T> pHumanoidModel, @NotNull T pRider) {
+        //TODO: figure out animations and head rotation
         pHumanoidModel.rightArm.xRot = this.rad(-155.0F);
         pHumanoidModel.leftArm.xRot = this.rad(-155.0F);
         pHumanoidModel.rightLeg.xRot = this.rad(5.0F);
         pHumanoidModel.rightLeg.zRot = this.rad(10.0F);
         pHumanoidModel.leftLeg.xRot = this.rad(5.0F);
         pHumanoidModel.leftLeg.zRot = this.rad(-10.0F);
-        pHumanoidModel.head.xRot = this.rad(-80.0F);
+        pHumanoidModel.head.xRot = this.rad( -80.0F);
         pHumanoidModel.head.yRot = Mth.clamp(pHumanoidModel.head.yRot, this.rad(-35.0F), this.rad(35.0F));
+
+        pHumanoidModel.hat.xRot = pHumanoidModel.head.xRot;
+        pHumanoidModel.hat.yRot = pHumanoidModel.head.yRot;
     }
 
     @Override
