@@ -20,6 +20,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.common.block.custom.*;
+import net.voidarkana.marvelous_menagerie.common.block.custom.animal_block.DickinsoniaBlock;
+import net.voidarkana.marvelous_menagerie.common.block.custom.animal_block.WiwaxiaBlock;
+import net.voidarkana.marvelous_menagerie.common.block.custom.flammable.FlammableWoodLogBlock;
 import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.common.item.ModItems;
 import net.voidarkana.marvelous_menagerie.util.ModWoodTypes;
@@ -200,9 +203,11 @@ public class ModBlocks {
             (entry) -> new PlaceOnWaterBlockItem(entry.get(), new Item.Properties()));
 
 
+
     public static final RegistryObject<Block> PROTOTAXITES = registerBlock("prototaxites",
             ()-> new PrototaxitesBlock(BlockBehaviour.Properties.copy(Blocks.MUSHROOM_STEM).mapColor(MapColor.COLOR_GREEN).noOcclusion(),
                     ModConfiguredFeatures.PROTOTAXITES_KEY));
+
     public static final RegistryObject<Block> PROTOTAXITES_BLOCK = registerBlock("prototaxites_block",
             ()-> new HugeMushroomBlock(BlockBehaviour.Properties.copy(Blocks.MUSHROOM_STEM).mapColor(MapColor.COLOR_GREEN)));
 
@@ -214,6 +219,141 @@ public class ModBlocks {
             () -> new BlockDinosaurWaterEggs(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak().noOcclusion()
                     .noCollission().randomTicks(), ModEntities.PIKAIA, false),
             (entry) -> new PlaceOnWaterBlockItem(entry.get(), new Item.Properties()));
+
+
+    //prototaxites blocks
+
+    public static final RegistryObject<Block> PROTOTAXITES_PLANKS = registerBlock("prototaxites_planks",
+            ()-> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+
+    public static final RegistryObject<Block> PROTOTAXITES_STAIRS = registerBlock("prototaxites_stairs",
+            ()-> new StairBlock(() -> ModBlocks.PROTOTAXITES_PLANKS.get().defaultBlockState(),
+
+                    BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+    public static final RegistryObject<Block> PROTOTAXITES_SLAB = registerBlock("prototaxites_slab",
+            ()-> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+
+    public static final RegistryObject<Block> PROTOTAXITES_BUTTON = registerBlock("prototaxites_button",
+            ()-> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON).sound(SoundType.NETHER_WOOD).ignitedByLava(),
+                    BlockSetType.CRIMSON, 25, true));
+
+    public static final RegistryObject<Block> PROTOTAXITES_PRESSURE_PLATE = registerBlock("prototaxites_pressure_plate",
+            ()-> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,
+                    BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE).sound(SoundType.NETHER_WOOD).ignitedByLava(),
+                    BlockSetType.CRIMSON));
+
+    public static final RegistryObject<Block> PROTOTAXITES_FENCE = registerBlock("prototaxites_fence",
+            ()-> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+
+    public static final RegistryObject<Block> PROTOTAXITES_FENCE_GATE = registerBlock("prototaxites_fence_gate",
+            ()-> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE).sound(SoundType.NETHER_WOOD).ignitedByLava(),
+                    SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN, SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE));
+
+
+    //Prototaxites Door and Trapdoor
+    public static final RegistryObject<Block> PROTOTAXITES_DOOR = registerBlock("prototaxites_door",
+            ()-> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.NETHER_WOOD).noOcclusion(), BlockSetType.CRIMSON));
+
+    public static final RegistryObject<Block> PROTOTAXITES_TRAPDOOR = registerBlock("prototaxites_trapdoor",
+            ()-> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.NETHER_WOOD).noOcclusion(),BlockSetType.CRIMSON));
+
+    //Prototaxites signs
+    public static final RegistryObject<Block> PROTOTAXITES_SIGN = BLOCKS.register("prototaxites_sign",
+            () -> new ModStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_SIGN), ModWoodTypes.PROTOTAXITES));
+
+    public static final RegistryObject<Block> PROTOTAXITES_WALL_SIGN = BLOCKS.register("prototaxites_wall_sign",
+            () -> new ModWallSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_WALL_SIGN), ModWoodTypes.PROTOTAXITES));
+
+    public static final RegistryObject<Block> PROTOTAXITES_HANGING_SIGN = BLOCKS.register("prototaxites_hanging_sign",
+            () -> new ModHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_HANGING_SIGN), ModWoodTypes.PROTOTAXITES));
+
+    public static final RegistryObject<Block> PROTOTAXITES_WALL_HANGING_SIGN = BLOCKS.register("prototaxites_wall_hanging_sign",
+            () -> new ModWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_WALL_HANGING_SIGN), ModWoodTypes.PROTOTAXITES));
+
+    //Prototaxites Mosaic Blocks
+    public static final RegistryObject<Block> PROTOTAXITES_MOSAIC = registerBlock("prototaxites_mosaic",
+            ()-> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+
+    public static final RegistryObject<Block> PROTOTAXITES_MOSAIC_STAIRS = registerBlock("prototaxites_mosaic_stairs",
+            ()-> new StairBlock(() -> ModBlocks.PROTOTAXITES_PLANKS.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+
+    public static final RegistryObject<Block> PROTOTAXITES_MOSAIC_SLAB = registerBlock("prototaxites_mosaic_slab",
+            ()-> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.NETHER_WOOD).ignitedByLava()));
+
+
+
+    //zuloagae blocks
+
+    public static final RegistryObject<Block> ZULOAGAE_PLANKS = registerBlock("zuloagae_planks",
+            ()-> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.BAMBOO_WOOD).ignitedByLava()));
+
+    public static final RegistryObject<Block> ZULOAGAE_STAIRS = registerBlock("zuloagae_stairs",
+            ()-> new StairBlock(() -> ModBlocks.ZULOAGAE_PLANKS.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.BAMBOO_WOOD).ignitedByLava()));
+
+    public static final RegistryObject<Block> ZULOAGAE_SLAB = registerBlock("zuloagae_slab",
+            ()-> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.BAMBOO_WOOD).ignitedByLava()));
+
+    public static final RegistryObject<Block> ZULOAGAE_BUTTON = registerBlock("zuloagae_button",
+            ()-> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON).sound(SoundType.BAMBOO_WOOD).ignitedByLava(),
+                    BlockSetType.CRIMSON, 25, true));
+
+    public static final RegistryObject<Block> ZULOAGAE_PRESSURE_PLATE = registerBlock("zuloagae_pressure_plate",
+            ()-> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,
+                    BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE).sound(SoundType.BAMBOO_WOOD).ignitedByLava(),
+                    BlockSetType.CRIMSON));
+
+    public static final RegistryObject<Block> ZULOAGAE_FENCE = registerBlock("zuloagae_fence",
+            ()-> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE).sound(SoundType.BAMBOO_WOOD).ignitedByLava()));
+
+    public static final RegistryObject<Block> ZULOAGAE_FENCE_GATE = registerBlock("zuloagae_fence_gate",
+            ()-> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE).sound(SoundType.BAMBOO_WOOD).ignitedByLava(),
+                    SoundEvents.NETHER_WOOD_FENCE_GATE_OPEN, SoundEvents.NETHER_WOOD_FENCE_GATE_CLOSE));
+
+
+    //Zuloagae Door and Trapdoor
+    public static final RegistryObject<Block> ZULOAGAE_DOOR = registerBlock("zuloagae_door",
+            ()-> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.BAMBOO_WOOD).noOcclusion(), BlockSetType.CRIMSON));
+
+    public static final RegistryObject<Block> ZULOAGAE_TRAPDOOR = registerBlock("zuloagae_trapdoor",
+            ()-> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.BAMBOO_WOOD).noOcclusion(),BlockSetType.CRIMSON));
+
+    //Zuloagae signs
+    public static final RegistryObject<Block> ZULOAGAE_SIGN = BLOCKS.register("zuloagae_sign",
+            () -> new ModStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_SIGN), ModWoodTypes.ZULOAGAE));
+
+    public static final RegistryObject<Block> ZULOAGAE_WALL_SIGN = BLOCKS.register("zuloagae_wall_sign",
+            () -> new ModWallSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_WALL_SIGN), ModWoodTypes.ZULOAGAE));
+
+    public static final RegistryObject<Block> ZULOAGAE_HANGING_SIGN = BLOCKS.register("zuloagae_hanging_sign",
+            () -> new ModHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_HANGING_SIGN), ModWoodTypes.ZULOAGAE));
+
+    public static final RegistryObject<Block> ZULOAGAE_WALL_HANGING_SIGN = BLOCKS.register("zuloagae_wall_hanging_sign",
+            () -> new ModWallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_WALL_HANGING_SIGN), ModWoodTypes.ZULOAGAE));
+
+    //Zuloagae Mosaic Blocks
+    public static final RegistryObject<Block> ZULOAGAE_MOSAIC = registerBlock("zuloagae_mosaic",
+            ()-> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.BAMBOO_WOOD).ignitedByLava()));
+
+    public static final RegistryObject<Block> ZULOAGAE_MOSAIC_STAIRS = registerBlock("zuloagae_mosaic_stairs",
+            ()-> new StairBlock(() -> ModBlocks.ZULOAGAE_PLANKS.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.BAMBOO_WOOD).ignitedByLava()));
+
+    public static final RegistryObject<Block> ZULOAGAE_MOSAIC_SLAB = registerBlock("zuloagae_mosaic_slab",
+            ()-> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.BAMBOO_WOOD).ignitedByLava()));
+
+
+    //Zuloagae logs and wood
+    public static final RegistryObject<Block> ZULOAGAE_BLOCK = registerBlock ("zuloagae_block",
+            () -> new FlammableWoodLogBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).sound(SoundType.BAMBOO_WOOD)));
+    public static final RegistryObject<Block> STRIPPED_ZULOAGAE_BLOCK = registerBlock ("stripped_zuloagae_block",
+            () -> new FlammableWoodLogBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG).sound(SoundType.BAMBOO_WOOD)));
+
+
+    //Wiwaxia
+    public static final RegistryObject<Block> WIWAXIA = registerBlock("wiwaxia",
+            ()-> new WiwaxiaBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.COLOR_PURPLE).noOcclusion().instabreak().lightLevel((p_152684_) -> {return 6;})));
 
 
     private static <T extends Block> Supplier<T> registerBlockWithItem(String key, Supplier<T> block, Function<Supplier<T>, Item> item) {

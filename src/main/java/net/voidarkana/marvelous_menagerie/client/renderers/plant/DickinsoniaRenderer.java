@@ -12,10 +12,4 @@ public class DickinsoniaRenderer extends GeoEntityRenderer<PlantEntity> {
     public DickinsoniaRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new DickinsoniaModel());
     }
-
-    @Override
-    public ResourceLocation getTextureLocation(PlantEntity entity) {
-        return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/block/dickinsonia.png");
-    }
-
 }

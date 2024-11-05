@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "marvelous_menagerie:block/prototaxites_planks",
+    "side": "marvelous_menagerie:block/prototaxites_planks",
+    "top": "marvelous_menagerie:block/prototaxites_planks"
+  }
+}

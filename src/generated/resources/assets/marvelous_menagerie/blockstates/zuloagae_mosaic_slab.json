@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "marvelous_menagerie:block/zuloagae_mosaic_slab"
+    },
+    "type=double": {
+      "model": "marvelous_menagerie:block/zuloagae_mosaic"
+    },
+    "type=top": {
+      "model": "marvelous_menagerie:block/zuloagae_mosaic_slab_top"
+    }
+  }
+}

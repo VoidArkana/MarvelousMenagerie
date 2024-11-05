@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_single_face",
+  "textures": {
+    "texture": "marvelous_menagerie:block/prototaxites_inside"
+  }
+}

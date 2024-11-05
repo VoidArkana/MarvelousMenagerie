@@ -73,6 +73,70 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.DICKINSONIA.get());
 
         this.dropSelf(ModBlocks.PIKAIA_EGGS.get());
+
+
+
+        this.dropSelf(ModBlocks.ZULOAGAE_PLANKS.get());
+        this.dropSelf(ModBlocks.ZULOAGAE_STAIRS.get());
+        this.dropSelf(ModBlocks.ZULOAGAE_FENCE.get());
+        this.dropSelf(ModBlocks.ZULOAGAE_FENCE_GATE.get());
+        this.dropSelf(ModBlocks.ZULOAGAE_BUTTON.get());
+        this.dropSelf(ModBlocks.ZULOAGAE_PRESSURE_PLATE.get());
+        this.dropSelf(ModBlocks.ZULOAGAE_TRAPDOOR.get());
+
+        this.add(ModBlocks.ZULOAGAE_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.ZULOAGAE_SLAB.get()));
+        this.add(ModBlocks.ZULOAGAE_MOSAIC_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.ZULOAGAE_MOSAIC_SLAB.get()));
+        this.add(ModBlocks.ZULOAGAE_DOOR.get(),
+                block -> createDoorTable(ModBlocks.ZULOAGAE_DOOR.get()));
+
+        this.add(ModBlocks.ZULOAGAE_SIGN.get(),
+                block -> createSingleItemTable(ModItems.ZULOAGAE_SIGN.get()));
+        this.add(ModBlocks.ZULOAGAE_WALL_SIGN.get(),
+                block -> createSingleItemTable(ModItems.ZULOAGAE_SIGN.get()));
+        this.add(ModBlocks.ZULOAGAE_HANGING_SIGN.get(),
+                block -> createSingleItemTable(ModItems.ZULOAGAE_HANGING_SIGN.get()));
+        this.add(ModBlocks.ZULOAGAE_WALL_HANGING_SIGN.get(),
+                block -> createSingleItemTable(ModItems.ZULOAGAE_HANGING_SIGN.get()));
+
+        this.dropSelf(ModBlocks.ZULOAGAE_MOSAIC.get());
+        this.dropSelf(ModBlocks.ZULOAGAE_MOSAIC_STAIRS.get());
+
+        this.dropSelf(ModBlocks.ZULOAGAE_BLOCK.get());
+        this.dropSelf(ModBlocks.STRIPPED_ZULOAGAE_BLOCK.get());
+
+
+
+        this.dropSelf(ModBlocks.PROTOTAXITES_PLANKS.get());
+        this.dropSelf(ModBlocks.PROTOTAXITES_STAIRS.get());
+        this.dropSelf(ModBlocks.PROTOTAXITES_FENCE.get());
+        this.dropSelf(ModBlocks.PROTOTAXITES_FENCE_GATE.get());
+        this.dropSelf(ModBlocks.PROTOTAXITES_BUTTON.get());
+        this.dropSelf(ModBlocks.PROTOTAXITES_PRESSURE_PLATE.get());
+        this.dropSelf(ModBlocks.PROTOTAXITES_TRAPDOOR.get());
+
+        this.add(ModBlocks.PROTOTAXITES_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.PROTOTAXITES_SLAB.get()));
+        this.add(ModBlocks.PROTOTAXITES_MOSAIC_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.PROTOTAXITES_MOSAIC_SLAB.get()));
+        this.add(ModBlocks.PROTOTAXITES_DOOR.get(),
+                block -> createDoorTable(ModBlocks.PROTOTAXITES_DOOR.get()));
+
+        this.add(ModBlocks.PROTOTAXITES_SIGN.get(),
+                block -> createSingleItemTable(ModItems.PROTOTAXITES_SIGN.get()));
+        this.add(ModBlocks.PROTOTAXITES_WALL_SIGN.get(),
+                block -> createSingleItemTable(ModItems.PROTOTAXITES_SIGN.get()));
+        this.add(ModBlocks.PROTOTAXITES_HANGING_SIGN.get(),
+                block -> createSingleItemTable(ModItems.PROTOTAXITES_HANGING_SIGN.get()));
+        this.add(ModBlocks.PROTOTAXITES_WALL_HANGING_SIGN.get(),
+                block -> createSingleItemTable(ModItems.PROTOTAXITES_HANGING_SIGN.get()));
+
+        this.dropSelf(ModBlocks.PROTOTAXITES_MOSAIC.get());
+        this.dropSelf(ModBlocks.PROTOTAXITES_MOSAIC_STAIRS.get());
+
+
+        this.dropSelf(ModBlocks.WIWAXIA.get());
     }
 
     @Override

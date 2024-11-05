@@ -9,16 +9,13 @@ import net.minecraft.world.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.voidarkana.marvelous_menagerie.client.renderers.plant.*;
 import net.voidarkana.marvelous_menagerie.common.block.ModBlocks;
 import net.voidarkana.marvelous_menagerie.client.events.ModClientEvents;
 import net.voidarkana.marvelous_menagerie.client.renderers.*;
 import net.voidarkana.marvelous_menagerie.client.renderers.baby.BabyAnomalocarisRenderer;
 import net.voidarkana.marvelous_menagerie.client.renderers.baby.BabyOphthalmoRenderer;
 import net.voidarkana.marvelous_menagerie.client.renderers.baby.BabyStellerRenderer;
-import net.voidarkana.marvelous_menagerie.client.renderers.plant.CooksoniaRenderer;
-import net.voidarkana.marvelous_menagerie.client.renderers.plant.DickinsoniaRenderer;
-import net.voidarkana.marvelous_menagerie.client.renderers.plant.PrototaxitesRenderer;
-import net.voidarkana.marvelous_menagerie.client.renderers.plant.SigillariaRenderer;
 import net.voidarkana.marvelous_menagerie.common.CommonProxy;
 import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.util.ModWoodTypes;
@@ -43,7 +40,7 @@ public class ClientProxy extends CommonProxy {
         EntityRenderers.register(ModEntities.ELEPHANT_BIRD.get(), ElephantBirdRenderer::new);
         EntityRenderers.register(ModEntities.STELLER_SEA_COW.get(), StellerRenderer::new);
         EntityRenderers.register(ModEntities.BABY_STELLER_SEA_COW.get(), BabyStellerRenderer::new);
-        EntityRenderers.register(ModEntities.SIGILLARIA_SAPLING_ENTITY.get(), SigillariaRenderer::new);
+        EntityRenderers.register(ModEntities.SIGILLARIA_SAPLING_ENTITY.get(), PlantRenderer::new);
         EntityRenderers.register(ModEntities.COOKSONIA_ENTITY.get(), CooksoniaRenderer::new);
 
         EntityRenderers.register(ModEntities.TRILOBITE.get(), TrilobiteRenderer::new);
@@ -67,6 +64,8 @@ public class ClientProxy extends CommonProxy {
 
         EntityRenderers.register(ModEntities.PIKAIA.get(), PikaiaRenderer::new);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.PIKAIA_EGGS.get(), RenderType.translucent());
+
+        EntityRenderers.register(ModEntities.WIWAXIA_ENTITY.get(), WiwaxiaRenderer::new);
 
     }
 

@@ -12,6 +12,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -33,12 +34,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.OphthalmoEntity;
 import net.voidarkana.marvelous_menagerie.common.item.ModItems;
 import net.voidarkana.marvelous_menagerie.client.sound.ModSounds;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -60,6 +63,8 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
     public float tilt;
 
     private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(BabyOphthalmoEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> BASE_VARIANT = SynchedEntityData.defineId(BabyOphthalmoEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> PATTERN_VARIANT = SynchedEntityData.defineId(BabyOphthalmoEntity.class, EntityDataSerializers.INT);
 
     public static final Ingredient FOOD_ITEMS = Ingredient.of(ItemTags.FISHES);
     public static final int MAX_TADPOLE_AGE = Math.abs(-30000);
@@ -93,20 +98,33 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(FROM_BUCKET, false);
+
+        this.entityData.define(BASE_VARIANT, 0);
+        this.entityData.define(PATTERN_VARIANT, 0);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putBoolean("FromBucket", this.fromBucket());
+
+        pCompound.putInt("BaseColor", this.getBaseColor());
+        pCompound.putInt("Pattern", this.getPattern());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         this.setFromBucket(pCompound.getBoolean("FromBucket"));
+
+        this.setBaseColor(pCompound.getInt("BaseColor"));
+        this.setPattern(pCompound.getInt("Pattern"));
     }
 
     @Override
-    public void determineVariant(int i) {}
+    public void determineVariant(int i) {
+        this.setBaseColor(this.random.nextInt(0, 3));
+        this.setPattern(this.random.nextInt(0, 4));
+
+    }
 
     @Override
     public boolean fromBucket() {return this.entityData.get(FROM_BUCKET);}
@@ -123,6 +141,9 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
         if (this.hasCustomName()) {
             bucket.setHoverName(this.getCustomName());
         }
+
+        compoundnbt.putInt("BaseColor", this.getBaseColor());
+        compoundnbt.putInt("Pattern", this.getPattern());
     }
 
     @Override
@@ -190,6 +211,9 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
                 frog.setCustomName(this.getCustomName());
                 frog.setCustomNameVisible(this.isCustomNameVisible());
             }
+
+            frog.setBaseColor(this.getBaseColor());
+            frog.setPattern(this.getPattern());
 
             //persistance stuff
             frog.setIsFromEgg(true);
@@ -372,5 +396,54 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
             }
 
         }
+    }
+
+    public void setBaseColor(int color) {
+        this.entityData.set(BASE_VARIANT, color);
+    }
+
+    public int getBaseColor() {
+        return this.entityData.get(BASE_VARIANT);
+    }
+
+    public void setPattern(int pattern) {
+        this.entityData.set(PATTERN_VARIANT, pattern);
+    }
+
+    public int getPattern() {
+        return this.entityData.get(PATTERN_VARIANT);
+    }
+
+    @Override
+    @Nullable
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType reason, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag) {
+
+        if (reason == MobSpawnType.BUCKET && dataTag != null && dataTag.contains("BaseColor", 3)) {
+            this.setBaseColor(dataTag.getInt("BaseColor"));
+            this.setPattern(dataTag.getInt("Pattern"));
+            this.setFromBucket(true);
+        }else{
+            this.setBaseColor(this.random.nextInt(0, 3));
+            this.setPattern(this.random.nextInt(0, 4));
+        }
+
+        spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+        return super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+    }
+
+    public String getColorName(int color){
+        return switch (color){
+            case 1 -> "_black";
+            case 2-> "_green";
+            default -> "_blue";
+        };
+    }
+
+    public String getPatternName(int color){
+        return switch (color){
+            case 2-> "_spots";
+            case 3-> "_streak";
+            default -> "_stripes";
+        };
     }
 }

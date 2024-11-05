@@ -32,6 +32,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.DICKINSONIA_FLASK.get());
                         output.accept(ModItems.PROTO_FLASK.get());
                         output.accept(ModItems.SIGILLARIA_DNA.get());
+                        output.accept(ModItems.WIWAXIA_FLASK.get());
 
                         output.accept(ModBlocks.CARIS_EGGS.get());
                         output.accept(ModBlocks.DODO_EGGS.get());
@@ -76,8 +77,31 @@ public class ModCreativeModTabs {
 
                         output.accept(ModBlocks.DICKINSONIA.get());
 
-                        output.accept(ModBlocks.PROTOTAXITES.get());
+                        output.accept(ModBlocks.WIWAXIA.get());
+
+
+                        output.accept(ModBlocks.PROTOTAXITES_PLANKS.get());
+
                         output.accept(ModBlocks.PROTOTAXITES_BLOCK.get());
+
+                        output.accept(ModBlocks.PROTOTAXITES_STAIRS.get());
+                        output.accept(ModBlocks.PROTOTAXITES_SLAB.get());
+                        output.accept(ModBlocks.PROTOTAXITES_FENCE.get());
+                        output.accept(ModBlocks.PROTOTAXITES_FENCE_GATE.get());
+                        output.accept(ModBlocks.PROTOTAXITES_DOOR.get());
+                        output.accept(ModBlocks.PROTOTAXITES_TRAPDOOR.get());
+                        output.accept(ModBlocks.PROTOTAXITES_PRESSURE_PLATE.get());
+                        output.accept(ModBlocks.PROTOTAXITES_BUTTON.get());
+
+                        output.accept(ModBlocks.PROTOTAXITES_MOSAIC.get());
+                        output.accept(ModBlocks.PROTOTAXITES_MOSAIC_STAIRS.get());
+                        output.accept(ModBlocks.PROTOTAXITES_MOSAIC_SLAB.get());
+                        output.accept(ModItems.PROTOTAXITES_SIGN.get());
+                        output.accept(ModItems.PROTOTAXITES_HANGING_SIGN.get());
+
+                        output.accept(ModBlocks.PROTOTAXITES.get());
+
+
 
                         output.accept(ModBlocks.SIGILLARIA_PLANKS.get());
 
@@ -102,6 +126,31 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.SIGILLARIA_HANGING_SIGN.get());
                         output.accept(ModBlocks.SIGILLARIA_LEAVES.get());
                         output.accept(ModBlocks.SIGILLARIA_SAPLING.get());
+
+
+
+                        output.accept(ModBlocks.ZULOAGAE_PLANKS.get());
+
+                        output.accept(ModBlocks.ZULOAGAE_BLOCK.get());
+                        output.accept(ModBlocks.STRIPPED_ZULOAGAE_BLOCK.get());
+
+                        output.accept(ModBlocks.ZULOAGAE_STAIRS.get());
+                        output.accept(ModBlocks.ZULOAGAE_SLAB.get());
+                        output.accept(ModBlocks.ZULOAGAE_FENCE.get());
+                        output.accept(ModBlocks.ZULOAGAE_FENCE_GATE.get());
+                        output.accept(ModBlocks.ZULOAGAE_DOOR.get());
+                        output.accept(ModBlocks.ZULOAGAE_TRAPDOOR.get());
+                        output.accept(ModBlocks.ZULOAGAE_PRESSURE_PLATE.get());
+                        output.accept(ModBlocks.ZULOAGAE_BUTTON.get());
+
+                        output.accept(ModBlocks.ZULOAGAE_MOSAIC.get());
+                        output.accept(ModBlocks.ZULOAGAE_MOSAIC_STAIRS.get());
+                        output.accept(ModBlocks.ZULOAGAE_MOSAIC_SLAB.get());
+                        output.accept(ModItems.ZULOAGAE_SIGN.get());
+                        output.accept(ModItems.ZULOAGAE_HANGING_SIGN.get());
+
+
+
 
                         output.accept(ModItems.CARIS_SPAWN_EGG.get());
                         output.accept(ModItems.DODO_SPAWN_EGG.get());

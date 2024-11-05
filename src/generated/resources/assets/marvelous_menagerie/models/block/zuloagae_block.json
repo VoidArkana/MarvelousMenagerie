@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "marvelous_menagerie:block/zuloagae_block_top",
+    "side": "marvelous_menagerie:block/zuloagae_block"
+  }
+}

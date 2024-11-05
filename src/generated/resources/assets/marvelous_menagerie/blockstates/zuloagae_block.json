@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "marvelous_menagerie:block/zuloagae_block_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "marvelous_menagerie:block/zuloagae_block"
+    },
+    "axis=z": {
+      "model": "marvelous_menagerie:block/zuloagae_block_horizontal",
+      "x": 90
+    }
+  }
+}

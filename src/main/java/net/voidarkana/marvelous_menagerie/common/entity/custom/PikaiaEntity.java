@@ -74,6 +74,7 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
         this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.5D));
         this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.0D, 10));
+        //pollinate flower goal
     }
 
     public static AttributeSupplier.Builder createAttributes() {

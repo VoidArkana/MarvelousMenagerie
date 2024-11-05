@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "marvelous_menagerie:zuloagae_door",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ],
+          "name": "marvelous_menagerie:zuloagae_door"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "marvelous_menagerie:blocks/zuloagae_door"
+}

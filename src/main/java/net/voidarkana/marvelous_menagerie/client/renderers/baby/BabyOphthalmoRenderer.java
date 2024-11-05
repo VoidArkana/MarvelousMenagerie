@@ -7,6 +7,8 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
+import net.voidarkana.marvelous_menagerie.client.layer.BabyOphthalmoPatternLayer;
+import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoPatternLayer;
 import net.voidarkana.marvelous_menagerie.client.models.baby.BabyOphthalmoModel;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.SacabambaspisEntity;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.baby.BabyOphthalmoEntity;
@@ -16,12 +18,9 @@ public class BabyOphthalmoRenderer extends GeoEntityRenderer<BabyOphthalmoEntity
 
     public BabyOphthalmoRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new BabyOphthalmoModel());
+        this.addRenderLayer(new BabyOphthalmoPatternLayer(this));
     }
 
-    @Override
-    public ResourceLocation getTextureLocation(BabyOphthalmoEntity entity) {
-        return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/baby_ophthalmo.png");
-    }
 
     @Override
     public void render(BabyOphthalmoEntity entity, float entityYaw, float partialTicks, PoseStack poseStack,

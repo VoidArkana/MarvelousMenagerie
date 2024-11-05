@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_side",
+  "textures": {
+    "texture": "marvelous_menagerie:block/prototaxites_planks"
+  }
+}

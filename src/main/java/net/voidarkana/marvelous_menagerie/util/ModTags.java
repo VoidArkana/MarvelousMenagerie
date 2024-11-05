@@ -48,6 +48,7 @@ public class ModTags {
 
     public static class Blocks {
         public static final TagKey<Block> SIGILLARIA_LOG_BLOCK = tag("sigillaria_log_block");
+        public static final TagKey<Block> ZULOAGAE_LOG_BLOCK = tag("zuloagae_log_block");
 
         public static final TagKey<Block> DYE_DEPOT_WOOL = tag("dye_depot_wool");
 
@@ -76,6 +77,7 @@ public class ModTags {
     public static class Items {
 
         public static final TagKey<Item> SIGILLARIA_LOG_ITEM = tag("sigillaria_log_item");
+        public static final TagKey<Item> ZULOAGAE_LOG_ITEM = tag("zuloagae_log_item");
 
         public static final TagKey<Item> DYE_DEPOT_WOOL_ITEM = tag("dye_depot_wool_item");
 

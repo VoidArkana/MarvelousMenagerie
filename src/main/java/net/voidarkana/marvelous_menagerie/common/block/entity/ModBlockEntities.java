@@ -16,11 +16,15 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<ModSignBlockEntity>> MOD_SIGN =
         BLOCK_ENTITIES.register( "mod_sign", () ->
                 BlockEntityType.Builder.of(ModSignBlockEntity::new,
+                        ModBlocks.PROTOTAXITES_SIGN.get(), ModBlocks.PROTOTAXITES_WALL_SIGN.get(),
+                        ModBlocks.ZULOAGAE_SIGN.get(), ModBlocks.ZULOAGAE_WALL_SIGN.get(),
                         ModBlocks.SIGILLARIA_SIGN.get(), ModBlocks.SIGILLARIA_WALL_SIGN.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<ModHangingSignBlockEntity>> MOD_HANGING_SIGN =
             BLOCK_ENTITIES.register( "mod_hanging_sign", () ->
                     BlockEntityType.Builder.of(ModHangingSignBlockEntity::new,
+                            ModBlocks.PROTOTAXITES_SIGN.get(), ModBlocks.PROTOTAXITES_WALL_SIGN.get(),
+                            ModBlocks.ZULOAGAE_SIGN.get(), ModBlocks.ZULOAGAE_WALL_SIGN.get(),
                             ModBlocks.SIGILLARIA_HANGING_SIGN.get(), ModBlocks.SIGILLARIA_WALL_HANGING_SIGN.get()).build(null));
 
     public static void register(IEventBus eventBus){

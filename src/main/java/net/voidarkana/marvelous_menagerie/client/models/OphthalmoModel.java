@@ -11,10 +11,6 @@ import software.bernie.geckolib.model.data.EntityModelData;
 
 public class OphthalmoModel extends GeoModel<OphthalmoEntity> {
 
-    private static final ResourceLocation NEUTRAL_LOCATION = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo.png");
-    private static final ResourceLocation ANGRY_LOCATION = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo_angry.png");
-    private static final ResourceLocation TAME_LOCATION = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo_tamed.png");
-
     @Override
     public ResourceLocation getModelResource(OphthalmoEntity ophthalmo) {
         return new ResourceLocation(MarvelousMenagerie.MOD_ID,"geo/ophthalmo.geo.json");
@@ -23,10 +19,15 @@ public class OphthalmoModel extends GeoModel<OphthalmoEntity> {
     @Override
     public ResourceLocation getTextureResource(OphthalmoEntity ophthalmo) {
 
+
+        String color = ophthalmo.getColorName(ophthalmo.getBaseColor());
+
         if (ophthalmo.isTamed()) {
-            return TAME_LOCATION;
+            return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo_tamed"+color+".png");
         } else {
-            return ophthalmo.isAngry() ? ANGRY_LOCATION : NEUTRAL_LOCATION;
+            return ophthalmo.isAngry() ?
+                    new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo_angry"+color+".png") :
+                    new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo"+color+".png");
         }
 
     }

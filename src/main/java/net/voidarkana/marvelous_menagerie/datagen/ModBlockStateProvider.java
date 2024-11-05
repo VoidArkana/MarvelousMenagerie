@@ -29,6 +29,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         this.createEggDefaultMedium(ModBlocks.DODO_EGGS.get());
         this.createSingleEgg(ModBlocks.ELE_EGG.get());
 
+        //sigillaria woodset
         blockWithItem(ModBlocks.SIGILLARIA_PLANKS);
         stairsBlock(((StairBlock) ModBlocks.SIGILLARIA_STAIRS.get()), blockTexture(ModBlocks.SIGILLARIA_PLANKS.get()));
         slabBlock(((SlabBlock) ModBlocks.SIGILLARIA_SLAB.get()), blockTexture(ModBlocks.SIGILLARIA_PLANKS.get()), blockTexture(ModBlocks.SIGILLARIA_PLANKS.get()));
@@ -44,19 +45,20 @@ public class ModBlockStateProvider extends BlockStateProvider {
         stairsBlock(((StairBlock) ModBlocks.SIGILLARIA_MOSAIC_STAIRS.get()), blockTexture(ModBlocks.SIGILLARIA_MOSAIC.get()));
         slabBlock(((SlabBlock) ModBlocks.SIGILLARIA_MOSAIC_SLAB.get()), blockTexture(ModBlocks.SIGILLARIA_MOSAIC.get()), blockTexture(ModBlocks.SIGILLARIA_MOSAIC.get()));
 
-        logBlock(((RotatedPillarBlock) ModBlocks.SIGILLARIA_STEM.get()));
-        axisBlock(((RotatedPillarBlock) ModBlocks.SIGILLARIA_WOOD.get()), blockTexture(ModBlocks.SIGILLARIA_STEM.get()), blockTexture(ModBlocks.SIGILLARIA_STEM.get()));
-        axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_SIGILLARIA_STEM.get()), blockTexture(ModBlocks.STRIPPED_SIGILLARIA_STEM.get()), new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/stripped_sigillaria_stem_top"));
-        axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_SIGILLARIA_WOOD.get()), blockTexture(ModBlocks.STRIPPED_SIGILLARIA_STEM.get()), blockTexture(ModBlocks.STRIPPED_SIGILLARIA_STEM.get()));
-        blockItem(ModBlocks.SIGILLARIA_STEM);
-        blockItem(ModBlocks.STRIPPED_SIGILLARIA_STEM);
-        blockItem(ModBlocks.SIGILLARIA_WOOD);
-        blockItem(ModBlocks.STRIPPED_SIGILLARIA_WOOD);
-
         signBlock(((StandingSignBlock) ModBlocks.SIGILLARIA_SIGN.get()), ((WallSignBlock) ModBlocks.SIGILLARIA_WALL_SIGN.get()),
                 blockTexture(ModBlocks.SIGILLARIA_PLANKS.get()));
         hangingSignBlock(ModBlocks.SIGILLARIA_HANGING_SIGN.get(), ModBlocks.SIGILLARIA_WALL_HANGING_SIGN.get(),
                 blockTexture(ModBlocks.SIGILLARIA_PLANKS.get()));
+
+        logBlock(((RotatedPillarBlock) ModBlocks.SIGILLARIA_STEM.get()));
+        axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_SIGILLARIA_STEM.get()), blockTexture(ModBlocks.STRIPPED_SIGILLARIA_STEM.get()), new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/stripped_sigillaria_stem_top"));
+        blockItem(ModBlocks.SIGILLARIA_STEM);
+        blockItem(ModBlocks.STRIPPED_SIGILLARIA_STEM);
+
+        axisBlock(((RotatedPillarBlock) ModBlocks.SIGILLARIA_WOOD.get()), blockTexture(ModBlocks.SIGILLARIA_STEM.get()), blockTexture(ModBlocks.SIGILLARIA_STEM.get()));
+        axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_SIGILLARIA_WOOD.get()), blockTexture(ModBlocks.STRIPPED_SIGILLARIA_STEM.get()), blockTexture(ModBlocks.STRIPPED_SIGILLARIA_STEM.get()));
+        blockItem(ModBlocks.SIGILLARIA_WOOD);
+        blockItem(ModBlocks.STRIPPED_SIGILLARIA_WOOD);
 
         leavesBlock(ModBlocks.SIGILLARIA_LEAVES);
 
@@ -75,6 +77,55 @@ public class ModBlockStateProvider extends BlockStateProvider {
         this.createFlatWaterEgg(ModBlocks.CARIS_EGGS.get());
 
         this.createFlatWaterEgg(ModBlocks.PIKAIA_EGGS.get());
+
+        //prototaxites woodset
+        blockWithItem(ModBlocks.PROTOTAXITES_PLANKS);
+        stairsBlock(((StairBlock) ModBlocks.PROTOTAXITES_STAIRS.get()), blockTexture(ModBlocks.PROTOTAXITES_PLANKS.get()));
+        slabBlock(((SlabBlock) ModBlocks.PROTOTAXITES_SLAB.get()), blockTexture(ModBlocks.PROTOTAXITES_PLANKS.get()), blockTexture(ModBlocks.PROTOTAXITES_PLANKS.get()));
+        buttonBlock(((ButtonBlock) ModBlocks.PROTOTAXITES_BUTTON.get()), blockTexture(ModBlocks.PROTOTAXITES_PLANKS.get()));
+        pressurePlateBlock(((PressurePlateBlock) ModBlocks.PROTOTAXITES_PRESSURE_PLATE.get()), blockTexture(ModBlocks.PROTOTAXITES_PLANKS.get()));
+        fenceBlock(((FenceBlock) ModBlocks.PROTOTAXITES_FENCE.get()), blockTexture(ModBlocks.PROTOTAXITES_PLANKS.get()));
+        fenceGateBlock(((FenceGateBlock) ModBlocks.PROTOTAXITES_FENCE_GATE.get()), blockTexture(ModBlocks.PROTOTAXITES_PLANKS.get()));
+
+        doorBlockWithRenderType(((DoorBlock) ModBlocks.PROTOTAXITES_DOOR.get()), modLoc("block/prototaxites_door_bottom"), modLoc("block/prototaxites_door_top"), "cutout");
+        trapdoorBlockWithRenderType(((TrapDoorBlock) ModBlocks.PROTOTAXITES_TRAPDOOR.get()), modLoc("block/prototaxites_trapdoor"), true, "cutout");
+
+        blockWithItem(ModBlocks.PROTOTAXITES_MOSAIC);
+        stairsBlock(((StairBlock) ModBlocks.PROTOTAXITES_MOSAIC_STAIRS.get()), blockTexture(ModBlocks.PROTOTAXITES_MOSAIC.get()));
+        slabBlock(((SlabBlock) ModBlocks.PROTOTAXITES_MOSAIC_SLAB.get()), blockTexture(ModBlocks.PROTOTAXITES_MOSAIC.get()), blockTexture(ModBlocks.PROTOTAXITES_MOSAIC.get()));
+
+        signBlock(((StandingSignBlock) ModBlocks.PROTOTAXITES_SIGN.get()), ((WallSignBlock) ModBlocks.PROTOTAXITES_WALL_SIGN.get()),
+                blockTexture(ModBlocks.PROTOTAXITES_PLANKS.get()));
+        hangingSignBlock(ModBlocks.PROTOTAXITES_HANGING_SIGN.get(), ModBlocks.PROTOTAXITES_WALL_HANGING_SIGN.get(),
+                blockTexture(ModBlocks.PROTOTAXITES_PLANKS.get()));
+
+
+        //zuloagae woodset
+        blockWithItem(ModBlocks.ZULOAGAE_PLANKS);
+        stairsBlock(((StairBlock) ModBlocks.ZULOAGAE_STAIRS.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
+        slabBlock(((SlabBlock) ModBlocks.ZULOAGAE_SLAB.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
+        buttonBlock(((ButtonBlock) ModBlocks.ZULOAGAE_BUTTON.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
+        pressurePlateBlock(((PressurePlateBlock) ModBlocks.ZULOAGAE_PRESSURE_PLATE.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
+        fenceBlock(((FenceBlock) ModBlocks.ZULOAGAE_FENCE.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
+        fenceGateBlock(((FenceGateBlock) ModBlocks.ZULOAGAE_FENCE_GATE.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
+
+        doorBlockWithRenderType(((DoorBlock) ModBlocks.ZULOAGAE_DOOR.get()), modLoc("block/zuloagae_door_bottom"), modLoc("block/zuloagae_door_top"), "cutout");
+        trapdoorBlockWithRenderType(((TrapDoorBlock) ModBlocks.ZULOAGAE_TRAPDOOR.get()), modLoc("block/zuloagae_trapdoor"), true, "cutout");
+
+        blockWithItem(ModBlocks.ZULOAGAE_MOSAIC);
+        stairsBlock(((StairBlock) ModBlocks.ZULOAGAE_MOSAIC_STAIRS.get()), blockTexture(ModBlocks.ZULOAGAE_MOSAIC.get()));
+        slabBlock(((SlabBlock) ModBlocks.ZULOAGAE_MOSAIC_SLAB.get()), blockTexture(ModBlocks.ZULOAGAE_MOSAIC.get()), blockTexture(ModBlocks.ZULOAGAE_MOSAIC.get()));
+
+        signBlock(((StandingSignBlock) ModBlocks.ZULOAGAE_SIGN.get()), ((WallSignBlock) ModBlocks.ZULOAGAE_WALL_SIGN.get()),
+                blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
+        hangingSignBlock(ModBlocks.ZULOAGAE_HANGING_SIGN.get(), ModBlocks.ZULOAGAE_WALL_HANGING_SIGN.get(),
+                blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
+
+        logBlock(((RotatedPillarBlock) ModBlocks.ZULOAGAE_BLOCK.get()));
+        axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_ZULOAGAE_BLOCK.get()), blockTexture(ModBlocks.STRIPPED_ZULOAGAE_BLOCK.get()), new ResourceLocation(MarvelousMenagerie.MOD_ID, "block/stripped_zuloagae_block_top"));
+        blockItem(ModBlocks.ZULOAGAE_BLOCK);
+        blockItem(ModBlocks.STRIPPED_ZULOAGAE_BLOCK);
+
     }
 
     public void hangingSignBlock(Block signBlock, Block wallSignBlock, ResourceLocation texture) {

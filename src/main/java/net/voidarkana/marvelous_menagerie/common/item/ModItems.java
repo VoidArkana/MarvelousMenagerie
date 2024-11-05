@@ -117,6 +117,10 @@ public class ModItems {
     //prototaxites
     public static final RegistryObject<Item> PROTO_FLASK = ITEMS.register("proto_flask",
             ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PROTOTAXITES_SIGN = ITEMS.register("prototaxites_sign",
+            ()-> new SignItem(new Item.Properties().stacksTo(16), ModBlocks.PROTOTAXITES_SIGN.get(), ModBlocks.PROTOTAXITES_WALL_SIGN.get()));
+    public static final RegistryObject<Item> PROTOTAXITES_HANGING_SIGN = ITEMS.register("prototaxites_hanging_sign",
+            ()-> new HangingSignItem(ModBlocks.PROTOTAXITES_HANGING_SIGN.get(), ModBlocks.PROTOTAXITES_WALL_HANGING_SIGN.get(),new Item.Properties().stacksTo(16)));
 
     //dickinsonia
     public static final RegistryObject<Item> DICKINSONIA_FLASK = ITEMS.register("dickinsonia_flask",
@@ -172,6 +176,16 @@ public class ModItems {
     public static final RegistryObject<Item> PIKAIA_BUCKET = ITEMS.register("pikaia_bucket",
             () -> new ItemModFishBucket(ModEntities.PIKAIA, () -> Fluids.WATER, Items.BUCKET, false,
                     (new Item.Properties()).stacksTo(1)));
+
+    //zuloagae
+    public static final RegistryObject<Item> ZULOAGAE_SIGN = ITEMS.register("zuloagae_sign",
+            ()-> new SignItem(new Item.Properties().stacksTo(16), ModBlocks.ZULOAGAE_SIGN.get(), ModBlocks.ZULOAGAE_WALL_SIGN.get()));
+    public static final RegistryObject<Item> ZULOAGAE_HANGING_SIGN = ITEMS.register("zuloagae_hanging_sign",
+            ()-> new HangingSignItem(ModBlocks.ZULOAGAE_HANGING_SIGN.get(), ModBlocks.ZULOAGAE_WALL_HANGING_SIGN.get(),new Item.Properties().stacksTo(16)));
+
+    //wiwaxia
+    public static final RegistryObject<Item> WIWAXIA_FLASK = ITEMS.register("wiwaxia_flask",
+            ()-> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

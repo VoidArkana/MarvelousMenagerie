@@ -17,8 +17,10 @@ public class BabyOphthalmoModel extends GeoModel<BabyOphthalmoEntity> {
     }
 
     @Override
-    public ResourceLocation getTextureResource(BabyOphthalmoEntity anomalocarisEntity) {
-        return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/baby_ophthalmo.png");
+    public ResourceLocation getTextureResource(BabyOphthalmoEntity ophthalmo) {
+        String color = ophthalmo.getColorName(ophthalmo.getBaseColor());
+
+        return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/baby_ophthalmo"+color+".png");
     }
 
     @Override

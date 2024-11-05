@@ -23,7 +23,7 @@ public class TrilobiteLayer extends GeoRenderLayer<TrilobiteEntity> {
 
         if (!entity.isLGBTrilo() && !entity.isInvisible()){
 
-            RenderType cameo = RenderType.entityCutout(new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/trilobite/trilobite_"+entity.getModelName(entity.getVariantModel())
+            RenderType cameo = RenderType.entityCutoutNoCull(new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/trilobite/trilobite_"+entity.getModelName(entity.getVariantModel())
                     +"_second/trilobite_"+entity.getModelName(entity.getVariantModel())+"_second_"+entity.getSecondColorName(entity.getVariantSecondColor())+".png"));
             ResourceLocation trilobiteModel = new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/trilobite/trilobite_"
                     +entity.getModelName(entity.getVariantModel())+".geo.json");

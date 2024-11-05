@@ -14,8 +14,7 @@ public class CooksoniaRenderer extends GeoEntityRenderer<PlantEntity> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(PlantEntity entity) {
+    public ResourceLocation getTextureLocation(PlantEntity animatable) {
         return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/plants/cooksonia.png");
     }
-
 }

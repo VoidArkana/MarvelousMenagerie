@@ -21,6 +21,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -49,6 +50,8 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
     public ThylacineEntity(EntityType<? extends Animal> entityType, Level level) {
         super(entityType, level);
     }
+
+    public Player playerWhoFedIt;
 
     private static final EntityDataAccessor<Integer> HOWLING_TIME = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> HOWLING = SynchedEntityData.defineId(ThylacineEntity.class, EntityDataSerializers.BOOLEAN);
@@ -219,10 +222,12 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         InteractionResult type = super.mobInteract(player, hand);
-        if ((itemstack.is(Items.CHICKEN) || itemstack.is(Items.RABBIT) || itemstack.is(Items.COOKED_CHICKEN) || itemstack.is(Items.COOKED_RABBIT))
+        if ((itemstack.is(Items.CHICKEN) || itemstack.is(Items.RABBIT)
+                || itemstack.is(Items.COOKED_CHICKEN) || itemstack.is(Items.COOKED_RABBIT))
                 && !this.getIsHowling() && this.onGround() && !this.getIsYawning()) {
             this.usePlayerItem(player, hand, itemstack);
             this.setHowlingTime(howlTickDuration);
+            this.playerWhoFedIt = player;
             return InteractionResult.SUCCESS;
 
         } else if (itemstack.is(ItemTags.WOOL) || itemstack.is(ModTags.Items.DYE_DEPOT_WOOL_ITEM)){
@@ -298,8 +303,10 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
     private void alertThreats() {
         List<LivingEntity> list = this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(24, 12, 24));
         for (LivingEntity target : list) {
-            if(!(target instanceof ThylacineEntity) && target.getType().is(ModTags.EntityTypes.THYLA_ALERT_TARGET)){
-                target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 45));
+            if(!(target instanceof ThylacineEntity) && (target.getType().is(ModTags.EntityTypes.THYLA_ALERT_TARGET) || target instanceof Monster || target instanceof NeutralMob)){
+                if (!target.isAlliedTo(this.playerWhoFedIt)){
+                    target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 45));
+                }
             }
         }
     }

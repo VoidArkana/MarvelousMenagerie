@@ -13,9 +13,4 @@ public class PrototaxitesRenderer extends GeoEntityRenderer<PlantEntity> {
         super(renderManager, new PrototaxitesModel());
     }
 
-    @Override
-    public ResourceLocation getTextureLocation(PlantEntity entity) {
-        return new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/plants/prototaxites.png");
-    }
-
 }

@@ -128,6 +128,45 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent(ModItems.PIKAIA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         simpleItem(ModItems.PIKAIA_BUCKET);
         simpleItem(ModItems.PIKAIA_FLASK);
+
+
+
+        simpleBlockItem(ModBlocks.ZULOAGAE_DOOR);
+        trapdoorItem(ModBlocks.ZULOAGAE_TRAPDOOR);
+
+        evenSimplerBlockItem(ModBlocks.ZULOAGAE_STAIRS);
+        evenSimplerBlockItem(ModBlocks.ZULOAGAE_MOSAIC_STAIRS);
+        evenSimplerBlockItem(ModBlocks.ZULOAGAE_SLAB);
+        evenSimplerBlockItem(ModBlocks.ZULOAGAE_MOSAIC_SLAB);
+        evenSimplerBlockItem(ModBlocks.ZULOAGAE_FENCE_GATE);
+        evenSimplerBlockItem(ModBlocks.ZULOAGAE_PRESSURE_PLATE);
+
+        fenceItem(ModBlocks.ZULOAGAE_FENCE, ModBlocks.ZULOAGAE_PLANKS);
+        buttonItem(ModBlocks.ZULOAGAE_BUTTON, ModBlocks.ZULOAGAE_PLANKS);
+
+        simpleItem(ModItems.ZULOAGAE_SIGN);
+        simpleItem(ModItems.ZULOAGAE_HANGING_SIGN);
+
+
+
+        simpleBlockItem(ModBlocks.PROTOTAXITES_DOOR);
+        trapdoorItem(ModBlocks.PROTOTAXITES_TRAPDOOR);
+
+        evenSimplerBlockItem(ModBlocks.PROTOTAXITES_STAIRS);
+        evenSimplerBlockItem(ModBlocks.PROTOTAXITES_MOSAIC_STAIRS);
+        evenSimplerBlockItem(ModBlocks.PROTOTAXITES_SLAB);
+        evenSimplerBlockItem(ModBlocks.PROTOTAXITES_MOSAIC_SLAB);
+        evenSimplerBlockItem(ModBlocks.PROTOTAXITES_FENCE_GATE);
+        evenSimplerBlockItem(ModBlocks.PROTOTAXITES_PRESSURE_PLATE);
+
+        fenceItem(ModBlocks.PROTOTAXITES_FENCE, ModBlocks.PROTOTAXITES_PLANKS);
+        buttonItem(ModBlocks.PROTOTAXITES_BUTTON, ModBlocks.PROTOTAXITES_PLANKS);
+
+        simpleItem(ModItems.PROTOTAXITES_SIGN);
+        simpleItem(ModItems.PROTOTAXITES_HANGING_SIGN);
+
+
+        simpleItem(ModItems.WIWAXIA_FLASK);
     }
 
 

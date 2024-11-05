@@ -109,6 +109,8 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
     private static final EntityDataAccessor<Boolean> IS_TAMED = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> ANIMATION_STATE = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_REMAINING_ANGER_TIME = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> BASE_VARIANT = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> PATTERN_VARIANT = SynchedEntityData.defineId(OphthalmoEntity.class, EntityDataSerializers.INT);
 
     protected static final RawAnimation BOOK = RawAnimation.begin().thenLoop("animation.ophthalmo.book");
     protected static final RawAnimation SWIM = RawAnimation.begin().thenLoop("animation.ophthalmo.swim");
@@ -129,8 +131,8 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.0D, 10));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(5, new OphthalmoEntity.OphthalmoJumpGoal(this, 3));
-        this.goalSelector.addGoal(2, new OphthalmoEntity.OphthalmoMeleeAttackGoal(this, (double)1F, true));
+        this.goalSelector.addGoal(5, new OphthalmoJumpGoal(this, 3));
+        this.goalSelector.addGoal(2, new OphthalmoMeleeAttackGoal(this, (double)1F, true));
         if (!this.hasControllingPassenger()){
             this.targetSelector.addGoal(3, new OphthalmoOwnerHurtByTargetGoal(this));
             this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
@@ -158,6 +160,9 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         this.entityData.define(DATA_OWNERUUID_ID, Optional.empty());
         this.entityData.define(ANIMATION_STATE, 0);
         this.entityData.define(DATA_REMAINING_ANGER_TIME, 0);
+
+        this.entityData.define(BASE_VARIANT, 0);
+        this.entityData.define(PATTERN_VARIANT, 0);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
@@ -172,6 +177,9 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         }
 
         this.addPersistentAngerSaveData(pCompound);
+
+        pCompound.putInt("BaseColor", this.getBaseColor());
+        pCompound.putInt("Pattern", this.getPattern());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
@@ -194,6 +202,9 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         }
 
         this.readPersistentAngerSaveData(this.level(), pCompound);
+
+        this.setBaseColor(pCompound.getInt("BaseColor"));
+        this.setPattern(pCompound.getInt("Pattern"));
     }
 
     protected void dropEquipment() {
@@ -266,6 +277,22 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
     public boolean isFromEgg() {
         return this.entityData.get(FROM_EGG);
+    }
+
+    public void setBaseColor(int color) {
+        this.entityData.set(BASE_VARIANT, color);
+    }
+
+    public int getBaseColor() {
+        return this.entityData.get(BASE_VARIANT);
+    }
+
+    public void setPattern(int pattern) {
+        this.entityData.set(PATTERN_VARIANT, pattern);
+    }
+
+    public int getPattern() {
+        return this.entityData.get(PATTERN_VARIANT);
     }
 
     public void tame(Player pPlayer) {
@@ -517,7 +544,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
 //        }
     }
 
-    protected void positionRider(Entity pPassenger, Entity.MoveFunction pCallback) {
+    protected void positionRider(Entity pPassenger, MoveFunction pCallback) {
         double d0 = this.getY() + this.getPassengersRidingOffset() + pPassenger.getMyRidingOffset();
         float ySin = Mth.sin(this.yBodyRot * 0.017453292F);
         float yCos = Mth.cos(this.yBodyRot * 0.017453292F);
@@ -788,7 +815,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         return cache;
     }
 
-    protected <E extends GeoAnimatable> PlayState Controller(software.bernie.geckolib.core.animation.AnimationState<E> event) {
+    protected <E extends GeoAnimatable> PlayState Controller(AnimationState<E> event) {
 
         if (!this.isFromBook()) {
             if (this.getAnimationState() == 21) {
@@ -1193,7 +1220,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         public OphthalmoOwnerHurtByTargetGoal(OphthalmoEntity pTameAnimal) {
             super(pTameAnimal, false);
             this.tameAnimal = pTameAnimal;
-            this.setFlags(EnumSet.of(Goal.Flag.TARGET));
+            this.setFlags(EnumSet.of(Flag.TARGET));
         }
 
         public boolean canUse() {
@@ -1231,7 +1258,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         OphthalmoSwimWithPlayerGoal(OphthalmoEntity pDolphin, double pSpeedModifier) {
             this.dolphin = pDolphin;
             this.speedModifier = pSpeedModifier;
-            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
+            this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
         }
 
         public boolean canUse() {
@@ -1284,4 +1311,30 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         return !this.hasCustomName() && !this.isTamed() && !this.isFromEgg();
     }
 
+    @Override
+    @Nullable
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor worldIn, DifficultyInstance difficultyIn, MobSpawnType reason, @Nullable SpawnGroupData spawnDataIn, @Nullable CompoundTag dataTag) {
+
+        this.setBaseColor(this.random.nextInt(0, 3));
+        this.setPattern(this.random.nextInt(0, 4));
+
+        spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+        return super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+    }
+
+    public String getColorName(int color){
+        return switch (color){
+            case 1 -> "_black";
+            case 2-> "_green";
+            default -> "_blue";
+        };
+    }
+
+    public String getPatternName(int color){
+        return switch (color){
+            case 2-> "_spots";
+            case 3-> "_streak";
+            default -> "_stripes";
+        };
+    }
 }

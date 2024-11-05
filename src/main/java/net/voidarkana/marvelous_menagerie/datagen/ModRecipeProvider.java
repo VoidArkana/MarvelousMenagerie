@@ -38,7 +38,7 @@ public class ModRecipeProvider extends UPRecipeProvider implements IConditionBui
         makePressurePlate(ModBlocks.SIGILLARIA_PRESSURE_PLATE, ModBlocks.SIGILLARIA_PLANKS).save(consumer);
 
         //Sigillaria mosaic
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SIGILLARIA_MOSAIC.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SIGILLARIA_MOSAIC.get(), 1)
                 .pattern("S")
                 .pattern("S")
                 .define('S', ModBlocks.SIGILLARIA_SLAB.get())
@@ -61,7 +61,7 @@ public class ModRecipeProvider extends UPRecipeProvider implements IConditionBui
                 .pattern("SSS")
                 .pattern("SSS")
                 .define('#', Items.CHAIN)
-                .define('S', ModTags.Items.SIGILLARIA_LOG_ITEM)
+                .define('S', ModBlocks.STRIPPED_SIGILLARIA_STEM.get())
                 .unlockedBy(getHasName(ModBlocks.SIGILLARIA_STEM.get()), has(ModBlocks.SIGILLARIA_STEM.get()))
                 .save(consumer);
 
@@ -91,12 +91,6 @@ public class ModRecipeProvider extends UPRecipeProvider implements IConditionBui
                 .define('B', Items.BOWL)
                 .unlockedBy(getHasName(ModItems.STELLER_MILK.get()), has(ModItems.STELLER_MILK.get()))
                 .save(consumer);
-
-        //Lime Pigment From Cooksonia
-//        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.LIME_DYE, 1)
-//                .requires(ModBlocks.COOKSONIA.get())
-//                .unlockedBy(getHasName(ModBlocks.COOKSONIA.get()), has(ModBlocks.COOKSONIA.get()))
-//                .save(consumer);
 
         //Golden Sacabambaspis
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, ModItems.GOLDEN_SACA.get(), 1)
@@ -131,12 +125,53 @@ public class ModRecipeProvider extends UPRecipeProvider implements IConditionBui
                 .unlockedBy(getHasName(ModBlocks.PROTOTAXITES.get()), has(ModBlocks.PROTOTAXITES.get()))
                 .save(consumer);
 
-        //Mushroom Stew From Prototaxites
-//        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.MUSHROOM_STEW, 1)
-//                .requires(ModBlocks.PROTOTAXITES.get(), 2)
-//                .requires(Items.BOWL)
-//                .unlockedBy(getHasName(ModBlocks.PROTOTAXITES.get()), has(ModBlocks.PROTOTAXITES.get()))
-//                .save(consumer);
+
+        //prototaxites woodset
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PROTOTAXITES_PLANKS.get(), 4)
+                .pattern("SS")
+                .pattern("SS")
+                .define('S', ModBlocks.PROTOTAXITES_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.PROTOTAXITES_BLOCK.get()), has(ModBlocks.PROTOTAXITES_BLOCK.get()))
+                .save(consumer);
+
+        makeStairs(ModBlocks.PROTOTAXITES_STAIRS, ModBlocks.PROTOTAXITES_PLANKS).save(consumer);
+        makeStairs(ModBlocks.PROTOTAXITES_MOSAIC_STAIRS, ModBlocks.PROTOTAXITES_MOSAIC).save(consumer);
+        makeSlab(ModBlocks.PROTOTAXITES_SLAB, ModBlocks.PROTOTAXITES_PLANKS).save(consumer);
+        makeSlab(ModBlocks.PROTOTAXITES_MOSAIC_SLAB, ModBlocks.PROTOTAXITES_MOSAIC).save(consumer);
+        makeFence(ModBlocks.PROTOTAXITES_FENCE, ModBlocks.PROTOTAXITES_PLANKS).save(consumer);
+        makeFenceGate(ModBlocks.PROTOTAXITES_FENCE_GATE, ModBlocks.PROTOTAXITES_PLANKS).save(consumer);
+        makeDoor(ModBlocks.PROTOTAXITES_DOOR, ModBlocks.PROTOTAXITES_PLANKS).save(consumer);
+        makeTrapdoor(ModBlocks.PROTOTAXITES_TRAPDOOR, ModBlocks.PROTOTAXITES_PLANKS).save(consumer);
+        makeButton(ModBlocks.PROTOTAXITES_BUTTON, ModBlocks.PROTOTAXITES_PLANKS).save(consumer);
+        makePressurePlate(ModBlocks.PROTOTAXITES_PRESSURE_PLATE, ModBlocks.PROTOTAXITES_PLANKS).save(consumer);
+
+        //Prototaxites mosaic
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PROTOTAXITES_MOSAIC.get(), 1)
+                .pattern("S")
+                .pattern("S")
+                .define('S', ModBlocks.PROTOTAXITES_SLAB.get())
+                .unlockedBy(getHasName(ModBlocks.PROTOTAXITES_BLOCK.get()), has(ModBlocks.PROTOTAXITES_BLOCK.get()))
+                .save(consumer);
+
+        //Prototaxites sign
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.PROTOTAXITES_SIGN.get(), 3)
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern(" # ")
+                .define('S', ModBlocks.PROTOTAXITES_PLANKS.get())
+                .define('#', Tags.Items.RODS_WOODEN)
+                .unlockedBy(getHasName(ModBlocks.PROTOTAXITES_BLOCK.get()), has(ModBlocks.PROTOTAXITES_BLOCK.get()))
+                .save(consumer);
+
+        //Prototaxites hanging sign
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.PROTOTAXITES_HANGING_SIGN.get(), 6)
+                .pattern("# #")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('#', Items.CHAIN)
+                .define('S', ModBlocks.PROTOTAXITES_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.PROTOTAXITES_BLOCK.get()), has(ModBlocks.PROTOTAXITES_BLOCK.get()))
+                .save(consumer);
 
         //Anomalous Goggles
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.ANOMALOUS_GOGGLES.get(), 1)
@@ -156,5 +191,48 @@ public class ModRecipeProvider extends UPRecipeProvider implements IConditionBui
                 .define('S', ModItems.CARIS_SCUTE.get())
                 .unlockedBy(getHasName(ModItems.CARIS_SCUTE.get()), has(ModItems.CARIS_SCUTE.get()))
                 .save(consumer);
+
+        //Sigillaria woodset
+        makePlanks(ModBlocks.ZULOAGAE_PLANKS, ModTags.Items.ZULOAGAE_LOG_ITEM).save(consumer);
+        makeStairs(ModBlocks.ZULOAGAE_STAIRS, ModBlocks.ZULOAGAE_PLANKS).save(consumer);
+        makeStairs(ModBlocks.ZULOAGAE_MOSAIC_STAIRS, ModBlocks.ZULOAGAE_MOSAIC).save(consumer);
+        makeSlab(ModBlocks.ZULOAGAE_SLAB, ModBlocks.ZULOAGAE_PLANKS).save(consumer);
+        makeSlab(ModBlocks.ZULOAGAE_MOSAIC_SLAB, ModBlocks.ZULOAGAE_MOSAIC).save(consumer);
+        makeFence(ModBlocks.ZULOAGAE_FENCE, ModBlocks.ZULOAGAE_PLANKS).save(consumer);
+        makeFenceGate(ModBlocks.ZULOAGAE_FENCE_GATE, ModBlocks.ZULOAGAE_PLANKS).save(consumer);
+        makeDoor(ModBlocks.ZULOAGAE_DOOR, ModBlocks.ZULOAGAE_PLANKS).save(consumer);
+        makeTrapdoor(ModBlocks.ZULOAGAE_TRAPDOOR, ModBlocks.ZULOAGAE_PLANKS).save(consumer);
+        makeButton(ModBlocks.ZULOAGAE_BUTTON, ModBlocks.ZULOAGAE_PLANKS).save(consumer);
+        makePressurePlate(ModBlocks.ZULOAGAE_PRESSURE_PLATE, ModBlocks.ZULOAGAE_PLANKS).save(consumer);
+
+        //Zuloagae mosaic
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ZULOAGAE_MOSAIC.get(), 1)
+                .pattern("S")
+                .pattern("S")
+                .define('S', ModBlocks.ZULOAGAE_SLAB.get())
+                .unlockedBy(getHasName(ModBlocks.ZULOAGAE_BLOCK.get()), has(ModBlocks.ZULOAGAE_BLOCK.get()))
+                .save(consumer);
+
+        //Zuloagae sign
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.ZULOAGAE_SIGN.get(), 3)
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern(" # ")
+                .define('S', ModBlocks.ZULOAGAE_PLANKS.get())
+                .define('#', Tags.Items.RODS_WOODEN)
+                .unlockedBy(getHasName(ModBlocks.ZULOAGAE_BLOCK.get()), has(ModBlocks.ZULOAGAE_BLOCK.get()))
+                .save(consumer);
+
+        //Zuloagae hanging sign
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModItems.ZULOAGAE_HANGING_SIGN.get(), 6)
+                .pattern("# #")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('#', Items.CHAIN)
+                .define('S', ModBlocks.STRIPPED_ZULOAGAE_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.ZULOAGAE_BLOCK.get()), has(ModBlocks.ZULOAGAE_BLOCK.get()))
+                .save(consumer);
+
+
     }
 }

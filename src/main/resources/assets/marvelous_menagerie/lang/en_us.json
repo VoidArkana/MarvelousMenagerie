@@ -245,5 +245,53 @@
   "marvelous_menagerie.advancement.interact_pikaia" : "I choose you!",
   "marvelous_menagerie.advancement.interact_pikaia.desc" : "Revive a Pikaia",
 
-  "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
+  "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie",
+
+
+
+  "key.category.marvelous_menagerie" : "Marvelous Menagerie",
+
+  "block.marvelous_menagerie.prototaxites_planks": "Prototaxites Planks",
+  "block.marvelous_menagerie.prototaxites_stairs": "Prototaxites Stairs",
+  "block.marvelous_menagerie.prototaxites_slab": "Prototaxites Slab",
+  "block.marvelous_menagerie.prototaxites_button": "Prototaxites Button",
+  "block.marvelous_menagerie.prototaxites_pressure_plate": "Prototaxites Pressure Plate",
+  "block.marvelous_menagerie.prototaxites_fence": "Prototaxites Fence",
+  "block.marvelous_menagerie.prototaxites_fence_gate": "Prototaxites Fence Gate",
+
+
+  "block.marvelous_menagerie.prototaxites_door": "Prototaxites Door",
+  "block.marvelous_menagerie.prototaxites_trapdoor": "Prototaxites Trapdoor",
+
+  "block.marvelous_menagerie.prototaxites_mosaic": "Prototaxites Mosaic",
+  "block.marvelous_menagerie.prototaxites_mosaic_stairs": "Prototaxites Mosaic Stairs",
+  "block.marvelous_menagerie.prototaxites_mosaic_slab": "Prototaxites Mosaic Slab",
+
+  "block.marvelous_menagerie.prototaxites_sign": "Prototaxites Sign",
+  "block.marvelous_menagerie.prototaxites_wall_sign": "Prototaxites Sign",
+  "block.marvelous_menagerie.prototaxites_wall_hanging_sign": "Prototaxites Hanging Sign",
+  "block.marvelous_menagerie.prototaxites_hanging_sign": "Prototaxites Hanging Sign",
+
+  "block.marvelous_menagerie.zuloagae_planks": "Zuloagae Planks",
+  "block.marvelous_menagerie.zuloagae_stairs": "Zuloagae Stairs",
+  "block.marvelous_menagerie.zuloagae_slab": "Zuloagae Slab",
+  "block.marvelous_menagerie.zuloagae_button": "Zuloagae Button",
+  "block.marvelous_menagerie.zuloagae_pressure_plate": "Zuloagae Pressure Plate",
+  "block.marvelous_menagerie.zuloagae_fence": "Zuloagae Fence",
+  "block.marvelous_menagerie.zuloagae_fence_gate": "Zuloagae Fence Gate",
+
+  "block.marvelous_menagerie.zuloagae_door": "Zuloagae Door",
+  "block.marvelous_menagerie.zuloagae_trapdoor": "Zuloagae Trapdoor",
+
+  "block.marvelous_menagerie.zuloagae_mosaic": "Zuloagae Mosaic",
+  "block.marvelous_menagerie.zuloagae_mosaic_stairs": "Zuloagae Mosaic Stairs",
+  "block.marvelous_menagerie.zuloagae_mosaic_slab": "Zuloagae Mosaic Slab",
+
+  "block.marvelous_menagerie.zuloagae_block": "Zuloagae Block",
+  "block.marvelous_menagerie.stripped_zuloagae_block": "Stripped Zuloagae Block",
+
+  "block.marvelous_menagerie.zuloagae_sign": "Zuloagae Sign",
+  "block.marvelous_menagerie.zuloagae_wall_sign": "Zuloagae Sign",
+  "block.marvelous_menagerie.zuloagae_wall_hanging_sign": "Zuloagae Hanging Sign",
+  "block.marvelous_menagerie.zuloagae_hanging_sign": "Zuloagae Hanging Sign"
 }

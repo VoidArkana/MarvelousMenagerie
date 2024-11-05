@@ -12,6 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoArmorLayer;
 import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoPassengerLayer;
+import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoPatternLayer;
 import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoSaddleLayer;
 import net.voidarkana.marvelous_menagerie.client.models.OphthalmoModel;
 import net.voidarkana.marvelous_menagerie.client.renderers.util.ICustomPlayerRidePose;
@@ -22,12 +23,13 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class OphthalmoRenderer extends GeoEntityRenderer<OphthalmoEntity> implements ICustomPlayerRidePose {
 
-    private static final ResourceLocation NEUTRAL_LOCATION = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo.png");
-    private static final ResourceLocation ANGRY_LOCATION = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo_angry.png");
-    private static final ResourceLocation TAME_LOCATION = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo_tamed.png");
+//    private static final ResourceLocation NEUTRAL_LOCATION = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo.png");
+//    private static final ResourceLocation ANGRY_LOCATION = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo_angry.png");
+//    private static final ResourceLocation TAME_LOCATION = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo_tamed.png");
 
     public OphthalmoRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new OphthalmoModel());
+        this.addRenderLayer(new OphthalmoPatternLayer(this));
         this.addRenderLayer(new OphthalmoSaddleLayer(this));
         this.addRenderLayer(new OphthalmoArmorLayer(this));
         this.addRenderLayer(new OphthalmoPassengerLayer(this));
@@ -57,16 +59,16 @@ public class OphthalmoRenderer extends GeoEntityRenderer<OphthalmoEntity> implem
         pMatrixStack.mulPose(Axis.XN.rotationDegrees(295.0F));
     }
 
-    @Override
-    public ResourceLocation getTextureLocation(OphthalmoEntity ophthalmo) {
-
-        if (ophthalmo.isTamed()) {
-            return TAME_LOCATION;
-        } else {
-            return ophthalmo.isAngry() ? ANGRY_LOCATION : NEUTRAL_LOCATION;
-        }
-
-    }
+//    @Override
+//    public ResourceLocation getTextureLocation(OphthalmoEntity ophthalmo) {
+//
+//        if (ophthalmo.isTamed()) {
+//            return TAME_LOCATION;
+//        } else {
+//            return ophthalmo.isAngry() ? ANGRY_LOCATION : NEUTRAL_LOCATION;
+//        }
+//
+//    }
 
     @Override
     public void render(OphthalmoEntity entity, float entityYaw, float partialTicks, PoseStack poseStack,

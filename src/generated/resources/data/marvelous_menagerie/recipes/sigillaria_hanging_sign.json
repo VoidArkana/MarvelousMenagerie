@@ -6,7 +6,7 @@
       "item": "minecraft:chain"
     },
     "S": {
-      "tag": "marvelous_menagerie:sigillaria_log_item"
+      "item": "marvelous_menagerie:stripped_sigillaria_stem"
     }
   },
   "pattern": [

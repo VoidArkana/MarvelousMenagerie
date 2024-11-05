@@ -7,7 +7,6 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
-import net.voidarkana.marvelous_menagerie.client.layer.PikaiaLayer;
 import net.voidarkana.marvelous_menagerie.client.layer.TrilobiteLayer;
 import net.voidarkana.marvelous_menagerie.client.models.PikaiaModel;
 import net.voidarkana.marvelous_menagerie.client.models.SacaModel;

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "marvelous_menagerie:block/prototaxites_pressure_plate"
+    },
+    "powered=true": {
+      "model": "marvelous_menagerie:block/prototaxites_pressure_plate_down"
+    }
+  }
+}

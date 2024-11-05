@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "marvelous_menagerie:block/wiwaxia",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "marvelous_menagerie:block/wiwaxia"
+    },
+    "facing=south": {
+      "model": "marvelous_menagerie:block/wiwaxia",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "marvelous_menagerie:block/wiwaxia",
+      "y": 270
+    }
+  }
+}
