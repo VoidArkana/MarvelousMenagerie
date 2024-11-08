@@ -19,6 +19,7 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creativetab.marvelous_menagerie_tab"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.CARIS_FLASK.get());
+                        output.accept(ModItems.ARANDASPIS_FLASK.get());
                         output.accept(ModItems.DODO_DNA.get());
                         output.accept(ModItems.ELEPHANT_BIRD_DNA.get());
                         output.accept(ModItems.JOSEPHO_FLASK.get());
@@ -35,6 +36,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.WIWAXIA_FLASK.get());
 
                         output.accept(ModBlocks.CARIS_EGGS.get());
+                        output.accept(ModBlocks.ARANDASPIS_EGGS.get());
                         output.accept(ModBlocks.DODO_EGGS.get());
                         output.accept(ModBlocks.ELE_EGG.get());
                         output.accept(ModBlocks.PIKAIA_EGGS.get());
@@ -45,11 +47,28 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.THYLA_EMBRYO.get());
                         output.accept(ModItems.STELLER_EMBRYO.get());
 
+                        output.accept(ModItems.CARIS_BUCKET.get());
+                        output.accept(ModItems.CARIS_LENS.get());
+                        output.accept(ModItems.CARIS_SCUTE.get());
+                        output.accept(ModItems.ANOMALOUS_GOGGLES.get());
+                        output.accept(ModItems.OPHTHALMO_ARMOR.get());
+
+                        output.accept(ModItems.ARANDASPIS_BUCKET.get());
+
                         output.accept(ModItems.CRACKED_ELEPHANT_EGG.get());
                         output.accept(ModItems.BOILED_ELEPHANT_EGG.get());
                         output.accept(ModItems.JUMBO_OMELETTE.get());
                         output.accept(ModItems.EGG_SHELL_FRAGMENT.get());
                         output.accept(ModItems.EGG_SHELLMET.get());
+
+                        output.accept(ModItems.BABY_OPHTHALMO_BUCKET.get());
+
+                        output.accept(ModItems.PIKAIA_BUCKET.get());
+
+                        output.accept(ModItems.SACA_BUCKET.get());
+                        output.accept(ModItems.SACABAMBASPIS.get());
+                        output.accept(ModItems.COOKED_SACA.get());
+                        output.accept(ModItems.GOLDEN_SACA.get());
 
                         output.accept(ModItems.STELLER_BUCKET.get());
                         output.accept(ModItems.STELLER_MILK.get());
@@ -58,20 +77,6 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.TRILO_BUCKET.get());
                         output.accept(ModItems.TRILO_BITE.get());
 
-                        output.accept(ModItems.SACA_BUCKET.get());
-                        output.accept(ModItems.SACABAMBASPIS.get());
-                        output.accept(ModItems.COOKED_SACA.get());
-                        output.accept(ModItems.GOLDEN_SACA.get());
-
-                        output.accept(ModItems.CARIS_BUCKET.get());
-                        output.accept(ModItems.CARIS_LENS.get());
-                        output.accept(ModItems.CARIS_SCUTE.get());
-                        output.accept(ModItems.ANOMALOUS_GOGGLES.get());
-                        output.accept(ModItems.OPHTHALMO_ARMOR.get());
-
-                        output.accept(ModItems.PIKAIA_BUCKET.get());
-
-                        output.accept(ModItems.BABY_OPHTHALMO_BUCKET.get());
 
                         output.accept(ModBlocks.COOKSONIA.get());
 
@@ -151,8 +156,8 @@ public class ModCreativeModTabs {
 
 
 
-
                         output.accept(ModItems.CARIS_SPAWN_EGG.get());
+                        output.accept(ModItems.ARANDASPIS_SPAWN_EGG.get());
                         output.accept(ModItems.DODO_SPAWN_EGG.get());
                         output.accept(ModItems.ELE_SPAWN_EGG.get());
                         output.accept(ModItems.JOSEPHO_SPAWN_EGG.get());

@@ -167,6 +167,10 @@ public class ModItemModelProvider extends ItemModelProvider {
 
 
         simpleItem(ModItems.WIWAXIA_FLASK);
+
+        simpleItem(ModItems.ARANDASPIS_BUCKET);
+        simpleItem(ModItems.ARANDASPIS_FLASK);
+        withExistingParent(ModItems.ARANDASPIS_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
 
 

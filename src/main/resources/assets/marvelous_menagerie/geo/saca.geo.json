@@ -7,8 +7,8 @@
 				"texture_width": 48,
 				"texture_height": 48,
 				"visible_bounds_width": 3,
-				"visible_bounds_height": 1.5,
-				"visible_bounds_offset": [0, 0.25, 0]
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
 			},
 			"bones": [
 				{
@@ -18,30 +18,30 @@
 				{
 					"name": "swim_control",
 					"parent": "root",
-					"pivot": [0, 2.5, 3]
+					"pivot": [0, 3.5, -1]
 				},
 				{
 					"name": "body",
 					"parent": "swim_control",
-					"pivot": [0, 2.5, -3],
+					"pivot": [0, 3.5, -7],
 					"cubes": [
-						{"origin": [-3.5, 0, -5.5], "size": [7, 5, 11], "uv": [0, 0]}
+						{"origin": [-3.5, 1, -9.5], "size": [7, 5, 11], "uv": [0, 0]}
 					]
 				},
 				{
 					"name": "tail_base",
 					"parent": "body",
-					"pivot": [0, 2.5, 5.5],
+					"pivot": [0, 3.5, 1.5],
 					"cubes": [
-						{"origin": [-1.5, 1, 4.5], "size": [3, 3, 5], "uv": [14, 17]}
+						{"origin": [-1.5, 2, 0.5], "size": [3, 3, 6], "uv": [13, 17]}
 					]
 				},
 				{
 					"name": "tail",
 					"parent": "tail_base",
-					"pivot": [0, 2.5, 8.5],
+					"pivot": [0, 3.5, 5.5],
 					"cubes": [
-						{"origin": [0, 0, 7.5], "size": [0, 5, 7], "uv": [0, 17]}
+						{"origin": [0, 0, 4.5], "size": [0, 8, 8], "uv": [0, 20]}
 					]
 				}
 			]

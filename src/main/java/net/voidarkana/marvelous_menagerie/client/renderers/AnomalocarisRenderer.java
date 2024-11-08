@@ -9,7 +9,6 @@ import net.minecraft.util.Mth;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.client.models.AnomalocarisModel;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.AnomalocarisEntity;
-import net.voidarkana.marvelous_menagerie.common.entity.custom.SacabambaspisEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class AnomalocarisRenderer extends GeoEntityRenderer<AnomalocarisEntity> {

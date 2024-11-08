@@ -188,7 +188,7 @@
   "marvelous_menagerie.advancement.interact_steller_sea_cow.desc" : "Revive a Steller's Sea Cow",
   "marvelous_menagerie.advancement.interact_thylacine" : "Not a big bad wolf",
   "marvelous_menagerie.advancement.interact_thylacine.desc" : "Revive a Thylacine",
-  "marvelous_menagerie.advancement.interact_trilobite" : "So many shapes and colors",
+  "marvelous_menagerie.advancement.interact_trilobite" : "Let's go gambling!",
   "marvelous_menagerie.advancement.interact_trilobite.desc" : "Revive a Trilobite",
   "marvelous_menagerie.advancement.interact_anomalocaris" : "Bring Me To Life",
   "marvelous_menagerie.advancement.interact_anomalocaris.desc" : "Revive an Anomalocaris",
@@ -293,5 +293,30 @@
   "block.marvelous_menagerie.zuloagae_sign": "Zuloagae Sign",
   "block.marvelous_menagerie.zuloagae_wall_sign": "Zuloagae Sign",
   "block.marvelous_menagerie.zuloagae_wall_hanging_sign": "Zuloagae Hanging Sign",
-  "block.marvelous_menagerie.zuloagae_hanging_sign": "Zuloagae Hanging Sign"
+  "block.marvelous_menagerie.zuloagae_hanging_sign": "Zuloagae Hanging Sign",
+
+
+  "block.marvelous_menagerie.wiwaxia": "Wiwaxia",
+  "item.marvelous_menagerie.wiwaxia_flask": "Wiwaxia DNA Flask",
+
+  "translatable.marvelous_menagerie.ophthalmo.base_blue" : "Blue base",
+  "translatable.marvelous_menagerie.ophthalmo.base_black" : "Black base",
+  "translatable.marvelous_menagerie.ophthalmo.base_green" : "Green base",
+
+  "translatable.marvelous_menagerie.ophthalmo.pattern_stripes" : "Stripped pattern",
+  "translatable.marvelous_menagerie.ophthalmo.pattern_streak" : "Streak pattern",
+  "translatable.marvelous_menagerie.ophthalmo.pattern_spots" : "Spotted pattern",
+
+
+
+  "entity.marvelous_menagerie.arandaspis": "Arandaspis",
+  "item.marvelous_menagerie.arandaspis_bucket": "Bucket of Arandaspis",
+  "block.marvelous_menagerie.arandaspis_eggs": "Arandaspis Egg",
+  "item.marvelous_menagerie.arandaspis_flask": "Arandaspis DNA Flask",
+  "item.marvelous_menagerie.arandaspis_spawn_egg": "Arandaspis Spawn Egg",
+
+  "marvelous_menagerie.advancement.wiwaxia": "Ouch, Spiky!",
+  "marvelous_menagerie.advancement.wiwaxia.desc" : "Revive a Wiwaxia",
+  "marvelous_menagerie.advancement.interact_arandaspis": "Pogfish",
+  "marvelous_menagerie.advancement.interact_arandaspis.desc" : "Revive an Arandaspis"
 }

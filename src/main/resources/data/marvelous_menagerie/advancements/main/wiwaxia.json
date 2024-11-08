@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:main/plants",
+  "criteria": {
+    "wiwaxia": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:wiwaxia"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.wiwaxia.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:wiwaxia"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.wiwaxia"
+    }
+  },
+  "requirements": [
+    [
+      "wiwaxia"
+    ]
+  ]
+}

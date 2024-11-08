@@ -30,7 +30,7 @@ import net.voidarkana.marvelous_menagerie.common.CommonProxy;
 import net.voidarkana.marvelous_menagerie.common.worldgen.ModConfiguredFeatures;
 import net.voidarkana.marvelous_menagerie.common.worldgen.tree.ModFoliagePlacers;
 import net.voidarkana.marvelous_menagerie.common.worldgen.tree.ModTrunkPlacerTypes;
-import net.voidarkana.marvelous_menagerie.util.MarvelousEntityPlacement;
+import net.voidarkana.marvelous_menagerie.common.entity.MarvelousEntityPlacement;
 import net.voidarkana.marvelous_menagerie.util.config.CommonConfig;
 import org.slf4j.Logger;
 

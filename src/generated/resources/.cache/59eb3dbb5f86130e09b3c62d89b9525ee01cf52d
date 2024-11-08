@@ -1,5 +1,6 @@
-// 1.20.1	2024-11-05T08:50:14.0533162	Loot Tables
+// 1.20.1	2024-11-07T19:32:50.3254774	Loot Tables
 717325883dd194d20b7e7f3a39abf16d30c0745d data/marvelous_menagerie/loot_tables/blocks/anomalocaris_eggs.json
+f925cc0704ad6e5fee79006f1a81f22324a32574 data/marvelous_menagerie/loot_tables/blocks/arandaspis_eggs.json
 d4f5d7c02195f240292e16dd84da0b2e42295ea6 data/marvelous_menagerie/loot_tables/blocks/cooksonia.json
 6d808e40eacad9036b658e8fdb96c647052518e1 data/marvelous_menagerie/loot_tables/blocks/dickinsonia.json
 4a7bf86d32483d7def09026df4f225c6452ac321 data/marvelous_menagerie/loot_tables/blocks/dodo_eggs.json

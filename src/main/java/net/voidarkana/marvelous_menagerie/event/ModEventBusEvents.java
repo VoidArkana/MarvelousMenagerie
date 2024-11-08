@@ -40,6 +40,8 @@ public class ModEventBusEvents {
         event.put(ModEntities.PIKAIA.get(), PikaiaEntity.createAttributes().build());
 
         event.put(ModEntities.WIWAXIA_ENTITY.get(), PlantEntity.createAttributes().build());
+
+        event.put(ModEntities.ARANDASPIS.get(), ArandaspisEntity.createAttributes().build());
     }
 
     @SubscribeEvent

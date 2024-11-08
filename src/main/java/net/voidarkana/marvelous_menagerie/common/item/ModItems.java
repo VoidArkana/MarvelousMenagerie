@@ -93,7 +93,7 @@ public class ModItems {
     public static final RegistryObject<Item> TRILOBITE_SPAWN_EGG = ITEMS.register("trilobite_spawn_egg",
             ()-> new ForgeSpawnEggItem(ModEntities.TRILOBITE, 0x4F281E, 0x745750, new Item.Properties()));
     public static final RegistryObject<Item> TRILO_BUCKET = ITEMS.register("trilo_bucket",
-            () -> new TriloBucketItem(ModEntities.TRILOBITE, () -> Fluids.WATER, Items.BUCKET, false,
+            () -> new PatternedAnimalBucketItem(ModEntities.TRILOBITE, () -> Fluids.WATER, Items.BUCKET, false,
                     (new Item.Properties()).stacksTo(1)));
     public static final RegistryObject<Item> TRILO_BITE = ITEMS.register("trilo_bite",
             ()-> new Item(new Item.Properties().food(ModFoods.TRILO_BITE)));
@@ -186,6 +186,17 @@ public class ModItems {
     //wiwaxia
     public static final RegistryObject<Item> WIWAXIA_FLASK = ITEMS.register("wiwaxia_flask",
             ()-> new Item(new Item.Properties()));
+
+    //arandaspis
+    public static final RegistryObject<Item> ARANDASPIS_FLASK = ITEMS.register("arandaspis_flask",
+            ()-> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ARANDASPIS_SPAWN_EGG = ITEMS.register("arandaspis_spawn_egg",
+            ()-> new ForgeSpawnEggItem(ModEntities.ARANDASPIS, 0x637377, 0x88a5b9, new Item.Properties()));
+
+    public static final RegistryObject<Item> ARANDASPIS_BUCKET = ITEMS.register("arandaspis_bucket",
+            () -> new ItemModFishBucket(ModEntities.ARANDASPIS, () -> Fluids.WATER, Items.BUCKET, false,
+                    (new Item.Properties()).stacksTo(1)));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

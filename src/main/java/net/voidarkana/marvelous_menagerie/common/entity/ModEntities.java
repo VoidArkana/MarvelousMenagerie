@@ -75,7 +75,7 @@ public class ModEntities {
     public static final RegistryObject<EntityType<SacabambaspisEntity>> SACABAMBASPIS =
             ENTITY_TYPES.register("sacabambaspis",
                     () -> EntityType.Builder.of(SacabambaspisEntity::new, MobCategory.WATER_AMBIENT)
-                            .sized(0.8f, 0.5f)
+                            .sized(1.1f, 0.5f)
                             .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "sacabambaspis").toString()));
 
     public static final RegistryObject<EntityType<PlantEntity>> PROTOTAXITES_ENTITY =
@@ -142,6 +142,13 @@ public class ModEntities {
                             .fireImmune()
                             .sized(0.5f,0.5F)
                             .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "wiwaxia").toString()));
+
+
+    public static final RegistryObject<EntityType<ArandaspisEntity>> ARANDASPIS =
+            ENTITY_TYPES.register("arandaspis",
+                    () -> EntityType.Builder.of(ArandaspisEntity::new, MobCategory.WATER_AMBIENT)
+                            .sized(0.8f, 0.35f)
+                            .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "arandaspis").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

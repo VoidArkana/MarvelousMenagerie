@@ -137,6 +137,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
 
         this.dropSelf(ModBlocks.WIWAXIA.get());
+
+        this.dropSelf(ModBlocks.ARANDASPIS_EGGS.get());
     }
 
     @Override

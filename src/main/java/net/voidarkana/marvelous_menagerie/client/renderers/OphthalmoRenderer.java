@@ -5,11 +5,9 @@ import com.mojang.math.Axis;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoArmorLayer;
 import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoPassengerLayer;
 import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoPatternLayer;
@@ -17,15 +15,10 @@ import net.voidarkana.marvelous_menagerie.client.layer.OphthalmoSaddleLayer;
 import net.voidarkana.marvelous_menagerie.client.models.OphthalmoModel;
 import net.voidarkana.marvelous_menagerie.client.renderers.util.ICustomPlayerRidePose;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.OphthalmoEntity;
-import net.voidarkana.marvelous_menagerie.common.entity.custom.SacabambaspisEntity;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class OphthalmoRenderer extends GeoEntityRenderer<OphthalmoEntity> implements ICustomPlayerRidePose {
-
-//    private static final ResourceLocation NEUTRAL_LOCATION = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo.png");
-//    private static final ResourceLocation ANGRY_LOCATION = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo_angry.png");
-//    private static final ResourceLocation TAME_LOCATION = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo_tamed.png");
 
     public OphthalmoRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new OphthalmoModel());

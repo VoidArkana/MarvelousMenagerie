@@ -37,5 +37,7 @@ public class ModBiomeTagGenerator extends BiomeTagsProvider {
         tag(ModTags.Biomes.JOSEPHO_BIOMES).addTags(BiomeTags.IS_JUNGLE).addTags(Tags.Biomes.IS_SWAMP);
 
         tag(ModTags.Biomes.PIKAIA_BIOMES).add(Biomes.WARM_OCEAN);
+
+        tag(ModTags.Biomes.ARANDASPIS_BIOMES).add(Biomes.WARM_OCEAN);
     }
 }

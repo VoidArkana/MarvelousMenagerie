@@ -31,7 +31,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 ModBlocks.SACA_EGGS.get().asItem(),
                 ModBlocks.TRILO_EGGS.get().asItem(),
                 ModBlocks.CARIS_EGGS.get().asItem(),
-                ModBlocks.PIKAIA_EGGS.get().asItem());
+                ModBlocks.PIKAIA_EGGS.get().asItem(),
+                ModBlocks.ARANDASPIS_EGGS.get().asItem());
 
         this.tag(Tags.Items.ARMORS_HELMETS).add(
                 ModItems.EGG_SHELLMET.get(),
@@ -186,7 +187,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 ModItems.TRILO_FLASK.get(),
                 ModItems.SACA_FLASK.get(),
                 ModItems.CARIS_FLASK.get(),
-                ModItems.PIKAIA_FLASK.get()
+                ModItems.PIKAIA_FLASK.get(),
+                ModItems.ARANDASPIS_FLASK.get()
         );
 
         this.tag(UPTags.ANALYZER_ITEMS_INPUT).add(
@@ -207,7 +209,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
         this.tag(ItemTags.AXOLOTL_TEMPT_ITEMS).add(
                 ModItems.SACA_BUCKET.get(),
-                ModItems.PIKAIA_BUCKET.get()
+                ModItems.PIKAIA_BUCKET.get(),
+                ModItems.ARANDASPIS_BUCKET.get()
         );
 
 
@@ -226,7 +229,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 ModItems.OPHTHALMO_FLASK.get(),
                 ModItems.JOSEPHO_FLASK.get(),
                 ModItems.PIKAIA_FLASK.get(),
-                ModItems.WIWAXIA_FLASK.get()
+                ModItems.WIWAXIA_FLASK.get(),
+                ModItems.ARANDASPIS_FLASK.get()
         );
     }
 }

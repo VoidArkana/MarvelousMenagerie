@@ -431,7 +431,7 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
         return super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
     }
 
-    public String getColorName(int color){
+    public static String getColorName(int color){
         return switch (color){
             case 1 -> "_black";
             case 2-> "_green";
@@ -439,7 +439,7 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
         };
     }
 
-    public String getPatternName(int color){
+    public static String getPatternName(int color){
         return switch (color){
             case 2-> "_spots";
             case 3-> "_streak";

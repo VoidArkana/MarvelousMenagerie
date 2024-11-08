@@ -8,7 +8,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.client.models.StellerModel;
-import net.voidarkana.marvelous_menagerie.common.entity.custom.SacabambaspisEntity;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.StellerEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 

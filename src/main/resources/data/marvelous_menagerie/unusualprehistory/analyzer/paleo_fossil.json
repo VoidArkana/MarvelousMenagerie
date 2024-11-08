@@ -16,6 +16,10 @@
     {
       "weight": 15,
       "item": "marvelous_menagerie:anomalocaris_flask"
+    },
+    {
+      "weight": 15,
+      "item": "marvelous_menagerie:arandaspis_flask"
     }
   ]
 }

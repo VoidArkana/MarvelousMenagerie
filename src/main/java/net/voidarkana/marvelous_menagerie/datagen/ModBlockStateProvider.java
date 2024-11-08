@@ -126,6 +126,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.ZULOAGAE_BLOCK);
         blockItem(ModBlocks.STRIPPED_ZULOAGAE_BLOCK);
 
+        this.createFlatWaterEgg(ModBlocks.ARANDASPIS_EGGS.get());
     }
 
     public void hangingSignBlock(Block signBlock, Block wallSignBlock, ResourceLocation texture) {

@@ -356,6 +356,13 @@ public class ModBlocks {
             ()-> new WiwaxiaBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.COLOR_PURPLE).noOcclusion().instabreak().lightLevel((p_152684_) -> {return 6;})));
 
 
+    //Arandaspis
+    public static final Supplier<Block> ARANDASPIS_EGGS = registerBlockWithItem("arandaspis_eggs",
+            () -> new BlockDinosaurWaterEggs(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak().noOcclusion()
+                    .noCollission().randomTicks(), ModEntities.ARANDASPIS, false),
+            (entry) -> new PlaceOnWaterBlockItem(entry.get(), new Item.Properties()));
+
+
     private static <T extends Block> Supplier<T> registerBlockWithItem(String key, Supplier<T> block, Function<Supplier<T>, Item> item) {
         Supplier<T> entry = create(key, block);
         ModItems.ITEMS.register(key, () -> item.apply(entry));

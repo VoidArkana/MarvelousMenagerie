@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#marvelous_menagerie:is_arandaspis_biome",
+  "spawners": {
+    "type": "marvelous_menagerie:arandaspis",
+    "weight": 15,
+    "minCount": 3,
+    "maxCount": 7,
+    "category": "water_creature"
+  }
+}

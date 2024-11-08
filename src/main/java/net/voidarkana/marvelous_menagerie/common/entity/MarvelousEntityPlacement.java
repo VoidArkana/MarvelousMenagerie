@@ -1,8 +1,7 @@
-package net.voidarkana.marvelous_menagerie.util;
+package net.voidarkana.marvelous_menagerie.common.entity;
 
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.*;
 
 public class MarvelousEntityPlacement {
@@ -19,5 +18,7 @@ public class MarvelousEntityPlacement {
         SpawnPlacements.register(ModEntities.SACABAMBASPIS.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SacabambaspisEntity::checkSurfaceWaterDinoSpawnRules);
 
         SpawnPlacements.register(ModEntities.PIKAIA.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, PikaiaEntity::checkSurfaceWaterDinoSpawnRules);
+
+        SpawnPlacements.register(ModEntities.ARANDASPIS.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ArandaspisEntity::checkSurfaceWaterDinoSpawnRules);
     }
 }

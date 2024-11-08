@@ -67,6 +67,9 @@ public class ClientProxy extends CommonProxy {
 
         EntityRenderers.register(ModEntities.WIWAXIA_ENTITY.get(), WiwaxiaRenderer::new);
 
+        EntityRenderers.register(ModEntities.ARANDASPIS.get(), ArandaspisRenderer::new);
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ARANDASPIS_EGGS.get(), RenderType.translucent());
+
     }
 
     public void blockRenderingEntity(UUID id) {

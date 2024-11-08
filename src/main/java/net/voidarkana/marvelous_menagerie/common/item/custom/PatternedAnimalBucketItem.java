@@ -13,13 +13,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.TrilobiteEntity;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.baby.BabyOphthalmoEntity;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class TriloBucketItem extends ItemModFishBucket {
-    public TriloBucketItem(Supplier<? extends EntityType<?>> entityType, Supplier<? extends Fluid> fluid, Item item, boolean hasTooltip, Properties builder) {
+public class PatternedAnimalBucketItem extends ItemModFishBucket {
+    public PatternedAnimalBucketItem(Supplier<? extends EntityType<?>> entityType, Supplier<? extends Fluid> fluid, Item item, boolean hasTooltip, Properties builder) {
         super(entityType, fluid, item, hasTooltip, builder);
     }
 
@@ -50,6 +51,28 @@ public class TriloBucketItem extends ItemModFishBucket {
                 pTooltipComponents.add(mutablecomponent2);
             }
         }
+
+        if (getFishType() == ModEntities.BABY_OPHTHALMO.get()) {
+            CompoundTag compoundtag = pStack.getTag();
+            if (compoundtag != null && compoundtag.contains("BaseColor", 3)) {
+                int i = compoundtag.getInt("BaseColor");
+                int j = compoundtag.getInt("Pattern");
+
+                ChatFormatting[] achatformatting = new ChatFormatting[]{ChatFormatting.ITALIC, ChatFormatting.GRAY};
+
+                String model = "translatable.marvelous_menagerie.ophthalmo.base" + BabyOphthalmoEntity.getColorName(i);
+
+                pTooltipComponents.add(Component.translatable(model).withStyle(achatformatting));
+
+                if (j!=0){
+                    String base = "translatable.marvelous_menagerie.ophthalmo.pattern" + BabyOphthalmoEntity.getPatternName(j);
+                    MutableComponent mutablecomponent = Component.translatable(base);
+                    mutablecomponent.withStyle(achatformatting);
+                    pTooltipComponents.add(mutablecomponent);
+                }
+            }
+        }
+
 
     }
 }

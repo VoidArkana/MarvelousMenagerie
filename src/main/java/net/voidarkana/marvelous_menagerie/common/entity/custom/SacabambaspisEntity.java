@@ -206,16 +206,13 @@ public class SacabambaspisEntity extends WaterAnimal implements IBookEntity, IHa
         controllerRegistrar.add(new AnimationController[]{new AnimationController(this, "Normal", 10, this::Controller)});
     }
 
-    protected <E extends GeoAnimatable> PlayState Controller(AnimationState<E> event) {
+    protected <E extends GeoAnimatable> PlayState Controller(AnimationState<SacabambaspisEntity> event) {
+
         if (this.isFromBook()){
             return PlayState.STOP;
-        }else if(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && this.isInWater()) {
-            event.setAndContinue(SACA_SWIM);
-            event.getController().setAnimationSpeed(1.25f);
-        } else if (this.isInWater()){
-            event.setAndContinue(SACA_IDLE);
-        }
-        else{
+        }else if(this.isInWater()) {
+            event.setAndContinue(event.isMoving() ? SACA_SWIM : SACA_IDLE);
+        } else{
             event.setAndContinue(SACA_FLOP);
         }
         return PlayState.CONTINUE;

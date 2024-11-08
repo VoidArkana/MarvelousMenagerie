@@ -1,7 +1,9 @@
 package net.voidarkana.marvelous_menagerie.common.entity.custom;
 
 import com.peeko32213.unusualprehistory.common.entity.msc.util.CustomFollower;
+import com.peeko32213.unusualprehistory.common.entity.msc.util.CustomRandomStrollGoal;
 import com.peeko32213.unusualprehistory.common.entity.msc.util.CustomRideGoal;
+import com.peeko32213.unusualprehistory.common.entity.msc.util.TameableFollowOwner;
 import com.peeko32213.unusualprehistory.common.entity.msc.util.dino.EntityTameableBaseDinosaurAnimal;
 import com.peeko32213.unusualprehistory.core.registry.UPItems;
 import net.minecraft.client.Minecraft;
@@ -94,8 +96,10 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
         this.goalSelector.addGoal(1, new MountAdultGoal(this, 1.2D));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.4D));
         this.goalSelector.addGoal(1, new CustomRideGoal(this, 1));
-        this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, false));
+        this.goalSelector.addGoal(3, new TameableFollowOwner(this, 1.2, 5.0F, 2.0F, false));
+        //this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, false));
         this.goalSelector.addGoal(3, new FollowParentGoal(this, 1.1D));
+        //this.goalSelector.addGoal(3, new CustomRandomStrollGoal(this, 30, 1.0, 100, 34));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1f));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F){
             @Override
@@ -274,7 +278,7 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
 
     @Override
     public boolean canBeLeashed(Player player) {
-        return !this.isInSittingPose() && this.getSittingTime()>0 && this.getStandingTime()>0 && !this.isVehicle();
+        return !this.isInSittingPose() && !(this.getSittingTime()>0 || this.getStandingTime()>0) && !this.isVehicle();
     }
 
     public boolean isFood(ItemStack stack) {
@@ -447,17 +451,13 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
     }
 
     private <E extends JosephoEntity> PlayState Controller(AnimationState<E> event) {
-        if (this.isFromBook() || this.isInSittingPose()){
+        if (this.isFromBook() || this.isInSittingPose() || this.getSittingTime() > 0 || this.getStandingTime() > 0){
             return PlayState.STOP;
         } else {
-
             if (this.isPassenger()) {
                 event.setAndContinue(JOSEPHO_IDLE);
-
             } else if (this.isInWater() && !this.onGround()) {
-
                 event.setAndContinue(JOSEPHO_SWIM);
-
             } else if (!this.isInSittingPose() && this.getSittingTime() <= 0 && this.getStandingTime() <= 0) {
 
                 if (this.isVehicle() && this.movement != null){
