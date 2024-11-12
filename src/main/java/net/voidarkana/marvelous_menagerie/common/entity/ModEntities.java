@@ -147,8 +147,15 @@ public class ModEntities {
     public static final RegistryObject<EntityType<ArandaspisEntity>> ARANDASPIS =
             ENTITY_TYPES.register("arandaspis",
                     () -> EntityType.Builder.of(ArandaspisEntity::new, MobCategory.WATER_AMBIENT)
-                            .sized(0.8f, 0.35f)
+                            .sized(0.5f, 0.35f)
                             .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "arandaspis").toString()));
+
+
+    public static final RegistryObject<EntityType<HallucigeniaEntity>> HALLUCIGENIA =
+            ENTITY_TYPES.register("hallucigenia",
+                    () -> EntityType.Builder.of(HallucigeniaEntity::new, MobCategory.WATER_AMBIENT)
+                            .sized(1f, 0.7f)
+                            .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "hallucigenia").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

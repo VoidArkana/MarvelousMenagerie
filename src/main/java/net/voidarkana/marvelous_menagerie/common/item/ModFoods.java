@@ -13,6 +13,7 @@ public class ModFoods {
             .nutrition(10)
             .saturationMod(1.5F)
             .effect(new MobEffectInstance(MobEffects.REGENERATION, 200, 1), 1.0F).alwaysEat().build();
+
     public static final FoodProperties STELLER_ICE_CREAM = (new FoodProperties.Builder())
             .nutrition(3)
             .saturationMod(0.2F)
@@ -36,4 +37,12 @@ public class ModFoods {
     public static final FoodProperties GOLDEN_SACA = (new FoodProperties.Builder())
             .nutrition(10)
             .saturationMod(10F).build();
+
+    public static final FoodProperties MAGIC_ROLL = (new FoodProperties.Builder())
+            .nutrition(2)
+            .saturationMod(0.1F)
+            .effect(new MobEffectInstance(ModEffects.HALLUCINATING.get(), 20*30, 1), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 20*30, 1), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.DIG_SPEED, 20*30, 1), 1.0F).build();
+
 }

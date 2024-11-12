@@ -233,6 +233,15 @@ public class ModRecipeProvider extends UPRecipeProvider implements IConditionBui
                 .unlockedBy(getHasName(ModBlocks.ZULOAGAE_BLOCK.get()), has(ModBlocks.ZULOAGAE_BLOCK.get()))
                 .save(consumer);
 
+        //Magic Pastry
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.MAGIC_ROLL.get(), 1)
+                .requires(ModItems.HALLUCIGENIC_SLIME.get())
+                .requires(Items.SUGAR)
+                .requires(Items.EGG)
+                .requires(Items.WHEAT)
+                .requires(Items.MILK_BUCKET)
+                .unlockedBy(getHasName(ModItems.HALLUCIGENIC_SLIME.get()), has(ModItems.HALLUCIGENIC_SLIME.get()))
+                .save(consumer);
 
     }
 }

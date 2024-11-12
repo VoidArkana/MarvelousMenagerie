@@ -198,6 +198,20 @@ public class ModItems {
             () -> new ItemModFishBucket(ModEntities.ARANDASPIS, () -> Fluids.WATER, Items.BUCKET, false,
                     (new Item.Properties()).stacksTo(1)));
 
+    //hallucigenia
+    public static final RegistryObject<Item> HALLUCIGENIA_FLASK = ITEMS.register("hallu_flask",
+            ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> HALLUCIGENIA_SPAWN_EGG = ITEMS.register("hallu_spawn_egg",
+            ()-> new ForgeSpawnEggItem(ModEntities.HALLUCIGENIA, 0xcd90cd, 0xcd90cd, new Item.Properties()));
+    public static final RegistryObject<Item> HALLUCIGENIA_BUCKET = ITEMS.register("hallu_bucket",
+            () -> new ItemModFishBucket(ModEntities.HALLUCIGENIA, () -> Fluids.WATER, Items.BUCKET, false,
+                    (new Item.Properties()).stacksTo(1)));
+
+    public static final RegistryObject<Item> HALLUCIGENIC_SLIME = ITEMS.register("hallu_slime",
+            ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MAGIC_ROLL = ITEMS.register("magic_roll",
+            ()-> new Item(new Item.Properties().food(ModFoods.MAGIC_ROLL).rarity(Rarity.RARE)));
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

@@ -27,6 +27,12 @@ public class ModBlockEntities {
                             ModBlocks.ZULOAGAE_SIGN.get(), ModBlocks.ZULOAGAE_WALL_SIGN.get(),
                             ModBlocks.SIGILLARIA_HANGING_SIGN.get(), ModBlocks.SIGILLARIA_WALL_HANGING_SIGN.get()).build(null));
 
+
+    public static final RegistryObject<BlockEntityType<CharniaBlockEntity>> CHARNIA_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("charnia", () ->
+                    BlockEntityType.Builder.of(CharniaBlockEntity::new,
+                            ModBlocks.CHARNIA.get()).build(null));
+
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);
     }

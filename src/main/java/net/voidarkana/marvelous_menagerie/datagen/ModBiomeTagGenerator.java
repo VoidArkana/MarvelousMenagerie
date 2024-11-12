@@ -38,6 +38,7 @@ public class ModBiomeTagGenerator extends BiomeTagsProvider {
 
         tag(ModTags.Biomes.PIKAIA_BIOMES).add(Biomes.WARM_OCEAN);
 
-        tag(ModTags.Biomes.ARANDASPIS_BIOMES).add(Biomes.WARM_OCEAN);
+        tag(ModTags.Biomes.ARANDASPIS_BIOMES).addTags(BiomeTags.IS_OCEAN);
+        tag(ModTags.Biomes.HALLU_BIOMES).add(Biomes.WARM_OCEAN);
     }
 }

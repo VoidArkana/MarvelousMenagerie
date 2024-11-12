@@ -289,7 +289,6 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController[]{new AnimationController(this, "Normal", 5, this::Controller)});
-
     }
 
     @Override
@@ -323,14 +322,6 @@ public class TrilobiteEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
             return PlayState.CONTINUE;
         }
-    }
-
-    public boolean canBreatheUnderwater() {
-        return true;
-    }
-
-    public MobType getMobType() {
-        return MobType.ARTHROPOD;
     }
 
     protected SoundEvent getAmbientSound() {

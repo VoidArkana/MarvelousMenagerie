@@ -171,6 +171,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.ARANDASPIS_BUCKET);
         simpleItem(ModItems.ARANDASPIS_FLASK);
         withExistingParent(ModItems.ARANDASPIS_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
+        simpleItem(ModItems.HALLUCIGENIA_BUCKET);
+        simpleItem(ModItems.HALLUCIGENIA_FLASK);
+        withExistingParent(ModItems.HALLUCIGENIA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        simpleItem(ModItems.MAGIC_ROLL);
+        simpleItem(ModItems.HALLUCIGENIC_SLIME);
     }
 
 

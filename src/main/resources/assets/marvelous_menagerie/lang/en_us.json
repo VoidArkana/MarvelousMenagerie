@@ -1,4 +1,6 @@
 {
+  "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie",
+
   "item.marvelous_menagerie.dodo_dna": "Dodo DNA Flask",
   "item.marvelous_menagerie.elephant_bird_dna": "Elephant Bird DNA Flask",
   "item.marvelous_menagerie.steller_sea_cow_dna": "Steller's Sea Cow DNA Flask",
@@ -245,8 +247,6 @@
   "marvelous_menagerie.advancement.interact_pikaia" : "I choose you!",
   "marvelous_menagerie.advancement.interact_pikaia.desc" : "Revive a Pikaia",
 
-  "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie",
-
 
 
   "key.category.marvelous_menagerie" : "Marvelous Menagerie",
@@ -308,15 +308,41 @@
   "translatable.marvelous_menagerie.ophthalmo.pattern_spots" : "Spotted pattern",
 
 
-
   "entity.marvelous_menagerie.arandaspis": "Arandaspis",
   "item.marvelous_menagerie.arandaspis_bucket": "Bucket of Arandaspis",
   "block.marvelous_menagerie.arandaspis_eggs": "Arandaspis Egg",
   "item.marvelous_menagerie.arandaspis_flask": "Arandaspis DNA Flask",
   "item.marvelous_menagerie.arandaspis_spawn_egg": "Arandaspis Spawn Egg",
 
+  "item.marvelous_menagerie.hallu_flask": "Hallucigenia DNA Flask",
+  "entity.marvelous_menagerie.hallucigenia": "Hallucigenia",
+  "item.marvelous_menagerie.hallu_bucket": "Bucket of Hallucigenia",
+  "block.marvelous_menagerie.hallu_eggs": "Hallucigenia Egg",
+  "item.marvelous_menagerie.hallu_spawn_egg": "Hallucigenia Spawn Egg",
+
+  "item.marvelous_menagerie.hallu_slime": "Psychodelic Mucus",
+  "item.marvelous_menagerie.magic_roll": "Magic Pastry",
+
+  "effect.marvelous_menagerie.hallucinating": "Hallucinating",
+
+  "item.minecraft.potion.effect.hallu_extract": "Psychodelic Extract",
+  "item.minecraft.splash_potion.effect.hallu_extract": "Splash Potion of Psychodelic Extract",
+  "item.minecraft.lingering_potion.effect.hallu_extract": "Lingering Potion of Psychodelic Extract",
+  "item.minecraft.tipped_arrow.effect.hallu_extract": "Arrow of Psychodelic Extract",
+
+
+  "block.marvelous_menagerie.charnia": "Charnia",
+
+
   "marvelous_menagerie.advancement.wiwaxia": "Ouch, Spiky!",
   "marvelous_menagerie.advancement.wiwaxia.desc" : "Revive a Wiwaxia",
+
   "marvelous_menagerie.advancement.interact_arandaspis": "Pogfish",
-  "marvelous_menagerie.advancement.interact_arandaspis.desc" : "Revive an Arandaspis"
+  "marvelous_menagerie.advancement.interact_arandaspis.desc" : "Revive an Arandaspis",
+
+  "marvelous_menagerie.advancement.interact_hallu": "I must be tripping...",
+  "marvelous_menagerie.advancement.interact_hallu.desc" : "Revive a Hallucigenia",
+
+  "marvelous_menagerie.advancement.magic_roll": "These edibles ain't nothing!",
+  "marvelous_menagerie.advancement.magic_roll.desc" : "Craft a Magic Pastry with Psychodelic Mucus"
 }

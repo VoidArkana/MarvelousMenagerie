@@ -22,6 +22,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.ARANDASPIS_FLASK.get());
                         output.accept(ModItems.DODO_DNA.get());
                         output.accept(ModItems.ELEPHANT_BIRD_DNA.get());
+                        output.accept(ModItems.HALLUCIGENIA_FLASK.get());
                         output.accept(ModItems.JOSEPHO_FLASK.get());
                         output.accept(ModItems.OPHTHALMO_FLASK.get());
                         output.accept(ModItems.PIKAIA_FLASK.get());
@@ -39,6 +40,7 @@ public class ModCreativeModTabs {
                         output.accept(ModBlocks.ARANDASPIS_EGGS.get());
                         output.accept(ModBlocks.DODO_EGGS.get());
                         output.accept(ModBlocks.ELE_EGG.get());
+                        output.accept(ModBlocks.HALLU_EGGS.get());
                         output.accept(ModBlocks.PIKAIA_EGGS.get());
                         output.accept(ModBlocks.SACA_EGGS.get());
                         output.accept(ModBlocks.TRILO_EGGS.get());
@@ -61,6 +63,9 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.EGG_SHELL_FRAGMENT.get());
                         output.accept(ModItems.EGG_SHELLMET.get());
 
+                        output.accept(ModItems.HALLUCIGENIA_BUCKET.get());
+                        output.accept(ModItems.MAGIC_ROLL.get());
+
                         output.accept(ModItems.BABY_OPHTHALMO_BUCKET.get());
 
                         output.accept(ModItems.PIKAIA_BUCKET.get());
@@ -77,6 +82,8 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.TRILO_BUCKET.get());
                         output.accept(ModItems.TRILO_BITE.get());
 
+
+                        output.accept(ModBlocks.CHARNIA.get());
 
                         output.accept(ModBlocks.COOKSONIA.get());
 
@@ -160,6 +167,7 @@ public class ModCreativeModTabs {
                         output.accept(ModItems.ARANDASPIS_SPAWN_EGG.get());
                         output.accept(ModItems.DODO_SPAWN_EGG.get());
                         output.accept(ModItems.ELE_SPAWN_EGG.get());
+                        output.accept(ModItems.HALLUCIGENIA_SPAWN_EGG.get());
                         output.accept(ModItems.JOSEPHO_SPAWN_EGG.get());
                         output.accept(ModItems.OPHTHALMO_SPAWN_EGG.get());
                         output.accept(ModItems.PIKAIA_SPAWN_EGG.get());

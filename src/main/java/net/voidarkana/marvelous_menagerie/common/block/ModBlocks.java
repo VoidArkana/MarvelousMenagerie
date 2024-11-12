@@ -20,6 +20,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
 import net.voidarkana.marvelous_menagerie.common.block.custom.*;
+import net.voidarkana.marvelous_menagerie.common.block.custom.animal_block.CharniaBlock;
 import net.voidarkana.marvelous_menagerie.common.block.custom.animal_block.DickinsoniaBlock;
 import net.voidarkana.marvelous_menagerie.common.block.custom.animal_block.WiwaxiaBlock;
 import net.voidarkana.marvelous_menagerie.common.block.custom.flammable.FlammableWoodLogBlock;
@@ -361,6 +362,17 @@ public class ModBlocks {
             () -> new BlockDinosaurWaterEggs(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak().noOcclusion()
                     .noCollission().randomTicks(), ModEntities.ARANDASPIS, false),
             (entry) -> new PlaceOnWaterBlockItem(entry.get(), new Item.Properties()));
+
+    //Hallucigenia
+    public static final Supplier<Block> HALLU_EGGS = registerBlockWithItem("hallu_eggs",
+            () -> new BlockDinosaurWaterEggs(BlockBehaviour.Properties.copy(Blocks.FROGSPAWN).instabreak().noOcclusion()
+                    .noCollission().randomTicks(), ModEntities.HALLUCIGENIA, false),
+            (entry) -> new PlaceOnWaterBlockItem(entry.get(), new Item.Properties()));
+
+    //Charnia
+    public static final RegistryObject<Block> CHARNIA = registerBlock("charnia",
+            ()-> new CharniaBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.COLOR_ORANGE)
+                    .noOcclusion().instabreak().noCollission().lightLevel((p_152684_) -> {return 6;})));
 
 
     private static <T extends Block> Supplier<T> registerBlockWithItem(String key, Supplier<T> block, Function<Supplier<T>, Item> item) {

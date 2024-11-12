@@ -20,5 +20,6 @@ public class MarvelousEntityPlacement {
         SpawnPlacements.register(ModEntities.PIKAIA.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, PikaiaEntity::checkSurfaceWaterDinoSpawnRules);
 
         SpawnPlacements.register(ModEntities.ARANDASPIS.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, ArandaspisEntity::checkSurfaceWaterDinoSpawnRules);
+        SpawnPlacements.register(ModEntities.HALLUCIGENIA.get(), SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, HallucigeniaEntity::checkSurfaceWaterDinoSpawnRules);
     }
 }

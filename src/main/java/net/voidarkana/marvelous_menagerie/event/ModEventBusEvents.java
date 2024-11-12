@@ -42,6 +42,7 @@ public class ModEventBusEvents {
         event.put(ModEntities.WIWAXIA_ENTITY.get(), PlantEntity.createAttributes().build());
 
         event.put(ModEntities.ARANDASPIS.get(), ArandaspisEntity.createAttributes().build());
+        event.put(ModEntities.HALLUCIGENIA.get(), HallucigeniaEntity.createAttributes().build());
     }
 
     @SubscribeEvent

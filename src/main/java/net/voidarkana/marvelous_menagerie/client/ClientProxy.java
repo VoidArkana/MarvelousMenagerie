@@ -4,11 +4,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.voidarkana.marvelous_menagerie.client.renderers.block.CharniaBlockRenderer;
 import net.voidarkana.marvelous_menagerie.client.renderers.plant.*;
 import net.voidarkana.marvelous_menagerie.common.block.ModBlocks;
 import net.voidarkana.marvelous_menagerie.client.events.ModClientEvents;
@@ -17,6 +19,7 @@ import net.voidarkana.marvelous_menagerie.client.renderers.baby.BabyAnomalocaris
 import net.voidarkana.marvelous_menagerie.client.renderers.baby.BabyOphthalmoRenderer;
 import net.voidarkana.marvelous_menagerie.client.renderers.baby.BabyStellerRenderer;
 import net.voidarkana.marvelous_menagerie.common.CommonProxy;
+import net.voidarkana.marvelous_menagerie.common.block.entity.ModBlockEntities;
 import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.util.ModWoodTypes;
 
@@ -26,6 +29,7 @@ import java.util.UUID;
 
 public class ClientProxy extends CommonProxy {
     public static List<UUID> blockedEntityRenders = new ArrayList<>();
+    public static int shaderLoadAttemptCooldown = 0;
 
     public void commonInit() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -69,6 +73,11 @@ public class ClientProxy extends CommonProxy {
 
         EntityRenderers.register(ModEntities.ARANDASPIS.get(), ArandaspisRenderer::new);
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ARANDASPIS_EGGS.get(), RenderType.translucent());
+
+        EntityRenderers.register(ModEntities.HALLUCIGENIA.get(), HallucigeniaRenderer::new);
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.HALLU_EGGS.get(), RenderType.translucent());
+
+        BlockEntityRenderers.register(ModBlockEntities.CHARNIA_BLOCK_ENTITY.get(), CharniaBlockRenderer::new);
 
     }
 

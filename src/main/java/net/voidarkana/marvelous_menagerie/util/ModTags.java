@@ -42,6 +42,7 @@ public class ModTags {
         public static final TagKey<Biome> PIKAIA_BIOMES = create("is_pikaia_biome");
 
         public static final TagKey<Biome> ARANDASPIS_BIOMES = create("is_arandaspis_biome");
+        public static final TagKey<Biome> HALLU_BIOMES = create("is_hallu_biome");
 
         private static TagKey<Biome> create(String pName) {
             return TagKey.create(Registries.BIOME, new ResourceLocation(MarvelousMenagerie.MOD_ID, pName));

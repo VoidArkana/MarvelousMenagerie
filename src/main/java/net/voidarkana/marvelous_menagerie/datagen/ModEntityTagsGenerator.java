@@ -35,7 +35,8 @@ public class ModEntityTagsGenerator extends EntityTypeTagsProvider {
                 .add(UPEntities.REX.get()).add(UPEntities.SMILODON.get()).add(UPEntities.HWACHA.get()).add(UPEntities.ULUG.get())
                 .add(UPEntities.AUSTRO.get()).add(UPEntities.VELOCI.get()).add(UPEntities.REX.get()).add(UPEntities.PARACERATHERIUM.get())
                 .add(UPEntities.MEGALANIA.get()).add(UPEntities.SLUDGE.get()).add(UPEntities.BARINASUCHUS.get())
-                .add(ModEntities.ANOMALOCARIS.get()).add(ModEntities.OPHTHALMO.get());
+                .add(ModEntities.ANOMALOCARIS.get()).add(ModEntities.OPHTHALMO.get()).add(ModEntities.HALLUCIGENIA.get())
+                .add(EntityType.PUFFERFISH);
 
         this.tag(ModTags.EntityTypes.THYLA_EMBRYO_ATTACH_TO).add(ModEntities.THYLACINE.get()).addOptional(new ResourceLocation("alexsmobs:tasmanian_devil"));
         this.tag(ModTags.EntityTypes.STELLER_EMBRYO_ATTACH_TO).add(ModEntities.STELLER_SEA_COW.get());

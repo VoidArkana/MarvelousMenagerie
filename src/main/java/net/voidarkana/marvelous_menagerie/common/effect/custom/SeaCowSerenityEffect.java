@@ -1,4 +1,4 @@
-package net.voidarkana.marvelous_menagerie.common.effect;
+package net.voidarkana.marvelous_menagerie.common.effect.custom;
 
 import net.minecraft.world.effect.*;
 import net.minecraft.world.entity.LivingEntity;
@@ -8,7 +8,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import java.util.UUID;
 
 public class SeaCowSerenityEffect extends MobEffect {
-    protected SeaCowSerenityEffect(MobEffectCategory pCategory, int pColor) {
+    public SeaCowSerenityEffect(MobEffectCategory pCategory, int pColor) {
         super(pCategory, pColor);
         this.addAttributeModifier(Attributes.KNOCKBACK_RESISTANCE, UUID.randomUUID().toString(), 0.5D, AttributeModifier.Operation.ADDITION);
         this.addAttributeModifier(Attributes.ARMOR, UUID.randomUUID().toString(), 5, AttributeModifier.Operation.ADDITION);

@@ -1,11 +1,14 @@
 package net.voidarkana.marvelous_menagerie;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -21,6 +24,8 @@ import net.voidarkana.marvelous_menagerie.common.block.ModBlocks;
 import net.voidarkana.marvelous_menagerie.common.block.entity.ModBlockEntities;
 import net.voidarkana.marvelous_menagerie.client.ClientProxy;
 import net.voidarkana.marvelous_menagerie.common.effect.ModEffects;
+import net.voidarkana.marvelous_menagerie.common.effect.potion.ModPotionRecipes;
+import net.voidarkana.marvelous_menagerie.common.effect.potion.ModPotions;
 import net.voidarkana.marvelous_menagerie.common.enchantment.ModEnchantmentsClass;
 import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.event.ModEventBusEvents;
@@ -33,6 +38,7 @@ import net.voidarkana.marvelous_menagerie.common.worldgen.tree.ModTrunkPlacerTyp
 import net.voidarkana.marvelous_menagerie.common.entity.MarvelousEntityPlacement;
 import net.voidarkana.marvelous_menagerie.util.config.CommonConfig;
 import org.slf4j.Logger;
+import software.bernie.geckolib.GeckoLib;
 
 @Mod(MarvelousMenagerie.MOD_ID)
 public class MarvelousMenagerie {
@@ -48,6 +54,8 @@ public class MarvelousMenagerie {
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
+
+        GeckoLib.initialize();
 
         ModCreativeModTabs.register(modEventBus);
 
@@ -66,6 +74,8 @@ public class MarvelousMenagerie {
         ModConfiguredFeatures.register(modEventBus);
         ModEnchantmentsClass.register(modEventBus);
 
+        ModPotions.register(modEventBus);
+
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
 
@@ -79,6 +89,9 @@ public class MarvelousMenagerie {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(()->{
+
+            BrewingRecipeRegistry.addRecipe(new ModPotionRecipes(Potions.AWKWARD,
+                    ModItems.HALLUCIGENIC_SLIME.get(), ModPotions.HALLUCIGENIA_EXTRACT.get()));
 
             MarvelousEntityPlacement.entityPlacement();
 

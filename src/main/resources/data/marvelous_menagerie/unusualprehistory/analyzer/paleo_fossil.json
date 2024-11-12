@@ -20,6 +20,10 @@
     {
       "weight": 15,
       "item": "marvelous_menagerie:arandaspis_flask"
+    },
+    {
+      "weight": 15,
+      "item": "marvelous_menagerie:hallu_flask"
     }
   ]
 }
