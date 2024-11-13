@@ -157,6 +157,16 @@ public class ModEntities {
                             .sized(1f, 0.7f)
                             .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "hallucigenia").toString()));
 
+
+
+    public static final RegistryObject<EntityType<PlantEntity>> CHARNIA_ENTITY =
+            ENTITY_TYPES.register("charnia_entity",
+                    () -> EntityType.Builder.of(PlantEntity::new, MobCategory.MISC)
+                            .noSummon()
+                            .fireImmune()
+                            .sized(0.5f,1F)
+                            .build(new ResourceLocation(MarvelousMenagerie.MOD_ID, "charnia").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

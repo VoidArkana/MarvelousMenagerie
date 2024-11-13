@@ -13,9 +13,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.RotationSegment;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -28,24 +26,28 @@ import org.jetbrains.annotations.Nullable;
 public class CharniaBlock extends BaseEntityBlock implements IPlantable, LiquidBlockContainer {
 
     private static final SegmentedAnglePrecision SEGMENTED_ANGLE8 = new SegmentedAnglePrecision(3);
+    public static final IntegerProperty PICKLES = BlockStateProperties.PICKLES;
 
     public static final int MAX = SEGMENTED_ANGLE8.getMask();
     private static final int ROTATIONS = MAX;
 
     public static final IntegerProperty ROTATION_8 = IntegerProperty.create("rotation", 0, MAX);
 
-    //public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-
     public CharniaBlock(Properties pProperties) {
         super(pProperties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION_8, Integer.valueOf(0)));
-//        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(PICKLES, Integer.valueOf(1))
+                .setValue(ROTATION_8, Integer.valueOf(0)));
     }
 
-    protected static final VoxelShape SHAPE = Block.box(6, 0, 6, 10, 16, 10);
+    protected static final VoxelShape INDIVIDUAL = Block.box(6, 0, 6, 10, 16, 10);
+    protected static final VoxelShape MULTIPLE = Block.box(3, 0, 3, 13, 16, 13);
 
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return SHAPE;
+        return switch (pState.getValue(PICKLES)) {
+            default -> INDIVIDUAL;
+            case 2, 3, 4 -> MULTIPLE;
+        };
     }
 
     @Nullable
@@ -95,8 +97,17 @@ public class CharniaBlock extends BaseEntityBlock implements IPlantable, LiquidB
     @javax.annotation.Nullable
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         FluidState fluidstate = pContext.getLevel().getFluidState(pContext.getClickedPos());
-        return fluidstate.is(FluidTags.WATER) && fluidstate.getAmount() == 8 ? this.defaultBlockState().setValue(ROTATION_8,
+        BlockState blockstate = pContext.getLevel().getBlockState(pContext.getClickedPos());
+        if (blockstate.is(this)) {
+            return blockstate.setValue(PICKLES, Integer.valueOf(Math.min(4, blockstate.getValue(PICKLES) + 1)));
+        } else {
+            return fluidstate.is(FluidTags.WATER) && fluidstate.getAmount() == 8 ? this.defaultBlockState().setValue(ROTATION_8,
                 convertToSegment(pContext.getRotation())) : null;
+        }
+    }
+
+    public boolean canBeReplaced(BlockState pState, BlockPlaceContext pUseContext) {
+        return !pUseContext.isSecondaryUseActive() && pUseContext.getItemInHand().is(this.asItem()) && pState.getValue(PICKLES) < 4 ? true : super.canBeReplaced(pState, pUseContext);
     }
 
     public static int convertToSegment(float pAngle) {
@@ -104,7 +115,7 @@ public class CharniaBlock extends BaseEntityBlock implements IPlantable, LiquidB
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(ROTATION_8);
+        pBuilder.add(PICKLES, ROTATION_8);
     }
 
     public FluidState getFluidState(BlockState p_154537_) {

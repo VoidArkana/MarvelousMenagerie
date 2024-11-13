@@ -8,7 +8,7 @@
       "item": "marvelous_menagerie:sigillaria_dna"
     },
     {
-      "weight": 15,
+      "weight": 20,
       "item": "marvelous_menagerie:cooksonia_dna"
     },
     {
@@ -16,12 +16,16 @@
       "item": "marvelous_menagerie:proto_flask"
     },
     {
-      "weight": 15,
+      "weight": 20,
       "item": "marvelous_menagerie:dickinsonia_flask"
     },
     {
-      "weight": 15,
+      "weight": 20,
       "item": "marvelous_menagerie:wiwaxia_flask"
+    },
+    {
+      "weight": 20,
+      "item": "marvelous_menagerie:charnia_flask"
     }
   ]
 }

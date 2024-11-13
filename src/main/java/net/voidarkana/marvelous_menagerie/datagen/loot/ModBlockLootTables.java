@@ -1,16 +1,26 @@
 package net.voidarkana.marvelous_menagerie.datagen.loot;
 
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 import net.voidarkana.marvelous_menagerie.common.block.ModBlocks;
+import net.voidarkana.marvelous_menagerie.common.block.custom.animal_block.CharniaBlock;
 import net.voidarkana.marvelous_menagerie.common.item.ModItems;
 
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
-    //keep an eye on this, was asked to make public but was protected
+
     public ModBlockLootTables() {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags());
     }
@@ -54,7 +64,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 createPotFlowerItemTable(ModBlocks.SIGILLARIA_SAPLING.get()));
 
         this.add(ModBlocks.SIGILLARIA_LEAVES.get(),
-                block -> createLeavesDrops(ModBlocks.SIGILLARIA_LEAVES.get(), ModBlocks.SIGILLARIA_SAPLING.get(),0.15f));
+                block -> createLeavesDrops(ModBlocks.SIGILLARIA_LEAVES.get(), ModBlocks.SIGILLARIA_SAPLING.get(), 0.15f));
 
         this.add(ModBlocks.DODO_EGGS.get(),
                 createSilkTouchOnlyTable(ModBlocks.DODO_EGGS.get()));
@@ -73,7 +83,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.DICKINSONIA.get());
 
         this.dropSelf(ModBlocks.PIKAIA_EGGS.get());
-
 
 
         this.dropSelf(ModBlocks.ZULOAGAE_PLANKS.get());
@@ -105,7 +114,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.dropSelf(ModBlocks.ZULOAGAE_BLOCK.get());
         this.dropSelf(ModBlocks.STRIPPED_ZULOAGAE_BLOCK.get());
-
 
 
         this.dropSelf(ModBlocks.PROTOTAXITES_PLANKS.get());
@@ -142,7 +150,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.dropSelf(ModBlocks.HALLU_EGGS.get());
 
-        this.dropSelf(ModBlocks.CHARNIA.get());
+        this.add(ModBlocks.CHARNIA.get(),
+                block -> createCharniaDrops(ModBlocks.CHARNIA.get()));
+    }
+
+    public LootTable.Builder createCharniaDrops(Block charniaBlock) {
+        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(this.applyExplosionDecay(charniaBlock, LootItem.lootTableItem(charniaBlock).apply(IntStream.rangeClosed(1, 4).boxed().toList(), (integer) -> {
+            return SetItemCountFunction.setCount(ConstantValue.exactly((float) integer.intValue())).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(charniaBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CharniaBlock.PICKLES, integer)));
+        }))));
     }
 
     @Override

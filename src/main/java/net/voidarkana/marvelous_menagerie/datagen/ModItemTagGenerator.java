@@ -164,7 +164,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 ModItems.COOKSONIA_DNA.get(),
                 ModItems.PROTO_FLASK.get(),
                 ModItems.DICKINSONIA_FLASK.get(),
-                ModItems.WIWAXIA_FLASK.get()
+                ModItems.WIWAXIA_FLASK.get(),
+                ModItems.CHARNIA_FLASK.get()
         );
 
         this.tag(UPTags.ANALYZER_ITEMS_OUTPUT_TREE).add(
@@ -233,7 +234,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 ModItems.PIKAIA_FLASK.get(),
                 ModItems.WIWAXIA_FLASK.get(),
                 ModItems.ARANDASPIS_FLASK.get(),
-                ModItems.HALLUCIGENIA_FLASK.get()
+                ModItems.HALLUCIGENIA_FLASK.get(),
+                ModItems.CHARNIA_FLASK.get()
         );
     }
 }

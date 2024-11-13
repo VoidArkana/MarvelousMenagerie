@@ -177,6 +177,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent(ModItems.HALLUCIGENIA_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         simpleItem(ModItems.MAGIC_ROLL);
         simpleItem(ModItems.HALLUCIGENIC_SLIME);
+
+        simpleItem(ModItems.CHARNIA_FLASK);
     }
 
 

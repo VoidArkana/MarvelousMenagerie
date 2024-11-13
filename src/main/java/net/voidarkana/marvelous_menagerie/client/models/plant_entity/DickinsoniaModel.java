@@ -1,4 +1,4 @@
-package net.voidarkana.marvelous_menagerie.client.models;
+package net.voidarkana.marvelous_menagerie.client.models.plant_entity;
 
 import net.minecraft.resources.ResourceLocation;
 import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;

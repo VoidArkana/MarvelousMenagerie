@@ -1,4 +1,4 @@
-// 1.20.1	2024-11-11T13:26:24.3542173	Item Models: marvelous_menagerie
+// 1.20.1	2024-11-12T20:46:42.5250822	Item Models: marvelous_menagerie
 f1beaaba90d54436c7df39f75ea0f9de1d59a9b2 assets/marvelous_menagerie/models/item/anomalocaris_bucket.json
 6edb806a722825bc7b930da88d1532ea3635046c assets/marvelous_menagerie/models/item/anomalocaris_flask.json
 ddfa6dc18fe3f43748810cd2165d1457615eadce assets/marvelous_menagerie/models/item/anomalocaris_lens.json
@@ -11,6 +11,7 @@ f036460dd747cd7421364bfc0f0dc10ef1ce3522 assets/marvelous_menagerie/models/item/
 bb641c7b7cec9d08ab443e14115e32ed16582698 assets/marvelous_menagerie/models/item/baby_anomalocaris_bucket.json
 6f0a489a87e4698d26e843231cdf9e35d87e69f7 assets/marvelous_menagerie/models/item/baby_ophthalmo_bucket.json
 8227ebd4e20d2f685ab8ecfd5fc2cfd71963ad1b assets/marvelous_menagerie/models/item/boiled_elephant_egg.json
+04aa06ae94616df8eb955aa1ccae17df81ef6f86 assets/marvelous_menagerie/models/item/charnia_flask.json
 77e9c1c51f69d89b7d0660eb933a93da5d641164 assets/marvelous_menagerie/models/item/cooked_saca.json
 0dc065022f1f8aff97fea2c1090f767459cbd86a assets/marvelous_menagerie/models/item/cooksonia.json
 b97623644912ba760d7b703cac6e4dbbaf149919 assets/marvelous_menagerie/models/item/cooksonia_dna.json

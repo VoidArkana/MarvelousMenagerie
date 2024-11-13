@@ -78,6 +78,7 @@ public class ClientProxy extends CommonProxy {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.HALLU_EGGS.get(), RenderType.translucent());
 
         BlockEntityRenderers.register(ModBlockEntities.CHARNIA_BLOCK_ENTITY.get(), CharniaBlockRenderer::new);
+        EntityRenderers.register(ModEntities.CHARNIA_ENTITY.get(), CharniaRenderer::new);
 
     }
 

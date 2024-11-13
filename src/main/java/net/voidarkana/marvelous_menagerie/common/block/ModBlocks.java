@@ -372,7 +372,8 @@ public class ModBlocks {
     //Charnia
     public static final RegistryObject<Block> CHARNIA = registerBlock("charnia",
             ()-> new CharniaBlock(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK).mapColor(MapColor.COLOR_ORANGE)
-                    .noOcclusion().instabreak().noCollission().lightLevel((p_152684_) -> {return 6;})));
+                    .noOcclusion().sound(SoundType.MOSS).instabreak().noCollission()
+                    .lightLevel((pState) -> {return 3 + 3 * pState.getValue(CharniaBlock.PICKLES);})));
 
 
     private static <T extends Block> Supplier<T> registerBlockWithItem(String key, Supplier<T> block, Function<Supplier<T>, Item> item) {

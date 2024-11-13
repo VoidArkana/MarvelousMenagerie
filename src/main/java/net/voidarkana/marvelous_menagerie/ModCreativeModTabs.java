@@ -20,6 +20,7 @@ public class ModCreativeModTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.CARIS_FLASK.get());
                         output.accept(ModItems.ARANDASPIS_FLASK.get());
+                        output.accept(ModItems.CHARNIA_FLASK.get());
                         output.accept(ModItems.DODO_DNA.get());
                         output.accept(ModItems.ELEPHANT_BIRD_DNA.get());
                         output.accept(ModItems.HALLUCIGENIA_FLASK.get());
