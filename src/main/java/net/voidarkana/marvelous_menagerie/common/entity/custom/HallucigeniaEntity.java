@@ -161,8 +161,8 @@ public class HallucigeniaEntity extends WaterAnimal implements GeoEntity, IBookE
                 this.spawnAtLocation(ModItems.HALLUCIGENIC_SLIME.get());
             }
 
-            pMob.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 60, 0), this);
-            pMob.addEffect(new MobEffectInstance(ModEffects.HALLUCINATING.get(), 60, 0), this);
+            pMob.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 120, 3), this);
+            pMob.addEffect(new MobEffectInstance(ModEffects.HALLUCINATING.get(), 120, 0), this);
             pMob.addEffect(new MobEffectInstance(MobEffects.POISON, 60, 0), this);
             this.playSound(SoundEvents.PUFFER_FISH_STING, 1.0F, 1.0F);
         }
@@ -182,9 +182,9 @@ public class HallucigeniaEntity extends WaterAnimal implements GeoEntity, IBookE
                 this.spawnAtLocation(ModItems.HALLUCIGENIC_SLIME.get());
             }
 
+            pEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 120, 3), this);
+            pEntity.addEffect(new MobEffectInstance(ModEffects.HALLUCINATING.get(), 120, 0), this);
             pEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 60, 0), this);
-            pEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 60, 0), this);
-            pEntity.addEffect(new MobEffectInstance(ModEffects.HALLUCINATING.get(), 60, 0), this);
         }
 
     }

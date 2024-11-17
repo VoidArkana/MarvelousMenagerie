@@ -1,4 +1,4 @@
-// 1.20.1	2024-11-12T20:46:42.5250822	Item Models: marvelous_menagerie
+// 1.20.1	2024-11-17T13:30:52.0177064	Item Models: marvelous_menagerie
 f1beaaba90d54436c7df39f75ea0f9de1d59a9b2 assets/marvelous_menagerie/models/item/anomalocaris_bucket.json
 6edb806a722825bc7b930da88d1532ea3635046c assets/marvelous_menagerie/models/item/anomalocaris_flask.json
 ddfa6dc18fe3f43748810cd2165d1457615eadce assets/marvelous_menagerie/models/item/anomalocaris_lens.json
@@ -95,6 +95,7 @@ e67a0127c692cc95a516b3828339138d89ad84d6 assets/marvelous_menagerie/models/item/
 6da3c90c5874c9372b2bc8f9e61d7f3acce49dc6 assets/marvelous_menagerie/models/item/trilo_bite.json
 e4ac8ba1c3ee03f909b84ecb3ec3b3fc559e8955 assets/marvelous_menagerie/models/item/trilo_bucket.json
 4376180872ed407b6e0a4f6ea04eb5f67c168a56 assets/marvelous_menagerie/models/item/trilo_flask.json
+d75fd3b022ac14b579c412cad6e46315b1d1f0b0 assets/marvelous_menagerie/models/item/warning.json
 7cdb144955f39d67f1d6e8a13da098de3072b9b0 assets/marvelous_menagerie/models/item/wiwaxia_flask.json
 4b17723586f1d11b1eb9f3b939391485ca36eb15 assets/marvelous_menagerie/models/item/zuloagae_button.json
 ac8c96bb7582b1c55c606e0d4764c077adc423dc assets/marvelous_menagerie/models/item/zuloagae_door.json

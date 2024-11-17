@@ -332,10 +332,17 @@
 
 
   "block.marvelous_menagerie.charnia": "Charnia",
+  "item.marvelous_menagerie.charnia_flask": "Charnia DNA Flask",
 
 
   "marvelous_menagerie.advancement.wiwaxia": "Ouch, Spiky!",
   "marvelous_menagerie.advancement.wiwaxia.desc" : "Revive a Wiwaxia",
+
+  "marvelous_menagerie.advancement.hallu_warning": "Flashing lights warning!",
+  "marvelous_menagerie.advancement.hallu_warning.desc" : "WARNING: Hallucigenia might cause flashing lights with the hallucinating effect!, turn the effects down in the mod's config file",
+
+  "marvelous_menagerie.advancement.charnia": "Mightier than a netherite sword",
+  "marvelous_menagerie.advancement.charnia.desc" : "Revive a Charnia",
 
   "marvelous_menagerie.advancement.interact_arandaspis": "Pogfish",
   "marvelous_menagerie.advancement.interact_arandaspis.desc" : "Revive an Arandaspis",

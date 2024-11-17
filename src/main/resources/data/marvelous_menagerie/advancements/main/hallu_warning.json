@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:main/plants",
+  "criteria": {
+    "hallu_warning": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "marvelous_menagerie:hallu_flask"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "marvelous_menagerie.advancement.hallu_warning.desc"
+    },
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "item": "marvelous_menagerie:warning"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "marvelous_menagerie.advancement.hallu_warning"
+    }
+  },
+  "requirements": [
+    [
+      "hallu_warning"
+    ]
+  ]
+}

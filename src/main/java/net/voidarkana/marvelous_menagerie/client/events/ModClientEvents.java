@@ -22,25 +22,40 @@ import net.voidarkana.marvelous_menagerie.client.ClientProxy;
 import net.voidarkana.marvelous_menagerie.common.effect.ModEffects;
 import net.voidarkana.marvelous_menagerie.common.enchantment.ModEnchantmentsClass;
 import net.voidarkana.marvelous_menagerie.common.item.custom.AnomalousGogglesItem;
+import net.voidarkana.marvelous_menagerie.util.config.CommonConfig;
 
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public class ModClientEvents {
 
     private static final ResourceLocation WOBBLE = new ResourceLocation("shaders/post/wobble.json");
+    private static final ResourceLocation DECONVERGE = new ResourceLocation("shaders/post/deconverge.json");
 
     @SubscribeEvent
     public void postRenderStage(RenderLevelStageEvent event) {
         Entity player = Minecraft.getInstance().getCameraEntity();
 
         if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_SKY) {
+
             GameRenderer renderer = Minecraft.getInstance().gameRenderer;
+
             if (player instanceof LivingEntity afflicted && afflicted.hasEffect(ModEffects.HALLUCINATING.get())) {
-                if (renderer.currentEffect() == null || !WOBBLE.toString().equals(renderer.currentEffect().getName())) {
-                    attemptLoadShader(WOBBLE);
+                if (CommonConfig.HALLU_FLASH.get()){
+                    if (renderer.currentEffect() == null || !WOBBLE.toString().equals(renderer.currentEffect().getName())) {
+                        attemptLoadShader(WOBBLE);
+                    }
+                }else{
+                    if (renderer.currentEffect() == null || !DECONVERGE.toString().equals(renderer.currentEffect().getName())) {
+                        attemptLoadShader(DECONVERGE);
+                    }
                 }
-            } else if (renderer.currentEffect() != null && WOBBLE.toString().equals(renderer.currentEffect().getName())) {
-                renderer.checkEntityPostEffect(null);
+
+
+            } else if (renderer.currentEffect() != null && (DECONVERGE.toString().equals(renderer.currentEffect().getName()) ||
+                    WOBBLE.toString().equals(renderer.currentEffect().getName())) ) {
+                    renderer.checkEntityPostEffect(null);
             }
+
+
         }
     }
 

@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:main/egg",
+  "parent": "marvelous_menagerie:main/hallu_warning",
   "criteria": {
     "hallu_bucket": {
       "conditions": {

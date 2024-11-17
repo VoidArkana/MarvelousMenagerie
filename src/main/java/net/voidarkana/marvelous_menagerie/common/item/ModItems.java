@@ -211,6 +211,8 @@ public class ModItems {
             ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> MAGIC_ROLL = ITEMS.register("magic_roll",
             ()-> new Item(new Item.Properties().food(ModFoods.MAGIC_ROLL).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> WARNING = ITEMS.register("warning",
+            ()-> new Item(new Item.Properties()));
 
     //charnia
     public static final RegistryObject<Item> CHARNIA_FLASK = ITEMS.register("charnia_flask",

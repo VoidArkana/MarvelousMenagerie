@@ -11,17 +11,8 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class ElephantBirdRenderer extends GeoEntityRenderer<ElephantBirdEntity> {
 
-    private static final ResourceLocation REGULAR_TEXTURE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/elephant_bird.png");
-    private static final ResourceLocation BABY_TEXTURE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/baby_elephant_bird.png");
-
-
     public ElephantBirdRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new ElephantBirdModel());
-    }
-
-    @Override
-    public ResourceLocation getTextureLocation(ElephantBirdEntity entity) {
-        return entity.isBaby() ? BABY_TEXTURE : REGULAR_TEXTURE;
     }
 
     @Override

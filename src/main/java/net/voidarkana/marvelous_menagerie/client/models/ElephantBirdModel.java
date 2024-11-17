@@ -11,8 +11,8 @@ import software.bernie.geckolib.model.data.EntityModelData;
 
 public class ElephantBirdModel extends GeoModel<ElephantBirdEntity> {
 
-    private static final ResourceLocation REGULAR_TEXTURE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/elephant_bird.png");
-    private static final ResourceLocation BABY_TEXTURE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/baby_elephant_bird.png");
+    private static final ResourceLocation REGULAR_TEXTURE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/elephant_bird/elephant_bird.png");
+    private static final ResourceLocation BABY_TEXTURE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/elephant_bird/baby_elephant_bird.png");
 
     private static final ResourceLocation REGULAR_MODEL = new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/elephant_bird.geo.json");
     private static final ResourceLocation BABY_MODEL = new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/baby_elephant_bird.geo.json");
