@@ -1,5 +1,6 @@
 package net.voidarkana.marvelous_menagerie.common.entity.custom;
 
+import com.google.common.collect.Maps;
 import com.peeko32213.unusualprehistory.common.config.UnusualPrehistoryConfig;
 import com.peeko32213.unusualprehistory.common.entity.IBookEntity;
 import com.peeko32213.unusualprehistory.common.entity.IHatchableEntity;
@@ -22,28 +23,25 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.control.LookControl;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.PanicGoal;
-import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
-import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
-import net.minecraft.world.entity.animal.Bee;
 import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.voidarkana.marvelous_menagerie.common.item.ModItems;
+import net.voidarkana.marvelous_menagerie.data.codec.PikaiaCoralManager;
+import net.voidarkana.marvelous_menagerie.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -56,6 +54,7 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.EnumSet;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -67,7 +66,7 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
 
     @javax.annotation.Nullable
     BlockPos savedFlowerPos;
-    PikaiaEntity.PollinateCoralGoal pollinateGoal;
+    //PikaiaEntity.PollinateCoralGoal pollinateGoal;
     int remainingCooldownBeforeLocatingNewFlower = Mth.nextInt(this.random, 20, 60);
 
     public PikaiaEntity(EntityType<? extends WaterAnimal> pEntityType, Level pLevel) {
@@ -81,15 +80,17 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
             super(pMob, pMaxYRotFromCenter);
         }
 
-        protected boolean resetXRotOnTick() {
-            return !PikaiaEntity.this.pollinateGoal.isPollinating();
-        }
+//        protected boolean resetXRotOnTick() {
+//            return !PikaiaEntity.this.pollinateGoal.isPollinating();
+//        }
     }
 
+    private static final EntityDataAccessor<Boolean> IS_POLLINATING = SynchedEntityData.defineId(PikaiaEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(PikaiaEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> FROM_BOOK = SynchedEntityData.defineId(PikaiaEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> FROM_EGG = SynchedEntityData.defineId(PikaiaEntity.class, EntityDataSerializers.BOOLEAN);
 
+    protected static final RawAnimation PIKAIA_POLLINATE = RawAnimation.begin().thenLoop("animation.pikaia.pollinate");
     protected static final RawAnimation PIKAIA_SWIM = RawAnimation.begin().thenLoop("animation.pikaia.swim");
     protected static final RawAnimation PIKAIA_IDLE = RawAnimation.begin().thenLoop("animation.pikaia.idle");
     protected static final RawAnimation PIKAIA_FLOP = RawAnimation.begin().thenLoop("animation.pikaia.flop");
@@ -98,9 +99,10 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
         this.goalSelector.addGoal(0, new TryFindWaterGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.5D));
         this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.0D, 10));
+        this.goalSelector.addGoal(4, new PikaiaEntity.ReviveCoralGoal(this));
 
-        this.pollinateGoal = new PikaiaEntity.PollinateCoralGoal();
-        this.goalSelector.addGoal(4, this.pollinateGoal);
+        //this.pollinateGoal = new PikaiaEntity.PollinateCoralGoal();
+       // this.goalSelector.addGoal(4, this.pollinateGoal);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -112,6 +114,7 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
         this.entityData.define(FROM_BOOK, false);
         this.entityData.define(FROM_BUCKET, false);
         this.entityData.define(FROM_EGG, false);
+        this.entityData.define(IS_POLLINATING, false);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
@@ -130,6 +133,14 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
     public boolean isPikachu() {
         String s = ChatFormatting.stripFormatting(this.getName().getString());
         return s != null && s.toLowerCase().contains("pikachu");
+    }
+
+    public boolean isPollinating() {
+        return this.entityData.get(IS_POLLINATING);
+    }
+
+    public void setPollinating(boolean fromBook) {
+        this.entityData.set(IS_POLLINATING, fromBook);
     }
 
     public boolean isFromBook() {
@@ -219,27 +230,27 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
     }
 
     protected PathNavigation createNavigation(Level pLevel) {
-        WaterBoundPathNavigation flyingpathnavigation = new WaterBoundPathNavigation(this, pLevel) {
-            public void tick() {
-                if (!PikaiaEntity.this.pollinateGoal.isPollinating()) {
-                    super.tick();
-                }
-            }
-        };
-        return flyingpathnavigation;
+       // WaterBoundPathNavigation flyingpathnavigation = new WaterBoundPathNavigation(this, pLevel){
+//            public void tick() {
+//                if (!PikaiaEntity.this.pollinateGoal.isPollinating()) {
+//                    super.tick();
+//                }
+//            }
+//        };
+        return new WaterBoundPathNavigation(this, pLevel);
     }
 
-    public boolean hurt(DamageSource pSource, float pAmount) {
-        if (this.isInvulnerableTo(pSource)) {
-            return false;
-        } else {
-            if (!this.level().isClientSide) {
-                this.pollinateGoal.stopPollinating();
-            }
-
-            return super.hurt(pSource, pAmount);
-        }
-    }
+//    public boolean hurt(DamageSource pSource, float pAmount) {
+//        if (this.isInvulnerableTo(pSource)) {
+//            return false;
+//        } else {
+//            if (!this.level().isClientSide) {
+//                this.pollinateGoal.stopPollinating();
+//            }
+//
+//            return super.hurt(pSource, pAmount);
+//        }
+//    }
 
     public void travel(Vec3 pTravelVector) {
         if (this.isEffectiveAi() && this.isInWater()) {
@@ -267,19 +278,13 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
     protected <E extends GeoAnimatable> PlayState Controller(AnimationState<E> event) {
         if (this.isFromBook()){
             return PlayState.STOP;
-        }else if((this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && this.isInWater())) {
+        }else if(this.isPollinating()){
+            event.setAndContinue(PIKAIA_POLLINATE);
+            event.getController().setAnimationSpeed(1.75f);
+        }else if(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && this.isInWater()) {
             event.setAndContinue(PIKAIA_SWIM);
-            event.getController().setAnimationSpeed(1.25f);
         } else if (this.isInWater()){
-            if (this.pollinateGoal != null){
-                if (this.pollinateGoal.isPollinating()){
-                    event.setAndContinue(PIKAIA_SWIM);
-                }else{
-                    event.setAndContinue(PIKAIA_IDLE);
-                }
-            }else {
-                event.setAndContinue(PIKAIA_IDLE);
-            }
+            event.setAndContinue(PIKAIA_IDLE);
         }
         else{
             event.setAndContinue(PIKAIA_FLOP);
@@ -335,6 +340,99 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
 
         spawnDataIn = super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
         return super.finalizeSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
+    }
+
+    class ReviveCoralGoal extends MoveToBlockGoal{
+        private final PikaiaEntity pikaiia;
+        private int eatAnimationTick;
+
+        public void start() {
+            this.eatAnimationTick = 10;
+            this.pikaiia.level().broadcastEntityEvent(this.pikaiia, (byte)10);
+        }
+
+        public ReviveCoralGoal(PikaiaEntity pikaia) {
+            super(pikaia, 1F, 16, 10);
+            this.pikaiia = pikaia;
+        }
+
+        public boolean canUse() {
+            if (this.nextStartTick <= 0) {
+                if (!net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.pikaiia.level(), this.pikaiia) || this.pikaiia.isBaby()) {
+                    return false;
+                }
+            }
+            return super.canUse();
+        }
+
+        @Override
+        public double acceptedDistance() {
+            return 1.5D;
+        }
+
+        public void tick() {
+            super.tick();
+            if (this.isReachedTarget()) {
+
+                if (!this.pikaiia.isPollinating()){
+                    this.pikaiia.setPollinating(true);
+                }
+
+                if (this.pikaiia.getNavigation().getPath() != null) {
+                    this.pikaiia.getNavigation().stop();
+                }
+
+                Level level = this.pikaiia.level();
+                BlockPos blockpos = this.blockPos;
+                BlockState blockstate = level.getBlockState(blockpos);
+
+                Map<BlockPos, BlockState> posBlockStateMap = Maps.newHashMap();
+
+                if (blockstate.is(ModTags.Blocks.PIKAIA_REVIVING_TARGET) && !this.pikaiia.level().isClientSide) {
+                    for (PikaiaCoralManager.PikaiaCoralData data : PikaiaCoralManager.DATA) {
+
+                        Block input = data.input();
+                        Block output = data.output();
+
+                        if (blockstate != null){
+                            if (blockstate.is(input)) {
+                                if (blockstate.getBlock() instanceof BaseCoralPlantTypeBlock){
+                                    posBlockStateMap.put(blockpos, output.defaultBlockState().trySetValue(BaseCoralPlantBlock.WATERLOGGED, true));
+                                }else {
+                                    posBlockStateMap.put(blockpos, output.defaultBlockState());
+                                }
+                            }
+                        }
+                    }
+                    for (BlockPos position : posBlockStateMap.keySet()) {
+                        this.pikaiia.level().levelEvent(2005, position, 0);
+                        BlockState output = posBlockStateMap.get(blockpos);
+                        this.pikaiia.level().setBlock(blockpos, output, 2);
+                    }
+                }
+
+                this.nextStartTick = 1000;
+                this.eatAnimationTick--;
+
+            } else if (this.eatAnimationTick == 0) {
+                this.pikaiia.setPollinating(false);
+            }
+
+        }
+
+        public void stop() {
+            this.nextStartTick = 10;
+            this.eatAnimationTick = 0;
+            this.pikaiia.setPollinating(false);
+        }
+
+        protected boolean isValidTarget(LevelReader pLevel, BlockPos pPos) {
+            BlockState blockstate = pLevel.getBlockState(pPos);
+            return (blockstate.is(ModTags.Blocks.PIKAIA_REVIVING_TARGET) &&
+                    (blockstate.getBlock() instanceof BaseCoralPlantTypeBlock == blockstate.getFluidState().is(FluidTags.WATER)));
+                    //&& pLevel.getBlockState(pPos.above()).is(Blocks.WATER);
+        }
+
     }
 
     class PollinateCoralGoal extends Goal {

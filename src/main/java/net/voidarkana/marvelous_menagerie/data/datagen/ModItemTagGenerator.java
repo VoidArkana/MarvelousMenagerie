@@ -1,4 +1,4 @@
-package net.voidarkana.marvelous_menagerie.datagen;
+package net.voidarkana.marvelous_menagerie.data.datagen;
 
 import com.peeko32213.unusualprehistory.core.registry.UPTags;
 import net.minecraft.core.HolderLookup;

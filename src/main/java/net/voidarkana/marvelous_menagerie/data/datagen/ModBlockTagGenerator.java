@@ -1,5 +1,6 @@
-package net.voidarkana.marvelous_menagerie.datagen;
+package net.voidarkana.marvelous_menagerie.data.datagen;
 
+import com.peeko32213.unusualprehistory.core.registry.UPBlocks;
 import com.peeko32213.unusualprehistory.core.registry.UPTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -233,6 +234,39 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .addTag(ModTags.Blocks.DYE_DEPOT_GINGER_WOOL)
                 .addTag(ModTags.Blocks.DYE_DEPOT_TAN_WOOL);
 
+        this.tag(ModTags.Blocks.PIKAIA_REVIVING_TARGET).add(
+
+                Blocks.DEAD_HORN_CORAL_BLOCK,
+                Blocks.DEAD_BRAIN_CORAL_BLOCK,
+                Blocks.DEAD_FIRE_CORAL_BLOCK,
+                Blocks.DEAD_BUBBLE_CORAL_BLOCK,
+                Blocks.DEAD_TUBE_CORAL_BLOCK,
+                UPBlocks.DEAD_CLATHRODICTYON_BLOCK.get(),
+
+                Blocks.DEAD_BRAIN_CORAL,
+                Blocks.DEAD_BRAIN_CORAL_FAN,
+                Blocks.DEAD_BRAIN_CORAL_WALL_FAN,
+
+                Blocks.DEAD_BUBBLE_CORAL,
+                Blocks.DEAD_BUBBLE_CORAL_FAN,
+                Blocks.DEAD_BUBBLE_CORAL_WALL_FAN,
+
+                Blocks.DEAD_FIRE_CORAL,
+                Blocks.DEAD_FIRE_CORAL_FAN,
+                Blocks.DEAD_FIRE_CORAL_WALL_FAN,
+
+                Blocks.DEAD_HORN_CORAL,
+                Blocks.DEAD_HORN_CORAL_FAN,
+                Blocks.DEAD_HORN_CORAL_WALL_FAN,
+
+                Blocks.DEAD_TUBE_CORAL,
+                Blocks.DEAD_TUBE_CORAL_FAN,
+                Blocks.DEAD_TUBE_CORAL_WALL_FAN,
+
+                UPBlocks.DEAD_CLATHRODICTYON.get(),
+                UPBlocks.DEAD_CLATHRODICTYON_FAN.get(),
+                UPBlocks.DEAD_CLATHRODICTYON_WALL_FAN.get()
+        );
 
     }
 }

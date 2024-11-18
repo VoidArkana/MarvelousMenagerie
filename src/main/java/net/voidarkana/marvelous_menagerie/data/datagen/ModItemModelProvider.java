@@ -1,4 +1,4 @@
-package net.voidarkana.marvelous_menagerie.datagen;
+package net.voidarkana.marvelous_menagerie.data.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;

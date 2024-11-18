@@ -1,10 +1,9 @@
-package net.voidarkana.marvelous_menagerie.datagen;
+package net.voidarkana.marvelous_menagerie.data.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.voidarkana.marvelous_menagerie.datagen.loot.ModBlockLootTables;
+import net.voidarkana.marvelous_menagerie.data.datagen.loot.ModBlockLootTables;
 
 import java.util.List;
 import java.util.Set;

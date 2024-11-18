@@ -1,4 +1,4 @@
-// 1.20.1	2024-10-29T22:08:57.7665088	Tags for minecraft:block mod id marvelous_menagerie
+// 1.20.1	2024-11-18T14:42:07.2030995	Tags for minecraft:block mod id marvelous_menagerie
 b2a6444ac3d9134bbfcd0e08248a714d883763dc data/marvelous_menagerie/tags/blocks/dye_depot_amber_wool.json
 c5562953a9293de19e888fc5e9bbfecb2b7bf1c3 data/marvelous_menagerie/tags/blocks/dye_depot_aqua_wool.json
 3b91d822c1d28f8262c6aa513d384468a3137ddc data/marvelous_menagerie/tags/blocks/dye_depot_beige_wool.json
@@ -16,6 +16,7 @@ baf3e930c16e0662e614d3cc5b4f393aabe406d7 data/marvelous_menagerie/tags/blocks/dy
 787e537d922b080a3dfe3f277ad82562d5cf8242 data/marvelous_menagerie/tags/blocks/dye_depot_teal_wool.json
 0abb54968c9ce515a7bbc55bebfb01da1a2696d8 data/marvelous_menagerie/tags/blocks/dye_depot_verdant_wool.json
 91a6ffe1ba6c1b9c525b3994d8bedeb916904345 data/marvelous_menagerie/tags/blocks/dye_depot_wool.json
+d02d57d10b7cf23a2f4b12d0d23fcb6405c33a0d data/marvelous_menagerie/tags/blocks/pikaia_coral_target.json
 1105b8780627abc34c43d2c973d7dda863e1b646 data/marvelous_menagerie/tags/blocks/sigillaria_log_block.json
 c7086a9def0e88c5c2ea90497ed1c6a03e3d3dc6 data/marvelous_menagerie/tags/blocks/zuloagae_log_block.json
 9f8ad2d233d2be38e8be880b894abdc909f1936e data/minecraft/tags/blocks/ceiling_hanging_signs.json

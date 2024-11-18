@@ -1,4 +1,4 @@
-package net.voidarkana.marvelous_menagerie.datagen;
+package net.voidarkana.marvelous_menagerie.data.datagen;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;

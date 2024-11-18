@@ -1,4 +1,4 @@
-package net.voidarkana.marvelous_menagerie.datagen.loot;
+package net.voidarkana.marvelous_menagerie.data.datagen.loot;
 
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;

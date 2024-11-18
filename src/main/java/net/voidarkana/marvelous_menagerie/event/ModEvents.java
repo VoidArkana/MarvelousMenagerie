@@ -1,5 +1,6 @@
 package net.voidarkana.marvelous_menagerie.event;
 
+import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -11,9 +12,10 @@ import net.voidarkana.marvelous_menagerie.common.entity.custom.*;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.baby.BabyAnomalocarisEntity;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.baby.BabyOphthalmoEntity;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.baby.BabyStellerEntity;
+import net.voidarkana.marvelous_menagerie.data.codec.PikaiaCoralManager;
 
 @Mod.EventBusSubscriber(modid = MarvelousMenagerie.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ModEventBusEvents {
+public class ModEvents {
 
     @SubscribeEvent
     public static void entityAttributeEvent(EntityAttributeCreationEvent event){
@@ -56,7 +58,11 @@ public class ModEventBusEvents {
                 return;
             }
         }
+    }
 
+    @SubscribeEvent
+    public void register(AddReloadListenerEvent event) {
+        event.addListener(new PikaiaCoralManager());
     }
 
 }

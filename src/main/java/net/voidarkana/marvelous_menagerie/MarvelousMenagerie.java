@@ -1,7 +1,6 @@
 package net.voidarkana.marvelous_menagerie;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
@@ -28,7 +27,7 @@ import net.voidarkana.marvelous_menagerie.common.effect.potion.ModPotionRecipes;
 import net.voidarkana.marvelous_menagerie.common.effect.potion.ModPotions;
 import net.voidarkana.marvelous_menagerie.common.enchantment.ModEnchantmentsClass;
 import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
-import net.voidarkana.marvelous_menagerie.event.ModEventBusEvents;
+import net.voidarkana.marvelous_menagerie.event.ModEvents;
 import net.voidarkana.marvelous_menagerie.common.item.ModItems;
 import net.voidarkana.marvelous_menagerie.client.sound.ModSounds;
 import net.voidarkana.marvelous_menagerie.common.CommonProxy;
@@ -51,6 +50,7 @@ public class MarvelousMenagerie {
     public MarvelousMenagerie() {
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus eventBus = MinecraftForge.EVENT_BUS;
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
@@ -82,7 +82,7 @@ public class MarvelousMenagerie {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC,
                 "marvelous_menagerie.toml");
 
-        MinecraftForge.EVENT_BUS.register(new ModEventBusEvents());
+        eventBus.register(new ModEvents());
 
         PROXY.commonInit();
     }

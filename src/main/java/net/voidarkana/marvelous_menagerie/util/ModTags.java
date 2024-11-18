@@ -72,6 +72,9 @@ public class ModTags {
         public static final TagKey<Block> DYE_DEPOT_GINGER_WOOL = tag("dye_depot_ginger_wool");
         public static final TagKey<Block> DYE_DEPOT_TAN_WOOL = tag("dye_depot_tan_wool");
 
+
+        public static final TagKey<Block> PIKAIA_REVIVING_TARGET = tag("pikaia_coral_target");
+
         private static TagKey<Block> tag(String name){
             return BlockTags.create(new ResourceLocation(MarvelousMenagerie.MOD_ID, name));
         }
