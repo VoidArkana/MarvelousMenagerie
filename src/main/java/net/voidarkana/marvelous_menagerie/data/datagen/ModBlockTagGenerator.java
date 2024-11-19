@@ -236,37 +236,107 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
         this.tag(ModTags.Blocks.PIKAIA_REVIVING_TARGET).add(
 
-                Blocks.DEAD_HORN_CORAL_BLOCK,
-                Blocks.DEAD_BRAIN_CORAL_BLOCK,
-                Blocks.DEAD_FIRE_CORAL_BLOCK,
-                Blocks.DEAD_BUBBLE_CORAL_BLOCK,
-                Blocks.DEAD_TUBE_CORAL_BLOCK,
-                UPBlocks.DEAD_CLATHRODICTYON_BLOCK.get(),
-
                 Blocks.DEAD_BRAIN_CORAL,
+                Blocks.DEAD_BRAIN_CORAL_BLOCK,
                 Blocks.DEAD_BRAIN_CORAL_FAN,
                 Blocks.DEAD_BRAIN_CORAL_WALL_FAN,
 
                 Blocks.DEAD_BUBBLE_CORAL,
+                Blocks.DEAD_BUBBLE_CORAL_BLOCK,
                 Blocks.DEAD_BUBBLE_CORAL_FAN,
                 Blocks.DEAD_BUBBLE_CORAL_WALL_FAN,
 
                 Blocks.DEAD_FIRE_CORAL,
+                Blocks.DEAD_FIRE_CORAL_BLOCK,
                 Blocks.DEAD_FIRE_CORAL_FAN,
                 Blocks.DEAD_FIRE_CORAL_WALL_FAN,
 
                 Blocks.DEAD_HORN_CORAL,
+                Blocks.DEAD_HORN_CORAL_BLOCK,
                 Blocks.DEAD_HORN_CORAL_FAN,
                 Blocks.DEAD_HORN_CORAL_WALL_FAN,
 
                 Blocks.DEAD_TUBE_CORAL,
+                Blocks.DEAD_TUBE_CORAL_BLOCK,
                 Blocks.DEAD_TUBE_CORAL_FAN,
                 Blocks.DEAD_TUBE_CORAL_WALL_FAN,
 
                 UPBlocks.DEAD_CLATHRODICTYON.get(),
+                UPBlocks.DEAD_CLATHRODICTYON_BLOCK.get(),
                 UPBlocks.DEAD_CLATHRODICTYON_FAN.get(),
-                UPBlocks.DEAD_CLATHRODICTYON_WALL_FAN.get()
-        );
+                UPBlocks.DEAD_CLATHRODICTYON_WALL_FAN.get())
 
+                //upgrade aquatic
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_acan_coral"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_acan_coral_block_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_acan_coral_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_acan_coral_wall_fan"))
+
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_finger_coral"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_finger_coral_block_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_finger_coral_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_finger_coral_wall_fan"))
+
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_star_coral"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_star_coral_block_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_star_coral_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_star_coral_wall_fan"))
+
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_moss_coral"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_moss_coral_block_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_moss_coral_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_moss_coral_wall_fan"))
+
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_petal_coral"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_petal_coral_block_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_petal_coral_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_petal_coral_wall_fan"))
+
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_branch_coral"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_branch_coral_block_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_branch_coral_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_branch_coral_wall_fan"))
+
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_rock_coral"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_rock_coral_block_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_rock_coral_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_rock_coral_wall_fan"))
+
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_pillow_coral"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_pillow_coral_block_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_pillow_coral_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_pillow_coral_wall_fan"))
+
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_silk_coral"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_silk_coral_block_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_silk_coral_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_silk_coral_wall_fan"))
+
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_chrome_coral"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_chrome_coral_block_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_chrome_coral_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:dead_chrome_coral_wall_fan"))
+
+                .addOptional(new ResourceLocation("upgrade_aquatic:elder_prismarine_coral"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:elder_prismarine_coral_block_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:elder_prismarine_coral_fan"))
+                .addOptional(new ResourceLocation("upgrade_aquatic:elder_prismarine_coral_wall_fan"))
+
+                //rainbow reef
+                .addOptional(new ResourceLocation("rainbowreef:dead_chimney_coral"))
+                .addOptional(new ResourceLocation("rainbowreef:dead_chimney_coral_block"))
+
+                .addOptional(new ResourceLocation("rainbowreef:dead_hand_coral"))
+                .addOptional(new ResourceLocation("rainbowreef:dead_hand_coral_block"))
+
+                .addOptional(new ResourceLocation("rainbowreef:dead_barrel_coral"))
+                .addOptional(new ResourceLocation("rainbowreef:dead_barrel_coral_block"))
+
+                .addOptional(new ResourceLocation("rainbowreef:dead_shelf_coral"))
+                .addOptional(new ResourceLocation("rainbowreef:dead_shelf_coral_block"))
+
+                .addOptional(new ResourceLocation("rainbowreef:dead_tower_coral"))
+                .addOptional(new ResourceLocation("rainbowreef:dead_tower_coral_block"));
     }
+
 }
