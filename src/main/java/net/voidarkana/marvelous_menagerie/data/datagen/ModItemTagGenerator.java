@@ -4,6 +4,7 @@ import com.peeko32213.unusualprehistory.core.registry.UPTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
@@ -237,5 +238,7 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 ModItems.HALLUCIGENIA_FLASK.get(),
                 ModItems.CHARNIA_FLASK.get()
         );
+
+        this.tag(ModTags.Items.FINTASTIC_BAD_FEED).addOptional(new ResourceLocation("fintastic:bad_feed"));
     }
 }

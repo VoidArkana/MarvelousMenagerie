@@ -82,6 +82,8 @@ public class ModTags {
 
     public static class Items {
 
+        public static final TagKey<Item> FINTASTIC_BAD_FEED = tag("fintastic_bad_feed");
+
         public static final TagKey<Item> SIGILLARIA_LOG_ITEM = tag("sigillaria_log_item");
         public static final TagKey<Item> ZULOAGAE_LOG_ITEM = tag("zuloagae_log_item");
 

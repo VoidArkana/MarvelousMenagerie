@@ -6,6 +6,7 @@ import com.peeko32213.unusualprehistory.common.entity.IBookEntity;
 import com.peeko32213.unusualprehistory.common.entity.IHatchableEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -32,6 +33,7 @@ import net.minecraft.world.entity.animal.Bucketable;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -85,6 +87,7 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
 //        }
     }
 
+    private static final EntityDataAccessor<Boolean> CAN_POLLINATE = SynchedEntityData.defineId(PikaiaEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_POLLINATING = SynchedEntityData.defineId(PikaiaEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(PikaiaEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> FROM_BOOK = SynchedEntityData.defineId(PikaiaEntity.class, EntityDataSerializers.BOOLEAN);
@@ -115,24 +118,35 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
         this.entityData.define(FROM_BUCKET, false);
         this.entityData.define(FROM_EGG, false);
         this.entityData.define(IS_POLLINATING, false);
+        this.entityData.define(CAN_POLLINATE, false);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putBoolean("FromBucket", this.fromBucket());
         pCompound.putBoolean("FromEgg", this.isFromEgg());
+        pCompound.putBoolean("CanPollinate", this.canPollinate());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         this.setFromBucket(pCompound.getBoolean("FromBucket"));
         this.setIsFromEgg(pCompound.getBoolean("FromEgg"));
+        this.setCanPollinate(pCompound.getBoolean("CanPollinate"));
     }
 
     //custom name
     public boolean isPikachu() {
         String s = ChatFormatting.stripFormatting(this.getName().getString());
         return s != null && s.toLowerCase().contains("pikachu");
+    }
+
+    public boolean canPollinate() {
+        return this.entityData.get(CAN_POLLINATE);
+    }
+
+    public void setCanPollinate(boolean fromBook) {
+        this.entityData.set(CAN_POLLINATE, fromBook);
     }
 
     public boolean isPollinating() {
@@ -230,27 +244,8 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
     }
 
     protected PathNavigation createNavigation(Level pLevel) {
-       // WaterBoundPathNavigation flyingpathnavigation = new WaterBoundPathNavigation(this, pLevel){
-//            public void tick() {
-//                if (!PikaiaEntity.this.pollinateGoal.isPollinating()) {
-//                    super.tick();
-//                }
-//            }
-//        };
         return new WaterBoundPathNavigation(this, pLevel);
     }
-
-//    public boolean hurt(DamageSource pSource, float pAmount) {
-//        if (this.isInvulnerableTo(pSource)) {
-//            return false;
-//        } else {
-//            if (!this.level().isClientSide) {
-//                this.pollinateGoal.stopPollinating();
-//            }
-//
-//            return super.hurt(pSource, pAmount);
-//        }
-//    }
 
     public void travel(Vec3 pTravelVector) {
         if (this.isEffectiveAi() && this.isInWater()) {
@@ -267,7 +262,41 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
     }
 
     protected InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
+        ItemStack itemStack = pPlayer.getItemInHand(pHand);
+
+        if (itemStack.is(Items.DRIED_KELP) && this.canPollinate()){
+            this.usePlayerItem(pPlayer, pHand, itemStack);
+            this.playSound(SoundEvents.DOLPHIN_EAT, 1.0F, (this.random.nextFloat() - (this.random.nextFloat()) * 0.2F) + 1.0F);
+            this.setCanPollinate(false);
+
+            for(int j = 0; j < 5; ++j) {
+                this.level().addParticle(ParticleTypes.ANGRY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.25, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+            }
+
+            return InteractionResult.SUCCESS;
+        }
+
+        if (itemStack.is(Items.KELP) && !this.canPollinate()){
+            this.usePlayerItem(pPlayer, pHand, itemStack);
+            this.playSound(SoundEvents.DOLPHIN_EAT, 1.0F, (this.random.nextFloat() - (this.random.nextFloat()) * 0.2F) + 1.0F);
+            this.setCanPollinate(true);
+
+            for(int j = 0; j < 5; ++j) {
+                this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.25, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+            }
+
+            return InteractionResult.SUCCESS;
+        }
+
         return Bucketable.bucketMobPickup(pPlayer, pHand, this).orElse(super.mobInteract(pPlayer, pHand));
+    }
+
+
+    protected void usePlayerItem(Player pPlayer, InteractionHand pHand, ItemStack pStack) {
+        if (!pPlayer.getAbilities().instabuild) {
+            pStack.shrink(1);
+        }
+
     }
 
     @Override
@@ -357,10 +386,8 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
         }
 
         public boolean canUse() {
-            if (this.nextStartTick <= 0) {
-                if (!net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.pikaiia.level(), this.pikaiia) || this.pikaiia.isBaby()) {
-                    return false;
-                }
+            if (!this.pikaiia.canPollinate()){
+                return false;
             }
             return super.canUse();
         }
@@ -372,6 +399,7 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
 
         public void tick() {
             super.tick();
+            this.pikaiia.getLookControl().setLookAt((double)this.blockPos.getX() + 0.5D, (double)(this.blockPos.getY() + 1), (double)this.blockPos.getZ() + 0.5D, 10.0F, (float)this.pikaiia.getMaxHeadXRot());
             if (this.isReachedTarget()) {
 
                 if (!this.pikaiia.isPollinating()){
@@ -421,7 +449,7 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
         }
 
         public void stop() {
-            this.nextStartTick = 10;
+            this.nextStartTick = 1000;
             this.eatAnimationTick = 0;
             this.pikaiia.setPollinating(false);
         }
@@ -430,172 +458,8 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
             BlockState blockstate = pLevel.getBlockState(pPos);
             return (blockstate.is(ModTags.Blocks.PIKAIA_REVIVING_TARGET) &&
                     (blockstate.getBlock() instanceof BaseCoralPlantTypeBlock == blockstate.getFluidState().is(FluidTags.WATER)));
-                    //&& pLevel.getBlockState(pPos.above()).is(Blocks.WATER);
         }
 
-    }
-
-    class PollinateCoralGoal extends Goal {
-
-        private final Predicate<BlockState> VALID_POLLINATION_BLOCKS = (p_28074_) -> p_28074_.is(BlockTags.CORALS);
-
-        private int successfulPollinatingTicks;
-        private int lastSoundPlayedTick;
-        private boolean pollinating;
-        @javax.annotation.Nullable
-        private Vec3 hoverPos;
-        private int pollinatingTicks;
-
-        PollinateCoralGoal() {
-            this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-        }
-
-        public boolean canUse() {
-            Optional<BlockPos> optional = this.findNearbyFlower();
-            if (optional.isPresent()) {
-                PikaiaEntity.this.savedFlowerPos = optional.get();
-                PikaiaEntity.this.navigation.moveTo((double)PikaiaEntity.this.savedFlowerPos.getX() + (0.01 * random.nextInt(-5, 5)),
-                        (double)PikaiaEntity.this.savedFlowerPos.getY() + (0.01 * random.nextInt(-5, 5)),
-                        (double)PikaiaEntity.this.savedFlowerPos.getZ() + (0.01 * random.nextInt(-5, 5)), 1.2F);
-                return true;
-            } else {
-                PikaiaEntity.this.remainingCooldownBeforeLocatingNewFlower = Mth.nextInt(PikaiaEntity.this.random, 300, 400);
-                return false;
-            }
-
-        }
-
-        public boolean canContinueToUse() {
-            if (!isPollinating()) {
-                return false;
-            } else if (!PikaiaEntity.this.hasSavedFlowerPos()) {
-                return false;
-            } else if (this.hasPollinatedLongEnough()) {
-                return PikaiaEntity.this.random.nextFloat() < 0.2F;
-            } else if (PikaiaEntity.this.tickCount % 20 == 0 && !PikaiaEntity.this.isFlowerValid(PikaiaEntity.this.savedFlowerPos)) {
-                PikaiaEntity.this.savedFlowerPos = null;
-                return false;
-            } else {
-                return true;
-            }
-        }
-
-        private boolean hasPollinatedLongEnough() {
-            return this.successfulPollinatingTicks > 100;
-        }
-
-        boolean isPollinating() {
-            return this.pollinating;
-        }
-
-        void stopPollinating() {
-            this.pollinating = false;
-        }
-
-        public void start() {
-            this.successfulPollinatingTicks = 0;
-            this.pollinatingTicks = 0;
-            this.lastSoundPlayedTick = 0;
-            this.pollinating = true;
-        }
-
-        public void stop() {
-            this.stopPollinating();
-            PikaiaEntity.this.navigation.stop();
-            PikaiaEntity.this.remainingCooldownBeforeLocatingNewFlower = 400;
-        }
-
-        public boolean requiresUpdateEveryTick() {
-            return true;
-        }
-
-        public void tick() {
-            ++this.pollinatingTicks;
-            if (this.pollinatingTicks > 600) {
-                PikaiaEntity.this.savedFlowerPos = null;
-            } else {
-                Vec3 vec3 = Vec3.atBottomCenterOf(PikaiaEntity.this.savedFlowerPos).add(0.0D, (double)0.6F, 0.0D);
-                if (vec3.distanceTo(PikaiaEntity.this.position()) > 1.0D) {
-                    this.hoverPos = vec3;
-                    this.setWantedPos();
-                } else {
-                    if (this.hoverPos == null) {
-                        this.hoverPos = vec3;
-                    }
-
-                    boolean flag = PikaiaEntity.this.position().distanceTo(this.hoverPos) <= 0.1D;
-                    boolean flag1 = true;
-                    if (!flag && this.pollinatingTicks > 600) {
-                        PikaiaEntity.this.savedFlowerPos = null;
-                    } else {
-                        if (flag) {
-                            boolean flag2 = PikaiaEntity.this.random.nextInt(25) == 0;
-                            if (flag2) {
-                                this.hoverPos = new Vec3(vec3.x() + (double)this.getOffset(), vec3.y(), vec3.z() + (double)this.getOffset());
-                                PikaiaEntity.this.navigation.stop();
-                            } else {
-                                flag1 = false;
-                            }
-
-                            PikaiaEntity.this.getLookControl().setLookAt(vec3.x(), vec3.y(), vec3.z());
-                        }
-
-                        if (flag1) {
-                            this.setWantedPos();
-                        }
-
-                        ++this.successfulPollinatingTicks;
-                        if (PikaiaEntity.this.random.nextFloat() < 0.05F && this.successfulPollinatingTicks > this.lastSoundPlayedTick + 60) {
-                            this.lastSoundPlayedTick = this.successfulPollinatingTicks;
-                            PikaiaEntity.this.playSound(SoundEvents.BUBBLE_COLUMN_BUBBLE_POP, 1.0F, 1.0F);
-                        }
-
-                    }
-                }
-            }
-        }
-
-        private void setWantedPos() {
-            if (this.hoverPos != null){
-                PikaiaEntity.this.getMoveControl().setWantedPosition(this.hoverPos.x(), this.hoverPos.y(), this.hoverPos.z(), 0.35F);
-            }
-        }
-
-        private float getOffset() {
-            return (PikaiaEntity.this.random.nextFloat() * 2.0F - 1.0F) * 0.33333334F;
-        }
-
-        private Optional<BlockPos> findNearbyFlower() {
-            return this.findNearestBlock(this.VALID_POLLINATION_BLOCKS, 5.0D);
-        }
-
-        private Optional<BlockPos> findNearestBlock(Predicate<BlockState> pPredicate, double pDistance) {
-            BlockPos blockpos = PikaiaEntity.this.blockPosition();
-            BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
-
-            for(int i = 0; (double)i <= pDistance; i = i > 0 ? -i : 1 - i) {
-                for(int j = 0; (double)j < pDistance; ++j) {
-                    for(int k = 0; k <= j; k = k > 0 ? -k : 1 - k) {
-                        for(int l = k < j && k > -j ? j : 0; l <= j; l = l > 0 ? -l : 1 - l) {
-                            blockpos$mutableblockpos.setWithOffset(blockpos, k, i - 1, l);
-                            if (blockpos.closerThan(blockpos$mutableblockpos, pDistance) && pPredicate.test(PikaiaEntity.this.level().getBlockState(blockpos$mutableblockpos))) {
-                                return Optional.of(blockpos$mutableblockpos);
-                            }
-                        }
-                    }
-                }
-            }
-
-            return Optional.empty();
-        }
-    }
-
-    public boolean hasSavedFlowerPos() {
-        return this.savedFlowerPos != null;
-    }
-
-    boolean isFlowerValid(BlockPos pPos) {
-        return this.level().isLoaded(pPos) && this.level().getBlockState(pPos).is(BlockTags.CORALS);
     }
 
 }

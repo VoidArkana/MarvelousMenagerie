@@ -43,6 +43,7 @@ import net.voidarkana.marvelous_menagerie.common.entity.custom.StellerEntity;
 import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.common.item.ModItems;
 import net.voidarkana.marvelous_menagerie.client.sound.ModSounds;
+import net.voidarkana.marvelous_menagerie.util.ModTags;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -68,7 +69,7 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
     private int age;
     private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(BabyStellerEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> FROM_BOOK = SynchedEntityData.defineId(BabyStellerEntity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(BabyStellerEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> CAN_GROW = SynchedEntityData.defineId(BabyStellerEntity.class, EntityDataSerializers.BOOLEAN);
 
     protected static final RawAnimation BABY_STELLER_SWIM = RawAnimation.begin().thenLoop("animation.baby_steller_sea_cow.swim");
     protected static final RawAnimation BABY_STELLER_IDLE = RawAnimation.begin().thenLoop("animation.baby_steller_sea_cow.idle");
@@ -93,7 +94,7 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
 
     public void aiStep() {
 
-        if (!this.level().isClientSide){
+        if (!this.level().isClientSide && this.canGrow()){
             this.setAge(this.age + 1);
         }
         if (!this.isInWater() && this.onGround() && this.verticalCollision) {
@@ -141,36 +142,32 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
         super.defineSynchedData();
         this.entityData.define(FROM_BOOK, false);
         this.entityData.define(FROM_BUCKET, false);
-        this.entityData.define(VARIANT, 0);
+        this.entityData.define(CAN_GROW, true);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
-        this.setFromBucket(pCompound.getBoolean("FromBucket"));
-        this.setFromBucket(pCompound.getBoolean("Bucketed"));
+        pCompound.putBoolean("FromBucket", this.fromBucket());
+        pCompound.putBoolean("CanGrow", this.canGrow());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
+        this.setFromBucket(pCompound.getBoolean("FromBucket"));
+        this.setCanGrow(pCompound.getBoolean("CanGrow"));
     }
 
-    //bucket stuff
-    protected InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
-        ItemStack itemstack = pPlayer.getItemInHand(pHand);
-        if (itemstack.is(Items.KELP)){
-            this.decrementItem(pPlayer, itemstack);
-            this.eatFood();
-            this.playSound(SoundEvents.GENERIC_EAT);
-            return InteractionResult.sidedSuccess(this.level().isClientSide);
-        }
-        else{
-            return Bucketable.bucketMobPickup(pPlayer, pHand, this).orElse(super.mobInteract(pPlayer, pHand));
-        }
+    public boolean canGrow() {
+        return this.entityData.get(CAN_GROW);
+    }
+
+    public void setCanGrow(boolean canGrow) {
+        this.entityData.set(CAN_GROW, canGrow);
     }
 
     @Override
     public boolean fromBucket() {
-        return (Boolean)this.entityData.get(FROM_BUCKET);
+        return this.entityData.get(FROM_BUCKET);
     }
 
     @Override
@@ -187,6 +184,7 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
         if (this.hasCustomName()) {
             bucket.setHoverName(this.getCustomName());
         }
+        compoundnbt.putBoolean("CanGrow", this.canGrow());
     }
 
     @Override
@@ -207,13 +205,43 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
         return SoundEvents.BUCKET_FILL_FISH;
     }
 
+
+    //bucket stuff
+    protected InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
+        ItemStack itemstack = pPlayer.getItemInHand(pHand);
+        if (itemstack.is(Items.KELP)){
+
+            this.decrementItem(pPlayer, itemstack);
+            this.eatFood();
+            this.playSound(SoundEvents.GENERIC_EAT);
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
+
+        } else if (itemstack.is(ModTags.Items.FINTASTIC_BAD_FEED) && this.canGrow()) {
+
+            this.decrementItem(pPlayer, itemstack);
+            this.setCanGrow(false);
+            this.playSound(SoundEvents.GENERIC_EAT);
+
+            for(int j = 0; j < 5; ++j) {
+                this.level().addParticle(ParticleTypes.ANGRY_VILLAGER, this.getRandomX(1.5), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+            }
+
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
+
+        } else{
+            return Bucketable.bucketMobPickup(pPlayer, pHand, this).orElse(super.mobInteract(pPlayer, pHand));
+        }
+    }
+
     //food
     private void eatFood() {
+        if (!this.canGrow()){
+            this.setCanGrow(true);
+        }
         this.increaseAge((int)((float)(this.getTicksUntilGrowth() / 20) * 0.1F));
-        this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
-        this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
-        this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
-        this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+        for(int j = 0; j < 5; ++j) {
+            this.level().addParticle(ParticleTypes.ANGRY_VILLAGER, this.getRandomX(1.5), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+        }
     }
 
     private void decrementItem(Player player, ItemStack stack) {
@@ -270,6 +298,12 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
 
     @Nullable
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+
+        if (pReason == MobSpawnType.BUCKET && pDataTag != null && pDataTag.contains("CanGrow", 3)) {
+            this.setCanGrow(pDataTag.getBoolean("CanGrow"));
+            this.setFromBucket(true);
+        }
+
         this.setAirSupply(this.getMaxAirSupply());
         this.setXRot(0.0F);
         return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);

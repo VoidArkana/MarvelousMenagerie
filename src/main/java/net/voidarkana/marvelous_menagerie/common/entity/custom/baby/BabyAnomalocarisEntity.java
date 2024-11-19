@@ -11,6 +11,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -30,12 +31,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.AnomalocarisEntity;
 import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.common.item.ModItems;
 import net.voidarkana.marvelous_menagerie.client.sound.ModSounds;
+import net.voidarkana.marvelous_menagerie.util.ModTags;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -53,6 +57,7 @@ public class BabyAnomalocarisEntity extends WaterAnimal implements IHatchableEnt
     public float tilt;
 
     private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(BabyAnomalocarisEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> CAN_GROW = SynchedEntityData.defineId(BabyAnomalocarisEntity.class, EntityDataSerializers.BOOLEAN);
 
     public static final Ingredient FOOD_ITEMS = Ingredient.of(ModItems.TRILO_BITE.get());
     public static final int MAX_TADPOLE_AGE = Math.abs(-30000);
@@ -84,16 +89,27 @@ public class BabyAnomalocarisEntity extends WaterAnimal implements IHatchableEnt
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(FROM_BUCKET, false);
+        this.entityData.define(CAN_GROW, true);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
         super.addAdditionalSaveData(pCompound);
         pCompound.putBoolean("FromBucket", this.fromBucket());
+        pCompound.putBoolean("CanGrow", this.canGrow());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
         super.readAdditionalSaveData(pCompound);
         this.setFromBucket(pCompound.getBoolean("FromBucket"));
+        this.setCanGrow(pCompound.getBoolean("CanGrow"));
+    }
+
+    public boolean canGrow() {
+        return this.entityData.get(CAN_GROW);
+    }
+
+    public void setCanGrow(boolean canGrow) {
+        this.entityData.set(CAN_GROW, canGrow);
     }
 
     @Override
@@ -114,6 +130,7 @@ public class BabyAnomalocarisEntity extends WaterAnimal implements IHatchableEnt
         if (this.hasCustomName()) {
             bucket.setHoverName(this.getCustomName());
         }
+        compoundnbt.putBoolean("CanGrow", this.canGrow());
     }
 
     @Override
@@ -132,11 +149,13 @@ public class BabyAnomalocarisEntity extends WaterAnimal implements IHatchableEnt
 
     //food
     private void eatFood() {
-        this.increaseAge((int)((float)(this.getTicksUntilGrowth() / 20) * 0.5F));
-        this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
-        this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
-        this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
-        this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+        if (!this.canGrow()){
+            this.setCanGrow(true);
+        }
+        this.increaseAge((int)((float)(this.getTicksUntilGrowth() / 20) * 0.1F));
+        for(int j = 0; j < 5; ++j) {
+            this.level().addParticle(ParticleTypes.ANGRY_VILLAGER, this.getRandomX(1.5), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+        }
     }
 
     private void decrementItem(Player player, ItemStack stack) {
@@ -194,13 +213,25 @@ public class BabyAnomalocarisEntity extends WaterAnimal implements IHatchableEnt
         }
     }
 
+    @Nullable
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+
+        if (pReason == MobSpawnType.BUCKET && pDataTag != null && pDataTag.contains("CanGrow", 3)) {
+            this.setCanGrow(pDataTag.getBoolean("CanGrow"));
+            this.setFromBucket(true);
+        }
+
+        return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+    }
+
     //underwater navigation
     protected PathNavigation createNavigation(Level pLevel) {
         return new WaterBoundPathNavigation(this, pLevel);
     }
 
     public void aiStep() {
-        if (!this.level().isClientSide) {
+        if (!this.level().isClientSide && this.canGrow()) {
             this.setAge(this.age + 1);
         }
         if (!this.isInWater() && this.onGround() && this.verticalCollision) {
@@ -254,8 +285,19 @@ public class BabyAnomalocarisEntity extends WaterAnimal implements IHatchableEnt
             this.eatFood();
             this.playSound(SoundEvents.DOLPHIN_EAT);
             return InteractionResult.sidedSuccess(this.level().isClientSide);
-        }
-        else{
+        }else if (itemstack.is(ModTags.Items.FINTASTIC_BAD_FEED) && this.canGrow()) {
+
+            this.decrementItem(pPlayer, itemstack);
+            this.setCanGrow(false);
+            this.playSound(SoundEvents.DOLPHIN_EAT);
+
+            for(int j = 0; j < 5; ++j) {
+                this.level().addParticle(ParticleTypes.ANGRY_VILLAGER, this.getRandomX(1.5), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+            }
+
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
+
+        } else{
             return Bucketable.bucketMobPickup(pPlayer, pHand, this).orElse(super.mobInteract(pPlayer, pHand));
         }
     }

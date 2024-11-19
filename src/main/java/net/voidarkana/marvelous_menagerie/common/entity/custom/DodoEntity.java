@@ -5,6 +5,7 @@ import com.peeko32213.unusualprehistory.common.entity.msc.util.dino.EntityBaseDi
 import com.peeko32213.unusualprehistory.core.registry.UPTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -15,6 +16,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -23,6 +26,7 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -100,6 +104,7 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(DodoEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> PECKING_TIME = SynchedEntityData.defineId(DodoEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> PECKING = SynchedEntityData.defineId(DodoEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> CAN_PECK = SynchedEntityData.defineId(DodoEntity.class, EntityDataSerializers.BOOLEAN);
 
     @Override
     protected void defineSynchedData() {
@@ -107,6 +112,7 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         this.entityData.define(VARIANT, 0);
         this.entityData.define(PECKING_TIME, 0);
         this.entityData.define(PECKING, false);
+        this.entityData.define(CAN_PECK, false);
     }
 
     //variants
@@ -122,12 +128,14 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         super.addAdditionalSaveData(compound);
         compound.putInt("Variant", this.getVariant());
         compound.putBoolean("isPecking", this.getIsPecking());
+        compound.putBoolean("canPeck", this.getCanPeck());
     }
 
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         this.setVariant(compound.getInt("Variant"));
         this.setIsPecking(compound.getBoolean("isPecking"));
+        this.setCanPeck(compound.getBoolean("canPeck"));
     }
 
     //determines variant based on the number determined at spawn
@@ -168,6 +176,15 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
 
     public void setIsPecking(boolean pecking) {
         this.entityData.set(PECKING, pecking);
+    }
+
+    //can peck
+    public boolean getCanPeck() {
+        return (Boolean)this.entityData.get(CAN_PECK);
+    }
+
+    public void setCanPeck(boolean pecking) {
+        this.entityData.set(CAN_PECK, pecking);
     }
 
     //eye height
@@ -282,6 +299,37 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         return null;
     }
 
+    @Override
+    public InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
+        ItemStack itemStack = pPlayer.getItemInHand(pHand);
+
+        if (itemStack.is(Items.GLISTERING_MELON_SLICE) && this.getCanPeck()){
+            this.usePlayerItem(pPlayer, pHand, itemStack);
+            this.playSound(SoundEvents.GENERIC_EAT, 1.0F, (this.random.nextFloat() - (this.random.nextFloat()) * 0.2F) + 1.0F);
+            this.setCanPeck(false);
+
+            for(int j = 0; j < 5; ++j) {
+                this.level().addParticle(ParticleTypes.ANGRY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.25, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+            }
+
+            return InteractionResult.SUCCESS;
+        }
+
+        if ((itemStack.is(Items.MELON_SLICE) || itemStack.is(Items.PUMPKIN) || itemStack.is(Items.MELON)) && !this.getCanPeck()){
+            this.usePlayerItem(pPlayer, pHand, itemStack);
+            this.playSound(SoundEvents.GENERIC_EAT, 1.0F, (this.random.nextFloat() - (this.random.nextFloat()) * 0.2F) + 1.0F);
+            this.setCanPeck(true);
+
+            for(int j = 0; j < 5; ++j) {
+                this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.25, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+            }
+
+            return InteractionResult.SUCCESS;
+        }
+
+        return super.mobInteract(pPlayer, pHand);
+    }
+
     protected <E extends DodoEntity> PlayState Controller(AnimationState<E> event) {
         if (this.isFromBook()){
             return PlayState.STOP;
@@ -367,10 +415,8 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         }
 
         public boolean canUse() {
-            if (this.nextStartTick <= 0) {
-                if (!net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.dodo.level(), this.dodo) || this.dodo.isBaby()) {
-                    return false;
-                }
+            if (!this.dodo.getCanPeck()){
+                return false;
             }
             return super.canUse();
         }

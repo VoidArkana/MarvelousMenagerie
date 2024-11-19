@@ -41,6 +41,7 @@ import net.voidarkana.marvelous_menagerie.common.entity.ModEntities;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.OphthalmoEntity;
 import net.voidarkana.marvelous_menagerie.common.item.ModItems;
 import net.voidarkana.marvelous_menagerie.client.sound.ModSounds;
+import net.voidarkana.marvelous_menagerie.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -65,6 +66,7 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
     private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(BabyOphthalmoEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> BASE_VARIANT = SynchedEntityData.defineId(BabyOphthalmoEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> PATTERN_VARIANT = SynchedEntityData.defineId(BabyOphthalmoEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> CAN_GROW = SynchedEntityData.defineId(BabyOphthalmoEntity.class, EntityDataSerializers.BOOLEAN);
 
     public static final Ingredient FOOD_ITEMS = Ingredient.of(ItemTags.FISHES);
     public static final int MAX_TADPOLE_AGE = Math.abs(-30000);
@@ -101,6 +103,7 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
 
         this.entityData.define(BASE_VARIANT, 0);
         this.entityData.define(PATTERN_VARIANT, 0);
+        this.entityData.define(CAN_GROW, true);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {
@@ -109,6 +112,7 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
 
         pCompound.putInt("BaseColor", this.getBaseColor());
         pCompound.putInt("Pattern", this.getPattern());
+        pCompound.putBoolean("CanGrow", this.canGrow());
     }
 
     public void readAdditionalSaveData(CompoundTag pCompound) {
@@ -117,13 +121,21 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
 
         this.setBaseColor(pCompound.getInt("BaseColor"));
         this.setPattern(pCompound.getInt("Pattern"));
+        this.setCanGrow(pCompound.getBoolean("CanGrow"));
     }
 
     @Override
     public void determineVariant(int i) {
         this.setBaseColor(this.random.nextInt(0, 3));
         this.setPattern(this.random.nextInt(0, 4));
+    }
 
+    public boolean canGrow() {
+        return this.entityData.get(CAN_GROW);
+    }
+
+    public void setCanGrow(boolean canGrow) {
+        this.entityData.set(CAN_GROW, canGrow);
     }
 
     @Override
@@ -144,6 +156,8 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
 
         compoundnbt.putInt("BaseColor", this.getBaseColor());
         compoundnbt.putInt("Pattern", this.getPattern());
+
+        compoundnbt.putBoolean("CanGrow", this.canGrow());
     }
 
     @Override
@@ -162,11 +176,13 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
 
     //food
     private void eatFood() {
-        this.increaseAge((int)((float)(this.getTicksUntilGrowth() / 20) * 0.5F));
-        this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
-        this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
-        this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
-        this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+        if (!this.canGrow()){
+            this.setCanGrow(true);
+        }
+        this.increaseAge((int)((float)(this.getTicksUntilGrowth() / 20) * 0.1F));
+        for(int j = 0; j < 5; ++j) {
+            this.level().addParticle(ParticleTypes.ANGRY_VILLAGER, this.getRandomX(1.5), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+        }
     }
 
     private void decrementItem(Player player, ItemStack stack) {
@@ -234,7 +250,7 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
     }
 
     public void aiStep() {
-        if (!this.level().isClientSide) {
+        if (!this.level().isClientSide && this.canGrow()) {
             this.setAge(this.age + 1);
         }
         if (!this.isInWater() && this.onGround() && this.verticalCollision) {
@@ -288,8 +304,19 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
             this.eatFood();
             this.playSound(SoundEvents.DOLPHIN_EAT);
             return InteractionResult.sidedSuccess(this.level().isClientSide);
-        }
-        else{
+        }else if (itemstack.is(ModTags.Items.FINTASTIC_BAD_FEED) && this.canGrow()) {
+
+            this.decrementItem(pPlayer, itemstack);
+            this.setCanGrow(false);
+            this.playSound(SoundEvents.DOLPHIN_EAT);
+
+            for(int j = 0; j < 5; ++j) {
+                this.level().addParticle(ParticleTypes.ANGRY_VILLAGER, this.getRandomX(1.5), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+            }
+
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
+
+        } else{
             return Bucketable.bucketMobPickup(pPlayer, pHand, this).orElse(super.mobInteract(pPlayer, pHand));
         }
     }
@@ -421,6 +448,7 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
         if (reason == MobSpawnType.BUCKET && dataTag != null && dataTag.contains("BaseColor", 3)) {
             this.setBaseColor(dataTag.getInt("BaseColor"));
             this.setPattern(dataTag.getInt("Pattern"));
+            this.setCanGrow(dataTag.getBoolean("CanGrow"));
             this.setFromBucket(true);
         }else{
             this.setBaseColor(this.random.nextInt(0, 3));
