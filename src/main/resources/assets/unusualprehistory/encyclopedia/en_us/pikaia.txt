@@ -6,3 +6,7 @@ Pikaia is one of the earliest chordates ever discovered, living in the Cambrian 
 structure which would eventually lead to the development of vertebral columns in all living
 vertebrates. They possessed some of the first evidence of encephalization among chordates, that being the development of
 a visually distinct head.
+<NEWLINE>
+These curious creatures have the unique ability to rejuvenate dying coral, bringing them back to life and restoring their
+beautiful colors. But if one were to not want this then simply feeding them dried kelp will keep them from reviving any
+coral, which can be enabled again by feeding them regular kelp.

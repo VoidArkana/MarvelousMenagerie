@@ -7,3 +7,7 @@ unable to fight back. These birds have an affinity for melons and pumpkins, and 
 enrichment, making them useful for automating melon and pumpkin farms.
 <NEWLINE>
 Every once in a while they may also drop some of their feathers, making them a good source of them.
+<NEWLINE>
+One can also feed them glistening melon slices to prevent them from breaking any pumpkin or melons if you would rather
+prefer to make them less violent towards these blocks, and one can enable their insatiable hunger once again by feeding them
+any of their favorite foods (pumpkin, melon slices or melon blocks).

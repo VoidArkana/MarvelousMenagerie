@@ -15,6 +15,8 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 public class OphthalmoArmorLayer extends GeoRenderLayer<OphthalmoEntity> {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo_armor.png");
+    private static final ResourceLocation TEXTURE_CRACKED = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo_armor_cracked.png");
+    private static final ResourceLocation TEXTURE_VERY_CRACKED = new ResourceLocation(MarvelousMenagerie.MOD_ID, "textures/entity/ophthalmo/ophthalmo_armor_very_cracked.png");
 
     private static final ResourceLocation MODEL = new ResourceLocation(MarvelousMenagerie.MOD_ID, "geo/ophthalmo.geo.json");
 
@@ -25,7 +27,14 @@ public class OphthalmoArmorLayer extends GeoRenderLayer<OphthalmoEntity> {
 
         if (entityLivingBaseIn.getHasArmor()) {
 
-            RenderType cameo = RenderType.armorCutoutNoCull(TEXTURE);
+            RenderType cameo;
+            if (entityLivingBaseIn.isArmorHalfwayDamaged()){
+                cameo = RenderType.armorCutoutNoCull(TEXTURE_CRACKED);
+            }else if (entityLivingBaseIn.isArmorQuarterDamaged()){
+                cameo = RenderType.armorCutoutNoCull(TEXTURE_VERY_CRACKED);
+            }else {
+                cameo = RenderType.armorCutoutNoCull(TEXTURE);
+            }
 
             this.getRenderer().reRender(this.getGeoModel().getBakedModel(MODEL), poseStack, bufferSource, entityLivingBaseIn, renderType,
                         bufferSource.getBuffer(cameo), partialTick, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);

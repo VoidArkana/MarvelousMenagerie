@@ -15,3 +15,9 @@ When consumed or used for crafting, the cooked eggs will leave behind the strong
 be used to craft a special helmet that thanks to its sturdy material can give you a lot of knockback resistance, as well
 as granting you the abilities of a bird by making you fall slowly to the ground as if you had wings, but be careful as
 eggshells aren't sturdy forever, and as such the Egg Shellmet has a short useful life before it breaks beyond repair.
+<NEWLINE>
+Elephant birds can also be equipped with chests, and thanks to their sheer size are able to carry almost as much as a singular
+chest, making them good options to move items with, and they're also able to be equipped with carpets of different colors
+to make them stand out from each other, and when one of them is leashed the others will follow suit as well, to make travelling
+along these wonderful beasts easier. One can also sit on their backs, but any attempt of controlling their direction has been
+futile so far.

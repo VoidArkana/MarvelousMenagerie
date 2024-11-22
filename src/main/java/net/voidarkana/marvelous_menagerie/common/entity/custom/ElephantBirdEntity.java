@@ -131,10 +131,9 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
         super.addAdditionalSaveData(compound);
         compound.putInt("timeSinceEaten", this.getEatenTime());
 
-        if (this.hasSwag()) {
+        if (!this.getWoolItem().isEmpty()) {
             compound.put("woolItem", this.getWoolItem().save(new CompoundTag()));
         }
-
 
         compound.putBoolean("chestedBird", this.hasChest());
 
@@ -157,8 +156,10 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
         super.readAdditionalSaveData(compound);
         this.setEatenTime(compound.getInt("timeSinceEaten"));
 
-        if (compound != null && !compound.isEmpty()) {
-            ItemStack itemstack = ItemStack.of(compound);
+        CompoundTag compoundtag = compound.getCompound("woolItem");
+
+        if (compoundtag != null && !compoundtag.isEmpty()) {
+            ItemStack itemstack = ItemStack.of(compoundtag);
             this.setWoolItemData(itemstack);
         }
 
@@ -166,8 +167,6 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
         this.createInventory();
         if (this.hasChest()) {
             ListTag listtag = compound.getList("Items", 10);
-
-
             for (int i = 0; i < listtag.size(); ++i) {
                 CompoundTag compoundTag2 = listtag.getCompound(i);
                 int j = compoundTag2.getByte("Slot") & 0xFF;

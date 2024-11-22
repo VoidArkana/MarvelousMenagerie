@@ -455,7 +455,7 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
             for(int j = 0; j < 5; ++j) {
                 this.level().addParticle(ParticleTypes.CRIT, this.getRandomX(1.0), this.getRandomY(), this.getRandomZ(1.0), 0.0, 0.0, 0.0);
             }
-            return false;
+            return super.hurt(pSource, 0);
         }
         else {
             return super.hurt(pSource, pAmount);
@@ -761,9 +761,27 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
             this.setHasArmor(false);
         }
         else if (stack.getDamageValue() == (stack.getMaxDamage()*0.5) || stack.getDamageValue() == (stack.getMaxDamage()*0.75) || stack.getDamageValue() == (stack.getMaxDamage()*0.25)){
-            this.playSound(ModSounds.PET_ARMOR_CRACK.get(), 1.0F, (this.random.nextFloat() - (this.random.nextFloat()) * 0.2F) + 1.0F);
+            this.playSound(ModSounds.PET_ARMOR_CRACK.get(), 1.25F, (this.random.nextFloat() - (this.random.nextFloat()) * 0.2F) + 1.0F);
+        }
+        this.playSound(ModSounds.PET_ARMOR_DAMAGE.get(), 1.0F, (this.random.nextFloat() - (this.random.nextFloat()) * 0.2F) + 1.0F);
+
+    }
+
+    public boolean isArmorHalfwayDamaged(){
+        if (this.getHasArmor()){
+            ItemStack armor = this.getItemBySlot(EquipmentSlot.CHEST);
+            return armor.getDamageValue() >= (armor.getMaxDamage()*0.5) && armor.getDamageValue() < (armor.getMaxDamage()*0.75);
         }else {
-            this.playSound(ModSounds.PET_ARMOR_DAMAGE.get(), 1.0F, (this.random.nextFloat() - (this.random.nextFloat()) * 0.2F) + 1.0F);
+            return false;
+        }
+    }
+
+    public boolean isArmorQuarterDamaged(){
+        if (this.getHasArmor()){
+            ItemStack armor = this.getItemBySlot(EquipmentSlot.CHEST);
+            return armor.getDamageValue() >= (armor.getMaxDamage()*0.75);
+        }else {
+            return false;
         }
     }
 
