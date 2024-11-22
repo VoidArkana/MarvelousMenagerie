@@ -3,8 +3,8 @@ package net.voidarkana.marvelous_menagerie.client.renderers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.resources.ResourceLocation;
-import net.voidarkana.marvelous_menagerie.MarvelousMenagerie;
+import net.voidarkana.marvelous_menagerie.client.layer.ElephantBirdChestLayer;
+import net.voidarkana.marvelous_menagerie.client.layer.ElephantSwagLayer;
 import net.voidarkana.marvelous_menagerie.client.models.ElephantBirdModel;
 import net.voidarkana.marvelous_menagerie.common.entity.custom.ElephantBirdEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
@@ -13,6 +13,8 @@ public class ElephantBirdRenderer extends GeoEntityRenderer<ElephantBirdEntity> 
 
     public ElephantBirdRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new ElephantBirdModel());
+        this.addRenderLayer(new ElephantSwagLayer(this));
+        this.addRenderLayer(new ElephantBirdChestLayer(this));
     }
 
     @Override

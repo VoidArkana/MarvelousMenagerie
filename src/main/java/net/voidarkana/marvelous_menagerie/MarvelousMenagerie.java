@@ -19,6 +19,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.voidarkana.marvelous_menagerie.client.screen.ModMenuTypes;
 import net.voidarkana.marvelous_menagerie.common.block.ModBlocks;
 import net.voidarkana.marvelous_menagerie.common.block.entity.ModBlockEntities;
 import net.voidarkana.marvelous_menagerie.client.ClientProxy;
@@ -36,6 +37,7 @@ import net.voidarkana.marvelous_menagerie.common.worldgen.tree.ModFoliagePlacers
 import net.voidarkana.marvelous_menagerie.common.worldgen.tree.ModTrunkPlacerTypes;
 import net.voidarkana.marvelous_menagerie.common.entity.MarvelousEntityPlacement;
 import net.voidarkana.marvelous_menagerie.util.config.CommonConfig;
+import net.voidarkana.marvelous_menagerie.util.network.ModNetworkHandler;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
@@ -75,6 +77,7 @@ public class MarvelousMenagerie {
         ModEnchantmentsClass.register(modEventBus);
 
         ModPotions.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
@@ -88,6 +91,9 @@ public class MarvelousMenagerie {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+
+        ModNetworkHandler.init();
+
         event.enqueueWork(()->{
 
             BrewingRecipeRegistry.addRecipe(new ModPotionRecipes(Potions.AWKWARD,
@@ -104,8 +110,6 @@ public class MarvelousMenagerie {
             ComposterBlock.COMPOSTABLES.put(ModBlocks.PROTOTAXITES.get().asItem(), 0.4F);
             ComposterBlock.COMPOSTABLES.put(ModBlocks.PROTOTAXITES_BLOCK.get().asItem(), 0.8F);
         });
-
-
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {

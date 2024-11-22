@@ -230,7 +230,7 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
             this.playerWhoFedIt = player;
             return InteractionResult.SUCCESS;
 
-        } else if (itemstack.is(ItemTags.WOOL) || itemstack.is(ModTags.Items.DYE_DEPOT_WOOL_ITEM)){
+        } else if (itemstack.is(ItemTags.WOOL_CARPETS) || itemstack.is(ModTags.Items.DYE_DEPOT_WOOL_ITEM)){
 
             if (this.hasHandkerchief()){
                 this.spawnAtLocation(this.getWoolItem());
@@ -239,21 +239,21 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
                 this.setHasHandkerchief(true);
             }
 
-            if (itemstack.is(Items.RED_WOOL)){ this.setHandkerchiefColor(1); }
-            else if (itemstack.is(Items.ORANGE_WOOL)){this.setHandkerchiefColor(2);}
-            else if (itemstack.is(Items.YELLOW_WOOL)){this.setHandkerchiefColor(3);}
-            else if (itemstack.is(Items.LIME_WOOL)){this.setHandkerchiefColor(4);}
-            else if (itemstack.is(Items.GREEN_WOOL)){this.setHandkerchiefColor(5);}
-            else if (itemstack.is(Items.CYAN_WOOL)){this.setHandkerchiefColor(6);}
-            else if (itemstack.is(Items.LIGHT_BLUE_WOOL)){this.setHandkerchiefColor(7);}
-            else if (itemstack.is(Items.BLUE_WOOL)){this.setHandkerchiefColor(8);}
-            else if (itemstack.is(Items.PURPLE_WOOL)){this.setHandkerchiefColor(9);}
-            else if (itemstack.is(Items.MAGENTA_WOOL)){this.setHandkerchiefColor(10);}
-            else if (itemstack.is(Items.PINK_WOOL)){this.setHandkerchiefColor(11);}
-            else if (itemstack.is(Items.BROWN_WOOL)){this.setHandkerchiefColor(12);}
-            else if (itemstack.is(Items.BLACK_WOOL)){this.setHandkerchiefColor(13);}
-            else if (itemstack.is(Items.GRAY_WOOL)){this.setHandkerchiefColor(14);}
-            else if (itemstack.is(Items.LIGHT_GRAY_WOOL)){this.setHandkerchiefColor(15);
+            if (itemstack.is(Items.RED_CARPET)){ this.setHandkerchiefColor(1); }
+            else if (itemstack.is(Items.ORANGE_CARPET)){this.setHandkerchiefColor(2);}
+            else if (itemstack.is(Items.YELLOW_CARPET)){this.setHandkerchiefColor(3);}
+            else if (itemstack.is(Items.LIME_CARPET)){this.setHandkerchiefColor(4);}
+            else if (itemstack.is(Items.GREEN_CARPET)){this.setHandkerchiefColor(5);}
+            else if (itemstack.is(Items.CYAN_CARPET)){this.setHandkerchiefColor(6);}
+            else if (itemstack.is(Items.LIGHT_BLUE_CARPET)){this.setHandkerchiefColor(7);}
+            else if (itemstack.is(Items.BLUE_CARPET)){this.setHandkerchiefColor(8);}
+            else if (itemstack.is(Items.PURPLE_CARPET)){this.setHandkerchiefColor(9);}
+            else if (itemstack.is(Items.MAGENTA_CARPET)){this.setHandkerchiefColor(10);}
+            else if (itemstack.is(Items.PINK_CARPET)){this.setHandkerchiefColor(11);}
+            else if (itemstack.is(Items.BROWN_CARPET)){this.setHandkerchiefColor(12);}
+            else if (itemstack.is(Items.BLACK_CARPET)){this.setHandkerchiefColor(13);}
+            else if (itemstack.is(Items.GRAY_CARPET)){this.setHandkerchiefColor(14);}
+            else if (itemstack.is(Items.LIGHT_GRAY_CARPET)){this.setHandkerchiefColor(15);
             }
             else if (itemstack.is(ModTags.Items.DYE_DEPOT_AMBER_WOOL_ITEM)){ this.setHandkerchiefColor(16); }
             else if (itemstack.is(ModTags.Items.DYE_DEPOT_AQUA_WOOL_ITEM )){this.setHandkerchiefColor(17);}

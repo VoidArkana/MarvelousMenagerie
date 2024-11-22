@@ -199,22 +199,22 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 ModBlocks.COOKSONIA.get()
         );
 
-        this.tag(ModTags.Blocks.DYE_DEPOT_MAROON_WOOL).addOptional(new ResourceLocation("dye_depot:maroon_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_ROSE_WOOL).addOptional(new ResourceLocation("dye_depot:rose_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_CORAL_WOOL).addOptional(new ResourceLocation("dye_depot:coral_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_INDIGO_WOOL).addOptional(new ResourceLocation("dye_depot:indigo_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_NAVY_WOOL).addOptional(new ResourceLocation("dye_depot:navy_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_SLATE_WOOL).addOptional(new ResourceLocation("dye_depot:slate_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_OLIVE_WOOL).addOptional(new ResourceLocation("dye_depot:olive_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_AMBER_WOOL).addOptional(new ResourceLocation("dye_depot:amber_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_BEIGE_WOOL).addOptional(new ResourceLocation("dye_depot:beige_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_TEAL_WOOL).addOptional(new ResourceLocation("dye_depot:teal_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_MINT_WOOL).addOptional(new ResourceLocation("dye_depot:mint_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_AQUA_WOOL).addOptional(new ResourceLocation("dye_depot:aqua_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_VERDANT_WOOL).addOptional(new ResourceLocation("dye_depot:verdant_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_FOREST_WOOL).addOptional(new ResourceLocation("dye_depot:forest_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_GINGER_WOOL).addOptional(new ResourceLocation("dye_depot:ginger_wool"));
-        this.tag(ModTags.Blocks.DYE_DEPOT_TAN_WOOL).addOptional(new ResourceLocation("dye_depot:tan_wool"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_MAROON_WOOL).addOptional(new ResourceLocation("dye_depot:maroon_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_ROSE_WOOL).addOptional(new ResourceLocation("dye_depot:rose_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_CORAL_WOOL).addOptional(new ResourceLocation("dye_depot:coral_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_INDIGO_WOOL).addOptional(new ResourceLocation("dye_depot:indigo_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_NAVY_WOOL).addOptional(new ResourceLocation("dye_depot:navy_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_SLATE_WOOL).addOptional(new ResourceLocation("dye_depot:slate_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_OLIVE_WOOL).addOptional(new ResourceLocation("dye_depot:olive_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_AMBER_WOOL).addOptional(new ResourceLocation("dye_depot:amber_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_BEIGE_WOOL).addOptional(new ResourceLocation("dye_depot:beige_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_TEAL_WOOL).addOptional(new ResourceLocation("dye_depot:teal_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_MINT_WOOL).addOptional(new ResourceLocation("dye_depot:mint_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_AQUA_WOOL).addOptional(new ResourceLocation("dye_depot:aqua_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_VERDANT_WOOL).addOptional(new ResourceLocation("dye_depot:verdant_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_FOREST_WOOL).addOptional(new ResourceLocation("dye_depot:forest_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_GINGER_WOOL).addOptional(new ResourceLocation("dye_depot:ginger_carpet"));
+        this.tag(ModTags.Blocks.DYE_DEPOT_TAN_WOOL).addOptional(new ResourceLocation("dye_depot:tan_carpet"));
 
         this.tag(ModTags.Blocks.DYE_DEPOT_WOOL)
                 .addTag(ModTags.Blocks.DYE_DEPOT_MAROON_WOOL)

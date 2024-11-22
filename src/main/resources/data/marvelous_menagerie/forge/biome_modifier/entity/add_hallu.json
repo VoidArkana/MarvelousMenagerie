@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#marvelous_menagerie:is_hallu_biome",
+  "spawners": {
+    "type": "marvelous_menagerie:hallucigenia",
+    "weight": 8,
+    "minCount": 1,
+    "maxCount": 3,
+    "category": "water_creature"
+  }
+}

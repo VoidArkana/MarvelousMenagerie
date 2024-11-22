@@ -2,11 +2,14 @@ package net.voidarkana.marvelous_menagerie.client.events;
 
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
@@ -19,10 +22,14 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.voidarkana.marvelous_menagerie.client.ClientProxy;
+import net.voidarkana.marvelous_menagerie.client.screen.ElephantBirdMenu;
+import net.voidarkana.marvelous_menagerie.client.screen.ElephantBirdScreen;
 import net.voidarkana.marvelous_menagerie.common.effect.ModEffects;
 import net.voidarkana.marvelous_menagerie.common.enchantment.ModEnchantmentsClass;
+import net.voidarkana.marvelous_menagerie.common.entity.custom.ElephantBirdEntity;
 import net.voidarkana.marvelous_menagerie.common.item.custom.AnomalousGogglesItem;
 import net.voidarkana.marvelous_menagerie.util.config.CommonConfig;
+import net.voidarkana.marvelous_menagerie.util.network.OpenElephantBirdScreenPacket;
 
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public class ModClientEvents {
@@ -111,4 +118,20 @@ public class ModClientEvents {
         }
     }
 
+//    public static void openHamsterInventoryScreen(OpenElephantBirdScreenPacket packet) {
+//        Minecraft minecraft = Minecraft.getInstance();
+//        LocalPlayer clientPlayer = minecraft.player;
+//        Entity entity = null;
+//        if (clientPlayer != null) {
+//            entity = clientPlayer.level().getEntity(packet.getEntityId());
+//        }
+//        if (entity instanceof ElephantBirdEntity hamster) {
+//            SimpleContainer inventory = new SimpleContainer(packet.getSize());
+//            Inventory playerInventory = clientPlayer.getInventory();
+//            ElephantBirdMenu reindeerContainer = new ElephantBirdMenu(packet.getContainerId(), playerInventory, inventory, hamster);
+//            clientPlayer.containerMenu = reindeerContainer;
+//            ElephantBirdScreen reindeerScreen = new ElephantBirdScreen(reindeerContainer, playerInventory, hamster);
+//            minecraft.setScreen(reindeerScreen);
+//        }
+//    }
 }
