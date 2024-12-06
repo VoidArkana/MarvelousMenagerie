@@ -351,5 +351,9 @@
   "marvelous_menagerie.advancement.interact_hallu.desc" : "Revive a Hallucigenia",
 
   "marvelous_menagerie.advancement.magic_roll": "These edibles ain't nothing!",
-  "marvelous_menagerie.advancement.magic_roll.desc" : "Craft a Magic Pastry with Psychodelic Mucus"
+  "marvelous_menagerie.advancement.magic_roll.desc" : "Craft a Magic Pastry with Psychodelic Mucus",
+
+  "effect.marvelous_menagerie.sea_cow_serenity.description": "Gives you thick skin like that of the Steller's Sea Cow to increase your resistance to damage and knockback, as well as granting you a little bit of water breathing.",
+  "effect.marvelous_menagerie.hallucinating.description": "Makes you see the world full of funny colors!"
+
 }

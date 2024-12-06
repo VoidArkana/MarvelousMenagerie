@@ -138,10 +138,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         evenSimplerBlockItem(ModBlocks.ZULOAGAE_MOSAIC_STAIRS);
         evenSimplerBlockItem(ModBlocks.ZULOAGAE_SLAB);
         evenSimplerBlockItem(ModBlocks.ZULOAGAE_MOSAIC_SLAB);
-        evenSimplerBlockItem(ModBlocks.ZULOAGAE_FENCE_GATE);
+        //evenSimplerBlockItem(ModBlocks.ZULOAGAE_FENCE_GATE);
         evenSimplerBlockItem(ModBlocks.ZULOAGAE_PRESSURE_PLATE);
 
-        fenceItem(ModBlocks.ZULOAGAE_FENCE, ModBlocks.ZULOAGAE_PLANKS);
+        //fenceItem(ModBlocks.ZULOAGAE_FENCE, ModBlocks.ZULOAGAE_PLANKS);
         buttonItem(ModBlocks.ZULOAGAE_BUTTON, ModBlocks.ZULOAGAE_PLANKS);
 
         simpleItem(ModItems.ZULOAGAE_SIGN);

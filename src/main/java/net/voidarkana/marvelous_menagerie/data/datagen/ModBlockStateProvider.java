@@ -106,8 +106,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         slabBlock(((SlabBlock) ModBlocks.ZULOAGAE_SLAB.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
         buttonBlock(((ButtonBlock) ModBlocks.ZULOAGAE_BUTTON.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
         pressurePlateBlock(((PressurePlateBlock) ModBlocks.ZULOAGAE_PRESSURE_PLATE.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
-        fenceBlock(((FenceBlock) ModBlocks.ZULOAGAE_FENCE.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
-        fenceGateBlock(((FenceGateBlock) ModBlocks.ZULOAGAE_FENCE_GATE.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
+
+//        fenceBlock(((FenceBlock) ModBlocks.ZULOAGAE_FENCE.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
+//        fenceGateBlock(((FenceGateBlock) ModBlocks.ZULOAGAE_FENCE_GATE.get()), blockTexture(ModBlocks.ZULOAGAE_PLANKS.get()));
 
         doorBlockWithRenderType(((DoorBlock) ModBlocks.ZULOAGAE_DOOR.get()), modLoc("block/zuloagae_door_bottom"), modLoc("block/zuloagae_door_top"), "cutout");
         trapdoorBlockWithRenderType(((TrapDoorBlock) ModBlocks.ZULOAGAE_TRAPDOOR.get()), modLoc("block/zuloagae_trapdoor"), true, "cutout");

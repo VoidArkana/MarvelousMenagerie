@@ -118,7 +118,7 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
         this.entityData.define(FROM_BUCKET, false);
         this.entityData.define(FROM_EGG, false);
         this.entityData.define(IS_POLLINATING, false);
-        this.entityData.define(CAN_POLLINATE, false);
+        this.entityData.define(CAN_POLLINATE, true);
     }
 
     public void addAdditionalSaveData(CompoundTag pCompound) {

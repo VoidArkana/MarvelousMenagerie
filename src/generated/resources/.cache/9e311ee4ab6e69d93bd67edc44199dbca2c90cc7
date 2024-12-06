@@ -1,4 +1,4 @@
-// 1.20.1	2024-11-17T13:30:52.0177064	Item Models: marvelous_menagerie
+// 1.20.1	2024-11-30T15:56:45.8292428	Item Models: marvelous_menagerie
 f1beaaba90d54436c7df39f75ea0f9de1d59a9b2 assets/marvelous_menagerie/models/item/anomalocaris_bucket.json
 6edb806a722825bc7b930da88d1532ea3635046c assets/marvelous_menagerie/models/item/anomalocaris_flask.json
 ddfa6dc18fe3f43748810cd2165d1457615eadce assets/marvelous_menagerie/models/item/anomalocaris_lens.json
@@ -99,8 +99,6 @@ d75fd3b022ac14b579c412cad6e46315b1d1f0b0 assets/marvelous_menagerie/models/item/
 7cdb144955f39d67f1d6e8a13da098de3072b9b0 assets/marvelous_menagerie/models/item/wiwaxia_flask.json
 4b17723586f1d11b1eb9f3b939391485ca36eb15 assets/marvelous_menagerie/models/item/zuloagae_button.json
 ac8c96bb7582b1c55c606e0d4764c077adc423dc assets/marvelous_menagerie/models/item/zuloagae_door.json
-ed49c148c7b66ca6c313cb3be040c1cc7313b06a assets/marvelous_menagerie/models/item/zuloagae_fence.json
-3039a0670b9367a32eea3ccde7b05d0f536a9355 assets/marvelous_menagerie/models/item/zuloagae_fence_gate.json
 c213d060f23058040c6f12572b4e0c15bf0aa852 assets/marvelous_menagerie/models/item/zuloagae_hanging_sign.json
 0142046ce9c32266f8b104c37d46c42c9bec30d7 assets/marvelous_menagerie/models/item/zuloagae_mosaic_slab.json
 f37b550ade5575c94ae9de1a99856077ce38df67 assets/marvelous_menagerie/models/item/zuloagae_mosaic_stairs.json

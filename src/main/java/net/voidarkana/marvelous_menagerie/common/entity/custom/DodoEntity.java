@@ -112,7 +112,7 @@ public class DodoEntity extends EntityBaseDinosaurAnimal implements GeoEntity {
         this.entityData.define(VARIANT, 0);
         this.entityData.define(PECKING_TIME, 0);
         this.entityData.define(PECKING, false);
-        this.entityData.define(CAN_PECK, false);
+        this.entityData.define(CAN_PECK, true);
     }
 
     //variants

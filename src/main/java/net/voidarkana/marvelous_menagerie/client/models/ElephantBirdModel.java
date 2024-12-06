@@ -37,7 +37,7 @@ public class ElephantBirdModel extends GeoModel<ElephantBirdEntity> {
     public void setCustomAnimations(ElephantBirdEntity animatable, long instanceId, AnimationState<ElephantBirdEntity> animationState) {
         super.setCustomAnimations(animatable, instanceId, animationState);
 
-        CoreGeoBone head = this.getAnimationProcessor().getBone("neck_x");
+        CoreGeoBone head = this.getAnimationProcessor().getBone("head_look");
         CoreGeoBone main = this.getAnimationProcessor().getBone("main");
 
         if (animatable.isBaby()){

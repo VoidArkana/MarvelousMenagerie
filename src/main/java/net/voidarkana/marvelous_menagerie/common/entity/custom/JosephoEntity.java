@@ -74,8 +74,8 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
     protected static final RawAnimation JOSEPHO_IDLE = RawAnimation.begin().thenLoop("animation.josepho.idle");
     protected static final RawAnimation JOSEPHO_IDLE_SIT = RawAnimation.begin().thenLoop("animation.josepho.idle_sitting");
 
-    protected static final RawAnimation JOSEPHO_SITTING = RawAnimation.begin().thenPlayAndHold("animation.josepho.sitting");
-    protected static final RawAnimation JOSEPHO_STANDING_UP = RawAnimation.begin().thenPlayAndHold("animation.josepho.standing_up");
+    protected static final RawAnimation JOSEPHO_SITTING = RawAnimation.begin().thenPlayAndHold("animation.josepho.sit_start");
+    protected static final RawAnimation JOSEPHO_STANDING_UP = RawAnimation.begin().thenPlayAndHold("animation.josepho.sit_end");
 
     protected static final RawAnimation JOSEPHO_EARS_WIGGLE = RawAnimation.begin().thenPlay("animation.josepho.ear_wiggle_both");
     protected static final RawAnimation JOSEPHO_R_EAR_WIGGLE = RawAnimation.begin().thenPlay("animation.josepho.ear_wiggle_right");
@@ -340,11 +340,11 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
                 if (sit) {
                     this.setOrderedToSit(true);
                     if (!this.isInSittingPose() && this.onGround()){
-                        this.setSittingTime(80);
+                        this.setSittingTime(60);
                     }
                 } else {
                     if (this.isInSittingPose() && this.onGround()){
-                        this.setStandingTime(90);
+                        this.setStandingTime(70);
                     }
                     this.setOrderedToSit(false);
                 }
@@ -451,7 +451,7 @@ public class JosephoEntity extends EntityTameableBaseDinosaurAnimal implements C
     }
 
     private <E extends JosephoEntity> PlayState Controller(AnimationState<E> event) {
-        if (this.isFromBook() || this.isInSittingPose() || this.getSittingTime() > 0 || this.getStandingTime() > 0){
+        if (this.isFromBook() || this.isInSittingPose() || this.getSittingTime() > 0 || this.getStandingTime() > 0 || (this.getSittingLag() < 7 && this.getSittingLag() > 0)){
             return PlayState.STOP;
         } else {
             if (this.isPassenger()) {

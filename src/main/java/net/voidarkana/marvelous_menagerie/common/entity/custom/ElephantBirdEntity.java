@@ -65,7 +65,6 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
     int prevEatenTime;
     private static final EntityDataAccessor<Integer> SMH_TIME = SynchedEntityData.defineId(ElephantBirdEntity.class, EntityDataSerializers.INT);
     int prevSMHTime;
-    private static final EntityDataAccessor<Boolean> IS_SMH = SynchedEntityData.defineId(ElephantBirdEntity.class, EntityDataSerializers.BOOLEAN);
 
     private static final EntityDataAccessor<ItemStack> WOOL_ITEM = SynchedEntityData.defineId(ElephantBirdEntity.class, EntityDataSerializers.ITEM_STACK);
     @javax.annotation.Nullable
@@ -74,6 +73,7 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
     private ElephantBirdEntity caravanTail;
     private static final EntityDataAccessor<Boolean> DATA_ID_CHEST = SynchedEntityData.defineId(ElephantBirdEntity.class, EntityDataSerializers.BOOLEAN);
 
+    protected static final RawAnimation BABY_IDLE = RawAnimation.begin().thenLoop("animation.elephant_bird.baby_idle");
 
     protected static final RawAnimation BABY_WALK = RawAnimation.begin().thenLoop("animation.elephant_bird.baby_walk");
     protected static final RawAnimation ELE_WALK = RawAnimation.begin().thenLoop("animation.elephant_bird.walk");
@@ -81,7 +81,7 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
     protected static final RawAnimation ELE_SWIM = RawAnimation.begin().thenLoop("animation.elephant_bird.swim");
     protected static final RawAnimation BABY_SWIM = RawAnimation.begin().thenLoop("animation.elephant_bird.baby_swim");
 
-    protected static final RawAnimation ELE_SMH = RawAnimation.begin().thenPlay("animation.elephant_bird.smh");
+    protected static final RawAnimation ELE_SMH = RawAnimation.begin().thenPlay("animation.elephant_bird.nuh_uh_overlay");
 
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -122,7 +122,6 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
         super.defineSynchedData();
         this.entityData.define(TIME_TO_EAT, 0);
         this.entityData.define(SMH_TIME, 0);
-        this.entityData.define(IS_SMH, false);
         this.entityData.define(WOOL_ITEM, ItemStack.EMPTY);
         this.entityData.define(DATA_ID_CHEST, false);
     }
@@ -263,10 +262,7 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
 
     //is SMHing
     public boolean getIsSMH(){
-        return this.entityData.get(IS_SMH);}
-
-    public void setIsSMH(boolean isSMH){
-        this.entityData.set(IS_SMH, isSMH);}
+        return this.getSMH() >  0;}
 
 
     //caravan
@@ -310,8 +306,7 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
             this.setEatenTime(600);
             return InteractionResult.SUCCESS;
         } else if ((itemstack.is(Items.GOLDEN_CARROT)) && this.onGround() && this.getEatenTime()>0 && !this.isBaby() && this.getSMH()<=0){
-            this.setSMH(60);
-            this.setIsSMH(true);
+            this.setSMH((int) (20*1.5));
             this.playSound(ModSounds.ELE_GRUMBLE.get());
 
             for(int j = 0; j < 5; ++j) {
@@ -413,10 +408,6 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
         if (this.getSMH()>0){
             prevSMHTime = this.getSMH();
             this.setSMH(prevSMHTime-1);
-
-            if (this.getSMH()==0){
-                this.setIsSMH(false);
-            }
         }
     }
 
@@ -431,22 +422,11 @@ public class ElephantBirdEntity extends EntityBaseDinosaurAnimal implements GeoE
         if (this.isFromBook()){
             return PlayState.STOP;
         }else if (this.isInWater() && !this.onGround()){
-            if (this.isBaby()){
-                event.setAndContinue(BABY_SWIM);
-            }else{
-                event.setAndContinue(ELE_SWIM);
-            }
+            event.setAndContinue(this.isBaby() ? BABY_SWIM : ELE_SWIM);
         } else if(this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6 && this.onGround()) {
-            if (this.isBaby()){
-                event.setAndContinue(BABY_WALK);
-                //event.getController().setAnimationSpeed(1.25f);
-            }
-            else {
-                event.setAndContinue(ELE_WALK);
-                //event.getController().setAnimationSpeed(1f);
-            }
+            event.setAndContinue(this.isBaby() ? BABY_WALK : ELE_WALK);
         } else if (this.onGround()){
-            event.setAndContinue(ELE_IDLE);
+            event.setAndContinue(this.isBaby() ? BABY_IDLE : ELE_IDLE);
         }
         return PlayState.CONTINUE;
     }

@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.unknown",
+				"identifier": "geometry.saca",
 				"texture_width": 48,
 				"texture_height": 48,
 				"visible_bounds_width": 3,
@@ -41,7 +41,7 @@
 					"parent": "tail_base",
 					"pivot": [0, 3.5, 5.5],
 					"cubes": [
-						{"origin": [0, 0, 4.5], "size": [0, 8, 8], "uv": [0, 20]}
+						{"origin": [0, 0, 4.5], "size": [0, 8, 8], "inflate": 0.001, "uv": [0, 20]}
 					]
 				}
 			]
