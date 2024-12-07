@@ -63,13 +63,13 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
 
     public int prevHowlTime;
     public int prevYawnTime;
-    public int howlTickDuration = 120;
+    public int howlTickDuration = 80;
 
     protected static final RawAnimation THYLA_WALK = RawAnimation.begin().thenLoop("animation.thylacine.walk");
     protected static final RawAnimation THYLA_IDLE = RawAnimation.begin().thenLoop("animation.thylacine.idle");
     protected static final RawAnimation THYLA_SWIM = RawAnimation.begin().thenLoop("animation.thylacine.swim");
-    protected static final RawAnimation THYLA_HOWL = RawAnimation.begin().thenPlay("animation.thylacine.howl");
-    protected static final RawAnimation THYLA_YAWN = RawAnimation.begin().thenPlay("animation.thylacine.yawn");
+    protected static final RawAnimation THYLA_HOWL = RawAnimation.begin().thenPlayAndHold("animation.thylacine.howl");
+    protected static final RawAnimation THYLA_YAWN = RawAnimation.begin().thenPlayAndHold("animation.thylacine.yawn");
 
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
@@ -226,7 +226,7 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
                 || itemstack.is(Items.COOKED_CHICKEN) || itemstack.is(Items.COOKED_RABBIT))
                 && !this.getIsHowling() && this.onGround() && !this.getIsYawning()) {
             this.usePlayerItem(player, hand, itemstack);
-            this.setHowlingTime(howlTickDuration);
+            this.setHowlingTime(80);
             this.playerWhoFedIt = player;
             return InteractionResult.SUCCESS;
 
@@ -305,7 +305,7 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
         for (LivingEntity target : list) {
             if(!(target instanceof ThylacineEntity) && (target.getType().is(ModTags.EntityTypes.THYLA_ALERT_TARGET) || target instanceof Monster || target instanceof NeutralMob)){
                 if (!target.isAlliedTo(this.playerWhoFedIt)){
-                    target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 45));
+                    target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60));
                 }
             }
         }
@@ -322,13 +322,13 @@ public class ThylacineEntity extends EntityBaseDinosaurAnimal implements GeoEnti
             } else {
                 this.setIsHowling(true);
             }
-            if (this.getHowlingTime()==100 && !this.level().isClientSide){
+            if (this.getHowlingTime()==65 && !this.level().isClientSide){
                 this.playSound(ModSounds.THYLACINE_ALERT.get());
             }
-            if (this.getHowlingTime()==50 && !this.level().isClientSide){
+            if (this.getHowlingTime()==21 && !this.level().isClientSide){
                 this.playSound(SoundEvents.BELL_RESONATE);
             }
-            if (this.getHowlingTime()==30 && !this.level().isClientSide){
+            if (this.getHowlingTime()==1 && !this.level().isClientSide){
                 alertThreats();
             }
             prevHowlTime = this.getHowlingTime();
