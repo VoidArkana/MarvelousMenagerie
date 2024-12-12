@@ -73,7 +73,7 @@ public class BabyStellerEntity extends WaterAnimal implements GeoEntity, IBookEn
 
     protected static final RawAnimation BABY_STELLER_SWIM = RawAnimation.begin().thenLoop("animation.baby_steller_sea_cow.swim");
     protected static final RawAnimation BABY_STELLER_IDLE = RawAnimation.begin().thenLoop("animation.baby_steller_sea_cow.idle");
-    protected static final RawAnimation BABY_STELLER_BEACHED = RawAnimation.begin().thenLoop("animation.baby_steller_sea_cow.beached");
+    protected static final RawAnimation BABY_STELLER_BEACHED = RawAnimation.begin().thenLoop("animation.baby_steller_sea_cow.flop");
 
     public BabyStellerEntity(EntityType<? extends WaterAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);

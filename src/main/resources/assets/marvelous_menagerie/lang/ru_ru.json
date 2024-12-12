@@ -259,5 +259,112 @@
   "marvelous_menagerie.advancement.interact_pikaia" : "Я выбираю тебя!",
   "marvelous_menagerie.advancement.interact_pikaia.desc" : "Воссоздайте Пикайу",
 
-  "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
+  "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie",
+
+
+
+  "key.category.marvelous_menagerie" : "Marvelous Menagerie",
+
+  "block.marvelous_menagerie.prototaxites_planks": "Прототакситовые доски",
+  "block.marvelous_menagerie.prototaxites_stairs": "Прототакситовые ступеньки",
+  "block.marvelous_menagerie.prototaxites_slab": "Прототакситовая плита",
+  "block.marvelous_menagerie.prototaxites_button": "Прототакситовая кнопка",
+  "block.marvelous_menagerie.prototaxites_pressure_plate": "Прототакситовая нажимная плита",
+  "block.marvelous_menagerie.prototaxites_fence": "Прототакситовый забор",
+  "block.marvelous_menagerie.prototaxites_fence_gate": "Прототакситовая калитка",
+
+
+  "block.marvelous_menagerie.prototaxites_door": "Прототакситовая дверь",
+  "block.marvelous_menagerie.prototaxites_trapdoor": "Прототакситовый люк",
+
+  "block.marvelous_menagerie.prototaxites_mosaic": "Прототакситовая мозаика",
+  "block.marvelous_menagerie.prototaxites_mosaic_stairs": "Ступеньки из прототакситовой мозаики",
+  "block.marvelous_menagerie.prototaxites_mosaic_slab": "Плита из прототакситовой мозаики",
+
+  "block.marvelous_menagerie.prototaxites_sign": "Прототакситовая табличка",
+  "block.marvelous_menagerie.prototaxites_wall_sign": "Подвесная прототакситовая табличка",
+  "block.marvelous_menagerie.prototaxites_wall_hanging_sign": "Подвесная прототакситовая табличка",
+  "block.marvelous_menagerie.prototaxites_hanging_sign": "Подвесная прототакситовая табличка",
+
+
+  "block.marvelous_menagerie.zuloagae_planks": "Зуолагиевые доски",
+  "block.marvelous_menagerie.zuloagae_stairs": "Зуолагиевые ступеньки",
+  "block.marvelous_menagerie.zuloagae_slab": "Зуолагиевая плита",
+  "block.marvelous_menagerie.zuloagae_button": "Зуолагиевая кнопка",
+  "block.marvelous_menagerie.zuloagae_pressure_plate": "Зуолагиевая нажимная плита",
+  "block.marvelous_menagerie.zuloagae_fence": "Зуолагиевый забор",
+  "block.marvelous_menagerie.zuloagae_fence_gate": "Зуолагиевая калитка",
+
+  "block.marvelous_menagerie.zuloagae_door": "Зуолагиевая дверь",
+  "block.marvelous_menagerie.zuloagae_trapdoor": "Зуолагиевый люк",
+
+  "block.marvelous_menagerie.zuloagae_mosaic": "Зуолагиевая мозаика",
+  "block.marvelous_menagerie.zuloagae_mosaic_stairs": "Ступеньки из зуолагиевой мозаики",
+  "block.marvelous_menagerie.zuloagae_mosaic_slab": "Плита из зуолагиевой мозаики",
+
+  "block.marvelous_menagerie.zuloagae_block": "Зуолагуе",
+  "block.marvelous_menagerie.stripped_zuloagae_block": "Обтесанное зуолагуе",
+
+  "block.marvelous_menagerie.zuloagae_sign": "Табличка из зуолагуе",
+  "block.marvelous_menagerie.zuloagae_wall_sign": "Подвесная зуолагиевая табличка",
+  "block.marvelous_menagerie.zuloagae_wall_hanging_sign": "Подвесная зуолагиевая табличка",
+  "block.marvelous_menagerie.zuloagae_hanging_sign": "Подвесная зуолагиевая табличка",
+
+
+  "block.marvelous_menagerie.wiwaxia": "Виваксия",
+  "item.marvelous_menagerie.wiwaxia_flask": "Колба с ДНК виваксии",
+
+  "translatable.marvelous_menagerie.ophthalmo.base_blue" : "Синий",
+  "translatable.marvelous_menagerie.ophthalmo.base_black" : "Чёрный",
+  "translatable.marvelous_menagerie.ophthalmo.base_green" : "Зеленый",
+
+  "translatable.marvelous_menagerie.ophthalmo.pattern_stripes" : "Полосатый",
+  "translatable.marvelous_menagerie.ophthalmo.pattern_streak" : "Поперечно-полосатый",
+  "translatable.marvelous_menagerie.ophthalmo.pattern_spots" : "Пятнистый",
+
+
+  "entity.marvelous_menagerie.arandaspis": "Арандаспис",
+  "item.marvelous_menagerie.arandaspis_bucket": "Ведро с арандасписом",
+  "block.marvelous_menagerie.arandaspis_eggs": "Икра арандасписа",
+  "item.marvelous_menagerie.arandaspis_flask": "Колба с ДНК арандасписа",
+  "item.marvelous_menagerie.arandaspis_spawn_egg": "Яйцо призыва арандасписа",
+
+  "item.marvelous_menagerie.hallu_flask": "Колба с ДНК галлюцигении",
+  "entity.marvelous_menagerie.hallucigenia": "Галлюцигения",
+  "item.marvelous_menagerie.hallu_bucket": "Ведро с галлюцигенией",
+  "block.marvelous_menagerie.hallu_eggs": "Икра галлюцигении",
+  "item.marvelous_menagerie.hallu_spawn_egg": "Яйцо призыва галлюцигении",
+
+  "item.marvelous_menagerie.hallu_slime": "Галлюциногенная слизь",
+  "item.marvelous_menagerie.magic_roll": "Галлюциногенная булочка",
+
+  "effect.marvelous_menagerie.hallucinating": "Галлюцинации",
+
+  "item.minecraft.potion.effect.hallu_extract": "Психоделический эстракт",
+  "item.minecraft.splash_potion.effect.hallu_extract": "Туманное зелье психоделичкого эстракта",
+  "item.minecraft.lingering_potion.effect.hallu_extract": "Зелье психоделичкого эстракта",
+  "item.minecraft.tipped_arrow.effect.hallu_extract": "Стрела с зельем психоделичкого эстракта",
+
+
+  "block.marvelous_menagerie.charnia": "Чарния",
+  "item.marvelous_menagerie.charnia_flask": "Колба с ДНК чарнии",
+
+
+  "marvelous_menagerie.advancement.wiwaxia": "Острый юмор!",
+  "marvelous_menagerie.advancement.wiwaxia.desc" : "Воссоздайте виваксию",
+
+  "marvelous_menagerie.advancement.hallu_warning": "Он стал отцом войны токсинов и ядов...",
+  "marvelous_menagerie.advancement.hallu_warning.desc" : "ПРЕДУПРЕЖДЕНИЕ: Галлюцигения может вызвать мигание огней с галлюциногенным эффектом!, отключите эффекты в конфигурационном файле мода",
+
+  "marvelous_menagerie.advancement.charnia": "Повелитель клинков",
+  "marvelous_menagerie.advancement.charnia.desc" : "Воссоздайте чарнию",
+
+  "marvelous_menagerie.advancement.interact_arandaspis": "Рыба капля?",
+  "marvelous_menagerie.advancement.interact_arandaspis.desc" : "Воссоздайте арандасписа",
+
+  "marvelous_menagerie.advancement.interact_hallu": "Я попался в ловушку...",
+  "marvelous_menagerie.advancement.interact_hallu.desc" : "Воссоздайте галлюцигению",
+
+  "marvelous_menagerie.advancement.magic_roll": "Прошу,не ешь этого!",
+  "marvelous_menagerie.advancement.magic_roll.desc" : "Создайте галлюциногенную булочку"
 }

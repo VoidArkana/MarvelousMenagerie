@@ -1,0 +1,144 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.baby_steller_sea_cow.idle": {
+			"loop": true,
+			"animation_length": 4,
+			"bones": {
+				"body": {
+					"rotation": {
+						"vector": ["-25+math.sin(query.anim_time*180)*5", 0, "math.sin(query.anim_time*180)*5"],
+						"easing": "linear"
+					},
+					"position": {
+						"vector": [0, "5+math.sin(query.anim_time*180-60)*-0.5", "math.sin(query.anim_time*90)*-1"],
+						"easing": "linear"
+					}
+				},
+				"head": {
+					"rotation": {
+						"vector": ["20+math.sin(query.anim_time*180-60)*-5", 0, "math.sin(query.anim_time*180-60)*-5"],
+						"easing": "linear"
+					}
+				},
+				"flipper_l": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*180+90)*-15", 0, "45+math.sin(query.anim_time*180)*-15"],
+						"easing": "linear"
+					}
+				},
+				"flipper_r": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*180+90)*-15", 0, "-45+math.sin(query.anim_time*180)*15"],
+						"easing": "linear"
+					}
+				},
+				"tail": {
+					"rotation": {
+						"vector": ["-15+math.sin(query.anim_time*180+60)*-10", 0, "math.sin(query.anim_time*180+60)*-5"],
+						"easing": "linear"
+					}
+				},
+				"tail_fin": {
+					"rotation": {
+						"vector": ["-15+math.sin(query.anim_time*180)*-15", 0, "math.sin(query.anim_time*180)*-5"],
+						"easing": "linear"
+					}
+				}
+			}
+		},
+		"animation.baby_steller_sea_cow.swim": {
+			"loop": true,
+			"animation_length": 4,
+			"bones": {
+				"body": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*360)*5", 0, "math.sin(query.anim_time*180)*5"],
+						"easing": "linear"
+					},
+					"position": {
+						"vector": [0, "math.sin(query.anim_time*360-60)*-0.5", "math.sin(query.anim_time*90)*-1"],
+						"easing": "linear"
+					}
+				},
+				"head": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*360-60)*-5", 0, "math.sin(query.anim_time*180-60)*-5"],
+						"easing": "linear"
+					}
+				},
+				"flipper_l": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*360+90)*-15", 0, "45+math.sin(query.anim_time*360)*-15"],
+						"easing": "linear"
+					}
+				},
+				"flipper_r": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*360+90)*-15", 0, "-45+math.sin(query.anim_time*360)*15"],
+						"easing": "linear"
+					}
+				},
+				"tail": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*360+60)*-15", 0, "math.sin(query.anim_time*90+60)*-5"],
+						"easing": "linear"
+					}
+				},
+				"tail_fin": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*360)*-20", 0, "math.sin(query.anim_time*180)*-5"],
+						"easing": "linear"
+					}
+				}
+			}
+		},
+		"animation.baby_steller_sea_cow.flop": {
+			"loop": true,
+			"animation_length": 4,
+			"bones": {
+				"body": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*720)*5", 0, "math.sin(query.anim_time*720)*5"],
+						"easing": "linear"
+					},
+					"position": {
+						"vector": [0, "math.sin(query.anim_time*720-60)*-0.5", 0],
+						"easing": "linear"
+					}
+				},
+				"head": {
+					"rotation": {
+						"vector": ["10+math.sin(query.anim_time*720-60)*-5", 0, "math.sin(query.anim_time*720-60)*-5"],
+						"easing": "linear"
+					}
+				},
+				"flipper_l": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*720+90)*-15", 0, "15+math.sin(query.anim_time*720)*-15"],
+						"easing": "linear"
+					}
+				},
+				"flipper_r": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*720+90)*-15", 0, "-15+math.sin(query.anim_time*720)*-15"],
+						"easing": "linear"
+					}
+				},
+				"tail": {
+					"rotation": {
+						"vector": ["-5+math.sin(query.anim_time*720+60)*-15", 0, "math.sin(query.anim_time*720+60)*-5"],
+						"easing": "linear"
+					}
+				},
+				"tail_fin": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*720)*-20", 0, "math.sin(query.anim_time*720)*-5"],
+						"easing": "linear"
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

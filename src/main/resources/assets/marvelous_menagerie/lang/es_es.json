@@ -246,5 +246,114 @@
   "marvelous_menagerie.advancement.interact_pikaia" : "¡Yo te elijo!",
   "marvelous_menagerie.advancement.interact_pikaia.desc" : "Revive una Pikaia",
 
-  "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie"
+  "creativetab.marvelous_menagerie_tab": "Marvelous Menagerie",
+
+
+  "key.category.marvelous_menagerie" : "Marvelous Menagerie",
+
+  "block.marvelous_menagerie.prototaxites_planks": "Tablones de Prototaxites",
+  "block.marvelous_menagerie.prototaxites_stairs": "Escalera de Prototaxites",
+  "block.marvelous_menagerie.prototaxites_slab": "Losa de Prototaxites",
+  "block.marvelous_menagerie.prototaxites_button": "Botón de Prototaxites",
+  "block.marvelous_menagerie.prototaxites_pressure_plate": "Placa de Presión de Prototaxites",
+  "block.marvelous_menagerie.prototaxites_fence": "Valla de Prototaxites",
+  "block.marvelous_menagerie.prototaxites_fence_gate": "Puerta de Valla de Prototaxites",
+
+
+  "block.marvelous_menagerie.prototaxites_door": "Puerta de Prototaxites",
+  "block.marvelous_menagerie.prototaxites_trapdoor": "Trampilla de Prototaxites",
+
+  "block.marvelous_menagerie.prototaxites_mosaic": "Mosáico de Prototaxites",
+  "block.marvelous_menagerie.prototaxites_mosaic_stairs": "Escalera de Mosáico de Prototaxites",
+  "block.marvelous_menagerie.prototaxites_mosaic_slab": "Losa de Mosáico de Prototaxites",
+
+  "block.marvelous_menagerie.prototaxites_sign": "Letrero de Prototaxites",
+  "block.marvelous_menagerie.prototaxites_wall_sign": "Letrero de Prototaxites",
+  "block.marvelous_menagerie.prototaxites_wall_hanging_sign": "Letrero Colgante de Prototaxites",
+  "block.marvelous_menagerie.prototaxites_hanging_sign": "Letrero Colgante de Prototaxites",
+
+  "block.marvelous_menagerie.zuloagae_planks": "Tablones de Zuloagae",
+  "block.marvelous_menagerie.zuloagae_stairs": "Escalera de Zuloagae",
+  "block.marvelous_menagerie.zuloagae_slab": "Losa de Zuloagae",
+  "block.marvelous_menagerie.zuloagae_button": "Botón de Zuloagae",
+  "block.marvelous_menagerie.zuloagae_pressure_plate": "Placa de Presión de Zuloagae",
+  "block.marvelous_menagerie.zuloagae_fence": "Valla de Zuloagae",
+  "block.marvelous_menagerie.zuloagae_fence_gate": "Puerta de Valla de Zuloagae",
+
+  "block.marvelous_menagerie.zuloagae_door": "Puerta de Zuloagae",
+  "block.marvelous_menagerie.zuloagae_trapdoor": "Trampilla de Zuloagae",
+
+  "block.marvelous_menagerie.zuloagae_mosaic": "Mosáico de Zuloagae",
+  "block.marvelous_menagerie.zuloagae_mosaic_stairs": "Escalera de Mosáico de Zuloagae",
+  "block.marvelous_menagerie.zuloagae_mosaic_slab": "Losa de Mosáico de Zuloagae",
+
+  "block.marvelous_menagerie.zuloagae_block": "Bloque de Zuloagae",
+  "block.marvelous_menagerie.stripped_zuloagae_block": "Bloque de Zuloagae sin Corteza",
+
+  "block.marvelous_menagerie.zuloagae_sign": "Letrero de Zuloagae",
+  "block.marvelous_menagerie.zuloagae_wall_sign": "Letrero de Zuloagae",
+  "block.marvelous_menagerie.zuloagae_wall_hanging_sign": "Letrero Colgante de Zuloagae",
+  "block.marvelous_menagerie.zuloagae_hanging_sign": "Letrero Colgante de Zuloagae",
+
+
+  "block.marvelous_menagerie.wiwaxia": "Wiwaxia",
+  "item.marvelous_menagerie.wiwaxia_flask": "Frasco de ADN de Wiwaxia",
+
+  "translatable.marvelous_menagerie.ophthalmo.base_blue" : "Base azul",
+  "translatable.marvelous_menagerie.ophthalmo.base_black" : "Base negra",
+  "translatable.marvelous_menagerie.ophthalmo.base_green" : "Base verde",
+
+  "translatable.marvelous_menagerie.ophthalmo.pattern_stripes" : "Patrón Rayado",
+  "translatable.marvelous_menagerie.ophthalmo.pattern_streak" : "Patrón Aerodinámico",
+  "translatable.marvelous_menagerie.ophthalmo.pattern_spots" : "Patrón Manchado",
+
+
+  "entity.marvelous_menagerie.arandaspis": "Arandaspis",
+  "item.marvelous_menagerie.arandaspis_bucket": "Cubeta con Arandaspis",
+  "block.marvelous_menagerie.arandaspis_eggs": "Huevo de Arandaspis",
+  "item.marvelous_menagerie.arandaspis_flask": "Frasco de ADN de Arandaspis",
+  "item.marvelous_menagerie.arandaspis_spawn_egg": "Generar Arandaspis",
+
+  "item.marvelous_menagerie.hallu_flask": "Frasco de ADN de Hallucigenia",
+  "entity.marvelous_menagerie.hallucigenia": "Hallucigenia",
+  "item.marvelous_menagerie.hallu_bucket": "Cubeta con Hallucigenia",
+  "block.marvelous_menagerie.hallu_eggs": "Huevo de Hallucigenia",
+  "item.marvelous_menagerie.hallu_spawn_egg": "Generar Hallucigenia",
+
+  "item.marvelous_menagerie.hallu_slime": "Mucosidad Psicodélica",
+  "item.marvelous_menagerie.magic_roll": "Brownie Mágico",
+
+  "effect.marvelous_menagerie.hallucinating": "Halucinando",
+
+  "item.minecraft.potion.effect.hallu_extract": "Extracto Psicodélico",
+  "item.minecraft.splash_potion.effect.hallu_extract": "Poción Arrojadiza de Extracto Psicodélico",
+  "item.minecraft.lingering_potion.effect.hallu_extract": "Poción Persistente de Extracto Psicodélico",
+  "item.minecraft.tipped_arrow.effect.hallu_extract": "Flecha de Extracto Psicodélico",
+
+
+  "block.marvelous_menagerie.charnia": "Charnia",
+  "item.marvelous_menagerie.charnia_flask": "Frasco de ADN de Charnia",
+
+
+  "marvelous_menagerie.advancement.wiwaxia": "¡Quieto, no me estés picando!",
+  "marvelous_menagerie.advancement.wiwaxia.desc" : "Revive un Wiwaxia",
+
+  "marvelous_menagerie.advancement.hallu_warning": "¡Advertencia de luces parpadeantes!",
+  "marvelous_menagerie.advancement.hallu_warning.desc" : "ADVERTENCIA: ¡Hallucigenia puede ocasionar luces parpadeantes con su efecto!, Haz que los efectos sean más sutiles en la configuración del mod.",
+
+  "marvelous_menagerie.advancement.charnia": "Más poderosa que una espada de netherita",
+  "marvelous_menagerie.advancement.charnia.desc" : "Revive un Charnia",
+
+  "marvelous_menagerie.advancement.interact_arandaspis": "Impactao",
+  "marvelous_menagerie.advancement.interact_arandaspis.desc" : "Revive un Arandaspis",
+
+  "marvelous_menagerie.advancement.interact_hallu": "Debo estar alucinando...",
+  "marvelous_menagerie.advancement.interact_hallu.desc" : "Revive una Hallucigenia",
+
+  "marvelous_menagerie.advancement.magic_roll": "¡Este brownie ni pega!",
+  "marvelous_menagerie.advancement.magic_roll.desc" : "Crea un Brownie Mágico con Mucosidad Psicodélica",
+
+  "effect.marvelous_menagerie.sea_cow_serenity.description": "Te otorga una piel tan gruesa como la de las Vacas Marinas de Steller, otorgándote mayor defensa y resistencia al knockback, al igual que un poco de respiración acuática.",
+  "effect.marvelous_menagerie.hallucinating.description": "¡Hace que veas el mundo de colores!",
+  "effect.marvelous_menagerie.pacified.description": "Hace que las criaturas afectadas con este efecto sean incapaces de ser atacadas por otras."
 }
