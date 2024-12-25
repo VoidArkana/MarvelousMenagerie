@@ -63,8 +63,8 @@ import java.util.function.Predicate;
 public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchableEntity, GeoEntity, Bucketable {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    public float prevTilt;
-    public float tilt;
+//    public float prevTilt;
+//    public float tilt;
 
     @javax.annotation.Nullable
     BlockPos savedFlowerPos;
@@ -212,6 +212,8 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
         return SoundEvents.BUCKET_FILL_FISH;
     }
 
+    public float currentRoll = 0.0F;
+
     public void aiStep() {
         if (!this.isInWater() && this.onGround() && this.verticalCollision) {
             this.setDeltaMovement(this.getDeltaMovement().add((double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F), (double)0.4F, (double)((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F)));
@@ -222,25 +224,30 @@ public class PikaiaEntity extends WaterAnimal implements IBookEntity, IHatchable
 
         super.aiStep();
 
-        prevTilt = tilt;
-        if (this.isInWater()) {
-            final float v = Mth.degreesDifference(this.getYRot(), yRotO);
-            if (Math.abs(v) > 1) {
-                if (Math.abs(tilt) < 25) {
-                    tilt -= Math.signum(v);
-                }
-            } else {
-                if (Math.abs(tilt) > 0) {
-                    final float tiltSign = Math.signum(tilt);
-                    tilt -= tiltSign * 0.85F;
-                    if (tilt * tiltSign < 0) {
-                        tilt = 0;
-                    }
-                }
-            }
-        } else {
-            tilt = 0;
-        }
+//        prevTilt = tilt;
+//        if (this.isInWater()) {
+//            final float v = Mth.degreesDifference(this.getYRot(), yRotO);
+//            if (Math.abs(v) > 1) {
+//                if (Math.abs(tilt) < 25) {
+//                    tilt -= Math.signum(v);
+//                }
+//            } else {
+//                if (Math.abs(tilt) > 0) {
+//                    final float tiltSign = Math.signum(tilt);
+//                    tilt -= tiltSign * 0.85F;
+//                    if (tilt * tiltSign < 0) {
+//                        tilt = 0;
+//                    }
+//                }
+//            }
+//        } else {
+//            tilt = 0;
+//        }
+
+        float prevRoll =  this.currentRoll;
+        float targetRoll = Math.max(-0.45F, Math.min(0.45F, (this.getYRot() - this.yRotO) * 0.1F));
+        targetRoll = -targetRoll;
+        this.currentRoll = prevRoll + (targetRoll - prevRoll) * 0.05F;
     }
 
     protected PathNavigation createNavigation(Level pLevel) {

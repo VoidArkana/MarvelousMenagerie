@@ -40,10 +40,12 @@ public class PikaiaModel extends GeoModel<PikaiaEntity> {
         swimControl.setRotX(((entityData.headPitch() * ((float) Math.PI / 180F))));
 
         CoreGeoBone tailRot = this.getAnimationProcessor().getBone("tail_rot");
-        tailRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+        //tailRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+        tailRot.setRotY(-animatable.currentRoll);
 
         CoreGeoBone tailTipRot = this.getAnimationProcessor().getBone("tail_tip_rot");
-        tailTipRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+        //tailTipRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+        tailTipRot.setRotY(-animatable.currentRoll);
 
     }
 

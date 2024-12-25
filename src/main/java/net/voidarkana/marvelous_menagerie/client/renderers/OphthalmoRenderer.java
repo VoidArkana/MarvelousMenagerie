@@ -73,6 +73,6 @@ public class OphthalmoRenderer extends GeoEntityRenderer<OphthalmoEntity> implem
     protected void applyRotations(OphthalmoEntity animatable, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTick) {
         super.applyRotations(animatable, poseStack, ageInTicks, rotationYaw, partialTick);
 
-        poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(partialTick, -animatable.prevTilt, -animatable.tilt)));
+        poseStack.mulPose(Axis.ZP.rotationDegrees(animatable.currentRoll*360/4));
     }
 }

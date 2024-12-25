@@ -76,7 +76,6 @@ import java.util.Iterator;
 import java.util.Optional;
 import java.util.UUID;
 
-//TODO: Try to fix the head in the renderer
 public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEntity, OwnableEntity, NeutralMob {
 
     static final TargetingConditions SWIM_WITH_PLAYER_TARGETING = TargetingConditions.forNonCombat().range(15.0D).ignoreLineOfSight();
@@ -85,8 +84,8 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
     @Nullable
     private UUID persistentAngerTarget;
 
-    public float prevTilt;
-    public float tilt;
+//    public float prevTilt;
+//    public float tilt;
 
     public Vec3 movement;
 
@@ -785,6 +784,8 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
         }
     }
 
+    public float currentRoll = 0.0F;
+
     public void aiStep() {
         if (!this.isInWater() && this.onGround() && this.verticalCollision) {
             this.setDeltaMovement(this.getDeltaMovement().add((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F, 0.4F, (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F));
@@ -795,25 +796,30 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
 
         super.aiStep();
 
-        prevTilt = tilt;
-        if (this.isInWater()) {
-            final float v = Mth.degreesDifference(this.getYRot(), yRotO);
-            if (Math.abs(v) > 1) {
-                if (Math.abs(tilt) < 25) {
-                    tilt -= Math.signum(v);
-                }
-            } else {
-                if (Math.abs(tilt) > 0) {
-                    final float tiltSign = Math.signum(tilt);
-                    tilt -= tiltSign * 0.85F;
-                    if (tilt * tiltSign < 0) {
-                        tilt = 0;
-                    }
-                }
-            }
-        } else {
-            tilt = 0;
-        }
+//        prevTilt = tilt;
+//        if (this.isInWater()) {
+//            final float v = Mth.degreesDifference(this.getYRot(), yRotO);
+//            if (Math.abs(v) > 1) {
+//                if (Math.abs(tilt) < 25) {
+//                    tilt -= Math.signum(v);
+//                }
+//            } else {
+//                if (Math.abs(tilt) > 0) {
+//                    final float tiltSign = Math.signum(tilt);
+//                    tilt -= tiltSign * 0.85F;
+//                    if (tilt * tiltSign < 0) {
+//                        tilt = 0;
+//                    }
+//                }
+//            }
+//        } else {
+//            tilt = 0;
+//        }
+
+        float prevRoll =  this.currentRoll;
+        float targetRoll = Math.max(-0.45F, Math.min(0.45F, (this.getYRot() - this.yRotO) * 0.1F));
+        targetRoll = -targetRoll;
+        this.currentRoll = prevRoll + (targetRoll - prevRoll) * 0.05F;
 
         if (!this.level().isClientSide) {
             this.updatePersistentAnger((ServerLevel)this.level(), true);
@@ -836,18 +842,11 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
     protected <E extends GeoAnimatable> PlayState Controller(AnimationState<E> event) {
 
         if (!this.isFromBook()) {
-            if (this.getAnimationState() == 21) {
-                if (rand > 50) {
-                    event.setAndContinue(ATTACK);
-                } else {
-                    event.setAndContinue(ATTACK2);
-                }
-            } else if (this.isVehicle()) {
-
+            if (this.isVehicle()) {
                 if (this.movement!=null){
-
                     if (this.movement.horizontalDistanceSqr() > 0.1 || (this.movement.y >= 2 || this.movement.y <= -2)) {
                         event.setAndContinue(SWIM_FAST);
+                        event.getController().setAnimationSpeed(0.8f);
 
                     } else if (this.movement.horizontalDistanceSqr() > 0.001 || (this.movement.y < 2 || this.movement.y > -2)) {
                         event.setAndContinue(SWIM_SLOW);
@@ -860,22 +859,24 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
                 }
 
             }else if(this.getDeltaMovement().horizontalDistanceSqr() > 0.000001 && this.isInWater() && !this.isVehicle()) {
-                if (this.getEatingTime() > 0){
-                    event.setAndContinue(SWIM_HEADLESS);
-                }
-                else {
-                    event.setAndContinue(SWIM);
-                }
-                event.getController().setAnimationSpeed(1.25f);
+                event.setAndContinue(SWIM);
+//                if (this.getEatingTime() > 0){
+//                    event.setAndContinue(SWIM_HEADLESS);
+//                }
+//                else {
+//                    event.setAndContinue(SWIM);
+//                }
+                //event.getController().setAnimationSpeed(1f);
             } else if (!this.isInWater()&&!this.isVehicle()){
                 event.setAndContinue(FLOP);
             } else {
-                if (this.getEatingTime() > 0){
-                    event.setAndContinue(IDLE_HEADLESS);
-                }
-                else {
-                    event.setAndContinue(IDLE);
-                }
+                event.setAndContinue(IDLE);
+//                if (this.getEatingTime() > 0){
+//                    event.setAndContinue(IDLEIDLE_HEADLESS);
+//                }
+//                else {
+//                    event.setAndContinue(IDLE);
+//                }
             }
         }
         return PlayState.CONTINUE;
@@ -884,6 +885,13 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
     protected <E extends GeoAnimatable> PlayState HeadController(AnimationState<E> event) {
         if (this.isFromBook()){
             event.setAndContinue(BOOK);
+            return PlayState.CONTINUE;
+        }else if (this.getAnimationState() == 21) {
+            if (rand > 50) {
+                event.setAndContinue(ATTACK);
+            } else {
+                event.setAndContinue(ATTACK2);
+            }
             return PlayState.CONTINUE;
         }else if (this.getEatingTime()>0){
             event.setAndContinue(EAT);

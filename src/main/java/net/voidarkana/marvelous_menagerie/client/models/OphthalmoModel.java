@@ -49,13 +49,16 @@ public class OphthalmoModel extends GeoModel<OphthalmoEntity> {
         CoreGeoBone head = this.getAnimationProcessor().getBone("head");
 
         CoreGeoBone headRot = this.getAnimationProcessor().getBone("head_rot");
-        headRot.setRotY(-((animatable.tilt * ((float) Math.PI / 180F))));
+        //headRot.setRotY(-((animatable.tilt * ((float) Math.PI / 180F))));
+        headRot.setRotY(animatable.currentRoll);
 
         CoreGeoBone tailRot = this.getAnimationProcessor().getBone("tail_rot");
-        tailRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+        //tailRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+        tailRot.setRotY(-animatable.currentRoll);
 
         CoreGeoBone tailTipRot = this.getAnimationProcessor().getBone("tail_tip_rot");
-        tailTipRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+        //tailTipRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+        tailTipRot.setRotY(-animatable.currentRoll);
 
         if (!animatable.isVehicle()){
 

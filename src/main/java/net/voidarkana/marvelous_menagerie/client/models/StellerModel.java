@@ -47,16 +47,20 @@ public class StellerModel extends GeoModel<StellerEntity> {
 
 
         CoreGeoBone headRot = this.getAnimationProcessor().getBone("head_rot");
-        headRot.setRotY(-((animatable.tilt * ((float) Math.PI / 180F))));
+        //headRot.setRotY(-((animatable.tilt * ((float) Math.PI / 180F))));
+        headRot.setRotY(animatable.currentRoll);
 
         CoreGeoBone neckRot = this.getAnimationProcessor().getBone("neck_rot");
-        neckRot.setRotY(-((animatable.tilt * ((float) Math.PI / 180F))));
+        //neckRot.setRotY(-((animatable.tilt * ((float) Math.PI / 180F))));
+        neckRot.setRotY(animatable.currentRoll);
 
         CoreGeoBone tailRot = this.getAnimationProcessor().getBone("tail_rot");
-        tailRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+        //tailRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F))));
+        tailRot.setRotY(-animatable.currentRoll);
 
         CoreGeoBone tailTipRot = this.getAnimationProcessor().getBone("tail_tip_rot");
-        tailTipRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F)))/2);
+        //tailTipRot.setRotY(((animatable.tilt * ((float) Math.PI / 180F)))/2);
+        tailTipRot.setRotY(-animatable.currentRoll);
     }
 
 }

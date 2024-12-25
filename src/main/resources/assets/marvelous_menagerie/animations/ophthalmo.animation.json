@@ -115,6 +115,12 @@
 				},
 				"b_flipper_l": {
 					"rotation": [0, "-45+math.sin(query.anim_time*720/0.75-120)*-5", "65+math.sin(query.anim_time*720/0.75+90)*-5"]
+				},
+				"passenger": {
+					"rotation": {
+						"vector": ["-math.sin(query.anim_time*180-25)*2", "-math.sin(query.anim_time*720/0.75-25)*-8", "-math.sin(query.anim_time*720/0.75+75)*4"],
+						"easing": "linear"
+					}
 				}
 			}
 		},

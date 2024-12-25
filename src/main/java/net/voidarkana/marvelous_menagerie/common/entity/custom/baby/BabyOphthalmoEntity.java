@@ -60,8 +60,8 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
     static final TargetingConditions SWIM_WITH_ADULT_TARGETING = TargetingConditions.forNonCombat().range(15.0D).ignoreLineOfSight();
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    public float prevTilt;
-    public float tilt;
+//    public float prevTilt;
+//    public float tilt;
 
     private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(BabyOphthalmoEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> BASE_VARIANT = SynchedEntityData.defineId(BabyOphthalmoEntity.class, EntityDataSerializers.INT);
@@ -249,6 +249,8 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
         return new WaterBoundPathNavigation(this, pLevel);
     }
 
+    public float currentRoll = 0.0F;
+
     public void aiStep() {
         if (!this.level().isClientSide && this.canGrow()) {
             this.setAge(this.age + 1);
@@ -261,25 +263,30 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
         }
         super.aiStep();
 
-        prevTilt = tilt;
-        if (this.isInWater()) {
-            final float v = Mth.degreesDifference(this.getYRot(), yRotO);
-            if (Math.abs(v) > 1) {
-                if (Math.abs(tilt) < 25) {
-                    tilt -= Math.signum(v);
-                }
-            } else {
-                if (Math.abs(tilt) > 0) {
-                    final float tiltSign = Math.signum(tilt);
-                    tilt -= tiltSign * 0.85F;
-                    if (tilt * tiltSign < 0) {
-                        tilt = 0;
-                    }
-                }
-            }
-        } else {
-            tilt = 0;
-        }
+//        prevTilt = tilt;
+//        if (this.isInWater()) {
+//            final float v = Mth.degreesDifference(this.getYRot(), yRotO);
+//            if (Math.abs(v) > 1) {
+//                if (Math.abs(tilt) < 25) {
+//                    tilt -= Math.signum(v);
+//                }
+//            } else {
+//                if (Math.abs(tilt) > 0) {
+//                    final float tiltSign = Math.signum(tilt);
+//                    tilt -= tiltSign * 0.85F;
+//                    if (tilt * tiltSign < 0) {
+//                        tilt = 0;
+//                    }
+//                }
+//            }
+//        } else {
+//            tilt = 0;
+//        }
+
+        float prevRoll =  this.currentRoll;
+        float targetRoll = Math.max(-0.45F, Math.min(0.45F, (this.getYRot() - this.yRotO) * 0.1F));
+        targetRoll = -targetRoll;
+        this.currentRoll = prevRoll + (targetRoll - prevRoll) * 0.05F;
     }
 
     public void travel(Vec3 pTravelVector) {
