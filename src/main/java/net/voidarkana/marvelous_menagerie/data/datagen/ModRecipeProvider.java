@@ -1,5 +1,7 @@
 package net.voidarkana.marvelous_menagerie.data.datagen;
 
+import com.peeko32213.unusualprehistory.core.registry.UPBlocks;
+import com.peeko32213.unusualprehistory.core.registry.UPItems;
 import com.peeko32213.unusualprehistory.datagen.UPRecipeProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -230,6 +232,15 @@ public class ModRecipeProvider extends UPRecipeProvider implements IConditionBui
                 .pattern("SSS")
                 .define('#', Items.CHAIN)
                 .define('S', ModBlocks.STRIPPED_ZULOAGAE_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.ZULOAGAE_BLOCK.get()), has(ModBlocks.ZULOAGAE_BLOCK.get()))
+                .save(consumer);
+
+        //Zuloagae block
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ZULOAGAE_BLOCK.get(), 1)
+                .pattern("SSS")
+                .pattern("SSS")
+                .pattern("SSS")
+                .define('S', UPBlocks.ZULOAGAE.get())
                 .unlockedBy(getHasName(ModBlocks.ZULOAGAE_BLOCK.get()), has(ModBlocks.ZULOAGAE_BLOCK.get()))
                 .save(consumer);
 

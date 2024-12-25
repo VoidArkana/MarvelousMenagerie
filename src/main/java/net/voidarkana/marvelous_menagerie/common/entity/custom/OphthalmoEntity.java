@@ -119,9 +119,9 @@ public class OphthalmoEntity extends WaterAnimal implements GeoEntity, IBookEnti
     protected static final RawAnimation SWIM_SLOW = RawAnimation.begin().thenLoop("animation.ophthalmo.swim_slow");
     protected static final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.ophthalmo.idle");
     protected static final RawAnimation FLOP = RawAnimation.begin().thenLoop("animation.ophthalmo.flop");
-    protected static final RawAnimation ATTACK = RawAnimation.begin().thenPlay("animation.ophthalmo.attack");
-    protected static final RawAnimation ATTACK2 = RawAnimation.begin().thenPlay("animation.ophthalmo.attack2");
-    protected static final RawAnimation EAT = RawAnimation.begin().thenPlay("animation.ophthalmo.eating");
+    protected static final RawAnimation ATTACK = RawAnimation.begin().thenPlay("animation.ophthalmo.attack1_overlay");
+    protected static final RawAnimation ATTACK2 = RawAnimation.begin().thenPlay("animation.ophthalmo.attack2_overlay");
+    protected static final RawAnimation EAT = RawAnimation.begin().thenPlay("animation.ophthalmo.eating_overlay");
     protected static final RawAnimation SWIM_HEADLESS = RawAnimation.begin().thenLoop("animation.ophthalmo.swim_headless");
     protected static final RawAnimation IDLE_HEADLESS = RawAnimation.begin().thenLoop("animation.ophthalmo.idle_headless");
 
