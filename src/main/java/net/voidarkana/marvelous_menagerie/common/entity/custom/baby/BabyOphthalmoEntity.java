@@ -181,7 +181,7 @@ public class BabyOphthalmoEntity extends WaterAnimal implements IHatchableEntity
         }
         this.increaseAge((int)((float)(this.getTicksUntilGrowth() / 20) * 0.1F));
         for(int j = 0; j < 5; ++j) {
-            this.level().addParticle(ParticleTypes.ANGRY_VILLAGER, this.getRandomX(1.5), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+            this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.5), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
         }
     }
 
